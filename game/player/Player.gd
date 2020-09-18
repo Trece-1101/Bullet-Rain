@@ -18,6 +18,7 @@ var speed_multiplier := 0.8
 var speed_using := 0.0
 var speed_shooting: float
 var speed_respawning := 0
+var bullet_type := 1
 
 #### Variables Onready
 onready var bullet_container: Node
@@ -55,13 +56,14 @@ func _ready() -> void:
 		bullet_container = self
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	movement = speed_using * get_direction().normalized()
 	
+# warning-ignore:return_value_discarded
 	move_and_slide(movement, Vector2.ZERO)
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	shoot_input()
 
 
@@ -80,7 +82,12 @@ func get_direction() -> Vector2:
 	return direction
 
 
+
+
 func shoot_input() -> void:
+	if Input.is_action_just_pressed("ui_change_bullet"):
+		bullet_type *= -1
+	
 	if Input.is_action_pressed("ui_shoot"):
 		change_state(States.SHOOTING)
 		if can_shoot:
@@ -95,7 +102,7 @@ func shoot_input() -> void:
 func shoot() -> void:
 	for i in range(2):
 		var new_bullet := bullet.instance()
-		new_bullet.create(shoot_positions.get_child(i).global_position, 0.0)
+		new_bullet.create(shoot_positions.get_child(i).global_position, 0.0, 0.0, bullet_type)
 		bullet_container.add_child(new_bullet)
 
 
