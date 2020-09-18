@@ -26,6 +26,7 @@ debug_panel = ExtResource( 2 )
 motion_mirroring = Vector2( 0, 2310 )
 
 [node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 6 )
 centered = false
 

@@ -16,9 +16,9 @@ __meta__ = {
 
 [node name="DebugPanel1" type="TextEdit" parent="."]
 margin_left = 18.2705
-margin_top = 733.561
+margin_top = 685.993
 margin_right = 289.271
-margin_bottom = 902.561
+margin_bottom = 854.993
 custom_fonts/font = SubResource( 1 )
 readonly = true
 wrap_enabled = true
@@ -28,9 +28,9 @@ __meta__ = {
 
 [node name="DebugPanel3" type="TextEdit" parent="."]
 margin_left = 18.2705
-margin_top = 688.54
+margin_top = 640.972
 margin_right = 289.271
-margin_bottom = 731.54
+margin_bottom = 683.972
 custom_fonts/font = SubResource( 1 )
 readonly = true
 wrap_enabled = true
@@ -40,9 +40,21 @@ __meta__ = {
 
 [node name="DebugPanel2" type="TextEdit" parent="."]
 margin_left = 18.2705
-margin_top = 902.54
+margin_top = 854.972
 margin_right = 289.271
-margin_bottom = 1017.54
+margin_bottom = 969.972
+custom_fonts/font = SubResource( 1 )
+readonly = true
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DebugPanel4" type="TextEdit" parent="."]
+margin_left = 18.2705
+margin_top = 971.438
+margin_right = 289.271
+margin_bottom = 1014.44
 custom_fonts/font = SubResource( 1 )
 readonly = true
 wrap_enabled = true

@@ -84,7 +84,7 @@ func shoot_input() -> void:
 	if Input.is_action_pressed("ui_shoot"):
 		change_state(States.SHOOTING)
 		if can_shoot:
-			#shoot()
+			shoot()
 			gun_timer.start()
 			can_shoot = false
 
