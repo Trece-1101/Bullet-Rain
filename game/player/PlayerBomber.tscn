@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/player/bomber_base.png" type="Texture" id=2]
+
+[node name="PlayerBomber" instance=ExtResource( 1 )]
+speed = 450.0
+shooting_rate = 0.25
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="Left" parent="ShootPositions" index="0"]
+position = Vector2( -17, 2 )
+
+[node name="Right" parent="ShootPositions" index="1"]
+position = Vector2( 17, 2 )
