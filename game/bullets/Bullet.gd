@@ -24,17 +24,16 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	die()
+	destroy()
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	pass
-	#die()
+	destroy()
 
 
 func _on_area_entered(area):
-	die()
+	destroy()
 
 
-func die() -> void:
+func destroy() -> void:
 	queue_free()
