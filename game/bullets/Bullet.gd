@@ -2,12 +2,12 @@ extends Area2D
 class_name Bullet
 
 #### Variables Export
-export var damage := 20.0
-export var speed := 300.0
+#export var speed := 300.0
 
 #### Variables
 var velocity := Vector2.ZERO
 var type := 1
+var damage: float
 
 func get_damage() -> float:
 	return damage
@@ -17,15 +17,18 @@ func get_type() -> int:
 
 #### Metodos
 func create(
-	bullet_pos: Vector2,
-	bullet_dir: float,
-	bullet_angle: float,
-	bullet_type: int
-	) -> void:
+		bullet_pos: Vector2,
+		bullet_speed: float,
+		bullet_dir: float,
+		bullet_type: int,
+		bullet_damage := 1.0,
+		bullet_angle := 0.0
+		) -> void:
 	position = bullet_pos
 	rotation = bullet_dir
-	velocity = Vector2(bullet_angle, speed)
+	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
 	type = bullet_type
+	damage = bullet_damage
 
 func _ready() -> void:
 	if type == 1:

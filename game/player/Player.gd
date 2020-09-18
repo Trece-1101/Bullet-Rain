@@ -7,6 +7,7 @@ enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
 #### Variables Export
 export var speed := 200.0
 export var bullet: PackedScene
+export var bullet_damage := 1.0
 export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 
@@ -19,6 +20,7 @@ var speed_using := 0.0
 var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
+var bullet_speed := -700
 
 #### Variables Onready
 onready var bullet_container: Node
@@ -102,7 +104,12 @@ func shoot_input() -> void:
 func shoot() -> void:
 	for i in range(2):
 		var new_bullet := bullet.instance()
-		new_bullet.create(shoot_positions.get_child(i).global_position, 0.0, 0.0, bullet_type)
+		new_bullet.create(
+				shoot_positions.get_child(i).global_position,
+				bullet_speed,
+				0.0,
+				bullet_type,
+				bullet_damage)
 		bullet_container.add_child(new_bullet)
 
 
