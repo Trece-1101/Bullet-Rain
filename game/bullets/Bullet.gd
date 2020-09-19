@@ -17,6 +17,7 @@ func create(pos: Vector2, dir: float, angle: float = 0.0) -> void:
 	position = pos
 	rotation = dir
 	velocity = Vector2(angle, speed)
+	$AudioStreamPlayer.play()
 
 
 func _process(delta: float) -> void:

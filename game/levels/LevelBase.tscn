@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -6,8 +6,6 @@
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
 [ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
-[ext_resource path="res://game/player/PlayerBomber.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=8]
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -42,9 +40,3 @@ centered = false
 
 [node name="PlayerStealth" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1356, 928 )
-
-[node name="PlayerBomber" parent="." instance=ExtResource( 7 )]
-position = Vector2( 584, 908 )
-
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 8 )]
-position = Vector2( 954, 902 )
