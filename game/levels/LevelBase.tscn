@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
-[ext_resource path="res://game/tests/EnemyDummy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/enemies/group 1/EnemyG1A.tscn" type="PackedScene" id=9]
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -63,12 +63,6 @@ centered = false
 [node name="PlayerStealth" parent="." instance=ExtResource( 5 )]
 position = Vector2( 824.313, 657.117 )
 
-[node name="EnemyDummy" parent="." instance=ExtResource( 9 )]
-position = Vector2( 171.628, 202.411 )
-
-[node name="EnemyDummy2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 958.621, 277.496 )
-
-[node name="EnemyDummy3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1415.47, 279.083 )
+[node name="EnemyG1A" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1038.03, 169.706 )
 bullet_type = -1
