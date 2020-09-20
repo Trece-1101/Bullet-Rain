@@ -1,8 +1,6 @@
 extends Area2D
 class_name Bullet
 
-#### Variables Export
-#export var speed := 300.0
 
 #### Variables
 var velocity := Vector2.ZERO
@@ -45,12 +43,18 @@ func _on_body_entered(body: Node) -> void:
 	destroy()
 
 
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_VisibilityNotifier2D_screen_exited() -> void:
 	destroy()
 
 
-func _on_area_entered(area):
-	destroy()
+func _on_area_entered(area) -> void:
+	if "Bullet" in area.name:
+		var other_bullet_type: int = area.get_type()
+		if other_bullet_type == type:
+			area.destroy()
+			destroy()
+	else:
+		destroy()
 
 
 func destroy() -> void:
