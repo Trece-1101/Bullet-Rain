@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/player/stealth_base.png" type="Texture" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://game/bullets/BulletPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sounds/sfx/player/shoot/03shoot.wav" type="AudioStream" id=4]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -27,4 +28,8 @@ position = Vector2( 14, 4.12035 )
 
 [node name="DamageCollider" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2948 )
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "PlayerBullet"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
