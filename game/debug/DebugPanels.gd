@@ -12,9 +12,13 @@ var bullets_container: Node
 var bullets_count := 0
 
 func _ready() -> void:
-	bullets_container = get_parent().get_node("BulletsContainer")
+	var parent := get_parent()
+	while not "Level" in parent.name:
+		parent = parent.get_parent()
+	
+	bullets_container = parent.get_node("BulletsContainer")
 
-	for child in get_parent().get_children():
+	for child in parent.get_children():
 		if child is Player:
 			player = child
 			break

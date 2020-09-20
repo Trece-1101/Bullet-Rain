@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
 [ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
-[ext_resource path="res://game/tests/EnemyDummy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
+[ext_resource path="res://game/enemies/group 1/EnemyG1A.tscn" type="PackedScene" id=9]
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -17,9 +19,21 @@ __meta__ = {
 debuggeable = true
 debug_panel = ExtResource( 2 )
 
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="screen_shading" type="Sprite" parent="HUD"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="hud_sides" type="Sprite" parent="HUD"]
+texture = ExtResource( 4 )
+centered = false
+
 [node name="BackGrounds" type="Node" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackGrounds"]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
 motion_mirroring = Vector2( 0, 2310 )
@@ -29,25 +43,26 @@ modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 6 )
 centered = false
 
-[node name="BulletsContainer" type="Node" parent="."]
+[node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBorder"]
+motion_mirroring = Vector2( 0, 2310 )
+
+[node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+texture = ExtResource( 8 )
+centered = false
 
 [node name="BordersContainer" type="Node" parent="."]
 
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
 
-[node name="HudSides" type="Sprite" parent="BordersContainer"]
-texture = ExtResource( 4 )
-centered = false
+[node name="BulletsContainer" type="Node" parent="."]
 
 [node name="PlayerStealth" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1356, 928 )
+position = Vector2( 824.313, 657.117 )
 
-[node name="EnemyDummy" parent="." instance=ExtResource( 9 )]
-position = Vector2( 554.991, 277.496 )
-
-[node name="EnemyDummy2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 958.621, 277.496 )
-
-[node name="EnemyDummy3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1348.8, 277.496 )
+[node name="EnemyG1A" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1038.03, 169.706 )
 bullet_type = -1

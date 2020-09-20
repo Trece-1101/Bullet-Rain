@@ -8,6 +8,8 @@ radius = 5.03635
 height = 39.4575
 
 [node name="BulletPlayer" instance=ExtResource( 1 )]
+z_index = 30
+z_as_relative = false
 collision_layer = 8
 collision_mask = 20
 
