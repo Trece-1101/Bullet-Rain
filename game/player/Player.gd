@@ -7,6 +7,7 @@ enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
 #### Variables Export
 export var speed := 200.0
 export var bullet: PackedScene
+export var bullet_damage := 1.0
 export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 
@@ -18,6 +19,8 @@ var speed_multiplier := 0.8
 var speed_using := 0.0
 var speed_shooting: float
 var speed_respawning := 0
+var bullet_type := 1
+var bullet_speed := -700
 
 #### Variables Onready
 onready var bullet_container: Node
@@ -55,13 +58,14 @@ func _ready() -> void:
 		bullet_container = self
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	movement = speed_using * get_direction().normalized()
 	
+# warning-ignore:return_value_discarded
 	move_and_slide(movement, Vector2.ZERO)
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	shoot_input()
 
 
@@ -80,7 +84,12 @@ func get_direction() -> Vector2:
 	return direction
 
 
+
+
 func shoot_input() -> void:
+	if Input.is_action_just_pressed("ui_change_bullet"):
+		bullet_type *= -1
+	
 	if Input.is_action_pressed("ui_shoot"):
 		change_state(States.SHOOTING)
 		if can_shoot:
@@ -95,7 +104,12 @@ func shoot_input() -> void:
 func shoot() -> void:
 	for i in range(2):
 		var new_bullet := bullet.instance()
-		new_bullet.create(shoot_positions.get_child(i).global_position, 0.0)
+		new_bullet.create(
+				shoot_positions.get_child(i).global_position,
+				bullet_speed,
+				0.0,
+				bullet_type,
+				bullet_damage)
 		bullet_container.add_child(new_bullet)
 
 
