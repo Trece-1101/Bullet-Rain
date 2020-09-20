@@ -27,6 +27,7 @@ onready var bullet_container: Node
 onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
 onready var movement := Vector2.ZERO
+onready var shoot_sound := $ShootSFX
 
 #### Setters y Getters
 func set_movement(value: Vector2) -> void:
@@ -102,7 +103,8 @@ func shoot_input() -> void:
 
 
 func shoot() -> void:
-	for i in range(2):
+	shoot_sound.play()
+	for i in range(shoot_positions.get_child_count()):
 		var new_bullet := bullet.instance()
 		new_bullet.create(
 				shoot_positions.get_child(i).global_position,

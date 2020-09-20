@@ -27,7 +27,7 @@ func create(
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
 	type = bullet_type
 	damage = bullet_damage
-  $AudioStreamPlayer.play()
+	
   
 
 func _ready() -> void:
