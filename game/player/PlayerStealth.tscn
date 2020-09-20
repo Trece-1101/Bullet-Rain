@@ -4,6 +4,7 @@
 
 [node name="PlayerStealth" instance=ExtResource( 1 )]
 speed = 680.0
+bullet_damage = 3.2
 shooting_rate = 0.32
 
 [node name="Left" parent="ShootPositions" index="0"]
