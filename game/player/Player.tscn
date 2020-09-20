@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/sounds/sfx/player/shoot/03shoot.wav" type="AudioStream" id=4]
 
 [node name="Player" type="KinematicBody2D"]
+z_index = 50
+z_as_relative = false
 collision_mask = 2
 script = ExtResource( 2 )
 speed = 500.0
