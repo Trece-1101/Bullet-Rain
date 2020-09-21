@@ -50,14 +50,7 @@ func _ready() -> void:
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
-	
-	if owner != null:
-		if owner.get_node("BulletsContainer") != null:
-			bullet_container = owner.get_node("BulletsContainer")
-		else:
-			bullet_container = owner
-	else:
-		bullet_container = self
+	bullet_container = check_bullet_container()
 
 
 func _physics_process(_delta) -> void:
@@ -85,7 +78,14 @@ func get_direction() -> Vector2:
 	
 	return direction
 
-
+func check_bullet_container() -> Node:
+	if owner != null:
+		if owner.get_node("BulletsContainer") != null:
+			return owner.get_node("BulletsContainer")
+		else:
+			return owner
+	else:
+		return self
 
 
 func shoot_input() -> void:

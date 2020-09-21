@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/EnemyPath.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1799.5, -112.787, -24.6942, -211.023, 24.6942, 211.023, 977.858, 455.179, 0, 0, 0, 0, 1821.95, 506.812 )
+}
+
+[node name="EnemyPathROne" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
