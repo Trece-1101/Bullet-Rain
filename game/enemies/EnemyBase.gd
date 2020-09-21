@@ -5,10 +5,12 @@ extends Area2D
 export var hitpoints := 50.0
 export var bullet: PackedScene
 export var bullet_speed := 400
+export var is_rotator := false
 
 #### Variables
 var can_shoot := true
-
+var player: Player
+var rotation_correction := 0.0
 
 #### Variables Onready
 onready var shoot_sound := $ShootSFX
@@ -21,8 +23,15 @@ onready var bullet_container: Node
 
 
 #### Metodos
-func _ready() -> void:	
+func _ready() -> void:
+	#ToDo: Todo esto voy a tener que cambiarlo cuando haga lo de los paths y waves
 	if owner != null:
+		if is_rotator:
+			for child in owner.get_children():
+				if child is Player:
+					player = child
+					set_process(true)
+					break
 		if owner.get_node("BulletsContainer") != null:
 			bullet_container = owner.get_node("BulletsContainer")
 		else:
@@ -31,6 +40,14 @@ func _ready() -> void:
 		bullet_container = self
 
 func _process(_delta):
+	#ToDo: Mejorar este codigo
+	if is_rotator:
+		var dir = player.global_position - global_position
+		var rot = dir.angle()
+		var rot_look = rot - 1.57
+		rotation_correction = rad2deg(rot) - 90.0
+		rotation = rot_look
+	
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
@@ -46,7 +63,7 @@ func shoot() -> void:
 				0.0,
 				shoot_positions.get_child(i).get_bullet_type(),
 				1.0,
-				shoot_positions.get_child(i).get_bullet_angle())
+				shoot_positions.get_child(i).get_bullet_angle() + rotation_correction)
 		bullet_container.add_child(new_bullet)
 
 
