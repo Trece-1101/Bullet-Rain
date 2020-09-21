@@ -1,37 +1,12 @@
-
-[gd_scene load_steps=12 format=2]
-
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
-[ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
-[ext_resource path="res://game/enemies/group 1/EnemyG1A.tscn" type="PackedScene" id=9]
-
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0.867188, 0.987938, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 2
-emission_box_extents = Vector3( 960, 100, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 10, 0 )
-spread = 0.0
-gravity = Vector3( 0, 2, 0 )
-initial_velocity = 300.0
-initial_velocity_random = 0.5
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
-scale_random = 0.5
-color_ramp = SubResource( 3 )
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -82,25 +57,3 @@ centered = false
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
 
 [node name="BulletsContainer" type="Node" parent="."]
-
-[node name="Starts" type="Particles2D" parent="BordersContainer"]
-position = Vector2( 960, -100 )
-amount = 1000
-lifetime = 30.0
-preprocess = 10.0
-visibility_rect = Rect2( -960, -100, 1920, 200 )
-process_material = SubResource( 1 )
-
-[node name="PlayerStealth" parent="." instance=ExtResource( 5 )]
-
-position = Vector2( 1356, 928 )
-colorTrail = Color( 0.160784, 0.760784, 0.760784, 1 )
-
-[node name="PlayerBomber" parent="." instance=ExtResource( 7 )]
-position = Vector2( 584, 908 )
-colorTrail = Color( 0.913725, 0.345098, 0.776471, 1 )
-
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 8 )]
-position = Vector2( 954, 902 )
-colorTrail = Color( 0.823529, 0.819608, 0.054902, 1 )
-

@@ -12,15 +12,19 @@ var bullets_container: Node
 var bullets_count := 0
 
 func _ready() -> void:
+	set_process(false)
 	var parent := get_parent()
 	while not "Level" in parent.name:
 		parent = parent.get_parent()
 	
 	bullets_container = parent.get_node("BulletsContainer")
-
+	
+	debug_3.text = "No hay player"
+	
 	for child in parent.get_children():
 		if child is Player:
 			player = child
+			set_process(true)
 			break
 
 func _process(delta: float) -> void:
