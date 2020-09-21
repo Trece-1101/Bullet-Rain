@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=12 format=2]
-
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -9,8 +7,6 @@
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
-
-
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -61,6 +57,3 @@ centered = false
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
 
 [node name="BulletsContainer" type="Node" parent="."]
-
-
-
