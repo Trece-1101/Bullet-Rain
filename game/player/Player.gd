@@ -1,5 +1,5 @@
-extends KinematicBody2D
 class_name Player
+extends KinematicBody2D
 
 #### Enumerables
 enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }

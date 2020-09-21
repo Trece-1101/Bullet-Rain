@@ -1,5 +1,5 @@
-extends Area2D
 class_name Bullet
+extends Area2D
 
 
 #### Variables
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	destroy()
 
 

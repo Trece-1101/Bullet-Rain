@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/player/Player.gd"
 }, {
+"base": "Position2D",
+"class": "ShootPosition",
+"language": "GDScript",
+"path": "res://game/enemies/ShootPosition.gd"
+}, {
 "base": "Line2D",
 "class": "Trail2D",
 "language": "GDScript",
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "EnemyBase": "",
 "Level": "",
 "Player": "",
+"ShootPosition": "",
 "Trail2D": ""
 }
 

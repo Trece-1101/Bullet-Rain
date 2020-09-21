@@ -1,12 +1,10 @@
-extends Area2D
 class_name EnemyBase
+extends Area2D
 
 #### Variables Export
-export var hitpoints := 50
+export var hitpoints := 50.0
 export var bullet: PackedScene
-export(int, -1, 1) var bullet_type := 1
 export var bullet_speed := 400
-export var bullet_angle := 0
 
 #### Variables
 var can_shoot := true
@@ -23,10 +21,7 @@ onready var bullet_container: Node
 
 
 #### Metodos
-func _ready() -> void:
-	if bullet_type == 0:
-		bullet_type = 1
-	
+func _ready() -> void:	
 	if owner != null:
 		if owner.get_node("BulletsContainer") != null:
 			bullet_container = owner.get_node("BulletsContainer")
@@ -35,7 +30,7 @@ func _ready() -> void:
 	else:
 		bullet_container = self
 
-func _process(delta):
+func _process(_delta):
 	if can_shoot:
 		can_shoot = false
 		$GunTimer.start()
@@ -49,12 +44,10 @@ func shoot() -> void:
 				shoot_positions.get_child(i).global_position,
 				bullet_speed,
 				0.0,
-				bullet_type,
+				shoot_positions.get_child(i).get_bullet_type(),
 				1.0,
-				bullet_angle)
+				shoot_positions.get_child(i).get_bullet_angle())
 		bullet_container.add_child(new_bullet)
-		#bullet_angle *= -1
-		#bullet_type *= -1
 
 
 

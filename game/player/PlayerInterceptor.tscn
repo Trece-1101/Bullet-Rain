@@ -7,6 +7,7 @@
 speed = 550.0
 bullet_damage = 1.8
 shooting_rate = 0.18
+colorTrail = Color( 0.878431, 0.878431, 0.113725, 1 )
 
 [node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
