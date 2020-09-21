@@ -5,6 +5,7 @@
 
 [node name="PlayerInterceptor" instance=ExtResource( 1 )]
 speed = 550.0
+bullet_damage = 1.8
 shooting_rate = 0.18
 
 [node name="Sprite" parent="." index="2"]

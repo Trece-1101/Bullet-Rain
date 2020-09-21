@@ -4,6 +4,7 @@
 
 [node name="PlayerStealth" instance=ExtResource( 1 )]
 speed = 680.0
+bullet_damage = 3.2
 shooting_rate = 0.32
 colorTrail = Color( 0.121569, 0.796078, 0.811765, 1 )
 

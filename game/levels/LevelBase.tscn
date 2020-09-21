@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=12 format=2]
+
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -6,8 +8,9 @@
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
 [ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
-[ext_resource path="res://game/player/PlayerBomber.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
+[ext_resource path="res://game/enemies/group 1/EnemyG1A.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.867188, 0.987938, 1, 1, 1, 1, 1, 1 )
@@ -39,9 +42,21 @@ __meta__ = {
 debuggeable = true
 debug_panel = ExtResource( 2 )
 
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="screen_shading" type="Sprite" parent="HUD"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="hud_sides" type="Sprite" parent="HUD"]
+texture = ExtResource( 4 )
+centered = false
+
 [node name="BackGrounds" type="Node" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackGrounds"]
+layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
 motion_mirroring = Vector2( 0, 2310 )
@@ -51,15 +66,22 @@ modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 6 )
 centered = false
 
-[node name="BulletsContainer" type="Node" parent="."]
+[node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBorder"]
+motion_mirroring = Vector2( 0, 2310 )
+
+[node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+texture = ExtResource( 8 )
+centered = false
 
 [node name="BordersContainer" type="Node" parent="."]
 
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
 
-[node name="HudSides" type="Sprite" parent="BordersContainer"]
-texture = ExtResource( 4 )
-centered = false
+[node name="BulletsContainer" type="Node" parent="."]
 
 [node name="Starts" type="Particles2D" parent="BordersContainer"]
 position = Vector2( 960, -100 )
@@ -70,6 +92,7 @@ visibility_rect = Rect2( -960, -100, 1920, 200 )
 process_material = SubResource( 1 )
 
 [node name="PlayerStealth" parent="." instance=ExtResource( 5 )]
+
 position = Vector2( 1356, 928 )
 colorTrail = Color( 0.160784, 0.760784, 0.760784, 1 )
 
@@ -80,3 +103,4 @@ colorTrail = Color( 0.913725, 0.345098, 0.776471, 1 )
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 8 )]
 position = Vector2( 954, 902 )
 colorTrail = Color( 0.823529, 0.819608, 0.054902, 1 )
+

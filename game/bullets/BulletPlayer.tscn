@@ -8,16 +8,19 @@ radius = 5.03635
 height = 39.4575
 
 [node name="BulletPlayer" instance=ExtResource( 1 )]
+z_index = 30
+z_as_relative = false
 collision_layer = 8
 collision_mask = 20
-speed = -700.0
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 0, 0, 1 )
 rotation = -1.5708
 scale = Vector2( 0.3, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2( 0, -4.94975 )
 shape = SubResource( 1 )
 
