@@ -62,12 +62,5 @@ centered = false
 
 [node name="BulletsContainer" type="Node" parent="."]
 
-[node name="Starts" type="Particles2D" parent="BordersContainer"]
-position = Vector2( 960, -100 )
-amount = 1000
-lifetime = 30.0
-preprocess = 10.0
-visibility_rect = Rect2( -960, -100, 1920, 200 )
-process_material = SubResource( 1 )
 
 
