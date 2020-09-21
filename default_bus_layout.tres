@@ -5,5 +5,5 @@ bus/1/name = "PlayerBullet"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -15.795
+bus/1/volume_db = -14.0622
 bus/1/send = "Master"

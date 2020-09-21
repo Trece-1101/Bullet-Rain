@@ -8,6 +8,8 @@
 radius = 69.4357
 
 [node name="EnemyDummy" type="Area2D"]
+z_index = 40
+z_as_relative = false
 collision_layer = 4
 collision_mask = 8
 script = ExtResource( 2 )
