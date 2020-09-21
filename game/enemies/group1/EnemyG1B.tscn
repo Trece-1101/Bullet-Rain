@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/enemies/test_enemy_01.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 52.5289
+
+[node name="EnemyG1B" instance=ExtResource( 2 )]
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 3 )
+
+[node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, 10.7093 )
+shape = SubResource( 1 )
+
+[node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
+position = Vector2( 0, 46.6171 )
+script = ExtResource( 1 )
