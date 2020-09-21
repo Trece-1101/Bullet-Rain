@@ -6,8 +6,12 @@
 [node name="PlayerBomber" instance=ExtResource( 1 )]
 speed = 450.0
 shooting_rate = 0.25
+colorTrail = Color( 0.862745, 0.384314, 0.745098, 1 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Trail2D" parent="TrailPoint" index="0"]
+width = 50.0
+
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 
 [node name="Left" parent="ShootPositions" index="0"]

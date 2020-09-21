@@ -7,7 +7,7 @@
 speed = 550.0
 shooting_rate = 0.18
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 
 [node name="Left" parent="ShootPositions" index="0"]

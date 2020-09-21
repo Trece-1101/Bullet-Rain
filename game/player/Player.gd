@@ -9,6 +9,7 @@ export var speed := 200.0
 export var bullet: PackedScene
 export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
+export(Color, RGBA) var colorTrail
 
 #### Variables
 var state = States.INIT
