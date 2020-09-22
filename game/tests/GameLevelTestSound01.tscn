@@ -68,11 +68,4 @@ centered = false
 position = Vector2( 954, 902 )
 
 [node name="EnemyDummy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 554.991, 277.496 )
-
-[node name="EnemyDummy2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 958.621, 277.496 )
-
-[node name="EnemyDummy3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1348.8, 277.496 )
-bullet_type = -1
+position = Vector2( 554.991, 274.805 )
