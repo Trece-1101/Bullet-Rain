@@ -1,10 +1,24 @@
 [gd_resource type="AudioBusLayout" format=2]
 
 [resource]
-bus/0/mute = true
-bus/1/name = "PlayerBullet"
+
+bus/0/volume_db = 0.0272655
+bus/1/name = "SFX"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -14.0622
+bus/1/volume_db = -0.0105095
+
 bus/1/send = "Master"
+bus/2/name = "Player"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0272655
+bus/2/send = "SFX"
+bus/3/name = "Enemy"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0272655
+bus/3/send = "SFX"
