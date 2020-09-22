@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyShooter.gd" type="Script" id=2]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=3]
+
+[node name="EnemyShooter" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+bullet = ExtResource( 3 )

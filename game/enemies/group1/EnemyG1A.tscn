@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/enemies/test_enemy_02.png" type="Texture" id=1]
 [ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
+[ext_resource path="res://game/enemies/EnemyShooter.gd" type="Script" id=4]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 60.8653
 
 [node name="EnemyG1A" instance=ExtResource( 2 )]
-is_aimer = true
+script = ExtResource( 4 )
+bullet = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 rotation = 3.14159

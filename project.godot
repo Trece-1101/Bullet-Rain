@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/paths/EnemyPath.gd"
 }, {
+"base": "EnemyBase",
+"class": "EnemyShooter",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyShooter.gd"
+}, {
 "base": "Node",
 "class": "Level",
 "language": "GDScript",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "Bullet": "",
 "EnemyBase": "",
 "EnemyPath": "",
+"EnemyShooter": "",
 "Level": "",
 "Player": "",
 "ShootPosition": "",
