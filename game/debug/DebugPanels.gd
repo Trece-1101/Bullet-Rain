@@ -28,6 +28,9 @@ func _ready() -> void:
 			break
 
 func _process(delta: float) -> void:
+	if player == null:
+		set_process(false)
+		return
 	bullets_count = bullets_container.get_child_count()
 	debug_1.text = "  Movimiento: {mov}\n  Cad Disparo: {cad}".format(
 		{

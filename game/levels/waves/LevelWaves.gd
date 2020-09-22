@@ -13,7 +13,6 @@ func _ready() -> void:
 func spawn_wave() -> void:
 	current_wave += 1
 	if current_wave < total_waves:
-		print("proxima oleada")
 		get_children()[current_wave].create_paths()
 	else:
 		print("Larga ese Boss maquinola")

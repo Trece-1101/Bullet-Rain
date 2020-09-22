@@ -11,20 +11,25 @@ export(float, 50, 1000) var speed := 200
 export var is_timered := true
 export var debug := false
 export var allow_enemy_shoot := true
+export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
+export var are_aimers := false
 
 
 #### Variables
 var enemies_spawned := 0
 var full_path_out := false
-
-#### Varibales Onready
-onready var spawn_timer := $Timer
+var spawn_timer: Timer
 
 #### Setters y Getters
 func get_enemy_number() -> int:
 	return enemy_number
 
 func _ready() -> void:
+	spawn_timer = Timer.new()
+	spawn_timer.wait_time = spawn_enemy_rate
+	spawn_timer.set_one_shot(true)
+	spawn_timer.connect("timeout", self, "_on_Timer_timeout")
+	add_child(spawn_timer)
 	set_process(false)
 
 #### Metodos
@@ -57,6 +62,7 @@ func create_random_enemy() -> void:
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
+	my_enemy.set_is_aimer(are_aimers)
 	$Enemies.add_child(my_enemy)
 	enemies_spawned += 1
 	check_enemy_status()

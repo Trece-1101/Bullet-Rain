@@ -11,6 +11,7 @@ export var bullet_damage := 1.0
 export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 export(Color, RGBA) var colorTrail
+export var is_in_god_mode := false
 
 #### Variables
 var state = States.INIT
@@ -119,6 +120,11 @@ func shoot() -> void:
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
+func take_damage() -> void:
+	print("ouch!")
+	hitpoints -= 1
+	if hitpoints == 0:
+		queue_free()
 
 func change_state(new_state) -> void:
 	match new_state:
@@ -135,6 +141,7 @@ func change_state(new_state) -> void:
 			speed_using = speed_shooting
 			state_text = "SHOOTING"
 		States.GOD:
+			is_in_god_mode = true
 			state_text = "GOD"
 		States.DEAD:
 			speed_using = speed_respawning

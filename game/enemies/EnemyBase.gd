@@ -33,6 +33,9 @@ func set_path(value: Path2D) -> void:
 func set_allow_shoot(value: bool) -> void:
 	allow_shoot = value
 
+func set_is_aimer(value: bool) -> void:
+	is_aimer = value
+
 #### Metodos
 func _ready() -> void:
 	follow = PathFollow2D.new()
@@ -103,10 +106,10 @@ func _on_GunTimer_timeout() -> void:
 
 
 func _on_area_entered(area) -> void:
-	check_hitpoints(area.get_damage())
+	take_damage(area.get_damage())
 
 
-func check_hitpoints(damage: float) -> void:
+func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
 		queue_free()

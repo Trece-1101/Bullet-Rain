@@ -41,7 +41,9 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 
-func _on_body_entered(_body: Node) -> void:
+func _on_body_entered(body: Node) -> void:
+	if body is Player:
+		body.take_damage()
 	destroy()
 
 
