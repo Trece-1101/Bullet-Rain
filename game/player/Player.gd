@@ -30,6 +30,7 @@ onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
 onready var movement := Vector2.ZERO
 onready var shoot_sound := $ShootSFX
+onready var animation_play := $AnimationPlayer
 
 #### Setters y Getters
 func set_movement(value: Vector2) -> void:
@@ -125,6 +126,8 @@ func take_damage() -> void:
 	hitpoints -= 1
 	if hitpoints == 0:
 		queue_free()
+	else:
+		animation_play.play("damage")
 
 func change_state(new_state) -> void:
 	match new_state:
