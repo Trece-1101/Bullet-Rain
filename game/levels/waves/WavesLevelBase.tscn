@@ -4,7 +4,7 @@
 [ext_resource path="res://game/enemies/waves/WaveLevelBaseOne.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/enemies/waves/WaveLevelBaseTwo.tscn" type="PackedScene" id=3]
 
-[node name="Waves" type="Node"]
+[node name="WavesLevelBase" type="Node"]
 script = ExtResource( 1 )
 
 [node name="WaveLevelBaseOne" parent="." instance=ExtResource( 2 )]

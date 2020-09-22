@@ -8,13 +8,15 @@ export var bullet_speed := 400
 export var is_aimer := false
 
 #### Variables
-var can_shoot := true
+var can_shoot := false
 var player: Player
 var bullet_rot_correction := 0.0
 var speed := 0.0
 var path: Path2D
 var follow: PathFollow2D
 var allow_shoot := true
+var is_shooting := false
+var shoot_lines := {"shoot_on": false, "shoot_off": false}
 
 
 #### Variables Onready
@@ -63,6 +65,7 @@ func get_top_level() -> Node:
 	
 	return parent
 
+
 func get_player() -> void:
 	for child in get_top_level().get_children():
 		if child is Player:
@@ -76,6 +79,17 @@ func move(delta: float) -> void:
 	
 	if follow.unit_offset >= 1.0:
 		queue_free()
+	
+	if follow.unit_offset >= 0.15 and not is_shooting and not shoot_lines.shoot_on:
+		is_shooting = true
+		can_shoot = true
+		shoot_lines.shoot_on = true
+	
+	if follow.unit_offset >= 0.85 and is_shooting and not shoot_lines.shoot_off:
+		is_shooting = false
+		can_shoot = false
+		allow_shoot = false
+		shoot_lines.shoot_off = true
 
 func aim_to_player():
 	var dir = player.global_position - global_position

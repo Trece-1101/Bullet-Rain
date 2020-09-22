@@ -17,6 +17,9 @@ texture = ExtResource( 3 )
 position = Vector2( 0, 10.7093 )
 shape = SubResource( 1 )
 
+[node name="GunTimer" parent="." index="3"]
+wait_time = 0.8
+
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 position = Vector2( 0, 46.6171 )
 script = ExtResource( 1 )

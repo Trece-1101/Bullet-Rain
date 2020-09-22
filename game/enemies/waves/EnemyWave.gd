@@ -1,4 +1,5 @@
 extends Node
+
 #### Señales
 signal send_next_wave()
 
