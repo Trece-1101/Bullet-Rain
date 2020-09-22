@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=10 format=2]
-
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -8,11 +6,9 @@
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
 [ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
-
 [ext_resource path="res://game/player/PlayerBomber.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/tests/EnemyDummy.tscn" type="PackedScene" id=9]
-
 
 [node name="LevelBase" type="Node"]
 script = ExtResource( 1 )

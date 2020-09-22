@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=1]
+[ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=2]
+[ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/tests/EnemyDummy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/levels/Level.gd" type="Script" id=7]
+
+[node name="LevelBase" type="Node"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1023.64 ],
+"_edit_vertical_guides_": [ 1610.0, 309.861, 20.22 ]
+}
+debuggeable = true
+debug_panel = ExtResource( 3 )
+
+[node name="BackGrounds" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackGrounds"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 2310 )
+
+[node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="BulletsContainer" type="Node" parent="."]
+
+[node name="BordersContainer" type="Node" parent="."]
+
+[node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 4 )]
+
+[node name="HudSides" type="Sprite" parent="BordersContainer"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="PlayerInterceptor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 954, 902 )
+
+[node name="EnemyDummy" parent="." instance=ExtResource( 6 )]
+position = Vector2( 554.991, 277.496 )
+
+[node name="EnemyDummy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 958.621, 277.496 )
+
+[node name="EnemyDummy3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1348.8, 277.496 )
+bullet_type = -1
