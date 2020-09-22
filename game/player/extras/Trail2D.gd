@@ -1,12 +1,10 @@
-# Draws a 2D trail using Godot's `Line2D`.
-#
-# Instantiate `Trail2D` as a child of a moving node to use it. To control the color, width curve,
-# texture, or trail width, use parameters from the `Line2D` class.
 tool
-
 class_name Trail2D
 extends Line2D
 
+
+
+#### Variables Export
 export var is_emitting := false setget set_emitting
 
 # Distance in pixels between vertices. A higher resolution leads to more details.
@@ -15,21 +13,21 @@ export var resolution := 5.0
 export var lifetime := 0.5
 # Maximum number of points allowed on the curve.
 export var max_points := 100
-
 # Optional path to the target node to follow. If not set, the instance follows its parent.
 export var target_path: NodePath
 
-
-
+#### Variables
 var _points_creation_time := []
 var _last_point := Vector2.ZERO
 var _clock := 0.0
 var _offset := 0.0
 
+#### Variables Onready
 onready var target: Node2D = get_node_or_null(target_path)
 onready var color = get_owner().colorTrail
 
 
+#### Metodos
 func _ready() -> void:
 	if not target:
 		target = get_parent() as Node2D

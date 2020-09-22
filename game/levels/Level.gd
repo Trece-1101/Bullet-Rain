@@ -1,5 +1,5 @@
-extends Node
 class_name Level
+extends Node
 
 #### Variables Export
 export var debuggeable := false

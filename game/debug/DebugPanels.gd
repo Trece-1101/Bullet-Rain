@@ -14,7 +14,7 @@ var bullets_count := 0
 func _ready() -> void:
 	set_process(false)
 	var parent := get_parent()
-	while not "Level" in parent.name:
+	while not "GameLevel" in parent.name:
 		parent = parent.get_parent()
 	
 	bullets_container = parent.get_node("BulletsContainer")
@@ -28,6 +28,9 @@ func _ready() -> void:
 			break
 
 func _process(delta: float) -> void:
+	if player == null:
+		set_process(false)
+		return
 	bullets_count = bullets_container.get_child_count()
 	debug_1.text = "  Movimiento: {mov}\n  Cad Disparo: {cad}".format(
 		{

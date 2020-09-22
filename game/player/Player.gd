@@ -1,5 +1,5 @@
-extends KinematicBody2D
 class_name Player
+extends KinematicBody2D
 
 #### Enumerables
 enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
@@ -11,6 +11,7 @@ export var bullet_damage := 1.0
 export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 export(Color, RGBA) var colorTrail
+export var is_in_god_mode := false
 
 #### Variables
 var state = States.INIT
@@ -50,14 +51,7 @@ func _ready() -> void:
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
-	
-	if owner != null:
-		if owner.get_node("BulletsContainer") != null:
-			bullet_container = owner.get_node("BulletsContainer")
-		else:
-			bullet_container = owner
-	else:
-		bullet_container = self
+	bullet_container = check_bullet_container()
 
 
 func _physics_process(_delta) -> void:
@@ -85,7 +79,14 @@ func get_direction() -> Vector2:
 	
 	return direction
 
-
+func check_bullet_container() -> Node:
+	if owner != null:
+		if owner.get_node("BulletsContainer") != null:
+			return owner.get_node("BulletsContainer")
+		else:
+			return owner
+	else:
+		return self
 
 
 func shoot_input() -> void:
@@ -119,6 +120,11 @@ func shoot() -> void:
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
+func take_damage() -> void:
+	print("ouch!")
+	hitpoints -= 1
+	if hitpoints == 0:
+		queue_free()
 
 func change_state(new_state) -> void:
 	match new_state:
@@ -135,6 +141,7 @@ func change_state(new_state) -> void:
 			speed_using = speed_shooting
 			state_text = "SHOOTING"
 		States.GOD:
+			is_in_god_mode = true
 			state_text = "GOD"
 		States.DEAD:
 			speed_using = speed_respawning
