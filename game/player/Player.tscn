@@ -100,7 +100,7 @@ polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -20.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="HitpointSFX" type="AudioStreamPlayer" parent="."]
