@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/EnemyShooter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyBandit.gd" type="Script" id=2]
+
+[node name="EnemyBandit" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="AimTween" type="Tween" parent="." index="6"]
+
+[node name="AimTimer" type="Timer" parent="." index="7"]
+wait_time = 0.3
+one_shot = true
+[connection signal="tween_completed" from="AimTween" to="." method="_on_AimTween_tween_completed"]
+[connection signal="timeout" from="AimTimer" to="." method="_on_AimTimer_timeout"]

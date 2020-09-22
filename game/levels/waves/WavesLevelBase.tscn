@@ -10,5 +10,3 @@ script = ExtResource( 1 )
 [node name="WaveLevelBaseOne" parent="." instance=ExtResource( 2 )]
 
 [node name="WaveLevelBaseTwo" parent="." instance=ExtResource( 3 )]
-
-[node name="WaveLevelBaseOne2" parent="." instance=ExtResource( 2 )]

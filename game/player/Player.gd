@@ -32,6 +32,8 @@ onready var movement := Vector2.ZERO
 onready var shoot_sound := $ShootSFX
 onready var hitpoint_sound := $HitpointSFX
 onready var explosion_sound := $ExplosionSFX
+onready var animation_play := $AnimationPlayer
+
 
 #### Setters y Getters
 func set_movement(value: Vector2) -> void:
@@ -128,9 +130,10 @@ func take_damage() -> void:
 	hitpoint_sound.play()
 	if hitpoints == 0:
 		explosion_sound.play()
-		#queue_free()
-		
-		
+		queue_free()
+	else:
+		animation_play.play("damage")
+
 
 func change_state(new_state) -> void:
 	match new_state:
