@@ -1,5 +1,5 @@
-extends Area2D
 class_name Bullet
+extends Area2D
 
 
 #### Variables
@@ -27,7 +27,9 @@ func create(
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
 	type = bullet_type
 	damage = bullet_damage
-  
+
+	
+
   
 
 func _ready() -> void:
@@ -42,6 +44,8 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	if body is Player:
+		body.take_damage()
 	destroy()
 
 

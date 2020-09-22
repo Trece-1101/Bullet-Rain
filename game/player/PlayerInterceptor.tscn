@@ -7,8 +7,12 @@
 speed = 550.0
 bullet_damage = 1.8
 shooting_rate = 0.18
+colorTrail = Color( 0.878431, 0.878431, 0.113725, 1 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Trail2D" parent="TrailPoint" index="0"]
+resolution = 5.0
+
+[node name="Sprite" parent="." index="2"]
 texture = ExtResource( 2 )
 
 [node name="Left" parent="ShootPositions" index="0"]

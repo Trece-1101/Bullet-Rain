@@ -6,6 +6,13 @@
 speed = 680.0
 bullet_damage = 3.2
 shooting_rate = 0.32
+colorTrail = Color( 0.121569, 0.796078, 0.811765, 1 )
+
+[node name="Combustion" parent="." index="0"]
+z_index = -1
+
+[node name="Trail2D" parent="TrailPoint" index="0"]
+z_index = -2
 
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -12, 2 )

@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/bullets/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/bullets/player_bullet_temp.png" type="Texture" id=2]
-[ext_resource path="res://assets/sounds/sfx/player/shoot/07shoot.wav" type="AudioStream" id=3]
+
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.03635
 height = 39.4575
 
 [node name="BulletPlayer" instance=ExtResource( 1 )]
+z_index = 30
+z_as_relative = false
 collision_layer = 8
 collision_mask = 20
 
@@ -25,9 +28,3 @@ shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" parent="." index="3"]
 scale = Vector2( 0.496031, 0.968502 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource( 3 )
-volume_db = -30.0
-autoplay = true
-bus = "Player"

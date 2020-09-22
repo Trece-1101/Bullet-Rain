@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/bullets/Bullet.gd"
 }, {
+"base": "Area2D",
+"class": "EnemyBase",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyBase.gd"
+}, {
+"base": "Path2D",
+"class": "EnemyPath",
+"language": "GDScript",
+"path": "res://game/enemies/paths/EnemyPath.gd"
+}, {
 "base": "Node",
 "class": "Level",
 "language": "GDScript",
@@ -23,11 +33,25 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://game/player/Player.gd"
+}, {
+"base": "Position2D",
+"class": "ShootPosition",
+"language": "GDScript",
+"path": "res://game/enemies/ShootPosition.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://game/player/extras/Trail2D.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"EnemyBase": "",
+"EnemyPath": "",
 "Level": "",
-"Player": ""
+"Player": "",
+"ShootPosition": "",
+"Trail2D": ""
 }
 
 [application]
