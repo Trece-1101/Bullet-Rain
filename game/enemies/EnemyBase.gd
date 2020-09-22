@@ -1,9 +1,6 @@
 class_name EnemyBase
 extends Area2D
 
-#### Señales
-signal destroyed()
-
 #### Variables Export
 export var hitpoints := 50.0
 export var bullet: PackedScene
@@ -17,6 +14,7 @@ var bullet_rot_correction := 0.0
 var speed := 0.0
 var path: Path2D
 var follow: PathFollow2D
+var allow_shoot := true
 
 
 #### Variables Onready
@@ -32,12 +30,14 @@ func set_speed(value: float) -> void:
 func set_path(value: Path2D) -> void:
 	path = value
 
+func set_allow_shoot(value: bool) -> void:
+	allow_shoot = value
+
 #### Metodos
 func _ready() -> void:
 	follow = PathFollow2D.new()
 	path.add_child(follow)
 	follow.loop = false
-	#ToDo: Todo esto voy a tener que cambiarlo cuando haga lo de los paths y waves
 	bullet_container = get_top_level().get_node("BulletsContainer")
 	if is_aimer:
 		get_player()
@@ -49,8 +49,7 @@ func _process(delta) -> void:
 	if is_aimer and not player == null:
 		aim_to_player()
 		
-	if can_shoot:
-		pass
+	if can_shoot and allow_shoot:
 		shoot()
 
 
@@ -110,5 +109,4 @@ func _on_area_entered(area) -> void:
 func check_hitpoints(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
-		emit_signal("destroyed")
 		queue_free()

@@ -2,7 +2,7 @@ class_name EnemyPath
 extends Path2D
 
 #### Señales
-signal destroyed()
+signal full_path_dead
 
 #### Variables Export
 export(Array, PackedScene) var enemies
@@ -10,24 +10,35 @@ export(int, 1, 10) var enemy_number := 1
 export(float, 50, 1000) var speed := 200
 export var is_timered := true
 export var debug := false
+export var allow_enemy_shoot := true
 
 
 #### Variables
 var enemies_spawned := 0
-
+var full_path_out := false
 
 #### Varibales Onready
 onready var spawn_timer := $Timer
-
 
 #### Setters y Getters
 func get_enemy_number() -> int:
 	return enemy_number
 
-#### Metodos
 func _ready() -> void:
+	set_process(false)
+
+#### Metodos
+func create_path() -> void:
+	var enemy_container = Node.new()
+	add_child(enemy_container)
+	enemy_container.name = "Enemies"
 	spawn_enemy()
 
+func _process(_delta: float) -> void:
+	var enemies_remaining = $Enemies.get_child_count()
+	if full_path_out and enemies_remaining == 0:
+		emit_signal("full_path_dead")
+		queue_free()
 
 func spawn_enemy() -> void:
 	if enemies_spawned < enemy_number:
@@ -45,14 +56,17 @@ func create_random_enemy() -> void:
 	var my_enemy: EnemyBase = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
-	add_child(my_enemy)
+	my_enemy.set_allow_shoot(allow_enemy_shoot)
+	$Enemies.add_child(my_enemy)
 	enemies_spawned += 1
+	check_enemy_status()
 	if debug:
 		print("spawneando desde {path} - enemies_spawned {es} - enemy_number {en}".format({"path": self.name, "es": enemies_spawned, "en": enemy_number}))
 
-
 func check_enemy_status() -> void:
-	pass
+	if enemies_spawned == enemy_number:
+		set_process(true)
+		full_path_out = true
 
 
 func _on_Timer_timeout() -> void:
@@ -60,6 +74,3 @@ func _on_Timer_timeout() -> void:
 		spawn_enemy()
 	else:
 		check_enemy_status()
-
-func _on_enemy_destroyed() -> void:
-	emit_signal("destroyed")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/enemies/group1/EnemyG1B.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/group1/EnemyG1A.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/paths/EnemyPathLOne.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/paths/EnemyPathROne.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=5]
+
+[node name="WaveLevelBaseTwo" type="Node"]
+script = ExtResource( 5 )
+
+[node name="EnemyPathLOne" parent="." instance=ExtResource( 3 )]
+enemies = [ ExtResource( 2 ), ExtResource( 1 ) ]
+enemy_number = 4
+speed = 400.0
+allow_enemy_shoot = false
+
+[node name="EnemyPathROne" parent="." instance=ExtResource( 4 )]
+enemies = [ ExtResource( 2 ) ]
+enemy_number = 2
+speed = 400.0
+allow_enemy_shoot = false
