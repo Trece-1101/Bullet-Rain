@@ -7,3 +7,11 @@
 [node name="EnemyShooter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 bullet = ExtResource( 3 )
+
+[node name="ShootPositions" type="Node2D" parent="." index="3"]
+
+[node name="GunTimer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="5"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

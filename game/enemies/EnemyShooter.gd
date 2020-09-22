@@ -4,23 +4,25 @@ extends EnemyBase
 #### Variables Export
 export var bullet: PackedScene
 export var bullet_speed := 400
+export var can_shoot := false
 
 #### Variables
-var can_shoot := false
 var bullet_rot_correction := 0.0
 var is_shooting := false
 var shoot_lines := {"shoot_on": false, "shoot_off": false}
 var bullet_container: Node
 
+#### Variables Onready
+onready var shoot_sound := $ShootSFX
+onready var shoot_positions := $ShootPositions
+onready var gun_timer := $GunTimer
 
 #### Metodos
 func _ready() -> void:
 	bullet_container = .get_top_level().get_node("BulletsContainer")
 
 
-func _process(delta: float) -> void:	
-	if is_aimer and not player == null:
-		aim_to_player()
+func _process(_delta: float) -> void:
 	if can_shoot and self.allow_shoot:
 		shoot()
 
@@ -52,14 +54,6 @@ func check_shooting_status():
 		can_shoot = false
 		self.allow_shoot = false
 		shoot_lines.shoot_off = true
-
-
-func aim_to_player() -> void:
-	var dir = player.global_position - global_position
-	var rot = dir.angle()
-	var rot_look = rot - 1.57
-	rotation = rot_look
-	bullet_rot_correction = rad2deg(rot) - 90.0
 
 
 func check_end_of_path() -> void:

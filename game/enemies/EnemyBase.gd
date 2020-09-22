@@ -3,7 +3,6 @@ extends Area2D
 
 #### Variables Export
 export var hitpoints := 50.0
-
 export var is_aimer := false
 
 #### Variables
@@ -12,12 +11,6 @@ var speed := 0.0
 var path: Path2D
 var follow: PathFollow2D
 var allow_shoot := true
-
-
-#### Variables Onready
-onready var shoot_sound := $ShootSFX
-onready var shoot_positions := $ShootPositions
-onready var gun_timer := $GunTimer
 
 
 #### Setters y Getters
@@ -35,16 +28,18 @@ func set_is_aimer(value: bool) -> void:
 
 #### Metodos
 func _ready() -> void:
-	follow = PathFollow2D.new()
-	path.add_child(follow)
-	follow.loop = false
+	if path != null:
+		follow = PathFollow2D.new()
+		path.add_child(follow)
+		follow.loop = false
 
 	if is_aimer:
 		get_player()
 
 
 func _process(delta) -> void:
-	move(delta)
+	if path != null:
+		move(delta)
 
 
 
@@ -66,20 +61,19 @@ func get_player() -> void:
 func move(delta: float) -> void:
 	follow.offset += speed * delta
 	position = follow.global_position
-	
+
 	check_shooting_status()
+	check_mid_of_path()
 	check_end_of_path()
 
 
 func check_end_of_path():
 	pass
 
-
-func check_shooting_status():
+func check_mid_of_path():
 	pass
 
-
-func _on_GunTimer_timeout() -> void:
+func check_shooting_status():
 	pass
 
 
