@@ -24,6 +24,9 @@ var spawn_timer: Timer
 func get_enemy_number() -> int:
 	return enemy_number
 
+func get_is_timered() -> bool:
+	return is_timered
+
 func _ready() -> void:
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_enemy_rate
@@ -63,6 +66,7 @@ func create_random_enemy() -> void:
 	my_enemy.set_path(self)
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_is_aimer(are_aimers)
+	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)
 	$Enemies.add_child(my_enemy)
 	enemies_spawned += 1
 	check_enemy_status()
@@ -80,3 +84,7 @@ func _on_Timer_timeout() -> void:
 		spawn_enemy()
 	else:
 		check_enemy_status()
+
+func _on_Enemy_destroyed():
+	if not is_timered:
+		spawn_enemy()

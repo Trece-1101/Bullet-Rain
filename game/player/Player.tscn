@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=16 format=2]
-
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/player/stealth_base.png" type="Texture" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -60,6 +58,139 @@ tracks/0/keys = {
 "values": [ Color( 0.94902, 0.254902, 0.141176, 1 ), Color( 1, 1, 1, 1 ), Color( 0.662745, 0.0705882, 0.0705882, 0.882353 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.729412 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 0.164706, 0.164706, 1 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.478431 ), Color( 1, 1, 1, 0.545098 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "destroy"
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_explosion_sfx"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disabled_collider"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TrailPoint:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Combustion:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "init"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TrailPoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Combustion:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 50
 z_as_relative = false
@@ -92,6 +223,7 @@ joint_mode = 2
 begin_cap_mode = 2
 script = ExtResource( 5 )
 is_emitting = true
+resolution = 5.0
 lifetime = 0.2
 max_points = 20
 target_path = NodePath("..")
@@ -102,6 +234,8 @@ texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/damage = SubResource( 8 )
+anims/destroy = SubResource( 10 )
+anims/init = SubResource( 9 )
 
 [node name="GunTimer" type="Timer" parent="."]
 
@@ -119,7 +253,6 @@ polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-
 volume_db = -15.0
 bus = "Player"
 
@@ -130,5 +263,4 @@ bus = "Player"
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 bus = "Player"
-
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]

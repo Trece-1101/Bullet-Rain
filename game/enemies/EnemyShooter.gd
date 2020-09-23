@@ -49,7 +49,7 @@ func check_shooting_status():
 		can_shoot = true
 		shoot_lines.shoot_on = true
 	
-	if self.follow.unit_offset >= 0.85 and is_shooting and not shoot_lines.shoot_off:
+	if self.follow.unit_offset >= 0.85 and is_shooting and not shoot_lines.shoot_off and path.get_is_timered():
 		is_shooting = false
 		can_shoot = false
 		self.allow_shoot = false
@@ -58,7 +58,10 @@ func check_shooting_status():
 
 func check_end_of_path() -> void:
 	if follow.unit_offset >= 1.0:
-		queue_free()
+		if path.get_is_timered():
+			queue_free()
+		else:
+			self.speed = 0.0
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
