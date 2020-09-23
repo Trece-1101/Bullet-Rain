@@ -16,7 +16,6 @@ __meta__ = {
 }
 debuggeable = true
 debug_panel = ExtResource( 2 )
-send_waves = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2

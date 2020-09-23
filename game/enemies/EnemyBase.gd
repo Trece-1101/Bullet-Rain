@@ -1,5 +1,7 @@
 class_name EnemyBase
 extends Area2D
+#### Señales
+signal enemy_destroyed()
 
 #### Variables Export
 export var hitpoints := 50.0
@@ -84,4 +86,5 @@ func _on_area_entered(area) -> void:
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
+		emit_signal("enemy_destroyed")
 		queue_free()

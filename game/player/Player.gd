@@ -125,15 +125,20 @@ func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
 func take_damage() -> void:
-	print("ouch!")
-	hitpoints -= 1
-	hitpoint_sound.play()
-	if hitpoints == 0:
-		explosion_sound.play()
-		queue_free()
-	else:
-		animation_play.play("damage")
+	if not is_in_god_mode:
+		hitpoints -= 1
+		hitpoint_sound.play()
+		if hitpoints == 0:
+			animation_play.stop()
+			animation_play.play("destroy")
+		else:
+			animation_play.play("damage")
 
+func disabled_collider() -> void:
+	$DamageCollider.set_deferred("disabled", true)
+
+func play_explosion_sfx() -> void:
+	explosion_sound.play()
 
 func change_state(new_state) -> void:
 	match new_state:
