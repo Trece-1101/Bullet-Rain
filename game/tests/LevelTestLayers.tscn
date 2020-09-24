@@ -61,7 +61,7 @@ texture = ExtResource( 9 )
 centered = false
 
 [node name="PlayerStealth" parent="." instance=ExtResource( 3 )]
-position = Vector2( 824.313, 657.117 )
+position = Vector2( 827.141, 657.117 )
 
 [node name="EnemyDummy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 205.531, 242.671 )
