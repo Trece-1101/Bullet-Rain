@@ -24,6 +24,3 @@ script = ExtResource( 3 )
 position = Vector2( 30.7153, 20.2271 )
 script = ExtResource( 3 )
 bullet_type = -1
-
-[node name="AimTimer" parent="." index="7"]
-wait_time = 0.3

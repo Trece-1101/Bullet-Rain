@@ -4,10 +4,10 @@
 [ext_resource path="res://assets/player/Red_20.png" type="Texture" id=2]
 
 [node name="PlayerBomber" instance=ExtResource( 1 )]
-speed = 450.0
-bullet_damage = 2.5
-shooting_rate = 0.25
-colorTrail = Color( 0.862745, 0.384314, 0.745098, 1 )
+speed = 700.0
+bullet_damage = 4.0
+shooting_rate = 0.16
+color_trail = Color( 0.862745, 0.384314, 0.745098, 1 )
 
 [node name="Trail2D" parent="TrailPoint" index="0"]
 width = 50.0
@@ -16,7 +16,7 @@ width = 50.0
 texture = ExtResource( 2 )
 
 [node name="GunTimer" parent="." index="5"]
-wait_time = 0.25
+wait_time = 0.16
 
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -17, 2 )

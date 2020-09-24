@@ -9,9 +9,10 @@ enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
 export var speed := 200.0
 export var bullet: PackedScene
 export var bullet_damage := 1.0
-export(float, 0.01, 0.32) var shooting_rate := 0.2
+export var bullet_speed := -700
+export(float, 0.08, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
-export(Color, RGBA) var colorTrail
+export(Color, RGBA) var color_trail: Color
 export var is_in_god_mode := false
 export var move_to_start := false setget set_move_to_start
 
@@ -24,7 +25,7 @@ var speed_using := 0.0
 var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
-var bullet_speed := -700
+
 
 #### Variables Onready
 onready var bullet_container: Node
@@ -59,7 +60,7 @@ func set_move_to_start(value: bool) -> void:
 #### Metodos
 func _ready() -> void:
 	change_state(States.IDLE)
-	sprite.material.set_shader_param("outline_color", colorTrail)
+	sprite.material.set_shader_param("outline_color", color_trail)
 	animation_play.play("init")
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
@@ -116,8 +117,8 @@ func shoot_input() -> void:
 		bullet_type *= -1
 	
 	if Input.is_action_pressed("ui_shoot"):
-		change_state(States.SHOOTING)
 		if can_shoot:
+			change_state(States.SHOOTING)
 			shoot()
 			gun_timer.start()
 			can_shoot = false
@@ -155,6 +156,7 @@ func take_damage() -> void:
 			animation_play.queue("damage")
 
 func disabled_collider() -> void:
+	change_state(States.DEAD)
 	$DamageCollider.set_deferred("disabled", true)
 
 func play_explosion_sfx() -> void:
@@ -181,5 +183,7 @@ func change_state(new_state) -> void:
 			state_text = "GOD"
 		States.DEAD:
 			speed_using = speed_respawning
+			can_shoot = false
+			gun_timer.stop()
 			state_text = "DEAD"
 	state = new_state

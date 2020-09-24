@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/bullets/Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/bullets/player_bullet_temp.png" type="Texture" id=2]
+[ext_resource path="res://assets/bullets/player_bullet_bloom.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.03635
-height = 39.4575
+radius = 9.02901
+height = 32.0913
 
 [node name="BulletPlayer" instance=ExtResource( 1 )]
 z_index = 30
@@ -14,13 +14,10 @@ collision_layer = 8
 collision_mask = 20
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 1, 0, 0, 1 )
 rotation = -1.5708
-scale = Vector2( 0.2, 0.35 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 position = Vector2( 0, -4.94975 )
 shape = SubResource( 1 )
 

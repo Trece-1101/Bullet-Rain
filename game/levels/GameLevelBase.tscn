@@ -1,17 +1,15 @@
-[gd_scene load_steps=13 format=2]
+
+[gd_scene load_steps=8 format=2]
+
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
-[ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
-[ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/player/PlayerBomber.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=12]
+
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -66,23 +64,3 @@ right_border = 1420.0
 
 [node name="BulletsContainer" type="Node" parent="."]
 
-[node name="EnemyBanditTest1" parent="." instance=ExtResource( 9 )]
-position = Vector2( 597.577, 239.4 )
-hitpoints = 50.0
-can_shoot = true
-
-[node name="EnemyBanditTest2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1258.32, 235.074 )
-hitpoints = 50.0
-can_shoot = true
-
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
-position = Vector2( 577.897, 914.618 )
-shooting_rate = 0.12
-
-[node name="PlayerBomber" parent="." instance=ExtResource( 10 )]
-position = Vector2( 960, 918.655 )
-
-[node name="PlayerStealth" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1259.66, 908.014 )
-shooting_rate = 0.18
