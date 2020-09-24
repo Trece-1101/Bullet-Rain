@@ -9,17 +9,22 @@ export var can_shoot := false
 #### Variables
 var bullet_rot_correction := 0.0
 var is_shooting := false
-var shoot_lines := {"shoot_on": false, "shoot_off": false}
+var shoot_lines := {"shoot_on": false, "shoot_off": false, "mid_stop": false}
 var bullet_container: Node
+var original_speed := 0.0
+var mid_point := 0.5
 
 #### Variables Onready
 onready var shoot_sound := $ShootSFX
 onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
+onready var mid_stoper_timer := $MidStoperTimer
 
 #### Metodos
 func _ready() -> void:
+	original_speed = self.speed
 	bullet_container = .get_top_level().get_node("BulletsContainer")
+	mid_point = create_random_mid_point()
 
 
 func _process(_delta: float) -> void:
@@ -48,12 +53,19 @@ func check_shooting_status():
 		is_shooting = true
 		can_shoot = true
 		shoot_lines.shoot_on = true
-	
+
 	if self.follow.unit_offset >= 0.85 and is_shooting and not shoot_lines.shoot_off and path.get_is_timered():
 		is_shooting = false
 		can_shoot = false
 		self.allow_shoot = false
 		shoot_lines.shoot_off = true
+
+
+func check_mid_of_path() -> void:
+	if self.follow.unit_offset >= mid_point and is_shooting and path.get_is_timered() and not shoot_lines.mid_stop:
+		shoot_lines.mid_stop = true
+		self.speed = 0.0
+		mid_stoper_timer.start()
 
 
 func check_end_of_path() -> void:
@@ -65,3 +77,12 @@ func check_end_of_path() -> void:
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_MidStoperTimer_timeout() -> void:
+	self.speed = original_speed
+
+func create_random_mid_point() -> float:
+	randomize()
+	mid_stoper_timer.wait_time = rand_range(2.5, 3)
+	return rand_range(0.45, 0.55)

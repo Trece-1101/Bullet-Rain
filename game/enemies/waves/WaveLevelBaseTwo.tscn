@@ -13,10 +13,11 @@ script = ExtResource( 5 )
 enemies = [ ExtResource( 1 ), ExtResource( 2 ) ]
 enemy_number = 2
 speed = 60.0
-spawn_enemy_rate = 2.8
+spawn_enemy_rate = 6.0
+are_aimers = true
 
 [node name="EnemyPathROne" parent="." instance=ExtResource( 4 )]
 enemies = [ ExtResource( 1 ), ExtResource( 2 ) ]
 enemy_number = 3
 speed = 90.0
-spawn_enemy_rate = 3.2
+spawn_enemy_rate = 4.0
