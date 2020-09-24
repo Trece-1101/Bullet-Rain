@@ -11,20 +11,20 @@
 [ext_resource path="res://assets/player/extras/shoot.png" type="Texture" id=9]
 [ext_resource path="res://game/player/extras/emitting_light.tres" type="Material" id=10]
 
-[sub_resource type="Gradient" id=29]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.233645, 0.588785, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.871094, 0.835365, 0.299438, 1, 0.761719, 0.40736, 0.148773, 1, 0.566406, 0.092926, 0.092926, 1 )
 
-[sub_resource type="GradientTexture" id=30]
-gradient = SubResource( 29 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=31]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -0.0254046, 0, 0, Vector2( 1, 0.000679135 ), -3.12727, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=32]
-curve = SubResource( 31 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=33]
+[sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 1
 emission_sphere_radius = 2.0
 flag_disable_z = true
@@ -35,16 +35,16 @@ initial_velocity = 150.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 32 )
-color_ramp = SubResource( 30 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Curve" id=18]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 0 ), 0.0, 1.31058, 0, 0, Vector2( 1, 1 ), 0.701913, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=19]
+[sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=8]
 resource_name = "shoot"
 length = 0.1
 tracks/0/type = "value"
@@ -72,7 +72,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=9]
 resource_name = "damage"
 step = 0.05
 tracks/0/type = "value"
@@ -100,9 +100,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.662745, 0.0705882, 0.0705882, 0.882353 ), Color( 0.945098, 0.027451, 0.027451, 0.729412 ), Color( 0.94902, 0.254902, 0.141176, 0.482353 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 0.164706, 0.164706, 1 ), Color( 1, 1, 1, 0.545098 ), Color( 0.945098, 0.027451, 0.027451, 0.478431 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ) ]
 }
 
-
-[sub_resource type="Animation" id=21]
-
+[sub_resource type="Animation" id=10]
 resource_name = "destroy"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -219,9 +217,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-
-[sub_resource type="Animation" id=22]
-
+[sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -332,20 +328,20 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Gradient" id=23]
+[sub_resource type="Gradient" id=12]
 offsets = PoolRealArray( 0, 0.457944 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.843137 )
 
-[sub_resource type="GradientTexture" id=24]
-gradient = SubResource( 23 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="Curve" id=25]
+[sub_resource type="Curve" id=14]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.541684 ), -1.29404, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=26]
-curve = SubResource( 25 )
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
 
-[sub_resource type="ParticlesMaterial" id=27]
+[sub_resource type="ParticlesMaterial" id=16]
 emission_shape = 1
 emission_sphere_radius = 1.0
 flag_disable_z = true
@@ -355,10 +351,11 @@ gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.5
-scale_curve = SubResource( 26 )
-color_ramp = SubResource( 24 )
+scale_curve = SubResource( 15 )
+color_ramp = SubResource( 13 )
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 960, 920 )
 z_index = 50
 z_as_relative = false
 collision_mask = 2
@@ -373,7 +370,7 @@ amount = 64
 lifetime = 0.1
 visibility_rect = Rect2( -20, -20, 40, 40 )
 draw_order = 1
-process_material = SubResource( 33 )
+process_material = SubResource( 5 )
 texture = ExtResource( 6 )
 
 [node name="TrailPoint" type="Node2D" parent="."]
@@ -384,13 +381,14 @@ scale = Vector2( 1.3, 1.3 )
 z_index = -1
 points = PoolVector2Array( 0, 25, 0, 0 )
 width = 40.0
-width_curve = SubResource( 18 )
+width_curve = SubResource( 6 )
 default_color = Color( 1, 1, 1, 0 )
-gradient = SubResource( 19 )
+gradient = SubResource( 7 )
 joint_mode = 2
 begin_cap_mode = 2
 script = ExtResource( 5 )
 is_emitting = true
+resolution = 5.0
 lifetime = 0.3
 max_points = 20
 target_path = NodePath("..")
@@ -404,14 +402,12 @@ hframes = 3
 frame = 1
 
 [node name="AnimationEffects" type="AnimationPlayer" parent="."]
-anims/shoot = SubResource( 12 )
+anims/shoot = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-anims/damage = SubResource( 20 )
-anims/destroy = SubResource( 21 )
-anims/init = SubResource( 22 )
-
+anims/damage = SubResource( 9 )
+anims/destroy = SubResource( 10 )
+anims/init = SubResource( 11 )
 
 [node name="GunTimer" type="Timer" parent="."]
 
@@ -422,7 +418,6 @@ position = Vector2( 0, -8 )
 position = Vector2( -14, 4.12035 )
 
 [node name="LeftCannon" type="Particles2D" parent="ShootPositions/Left"]
-visible = false
 position = Vector2( 0, -18 )
 rotation = 3.14159
 z_index = -1
@@ -430,14 +425,13 @@ emitting = false
 amount = 3
 lifetime = 0.1
 visibility_rect = Rect2( -15, -15, 30, 30 )
-process_material = SubResource( 27 )
+process_material = SubResource( 16 )
 texture = ExtResource( 9 )
 
 [node name="Right" type="Position2D" parent="ShootPositions"]
 position = Vector2( 14, 4.12035 )
 
 [node name="RightCannon" type="Particles2D" parent="ShootPositions/Right"]
-visible = false
 position = Vector2( 0, -18 )
 rotation = -3.14159
 z_index = -1
@@ -445,7 +439,7 @@ emitting = false
 amount = 3
 lifetime = 0.1
 visibility_rect = Rect2( -15, -15, 30, 30 )
-process_material = SubResource( 27 )
+process_material = SubResource( 16 )
 texture = ExtResource( 9 )
 
 [node name="DamageCollider" type="CollisionPolygon2D" parent="."]

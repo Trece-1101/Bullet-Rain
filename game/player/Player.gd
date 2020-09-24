@@ -1,3 +1,4 @@
+tool
 class_name Player
 extends KinematicBody2D
 
@@ -12,6 +13,7 @@ export(float, 0.15, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 export(Color, RGBA) var colorTrail
 export var is_in_god_mode := false
+export var move_to_start := false setget set_move_to_start
 
 #### Variables
 var state = States.INIT
@@ -50,6 +52,9 @@ func get_shoot_rate() -> float:
 func get_state() -> String:
 	return state_text
 
+func set_move_to_start(value: bool) -> void:
+	if value:
+		self.position = Vector2(960.0, 920.0)
 
 #### Metodos
 func _ready() -> void:
@@ -63,10 +68,11 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	movement = speed_using * get_direction().normalized()
-# warning-ignore:return_value_discarded
+	if not Engine.is_editor_hint():
+		movement = speed_using * get_direction().normalized()
+	# warning-ignore:return_value_discarded
 
-	move_and_slide(movement, Vector2.ZERO)
+		move_and_slide(movement, Vector2.ZERO)
 
 
 func _process(_delta) -> void:
@@ -153,6 +159,8 @@ func disabled_collider() -> void:
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
+
+
 
 func change_state(new_state) -> void:
 	match new_state:
