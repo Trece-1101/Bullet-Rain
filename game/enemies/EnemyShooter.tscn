@@ -14,8 +14,10 @@ bullet = ExtResource( 3 )
 [node name="GunTimer" type="Timer" parent="." index="4"]
 one_shot = true
 
-[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="5"]
-stream = ExtResource( 4 )
-volume_db = -15.0
-bus = "Enemy"
+
+[node name="MidStoperTimer" type="Timer" parent="." index="5"]
+one_shot = true
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="6"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]
