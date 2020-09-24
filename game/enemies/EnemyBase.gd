@@ -14,6 +14,10 @@ var path: Path2D
 var follow: PathFollow2D
 var allow_shoot := true
 
+#### Variables Onready
+onready var hit_sfx := $HitSFX
+onready var explosion_sfx := $ExplosionSFX
+onready var damage_collider := $DamageCollider
 
 #### Setters y Getters
 func set_speed(value: float) -> void:
@@ -87,4 +91,13 @@ func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
 		emit_signal("enemy_destroyed")
-		queue_free()
+		$AnimationPlayer.play("destroy")
+		#queue_free()
+	else:
+		hit_sfx.play()
+
+func play_explosion_sfx() -> void:
+	explosion_sfx.play()
+
+func disabled_collider() -> void:
+	damage_collider.set_deferred("disabled", true)
