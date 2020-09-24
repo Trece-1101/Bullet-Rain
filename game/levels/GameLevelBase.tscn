@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=8 format=2]
+
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -7,6 +9,7 @@
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
+
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -38,6 +41,7 @@ motion_mirroring = Vector2( 0, 2310 )
 
 [node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( 2.69092, -9.27118 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -59,3 +63,4 @@ left_border = 500.0
 right_border = 1420.0
 
 [node name="BulletsContainer" type="Node" parent="."]
+
