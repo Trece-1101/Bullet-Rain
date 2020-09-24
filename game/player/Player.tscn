@@ -410,6 +410,7 @@ anims/destroy = SubResource( 10 )
 anims/init = SubResource( 11 )
 
 [node name="GunTimer" type="Timer" parent="."]
+wait_time = 0.2
 
 [node name="ShootPositions" type="Node2D" parent="."]
 position = Vector2( 0, -8 )
@@ -443,7 +444,8 @@ process_material = SubResource( 16 )
 texture = ExtResource( 9 )
 
 [node name="DamageCollider" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2948 )
+position = Vector2( 0, 8.03625 )
+polygon = PoolVector2Array( -18.5991, 18.1073, 0.0550919, -29.273, 18.0104, 18.3057 )
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

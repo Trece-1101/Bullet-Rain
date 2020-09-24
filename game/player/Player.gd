@@ -121,7 +121,7 @@ func shoot_input() -> void:
 			shoot()
 			gun_timer.start()
 			can_shoot = false
-
+	
 	if Input.is_action_just_released("ui_shoot"):
 		change_state(States.IDLE)
 
