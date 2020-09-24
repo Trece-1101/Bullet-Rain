@@ -252,14 +252,16 @@ polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -15.0
+volume_db = -20.0
 bus = "Player"
 
 [node name="HitpointSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -10.0
 bus = "Player"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -5.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
