@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/02enemyexplosion.wav-6826b27699cd3e7243b517aa8ca4b680.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/enemies/explosion/02enemyexplosion.wav"
+dest_files=[ "res://.import/02enemyexplosion.wav-6826b27699cd3e7243b517aa8ca4b680.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

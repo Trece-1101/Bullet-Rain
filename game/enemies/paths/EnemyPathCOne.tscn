@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 980.857, -98.8523, 0, 0, 0, 0, 976, 444 )
+"points": PoolVector2Array( 0, 0, 0, 0, 980.857, -98.8523, 0, 0, 0, 0, 984.895, 401.896 )
 }
 
 [node name="EnemyPathCOne" type="Path2D"]

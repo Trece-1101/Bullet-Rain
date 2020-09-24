@@ -100,7 +100,9 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.662745, 0.0705882, 0.0705882, 0.882353 ), Color( 0.945098, 0.027451, 0.027451, 0.729412 ), Color( 0.94902, 0.254902, 0.141176, 0.482353 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 0.164706, 0.164706, 1 ), Color( 1, 1, 1, 0.545098 ), Color( 0.945098, 0.027451, 0.027451, 0.478431 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ) ]
 }
 
+
 [sub_resource type="Animation" id=21]
+
 resource_name = "destroy"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -217,7 +219,9 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
+
 [sub_resource type="Animation" id=22]
+
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -403,9 +407,11 @@ frame = 1
 anims/shoot = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 anims/damage = SubResource( 20 )
 anims/destroy = SubResource( 21 )
 anims/init = SubResource( 22 )
+
 
 [node name="GunTimer" type="Timer" parent="."]
 
@@ -447,14 +453,16 @@ polygon = PoolVector2Array( -25.0415, 21.4821, 0.0550919, -29.273, 24.2153, 21.2
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -15.0
+volume_db = -20.0
 bus = "Player"
 
 [node name="HitpointSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -10.0
 bus = "Player"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -5.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
