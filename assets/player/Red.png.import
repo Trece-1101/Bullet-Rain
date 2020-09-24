@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/puff_smoot_32.png-3bc147a4a2e71f6ee70a53d023fa7cef.stex"
+path="res://.import/Red.png-e1dd415ef45901fd65559fa6e8f047df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/extras/puff_smoot_32.png"
-dest_files=[ "res://.import/puff_smoot_32.png-3bc147a4a2e71f6ee70a53d023fa7cef.stex" ]
+source_file="res://assets/player/Red.png"
+dest_files=[ "res://.import/Red.png-e1dd415ef45901fd65559fa6e8f047df.stex" ]
 
 [params]
 

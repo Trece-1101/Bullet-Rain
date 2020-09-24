@@ -33,6 +33,8 @@ onready var shoot_sound := $ShootSFX
 onready var hitpoint_sound := $HitpointSFX
 onready var explosion_sound := $ExplosionSFX
 onready var animation_play := $AnimationPlayer
+onready var animation_effects := $AnimationEffects
+onready var sprite := $Sprite
 
 
 #### Setters y Getters
@@ -52,6 +54,8 @@ func get_state() -> String:
 #### Metodos
 func _ready() -> void:
 	change_state(States.IDLE)
+	sprite.material.set_shader_param("outline_color", colorTrail)
+	animation_play.play("init")
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
@@ -60,8 +64,8 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	movement = speed_using * get_direction().normalized()
-	
 # warning-ignore:return_value_discarded
+
 	move_and_slide(movement, Vector2.ZERO)
 
 
@@ -74,6 +78,14 @@ func get_direction() -> Vector2:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
+	
+	if (direction.x == 0 and sprite.get_frame() != 1):
+		sprite.set_frame(1)
+	else:
+		if (direction.x > 0 and sprite.get_frame() != 2):
+			sprite.set_frame(2)
+		elif (direction.x < 0 and sprite.get_frame() != 0):
+			sprite.set_frame(0)
 	
 	if not state in [States.SHOOTING, States.DEAD, States.RESPAWNING]:
 		if direction.length() > 0:
@@ -109,6 +121,7 @@ func shoot_input() -> void:
 
 
 func shoot() -> void:
+	animation_effects.play("shoot")
 	shoot_sound.play()
 	for i in range(shoot_positions.get_child_count()):
 		var new_bullet := bullet.instance()
@@ -130,9 +143,10 @@ func take_damage() -> void:
 		hitpoint_sound.play()
 		if hitpoints == 0:
 			animation_play.stop()
+			animation_play.clear_queue()
 			animation_play.play("destroy")
 		else:
-			animation_play.play("damage")
+			animation_play.queue("damage")
 
 func disabled_collider() -> void:
 	$DamageCollider.set_deferred("disabled", true)
