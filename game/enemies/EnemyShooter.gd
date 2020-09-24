@@ -78,9 +78,8 @@ func check_end_of_path() -> void:
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
-
 func _on_MidStoperTimer_timeout() -> void:
-	self.speed = original_speed
+	self.speed = original_speed * 0.5
 
 func create_random_mid_point() -> float:
 	randomize()
