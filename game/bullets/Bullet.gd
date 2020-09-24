@@ -1,6 +1,9 @@
 class_name Bullet
 extends Area2D
 
+#### Variables Export
+export(Color, RGBA) var bullet_color_one := Color.red
+export(Color, RGBA) var bullet_color_alt := Color.yellow
 
 #### Variables
 var velocity := Vector2.ZERO
@@ -31,9 +34,9 @@ func create(
 
 func _ready() -> void:
 	if type == 1:
-		$Sprite.modulate = Color.red
+		$Sprite.modulate = bullet_color_one
 	else:
-		$Sprite.modulate = Color.yellow
+		$Sprite.modulate = bullet_color_alt
 
 
 func _process(delta: float) -> void:

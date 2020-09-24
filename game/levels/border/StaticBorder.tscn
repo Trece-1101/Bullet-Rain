@@ -21,9 +21,9 @@ position = Vector2( 1645.99, 619.285 )
 shape = SubResource( 1 )
 
 [node name="Top" type="CollisionShape2D" parent="."]
-position = Vector2( 960, 162.368 )
+position = Vector2( 960, 132.164 )
 shape = SubResource( 2 )
 
 [node name="Bottom" type="CollisionShape2D" parent="."]
-position = Vector2( 960, 1066.83 )
+position = Vector2( 960, 1053.48 )
 shape = SubResource( 2 )

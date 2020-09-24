@@ -100,4 +100,5 @@ func play_explosion_sfx() -> void:
 	explosion_sfx.play()
 
 func disabled_collider() -> void:
+	allow_shoot = false
 	damage_collider.set_deferred("disabled", true)

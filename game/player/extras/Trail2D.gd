@@ -24,7 +24,7 @@ var _offset := 0.0
 
 #### Variables Onready
 onready var target: Node2D = get_node_or_null(target_path)
-onready var color = get_owner().colorTrail
+onready var color = get_owner().color_trail
 
 
 #### Metodos
