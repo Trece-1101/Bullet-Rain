@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bulletchange03.wav-e7e76c16cb8164811e9a502fd344541e.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/player/bulletchange/bulletchange03.wav"
+dest_files=[ "res://.import/bulletchange03.wav-e7e76c16cb8164811e9a502fd344541e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
