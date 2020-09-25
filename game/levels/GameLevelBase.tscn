@@ -1,6 +1,4 @@
-
 [gd_scene load_steps=8 format=2]
-
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -10,7 +8,6 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
 
-
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -19,6 +16,8 @@ __meta__ = {
 }
 debuggeable = true
 debug_panel = ExtResource( 2 )
+send_waves = false
+time_to_start_waves = 1.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2
@@ -63,4 +62,3 @@ left_border = 500.0
 right_border = 1420.0
 
 [node name="BulletsContainer" type="Node" parent="."]
-

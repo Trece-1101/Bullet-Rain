@@ -31,6 +31,7 @@ func _ready() -> void:
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_enemy_rate
 	spawn_timer.set_one_shot(true)
+# warning-ignore:return_value_discarded
 	spawn_timer.connect("timeout", self, "_on_Timer_timeout")
 	add_child(spawn_timer)
 	set_process(false)
@@ -66,6 +67,7 @@ func create_random_enemy() -> void:
 	my_enemy.set_path(self)
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_is_aimer(are_aimers)
+# warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)
 	$Enemies.add_child(my_enemy)
 	enemies_spawned += 1
