@@ -7,6 +7,8 @@ var send_waves := true
 
 func _ready() -> void:
 	yield(owner, "ready")
+
+func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
 		get_children()[current_wave].create_paths()

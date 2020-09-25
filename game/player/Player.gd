@@ -35,6 +35,7 @@ onready var movement := Vector2.ZERO
 onready var shoot_sound := $ShootSFX
 onready var hitpoint_sound := $HitpointSFX
 onready var explosion_sound := $ExplosionSFX
+onready var bullet_change_sound := $BulletChangeSFX
 onready var animation_play := $AnimationPlayer
 onready var animation_effects := $AnimationEffects
 onready var sprite := $Sprite
@@ -114,6 +115,7 @@ func check_bullet_container() -> Node:
 
 func shoot_input() -> void:
 	if Input.is_action_just_pressed("ui_change_bullet"):
+		bullet_change_sound.play()
 		bullet_type *= -1
 	
 	if Input.is_action_pressed("ui_shoot"):
