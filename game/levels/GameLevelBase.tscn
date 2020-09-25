@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
+[ext_resource path="res://game/bullets/BulletDestroyer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
@@ -12,7 +13,7 @@
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1023.64 ],
-"_edit_vertical_guides_": [ 1610.0, 309.861, 20.22 ]
+"_edit_vertical_guides_": [ 1420.47, 499.773, 20.22 ]
 }
 debuggeable = true
 debug_panel = ExtResource( 2 )
@@ -23,10 +24,12 @@ time_to_start_waves = 1.0
 layer = 2
 
 [node name="screen_shading" type="Sprite" parent="HUD"]
+visible = false
 texture = ExtResource( 7 )
 centered = false
 
 [node name="hud_sides" type="Sprite" parent="HUD"]
+visible = false
 texture = ExtResource( 4 )
 centered = false
 
@@ -51,6 +54,7 @@ layer = 1
 motion_mirroring = Vector2( 0, 2310 )
 
 [node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
+visible = false
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 8 )
 centered = false
@@ -60,5 +64,7 @@ centered = false
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
 left_border = 500.0
 right_border = 1420.0
+
+[node name="BulletDestroyer" parent="BordersContainer" instance=ExtResource( 5 )]
 
 [node name="BulletsContainer" type="Node" parent="."]

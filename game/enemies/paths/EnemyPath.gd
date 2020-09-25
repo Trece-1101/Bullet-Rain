@@ -8,17 +8,17 @@ signal full_path_dead
 export(Array, PackedScene) var enemies
 export(int, 1, 10) var enemy_number := 1
 export(float, 50, 1000) var speed := 200
-export var is_timered := true
-export var debug := false
 export var allow_enemy_shoot := true
 export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
+export var debug := false
 
 
 #### Variables
 var enemies_spawned := 0
 var full_path_out := false
 var spawn_timer: Timer
+var is_timered := true
 
 #### Setters y Getters
 func get_enemy_number() -> int:
@@ -27,16 +27,21 @@ func get_enemy_number() -> int:
 func get_is_timered() -> bool:
 	return is_timered
 
+
+#### Metodos
 func _ready() -> void:
+	set_process(false)
+
+
+func create_timer() -> void:
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_enemy_rate
 	spawn_timer.set_one_shot(true)
 # warning-ignore:return_value_discarded
 	spawn_timer.connect("timeout", self, "_on_Timer_timeout")
 	add_child(spawn_timer)
-	set_process(false)
 
-#### Metodos
+
 func create_path() -> void:
 	var enemy_container = Node.new()
 	add_child(enemy_container)
@@ -74,6 +79,7 @@ func create_random_enemy() -> void:
 	check_enemy_status()
 	if debug:
 		print("spawneando desde {path} - enemies_spawned {es} - enemy_number {en}".format({"path": self.name, "es": enemies_spawned, "en": enemy_number}))
+
 
 func check_enemy_status() -> void:
 	if enemies_spawned == enemy_number:

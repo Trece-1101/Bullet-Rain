@@ -6,6 +6,7 @@ signal enemy_destroyed()
 #### Variables Export
 export var hitpoints := 50.0
 export var is_aimer := false
+export var test_escene := false
 
 #### Variables
 var player: Player
@@ -46,7 +47,6 @@ func _ready() -> void:
 func _process(delta) -> void:
 	if path != null:
 		move(delta)
-
 
 
 func get_top_level() -> Node:
@@ -92,7 +92,6 @@ func take_damage(damage: float) -> void:
 	if hitpoints <= 0:
 		emit_signal("enemy_destroyed")
 		$AnimationPlayer.play("destroy")
-		#queue_free()
 	else:
 		hit_sfx.play()
 
