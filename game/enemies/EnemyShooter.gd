@@ -43,6 +43,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	#print(self.inside_play_screen)
 	if can_shoot and self.allow_shoot and self.inside_play_screen:
 		shoot()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -9,14 +9,12 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/levels/waves/WavesLevelBase.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/player/PlayerStealth.tscn" type="PackedScene" id=11]
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 1023.64 ],
-"_edit_vertical_guides_": [ 1420.47, 499.773, 20.22 ]
+"_edit_horizontal_guides_": [ 1023.64, 134.891 ],
+"_edit_vertical_guides_": [ 1420.47, 499.773, 20.22, -181.477 ]
 }
 debug_panel = ExtResource( 2 )
 time_to_start_waves = 1.0
@@ -25,12 +23,10 @@ time_to_start_waves = 1.0
 layer = 2
 
 [node name="screen_shading" type="Sprite" parent="HUD"]
-visible = false
 texture = ExtResource( 7 )
 centered = false
 
 [node name="hud_sides" type="Sprite" parent="HUD"]
-visible = false
 texture = ExtResource( 4 )
 centered = false
 
@@ -55,7 +51,6 @@ layer = 1
 motion_mirroring = Vector2( 0, 2310 )
 
 [node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
-visible = false
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 8 )
 centered = false
@@ -71,8 +66,3 @@ right_border = 1420.0
 [node name="EnemyActivator" parent="BordersContainer" instance=ExtResource( 9 )]
 
 [node name="BulletsContainer" type="Node" parent="."]
-
-[node name="WavesLevelBase" parent="." instance=ExtResource( 10 )]
-
-[node name="PlayerStealth" parent="." instance=ExtResource( 11 )]
-is_in_god_mode = true

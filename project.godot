@@ -54,6 +54,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/paths/PathEndOut.gd"
 }, {
+"base": "PathEndOut",
+"class": "PathGroup",
+"language": "GDScript",
+"path": "res://game/enemies/paths/PathGroup.gd"
+}, {
+"base": "PathGroup",
+"class": "PathGroupIn",
+"language": "GDScript",
+"path": "res://game/enemies/paths/PathGroupIn.gd"
+}, {
 "base": "PathEndIn",
 "class": "PathInIn",
 "language": "GDScript",
@@ -99,6 +109,8 @@ _global_script_class_icons={
 "Level": "",
 "PathEndIn": "",
 "PathEndOut": "",
+"PathGroup": "",
+"PathGroupIn": "",
 "PathInIn": "",
 "PathInOut": "",
 "PathOutIn": "",

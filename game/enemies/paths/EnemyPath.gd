@@ -6,7 +6,7 @@ signal full_path_dead
 
 #### Variables Export
 export(Array, PackedScene) var enemies
-export(int, 1, 10) var enemy_number := 1
+export(int, 1, 20) var enemy_number := 1
 export(float, 50, 1000) var speed := 200
 export var allow_enemy_shoot := true
 export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
@@ -20,6 +20,7 @@ var full_path_out := false
 var spawn_timer: Timer
 var is_timered := true
 var start_inside_screen := false
+var end_of_path := 1.0
 
 #### Setters y Getters
 func get_enemy_number() -> int:
@@ -81,6 +82,8 @@ func create_enemy(rand_enemy: int) -> void:
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_is_aimer(are_aimers)
 	my_enemy.set_inside_play_screen(start_inside_screen)
+	my_enemy.set_end_of_path(end_of_path)
+	check_new_end_of_path()
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)
 	$Enemies.add_child(my_enemy)
@@ -98,6 +101,9 @@ func at_end_of_path() -> String:
 	return ""
 
 func _on_Enemy_destroyed() -> void:
+	pass
+
+func check_new_end_of_path() -> void:
 	pass
 
 #func _on_Timer_timeout() -> void:

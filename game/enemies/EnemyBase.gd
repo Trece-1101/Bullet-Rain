@@ -15,7 +15,7 @@ var path: Path2D setget set_path
 var follow: PathFollow2D
 var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
-var end_of_path := 1.0
+var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
 
 #### Variables Onready
 onready var hit_sfx := $HitSFX
@@ -43,6 +43,14 @@ func set_inside_play_screen(value: bool) -> void:
 
 func get_inside_play_screen() -> bool:
 	return inside_play_screen
+
+func set_end_of_path(value: float) -> void:
+	end_of_path = value
+
+func get_end_of_path() -> float:
+	return end_of_path
+
+
 
 #### Metodos
 func _ready() -> void:
@@ -79,7 +87,7 @@ func move(delta: float) -> void:
 	follow.offset += speed * delta
 	position = follow.global_position
 
-	check_mid_of_path()
+	#check_mid_of_path()
 	check_end_of_path()
 
 
@@ -90,6 +98,10 @@ func check_end_of_path() -> void:
 			queue_free()
 		elif action == "stop":
 			speed = 0.0
+		elif action == "stop and shoot":
+			speed = 0.0
+			self.allow_shoot = true
+
 
 func check_mid_of_path() -> void:
 	pass
