@@ -19,6 +19,7 @@ var enemies_spawned := 0
 var full_path_out := false
 var spawn_timer: Timer
 var is_timered := true
+var start_inside_screen := false
 
 #### Setters y Getters
 func get_enemy_number() -> int:
@@ -30,6 +31,7 @@ func get_is_timered() -> bool:
 
 #### Metodos
 func _ready() -> void:
+	#create_timer()
 	set_process(false)
 
 
@@ -55,11 +57,14 @@ func _process(_delta: float) -> void:
 		queue_free()
 
 func spawn_enemy() -> void:
-	if enemies_spawned < enemy_number:
-		create_random_enemy()
-		spawn_timer.start()
-	else:
-		spawn_timer.stop()
+	pass
+
+#func spawn_enemy() -> void:
+#	if enemies_spawned < enemy_number:
+#		create_random_enemy()
+#		spawn_timer.start()
+#	else:
+#		spawn_timer.stop()
 
 func create_random_enemy() -> void:
 	var rand_enemy := 0
@@ -67,11 +72,15 @@ func create_random_enemy() -> void:
 		randomize()
 		rand_enemy = int(rand_range(0, enemies.size()))
 	
+	create_enemy(rand_enemy)
+
+func create_enemy(rand_enemy: int) -> void:
 	var my_enemy: EnemyBase = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_is_aimer(are_aimers)
+	my_enemy.set_inside_play_screen(start_inside_screen)
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)
 	$Enemies.add_child(my_enemy)
@@ -80,19 +89,23 @@ func create_random_enemy() -> void:
 	if debug:
 		print("spawneando desde {path} - enemies_spawned {es} - enemy_number {en}".format({"path": self.name, "es": enemies_spawned, "en": enemy_number}))
 
-
 func check_enemy_status() -> void:
 	if enemies_spawned == enemy_number:
 		set_process(true)
 		full_path_out = true
 
+func at_end_of_path() -> String:
+	return ""
 
-func _on_Timer_timeout() -> void:
-	if is_timered:
-		spawn_enemy()
-	else:
-		check_enemy_status()
+func _on_Enemy_destroyed() -> void:
+	pass
 
-func _on_Enemy_destroyed():
-	if not is_timered:
-		spawn_enemy()
+#func _on_Timer_timeout() -> void:
+#	if is_timered:
+#		spawn_enemy()
+#	else:
+#		check_enemy_status()
+
+#func _on_Enemy_destroyed():
+#	if not is_timered:
+#		spawn_enemy()

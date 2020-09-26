@@ -1,5 +1,6 @@
-class_name PathOutOut
-extends PathEndOut
+class_name PathOutIn
+extends PathEndIn
 
 func _ready() -> void:
 	self.start_inside_screen = false
+

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://game/enemies/paths/EnemyPath.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/PathInIn.gd" type="Script" id=1]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 980.857, -98.8523, 0, 0, 0, 0, 984.895, 401.896 )
+"points": PoolVector2Array( 0, 0, 0, 0, 950.823, 171.726, -223.446, -161.221, 223.446, 161.221, 973.45, 610.132, 0, 0, 0, 0, 1075.27, 477.196 )
 }
 
 [node name="EnemyPathCOne" type="Path2D"]

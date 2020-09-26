@@ -8,6 +8,7 @@
 radius = 48.445
 
 [node name="EnemyBanditTest2" instance=ExtResource( 2 )]
+bullet_speed = 500
 
 [node name="Sprite" parent="." index="0"]
 rotation = 3.14159
@@ -20,3 +21,6 @@ shape = SubResource( 1 )
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 position = Vector2( 0, 44.4974 )
 script = ExtResource( 3 )
+
+[node name="GunTimer" parent="." index="4"]
+wait_time = 0.3

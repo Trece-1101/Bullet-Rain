@@ -5,15 +5,17 @@ signal enemy_destroyed()
 
 #### Variables Export
 export var hitpoints := 50.0
-export var is_aimer := false
+export var is_aimer := false setget set_is_aimer
 export var test_escene := false
 
 #### Variables
 var player: Player
-var speed := 0.0
-var path: Path2D
+var speed := 0.0 setget set_speed
+var path: Path2D setget set_path
 var follow: PathFollow2D
-var allow_shoot := true
+var allow_shoot := true setget set_allow_shoot, get_allow_shoot
+var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
+var end_of_path := 1.0
 
 #### Variables Onready
 onready var hit_sfx := $HitSFX
@@ -30,8 +32,17 @@ func set_path(value: Path2D) -> void:
 func set_allow_shoot(value: bool) -> void:
 	allow_shoot = value
 
+func get_allow_shoot() -> bool:
+	return allow_shoot
+
 func set_is_aimer(value: bool) -> void:
 	is_aimer = value
+
+func set_inside_play_screen(value: bool) -> void:
+	inside_play_screen = value
+
+func get_inside_play_screen() -> bool:
+	return inside_play_screen
 
 #### Metodos
 func _ready() -> void:
@@ -68,23 +79,25 @@ func move(delta: float) -> void:
 	follow.offset += speed * delta
 	position = follow.global_position
 
-	check_shooting_status()
 	check_mid_of_path()
 	check_end_of_path()
 
 
-func check_end_of_path():
-	pass
+func check_end_of_path() -> void:
+	if follow.unit_offset >= self.end_of_path:
+		var action:String = path.at_end_of_path()
+		if action == "free":
+			queue_free()
+		elif action == "stop":
+			speed = 0.0
 
-func check_mid_of_path():
-	pass
-
-func check_shooting_status():
+func check_mid_of_path() -> void:
 	pass
 
 
 func _on_area_entered(area) -> void:
-	take_damage(area.get_damage())
+	if area.is_in_group("Bullet"):
+		take_damage(area.get_damage())
 
 
 func take_damage(damage: float) -> void:
