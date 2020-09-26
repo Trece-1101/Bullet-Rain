@@ -13,11 +13,11 @@ collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="Left" type="CollisionShape2D" parent="."]
-position = Vector2( 273.642, 619.285 )
+position = Vector2( 500, 619.285 )
 shape = SubResource( 1 )
 
 [node name="Right" type="CollisionShape2D" parent="."]
-position = Vector2( 1645.99, 619.285 )
+position = Vector2( 1420, 619.285 )
 shape = SubResource( 1 )
 
 [node name="Top" type="CollisionShape2D" parent="."]
