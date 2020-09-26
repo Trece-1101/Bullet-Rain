@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
+[ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=9]
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -62,3 +64,10 @@ left_border = 500.0
 right_border = 1420.0
 
 [node name="BulletsContainer" type="Node" parent="."]
+
+[node name="PlayerInterceptor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1005.72, 818.406 )
+
+[node name="EnemyBanditTest1" parent="." instance=ExtResource( 9 )]
+position = Vector2( 998.159, 284.463 )
+can_shoot = true
