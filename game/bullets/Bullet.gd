@@ -54,7 +54,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 
 func _on_area_entered(area) -> void:
-	if "Bullet" in area.name:
+	if area.is_in_group("Bullet"):
 		var other_bullet_type: int = area.get_type()
 		if other_bullet_type == type:
 			area.destroy()

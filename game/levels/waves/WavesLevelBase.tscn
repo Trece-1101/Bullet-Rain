@@ -1,24 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
-[ext_resource path="res://game/enemies/waves/WaveLevelBaseOne.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/enemies/waves/WaveLevelBaseTwo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/paths/PathGroupOut.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=4]
+[ext_resource path="res://game/enemies/paths/PathGroupIn.gd" type="Script" id=6]
+[ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 701.675, 416.171, 0, 0, 0, 0, 1250.47, 405.48 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 690.984, -118.367, 0, 0, 0, 0, 680.293, 583.66, 0, 0, 0, 0, 1250.47, 605.041, 0, 0, 0, 0, 1207.7, 270.064 )
+}
 
 [node name="WavesLevelBase" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 163.156 ]
+}
 
-[node name="WaveLevelBaseOne" parent="." instance=ExtResource( 2 )]
+[node name="Node7" type="Node" parent="."]
+script = ExtResource( 4 )
 
-[node name="WaveLevelBaseTwo" parent="." instance=ExtResource( 3 )]
+[node name="Path2D" type="Path2D" parent="Node7"]
+curve = SubResource( 1 )
+script = ExtResource( 6 )
+enemies = [ ExtResource( 9 ) ]
+enemy_number = 6
+speed = 300
+allow_enemy_shoot = false
+spawn_enemy_rate = 0.2
 
-[node name="WaveLevelBaseOne2" parent="." instance=ExtResource( 2 )]
+[node name="Node" type="Node" parent="."]
+script = ExtResource( 4 )
 
-[node name="WaveLevelBaseTwo2" parent="." instance=ExtResource( 3 )]
-
-[node name="WaveLevelBaseOne3" parent="." instance=ExtResource( 2 )]
-
-[node name="WaveLevelBaseTwo3" parent="." instance=ExtResource( 3 )]
-
-[node name="WaveLevelBaseOne4" parent="." instance=ExtResource( 2 )]
-
-[node name="WaveLevelBaseTwo4" parent="." instance=ExtResource( 3 )]
+[node name="Path2D" type="Path2D" parent="Node"]
+curve = SubResource( 2 )
+script = ExtResource( 2 )
+enemies = [ ExtResource( 9 ) ]
+enemy_number = 8

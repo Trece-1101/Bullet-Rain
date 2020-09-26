@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://game/enemies/paths/EnemyPath.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=1]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1072.15, 360.893, -24.6942, -211.023, 24.6942, 211.023, 1227.29, 410.866, 0, 0, 0, 0, 1819.39, 595.005 )
+"points": PoolVector2Array( 0, 0, 0, 0, 1267.45, -180.135, -24.6942, -211.023, 24.6942, 211.023, 1227.29, 410.866, 0, 0, 0, 0, 1045.21, 648.243 )
 }
 
 [node name="EnemyPathROne" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
-spawn_enemy_rate = 1.5
