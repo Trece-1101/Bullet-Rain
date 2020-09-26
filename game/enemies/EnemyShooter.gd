@@ -43,7 +43,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	#print(self.inside_play_screen)
 	if can_shoot and self.allow_shoot and self.inside_play_screen:
 		shoot()
 
@@ -89,3 +88,7 @@ func create_random_mid_point() -> float:
 	randomize()
 	mid_stoper_timer.wait_time = rand_range(2.5, 3)
 	return rand_range(0.45, 0.55)
+
+func disabled_collider() -> void:
+	self.can_shoot = false
+	gun_timer.stop()

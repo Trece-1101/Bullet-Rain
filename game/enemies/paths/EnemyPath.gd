@@ -1,3 +1,4 @@
+tool
 class_name EnemyPath
 extends Path2D
 
@@ -5,7 +6,7 @@ extends Path2D
 signal full_path_dead
 
 #### Variables Export
-export(Array, PackedScene) var enemies
+export(Array, PackedScene) var enemies := []
 export(int, 1, 20) var enemy_number := 1
 export(float, 50, 1000) var speed := 200
 export var allow_enemy_shoot := true
@@ -105,6 +106,22 @@ func _on_Enemy_destroyed() -> void:
 
 func check_new_end_of_path() -> void:
 	pass
+
+func _notification(notification: int) -> void:
+	if notification == NOTIFICATION_PARENTED or notification == NOTIFICATION_UNPARENTED:
+		update_configuration_warning()
+
+func _get_configuration_warning() -> String:
+	if enemies.size() == 0:
+		return "No hay naves asignadas al path"
+	
+	if check_other_errors().value:
+		return check_other_errors().error
+	
+	return ""
+
+func check_other_errors() -> Dictionary:
+	return {"value": false, "error": ""}
 
 #func _on_Timer_timeout() -> void:
 #	if is_timered:
