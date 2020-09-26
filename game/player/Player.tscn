@@ -392,6 +392,7 @@ joint_mode = 2
 begin_cap_mode = 2
 script = ExtResource( 5 )
 is_emitting = true
+resolution = 5.0
 lifetime = 0.3
 max_points = 20
 target_path = NodePath("..")
