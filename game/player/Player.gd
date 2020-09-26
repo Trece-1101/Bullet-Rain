@@ -39,7 +39,7 @@ onready var bullet_change_sound := $BulletChangeSFX
 onready var animation_play := $AnimationPlayer
 onready var animation_effects := $AnimationEffects
 onready var sprite := $Sprite
-
+onready var explosion := $Explosion.get_node("ExplosionPlayer")
 
 #### Setters y Getters
 func set_movement(value: Vector2) -> void:
@@ -153,6 +153,7 @@ func take_damage() -> void:
 		if hitpoints == 0:
 			animation_play.stop()
 			animation_play.clear_queue()
+			explosion.play("Explosion")
 			animation_play.play("destroy")
 		else:
 			animation_play.queue("damage")
