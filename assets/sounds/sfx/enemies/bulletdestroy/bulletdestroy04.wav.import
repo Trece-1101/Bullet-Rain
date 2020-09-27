@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bulletdestroy04.wav-32ac15eab7d87e6d21cd0d91c979ac6e.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy04.wav"
+dest_files=[ "res://.import/bulletdestroy04.wav-32ac15eab7d87e6d21cd0d91c979ac6e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
