@@ -7,7 +7,6 @@ signal enemy_destroyed()
 export var hitpoints := 50.0
 export var is_aimer := false setget set_is_aimer
 export var test_escene := false
-export(Color, RGBA) var color_trail: Color
 
 
 #### Variables

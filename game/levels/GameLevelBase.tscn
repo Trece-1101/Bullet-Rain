@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/hud/hud_sides.png" type="Texture" id=4]
+[ext_resource path="res://game/ui/GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/bullets/BulletDestroyer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
@@ -11,6 +11,21 @@
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=12]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 960, 100, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.1
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 1.0
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -28,9 +43,17 @@ layer = 2
 texture = ExtResource( 7 )
 centered = false
 
-[node name="hud_sides" type="Sprite" parent="HUD"]
-texture = ExtResource( 4 )
-centered = false
+[node name="DebugPanels" parent="HUD" instance=ExtResource( 2 )]
+
+[node name="GUI" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="Estrellas" type="Particles2D" parent="HUD"]
+position = Vector2( 960, -100 )
+amount = 500
+lifetime = 12.0
+preprocess = 10.0
+visibility_rect = Rect2( -960, -100, 1920, 200 )
+process_material = SubResource( 1 )
 
 [node name="BackGrounds" type="Node" parent="."]
 
@@ -70,8 +93,14 @@ right_border = 1420.0
 [node name="BulletsContainer" type="Node" parent="."]
 
 [node name="EnemyBanditTest1" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1022.93, 236.283 )
+position = Vector2( 1174.38, 257.665 )
 is_aimer = true
+test_escene = true
 test_shoot = true
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 10 )]
+
+[node name="EnemyBanditTest2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 782.209, 358.141 )
+test_escene = true
+test_shoot = true

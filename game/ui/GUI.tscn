@@ -1,0 +1,337 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/hud/GUI_Laterals.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/hud/icons/player_red_on.png" type="Texture" id=4]
+[ext_resource path="res://assets/hud/icons/player_blue_on.png" type="Texture" id=5]
+[ext_resource path="res://assets/hud/icons/player_yellow_off.png" type="Texture" id=6]
+[ext_resource path="res://assets/hud/icons/player_red_off.png" type="Texture" id=7]
+[ext_resource path="res://assets/hud/icons/player_yellow_on.png" type="Texture" id=8]
+[ext_resource path="res://assets/hud/icons/player_blue_off.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_filter = true
+font_data = ExtResource( 2 )
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftMenu" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -480.0
+margin_right = 470.0
+margin_bottom = 490.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginLeftContainer" type="MarginContainer" parent="LeftMenu"]
+margin_right = 470.0
+margin_bottom = 317.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 5
+
+[node name="InformationSection" type="VBoxContainer" parent="LeftMenu/MarginLeftContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+
+[node name="LevelContainer" type="HBoxContainer" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_right = 430.0
+margin_bottom = 40.0
+
+[node name="LevelLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/LevelContainer"]
+margin_right = 213.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "Level:"
+align = 2
+
+[node name="NumLevelLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/LevelContainer"]
+margin_left = 217.0
+margin_right = 430.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "ONE"
+
+[node name="HSeparator" type="HSeparator" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 44.0
+margin_right = 430.0
+margin_bottom = 54.0
+custom_constants/separation = 10
+
+[node name="TimeContainer" type="HBoxContainer" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 58.0
+margin_right = 430.0
+margin_bottom = 98.0
+alignment = 1
+
+[node name="TimeLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/TimeContainer"]
+margin_right = 213.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Time: "
+align = 2
+
+[node name="NumTimeLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/TimeContainer"]
+margin_left = 217.0
+margin_right = 430.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "00:00"
+
+[node name="HSeparator2" type="HSeparator" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 102.0
+margin_right = 430.0
+margin_bottom = 112.0
+custom_constants/separation = 10
+
+[node name="PointsLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 116.0
+margin_right = 430.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Points: "
+align = 1
+
+[node name="NumPointsLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 160.0
+margin_right = 430.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "0000000000"
+align = 1
+autowrap = true
+
+[node name="HSeparator3" type="HSeparator" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 204.0
+margin_right = 430.0
+margin_bottom = 214.0
+custom_constants/separation = 10
+
+[node name="ScrapLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 218.0
+margin_right = 430.0
+margin_bottom = 258.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Scrap:  "
+align = 1
+
+[node name="NumScrapLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection"]
+margin_top = 262.0
+margin_right = 430.0
+margin_bottom = 302.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "0000000000"
+align = 1
+autowrap = true
+
+[node name="RightMenu" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -470.0
+margin_top = -480.0
+margin_bottom = 490.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginRightContainer" type="MarginContainer" parent="RightMenu"]
+margin_right = 470.0
+margin_bottom = 253.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 5
+
+[node name="InformationSection" type="VBoxContainer" parent="RightMenu/MarginRightContainer"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+
+[node name="PlayerContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_right = 430.0
+margin_bottom = 64.0
+
+[node name="PlayerBlueOn" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+margin_right = 140.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+stretch_mode = 4
+
+[node name="PlayerBlueOff" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+visible = false
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="PlayerRedOn" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+margin_left = 144.0
+margin_right = 285.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="PlayerRedOff" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+visible = false
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 7 )
+stretch_mode = 4
+
+[node name="PlayerYellowOn" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+margin_left = 289.0
+margin_right = 430.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="PlayerYellowOff" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/PlayerContainer"]
+visible = false
+margin_left = 289.0
+margin_right = 430.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+texture = ExtResource( 6 )
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 68.0
+margin_right = 430.0
+margin_bottom = 78.0
+custom_constants/separation = 10
+
+[node name="HPContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 82.0
+margin_right = 430.0
+margin_bottom = 122.0
+alignment = 1
+
+[node name="HPLabel" type="Label" parent="RightMenu/MarginRightContainer/InformationSection/HPContainer"]
+margin_right = 86.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "HP: "
+
+[node name="HPProgress" type="TextureProgress" parent="RightMenu/MarginRightContainer/InformationSection/HPContainer"]
+margin_left = 90.0
+margin_right = 430.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+rounded = true
+tint_under = Color( 0.964706, 0.0784314, 0.0784314, 1 )
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+
+[node name="HSeparator2" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 126.0
+margin_right = 430.0
+margin_bottom = 136.0
+custom_constants/separation = 10
+
+[node name="UltimateContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 140.0
+margin_right = 430.0
+margin_bottom = 180.0
+alignment = 1
+
+[node name="UltimateLabel" type="Label" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer"]
+margin_right = 241.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Ultimate:"
+
+[node name="UltimateProgress" type="TextureProgress" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer"]
+margin_left = 245.0
+margin_right = 430.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+rounded = true
+tint_under = Color( 0.964706, 0.0784314, 0.0784314, 1 )
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+
+[node name="HSeparator3" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 184.0
+margin_right = 430.0
+margin_bottom = 194.0
+custom_constants/separation = 10
+
+[node name="DroneContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 198.0
+margin_right = 430.0
+margin_bottom = 238.0
+alignment = 1
+
+[node name="DroneLabel" type="Label" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer"]
+margin_right = 198.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Scrap:  "
+
+[node name="DroneProgress" type="TextureProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer"]
+margin_left = 202.0
+margin_right = 430.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+rounded = true
+tint_under = Color( 0.964706, 0.0784314, 0.0784314, 1 )
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
