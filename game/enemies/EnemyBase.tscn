@@ -1,8 +1,10 @@
+
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.gd" type="Script" id=1]
 [ext_resource path="res://assets/bullets/enemy_bullet.png" type="Texture" id=2]
 [ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -286,8 +288,12 @@ anims/init = SubResource( 4 )
 anims/spawn = SubResource( 5 )
 
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -18.0
+bus = "Enemy"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
+
 
 [node name="Motor" type="Particles2D" parent="."]
 position = Vector2( 0, -25 )
@@ -308,4 +314,5 @@ explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 15 )
 texture = ExtResource( 2 )
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
