@@ -14,7 +14,7 @@ z_index = -1
 [node name="Trail2D" parent="TrailPoint" index="0"]
 z_index = -2
 
-[node name="GunTimer" parent="." index="5"]
+[node name="GunTimer" parent="." index="6"]
 wait_time = 0.18
 
 [node name="Left" parent="ShootPositions" index="0"]

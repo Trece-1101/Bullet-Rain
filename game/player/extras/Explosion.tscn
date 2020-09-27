@@ -1,15 +1,21 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/player/extras/puff.png" type="Texture" id=2]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.0672646, 0.843049 )
-colors = PoolColorArray( 0.172549, 0.145098, 0.145098, 0.72549, 0.121569, 0.0980392, 0.0980392, 0.905882 )
+offsets = PoolRealArray( 0, 0.928251 )
+colors = PoolColorArray( 0.792969, 0.792969, 0.792969, 1, 0.171875, 0.162476, 0.162476, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.075, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -17,22 +23,23 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 30.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.318386, 0.596413, 1 )
 colors = PoolColorArray( 0.989258, 0.98602, 0.838551, 1, 0.846806, 0.53552, 0.170614, 1, 0.822079, 0.283667, 0.12845, 1, 1, 0.0507813, 0.0507813, 1 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=8]
 _data = [ Vector2( 0, 0 ), 0.0, 7.57314, 0, 0, Vector2( 0.345528, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=10]
 flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
@@ -48,23 +55,23 @@ angle = 220.0
 angle_random = 1.0
 scale = 0.5
 scale_random = 0.2
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 9 )
+color_ramp = SubResource( 7 )
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0, 0.327354, 0.932735 )
 colors = PoolColorArray( 0.935547, 0.903013, 0.741859, 1, 0.890625, 0.517855, 0.156555, 1, 1, 0.105469, 0.105469, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="Curve" id=11]
+[sub_resource type="Curve" id=13]
 _data = [ Vector2( 0, 0 ), 0.0, 3.51747, 0, 0, Vector2( 1, 1 ), 0.158466, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=12]
-curve = SubResource( 11 )
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticlesMaterial" id=15]
 lifetime_randomness = 0.6
 emission_shape = 1
 emission_sphere_radius = 10.0
@@ -73,17 +80,17 @@ direction = Vector3( 0, 0, 0 )
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 1000.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+orbit_velocity = 20.0
+orbit_velocity_random = 0.5
 radial_accel = 1000.0
+radial_accel_random = 0.5
 scale = 0.5
 scale_random = 0.3
-scale_curve = SubResource( 12 )
-color_ramp = SubResource( 10 )
+scale_curve = SubResource( 14 )
+color_ramp = SubResource( 12 )
 
-[sub_resource type="Animation" id=14]
-resource_name = "Explosion"
-length = 0.8
+[sub_resource type="Animation" id=16]
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sparkle:emitting")
 tracks/0/interp = 1
@@ -91,7 +98,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -103,7 +110,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.5 ),
+"times": PoolRealArray( 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ true, false ]
@@ -115,7 +122,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.8 ),
+"times": PoolRealArray( 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -126,35 +133,35 @@ tracks/2/keys = {
 [node name="Smoke" type="Particles2D" parent="."]
 scale = Vector2( 2, 2 )
 emitting = false
-amount = 16
-process_material = SubResource( 3 )
+one_shot = true
+process_material = SubResource( 5 )
 texture = ExtResource( 2 )
 
 [node name="FireBurst" type="Particles2D" parent="."]
 scale = Vector2( 2, 2 )
 emitting = false
 amount = 64
-lifetime = 0.5
+lifetime = 0.6
 one_shot = true
 explosiveness = 0.3
 randomness = 1.0
 visibility_rect = Rect2( -50, -50, 100, 100 )
 draw_order = 1
-process_material = SubResource( 8 )
+process_material = SubResource( 10 )
 texture = ExtResource( 2 )
 
 [node name="Sparkle" type="Particles2D" parent="."]
 scale = Vector2( 0.2, 0.2 )
 emitting = false
 amount = 64
-lifetime = 0.8
+lifetime = 0.4
 one_shot = true
 explosiveness = 0.2
 randomness = 0.5
 visibility_rect = Rect2( -50, -50, 100, 100 )
 draw_order = 1
-process_material = SubResource( 13 )
+process_material = SubResource( 15 )
 texture = ExtResource( 2 )
 
 [node name="ExplosionPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 14 )
+anims/Explosion = SubResource( 16 )

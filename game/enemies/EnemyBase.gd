@@ -8,6 +8,7 @@ export var hitpoints := 50.0
 export var is_aimer := false setget set_is_aimer
 export var test_escene := false
 
+
 #### Variables
 var player: Player
 var speed := 0.0 setget set_speed
@@ -21,6 +22,9 @@ var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
 onready var hit_sfx := $HitSFX
 onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
+onready var motor := $Motor
+onready var animationPlayer := $AnimationPlayer
+onready var sprite := $Sprite
 
 #### Setters y Getters
 func set_speed(value: float) -> void:
@@ -84,6 +88,8 @@ func get_player() -> void:
 
 
 func move(delta: float) -> void:
+	if (!motor.emitting):
+		motor.emitting = true
 	follow.offset += speed * delta
 	position = follow.global_position
 
@@ -97,8 +103,10 @@ func check_end_of_path() -> void:
 		if action == "free":
 			queue_free()
 		elif action == "stop":
+			motor.emitting = false
 			speed = 0.0
 		elif action == "stop and shoot":
+			motor.emitting = false
 			speed = 0.0
 			self.allow_shoot = true
 
@@ -114,9 +122,10 @@ func _on_area_entered(area) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
+	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), 1/hitpoints)
 	if hitpoints <= 0:
 		emit_signal("enemy_destroyed")
-		$AnimationPlayer.play("destroy")
+		animationPlayer.play("destroy")
 	else:
 		hit_sfx.play()
 

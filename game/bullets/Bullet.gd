@@ -64,4 +64,5 @@ func _on_area_entered(area) -> void:
 
 
 func destroy() -> void:
+	$AnimationPlayer.play("Impact")
 	queue_free()

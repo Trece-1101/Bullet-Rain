@@ -6,6 +6,9 @@
 [node name="EnemyBandit" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 1, 1 )
+
 [node name="AimTween" type="Tween" parent="." index="6"]
 
 [node name="AimTimer" type="Timer" parent="." index="7"]

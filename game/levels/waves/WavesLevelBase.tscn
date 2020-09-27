@@ -33,6 +33,8 @@ enemy_number = 6
 speed = 300
 allow_enemy_shoot = false
 spawn_enemy_rate = 0.2
+are_aimers = false
+debug = false
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -42,3 +44,9 @@ curve = SubResource( 2 )
 script = ExtResource( 2 )
 enemies = [ ExtResource( 9 ) ]
 enemy_number = 8
+speed = 200.0
+allow_enemy_shoot = true
+spawn_enemy_rate = 1.0
+are_aimers = false
+debug = false
+minimun_path_segment = 0.2
