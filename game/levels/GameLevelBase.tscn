@@ -43,9 +43,9 @@ layer = 2
 texture = ExtResource( 7 )
 centered = false
 
-[node name="DebugPanels" parent="HUD" instance=ExtResource( 2 )]
-
 [node name="GUI" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="DebugPanels" parent="HUD" instance=ExtResource( 2 )]
 
 [node name="Estrellas" type="Particles2D" parent="HUD"]
 position = Vector2( 960, -100 )

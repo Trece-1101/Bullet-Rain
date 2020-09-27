@@ -14,7 +14,7 @@ export(float, 0.08, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 export(Color, RGBA) var color_trail: Color
 export var is_in_god_mode := false
-export var move_to_start := false setget set_move_to_start
+
 
 #### Variables
 var state = States.INIT

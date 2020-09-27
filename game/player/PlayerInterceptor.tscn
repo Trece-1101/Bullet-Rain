@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/player/Yellow.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/player_interceptor.png" type="Texture" id=2]
 
 [node name="PlayerInterceptor" instance=ExtResource( 1 )]
 position = Vector2( 960, 919 )
@@ -10,10 +10,10 @@ bullet_damage = 3.5
 shooting_rate = 0.14
 color_trail = Color( 0.878431, 0.878431, 0.113725, 1 )
 
-[node name="Sprite" parent="." index="2"]
+[node name="Sprite" parent="." index="3"]
 texture = ExtResource( 2 )
 
-[node name="GunTimer" parent="." index="5"]
+[node name="GunTimer" parent="." index="6"]
 wait_time = 0.14
 
 [node name="Left" parent="ShootPositions" index="0"]
