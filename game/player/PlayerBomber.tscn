@@ -10,12 +10,9 @@ shooting_rate = 0.16
 color_trail = Color( 0.862745, 0.384314, 0.745098, 1 )
 
 [node name="Trail2D" parent="TrailPoint" index="0"]
-visible = true
 width = 50.0
-resolution = 5.0
 
 [node name="Sprite" parent="." index="3"]
-visible = true
 texture = ExtResource( 2 )
 
 [node name="GunTimer" parent="." index="6"]
@@ -25,12 +22,10 @@ wait_time = 0.16
 position = Vector2( -17, 2 )
 
 [node name="LeftCannon" parent="ShootPositions/Left" index="0"]
-visible = true
 position = Vector2( 0, -14 )
 
 [node name="Right" parent="ShootPositions" index="1"]
 position = Vector2( 17, 2 )
 
 [node name="RightCannon" parent="ShootPositions/Right" index="0"]
-visible = true
 position = Vector2( 0, -14 )

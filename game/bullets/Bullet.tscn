@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://game/vfx/BulletDestroyParticles.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy01.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy04.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "impact"
@@ -58,7 +58,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.8, 1.8 ), Vector2( 1.2, 1.2 ) ]
 }
 tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/path = NodePath("DestroySFX")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -120,9 +120,8 @@ anims/init = SubResource( 2 )
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 2 )]
 z_index = 60
 z_as_relative = false
-emitting = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="DestroySFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -15.0
 bus = "SFX"
