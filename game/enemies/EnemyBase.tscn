@@ -1,10 +1,9 @@
-
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.gd" type="Script" id=1]
 [ext_resource path="res://assets/bullets/enemy_bullet.png" type="Texture" id=2]
 [ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
-
+[ext_resource path="res://assets/sounds/sfx/enemies/explosion/07enemyexplosion.wav" type="AudioStream" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -30,7 +29,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
+"times": PoolRealArray( 0.5, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -276,8 +275,8 @@ collision_mask = 8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 2 )
-scale = Vector2( 1e-05, 1e-05 )
 
 [node name="DamageCollider" type="CollisionShape2D" parent="."]
 
@@ -288,18 +287,19 @@ anims/init = SubResource( 4 )
 anims/spawn = SubResource( 5 )
 
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
 volume_db = -18.0
 bus = "Enemy"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
-
+stream = ExtResource( 4 )
+bus = "Enemy"
 
 [node name="Motor" type="Particles2D" parent="."]
 position = Vector2( 0, -25 )
 rotation = 3.14159
 scale = Vector2( 0.1, 0.1 )
 z_index = -1
+emitting = false
 amount = 4
 visibility_rect = Rect2( -50, -50, 100, 100 )
 process_material = SubResource( 10 )
@@ -314,5 +314,4 @@ explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 15 )
 texture = ExtResource( 2 )
-
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

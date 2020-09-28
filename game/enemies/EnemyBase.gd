@@ -17,6 +17,12 @@ var follow: PathFollow2D
 var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
+var explosions_sfx := [
+	"res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav",
+	"res://assets/sounds/sfx/enemies/explosion/05enemyexplosion.wav",
+	"res://assets/sounds/sfx/enemies/explosion/07enemyexplosion.wav"
+	]
+
 
 #### Variables Onready
 onready var hit_sfx := $HitSFX
@@ -65,6 +71,8 @@ func _ready() -> void:
 
 	if is_aimer:
 		get_player()
+	
+	get_random_explosion_sfx()
 
 
 func _process(delta) -> void:
@@ -114,6 +122,11 @@ func check_end_of_path() -> void:
 func check_mid_of_path() -> void:
 	pass
 
+func get_random_explosion_sfx() -> void:
+	randomize()
+	var rand = int(rand_range(0, explosions_sfx.size()))
+	var rand_sfx = load(explosions_sfx[rand])
+	explosion_sfx.stream = rand_sfx
 
 func _on_area_entered(area) -> void:
 	if area.is_in_group("Bullet"):

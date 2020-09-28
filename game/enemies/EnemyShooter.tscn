@@ -9,6 +9,10 @@
 script = ExtResource( 2 )
 bullet = ExtResource( 3 )
 
+[node name="Sprite" parent="." index="0"]
+visible = false
+scale = Vector2( 1, 1 )
+
 [node name="ShootPositions" type="Node2D" parent="." index="3"]
 
 [node name="GunTimer" type="Timer" parent="." index="4"]
@@ -21,5 +25,8 @@ one_shot = true
 stream = ExtResource( 4 )
 volume_db = -15.0
 bus = "Enemy"
+
+[node name="Motor" parent="." index="9"]
+emitting = false
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]
