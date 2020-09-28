@@ -136,7 +136,7 @@ func _on_area_entered(area) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
-	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), 1/hitpoints)
+	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), 1 / hitpoints)
 	if hitpoints <= 0:
 		can_take_damage = false
 		emit_signal("enemy_destroyed")
