@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/player/player_bomber.png" type="Texture" id=2]
 
 [node name="PlayerBomber" instance=ExtResource( 1 )]
-speed = 700.0
+speed = 670.0
 bullet_damage = 4.0
 shooting_rate = 0.16
 color_trail = Color( 0.862745, 0.384314, 0.745098, 1 )

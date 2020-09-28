@@ -10,6 +10,7 @@ export var speed := 200.0
 export var bullet: PackedScene
 export var bullet_damage := 1.0
 export var bullet_speed := -700
+export var bullet_speed_alt := -700
 export(float, 0.08, 0.32) var shooting_rate := 0.2
 export var hitpoints := 4
 export(Color, RGBA) var color_trail: Color
@@ -25,6 +26,7 @@ var speed_using := 0.0
 var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
+var bullet_speed_using := 0
 
 
 #### Variables Onready
@@ -66,6 +68,7 @@ func _ready() -> void:
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
+	bullet_speed_using = bullet_speed
 	bullet_container = check_bullet_container()
 
 
@@ -115,8 +118,7 @@ func check_bullet_container() -> Node:
 
 func shoot_input() -> void:
 	if Input.is_action_just_pressed("ui_change_bullet"):
-		bullet_change_sound.play()
-		bullet_type *= -1
+		change_bullet()
 	
 	if Input.is_action_pressed("ui_shoot"):
 		if can_shoot:
@@ -128,6 +130,13 @@ func shoot_input() -> void:
 	if Input.is_action_just_released("ui_shoot"):
 		change_state(States.IDLE)
 
+func change_bullet() -> void:
+	bullet_change_sound.play()
+	bullet_type *= -1
+	if bullet_type == 1:
+		bullet_speed_using = bullet_speed
+	else:
+		bullet_speed_using = bullet_speed_alt
 
 func shoot() -> void:
 	animation_effects.play("shoot")
@@ -136,7 +145,7 @@ func shoot() -> void:
 		var new_bullet := bullet.instance()
 		new_bullet.create(
 				shoot_positions.get_child(i).global_position,
-				bullet_speed,
+				bullet_speed_using,
 				0.0,
 				bullet_type,
 				bullet_damage)

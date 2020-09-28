@@ -1,21 +1,14 @@
-
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
-
 [ext_resource path="res://game/ui/GUI.tscn" type="PackedScene" id=4]
-
 [ext_resource path="res://game/bullets/BulletDestroyer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=6]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=10]
-
-[ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=12]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -95,17 +88,3 @@ right_border = 1420.0
 [node name="EnemyActivator" parent="BordersContainer" instance=ExtResource( 9 )]
 
 [node name="BulletsContainer" type="Node" parent="."]
-
-[node name="EnemyBanditTest1" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1174.38, 257.665 )
-is_aimer = true
-test_escene = true
-test_shoot = true
-
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 10 )]
-
-[node name="EnemyBanditTest2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 782.209, 358.141 )
-test_escene = true
-
-test_shoot = true
