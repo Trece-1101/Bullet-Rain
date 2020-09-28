@@ -46,11 +46,11 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body is Player:
 		body.take_damage()
-	destroy()
+	queue_free()
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
-	destroy()
+	queue_free()
 
 
 func _on_area_entered(area) -> void:
@@ -60,9 +60,9 @@ func _on_area_entered(area) -> void:
 			area.destroy()
 			destroy()
 	else:
-		destroy()
+		queue_free()
 
 
 func destroy() -> void:
-	$AnimationPlayer.play("Impact")
-	queue_free()
+	velocity = Vector2.ZERO
+	$AnimationPlayer.play("impact")

@@ -90,5 +90,6 @@ func create_random_mid_point() -> float:
 	return rand_range(0.45, 0.55)
 
 func disabled_collider() -> void:
+	.disabled_collider()
 	self.can_shoot = false
 	gun_timer.stop()

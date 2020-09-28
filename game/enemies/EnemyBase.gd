@@ -10,6 +10,7 @@ export var test_escene := false
 
 
 #### Variables
+var can_take_damage := true
 var player: Player
 var speed := 0.0 setget set_speed
 var path: Path2D setget set_path
@@ -29,7 +30,7 @@ onready var hit_sfx := $HitSFX
 onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
 onready var motor := $Motor
-onready var animationPlayer := $AnimationPlayer
+onready var animation_player := $AnimationPlayer
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -129,7 +130,7 @@ func get_random_explosion_sfx() -> void:
 	explosion_sfx.stream = rand_sfx
 
 func _on_area_entered(area) -> void:
-	if area.is_in_group("Bullet"):
+	if area.is_in_group("Bullet") and can_take_damage:
 		take_damage(area.get_damage())
 
 
@@ -137,9 +138,11 @@ func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), 1/hitpoints)
 	if hitpoints <= 0:
+		can_take_damage = false
 		emit_signal("enemy_destroyed")
-		animationPlayer.play("destroy")
+		animation_player.play("destroy")
 	else:
+		animation_player.play("impact")
 		hit_sfx.play()
 
 func play_explosion_sfx() -> void:

@@ -94,22 +94,15 @@ right_border = 1420.0
 
 [node name="EnemyBanditTest1" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1174.38, 257.665 )
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
 is_aimer = true
 test_escene = true
 test_shoot = true
 
 [node name="EnemyBanditTest2" parent="." instance=ExtResource( 12 )]
 position = Vector2( 782.209, 358.141 )
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
 test_escene = true
 test_shoot = true
 
 [node name="PlayerBomber" parent="." instance=ExtResource( 13 )]
 bullet_speed_alt = -700
+is_in_god_mode = true
