@@ -4,6 +4,7 @@ extends EnemyBase
 #### Variables Export
 export var bullet: PackedScene
 export var bullet_speed := 400
+export var shooting_rate := 1.0
 export var test_shoot := false
 
 #### Variables
@@ -38,6 +39,7 @@ func _ready() -> void:
 		inside_play_screen = true
 	
 	original_speed = self.speed
+	gun_timer.wait_time = shooting_rate
 	bullet_container = .get_top_level().get_node("BulletsContainer")
 	mid_point = create_random_mid_point()
 
