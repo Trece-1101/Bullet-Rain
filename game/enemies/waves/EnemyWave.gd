@@ -6,7 +6,7 @@ signal send_next_wave()
 #### Variables
 var total_paths := 0
 
-
+#### Metodos
 func create_paths() -> void:
 	for path in get_children():
 		path.connect("full_path_dead", self, "_on_full_path_dead")

@@ -21,6 +21,7 @@ var full_path_out := false
 var spawn_timer: Timer
 var is_timered := true
 var start_inside_screen := false
+var is_stopper := false
 var end_of_path := 1.0
 
 #### Setters y Getters
@@ -83,6 +84,7 @@ func create_enemy(rand_enemy: int) -> void:
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_is_aimer(are_aimers)
 	my_enemy.set_inside_play_screen(start_inside_screen)
+	my_enemy.set_is_stopper(is_stopper)
 	my_enemy.set_end_of_path(end_of_path)
 	check_new_end_of_path()
 # warning-ignore:return_value_discarded

@@ -1,19 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
-[ext_resource path="res://game/enemies/paths/PathGroupOut.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/paths/PathInOut.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/paths/PathOutOut.gd" type="Script" id=3]
 [ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=4]
-[ext_resource path="res://game/enemies/paths/PathGroupIn.gd" type="Script" id=6]
+[ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 701.675, 416.171, 0, 0, 0, 0, 1250.47, 405.48 )
+"points": PoolVector2Array( 0, 0, 0, 0, 170.7, 697.695, 0, 0, 0, 0, 1036.65, 277.191 )
 }
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 690.984, -118.367, 0, 0, 0, 0, 680.293, 583.66, 0, 0, 0, 0, 1250.47, 605.041, 0, 0, 0, 0, 1207.7, 270.064 )
+"points": PoolVector2Array( 0, 0, 0, 0, 690.984, -118.367, 0, 0, 0, 0, 680.293, 583.66, 0, 0, 0, 0, 1250.47, 605.041, 0, 0, 0, 0, 1767.19, 669.186 )
 }
 
 [node name="WavesLevelBase" type="Node"]
@@ -27,26 +28,15 @@ script = ExtResource( 4 )
 
 [node name="Path2D" type="Path2D" parent="Node7"]
 curve = SubResource( 1 )
-script = ExtResource( 6 )
-enemies = [ ExtResource( 9 ) ]
-enemy_number = 6
-speed = 300
-allow_enemy_shoot = false
-spawn_enemy_rate = 0.2
-are_aimers = false
-debug = false
+script = ExtResource( 2 )
+enemies = [ ExtResource( 5 ) ]
+enemy_number = 4
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource( 4 )
 
 [node name="Path2D" type="Path2D" parent="Node"]
 curve = SubResource( 2 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 enemies = [ ExtResource( 9 ) ]
-enemy_number = 8
-speed = 200.0
-allow_enemy_shoot = true
-spawn_enemy_rate = 1.0
-are_aimers = false
-debug = false
-minimun_path_segment = 0.2
+enemy_number = 4

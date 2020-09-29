@@ -6,7 +6,6 @@ signal enemy_destroyed()
 #### Variables Export
 export var hitpoints := 50.0
 export var is_aimer := false setget set_is_aimer
-export var test_escene := false
 
 
 #### Variables
@@ -18,6 +17,7 @@ var follow: PathFollow2D
 var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
+var is_stopper := false setget set_is_stopper
 var explosions_sfx := [
 	"res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav",
 	"res://assets/sounds/sfx/enemies/explosion/05enemyexplosion.wav",
@@ -61,6 +61,8 @@ func set_end_of_path(value: float) -> void:
 func get_end_of_path() -> float:
 	return end_of_path
 
+func set_is_stopper(value: bool) -> void:
+	is_stopper = value
 
 
 #### Metodos
@@ -102,7 +104,8 @@ func move(delta: float) -> void:
 	follow.offset += speed * delta
 	position = follow.global_position
 
-	#check_mid_of_path()
+	if is_stopper:
+		 check_mid_of_path()
 	check_end_of_path()
 
 

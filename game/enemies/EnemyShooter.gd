@@ -9,7 +9,7 @@ export var test_shoot := false
 #### Variables
 var bullet_rot_correction := 0.0
 var is_shooting := false
-var shoot_lines := {"shoot_on": false, "shoot_off": false, "mid_stop": false}
+var shoot_lines := {"mid_stop": false}
 var bullet_container: Node
 var original_speed := 0.0
 var mid_point := 0.5
@@ -69,14 +69,6 @@ func check_mid_of_path() -> void:
 		self.speed = 0.0
 		mid_stoper_timer.start()
 
-
-#func check_end_of_path() -> void:
-#	pass
-#	if follow.unit_offset >= self.end_of_path:
-#		if path.get_is_timered():
-#			queue_free()
-#		else:
-#			self.speed = 0.0
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true

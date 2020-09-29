@@ -10,9 +10,10 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_vertical_guides_": [ 504.5 ]
 }
+test_wave = true
 
 [node name="EnemyPathCOne" parent="." instance=ExtResource( 6 )]
 enemies = [ ExtResource( 2 ), ExtResource( 3 ) ]
 enemy_number = 6
-speed = 300.0
+speed = 300
 spawn_enemy_rate = 0.5
