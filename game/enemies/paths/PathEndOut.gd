@@ -1,7 +1,9 @@
 class_name PathEndOut
 extends EnemyPath
 
+
 func _ready() -> void:
+	self.is_stopper = true
 	create_timer()
 
 func at_end_of_path() -> String:
