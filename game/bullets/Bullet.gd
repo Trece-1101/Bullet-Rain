@@ -41,6 +41,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position += velocity * delta
+	$Sprite.rotation += 2* PI * delta / 4
 
 
 func _on_body_entered(body: Node) -> void:
