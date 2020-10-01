@@ -14,6 +14,3 @@ func get_bullet_angle () -> float:
 
 func get_bullet_type() -> int:
 	return bullet_type
-
-
-

@@ -2,7 +2,7 @@ tool
 class_name PathGroupIn
 extends PathGroup
 
-
+#### Metodos
 func _ready() -> void:
 	self.start_inside_screen = true
 

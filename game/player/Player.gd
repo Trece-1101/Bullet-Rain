@@ -72,7 +72,7 @@ func _ready() -> void:
 	bullet_container = check_bullet_container()
 
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		movement = speed_using * get_direction().normalized()
 	# warning-ignore:return_value_discarded
@@ -80,7 +80,7 @@ func _physics_process(_delta) -> void:
 		move_and_slide(movement, Vector2.ZERO)
 
 
-func _process(_delta) -> void:
+func _process(_delta: float) -> void:
 	shoot_input()
 
 
@@ -144,6 +144,7 @@ func shoot() -> void:
 	for i in range(shoot_positions.get_child_count()):
 		var new_bullet := bullet.instance()
 		new_bullet.create(
+				self,
 				shoot_positions.get_child(i).global_position,
 				bullet_speed_using,
 				0.0,

@@ -2,8 +2,6 @@ tool
 class_name Trail2D
 extends Line2D
 
-
-
 #### Variables Export
 export var is_emitting := false setget set_emitting
 
@@ -24,7 +22,7 @@ var _offset := 0.0
 
 #### Variables Onready
 onready var target: Node2D = get_node_or_null(target_path)
-onready var color = get_owner().color_trail
+onready var color:Color = get_owner().color_trail
 
 
 #### Metodos

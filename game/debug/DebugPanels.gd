@@ -11,6 +11,7 @@ onready var player: Player
 var bullets_container: Node 
 var bullets_count := 0
 
+#### Metodos
 func _ready() -> void:
 	set_process(false)
 	var parent := get_parent()
