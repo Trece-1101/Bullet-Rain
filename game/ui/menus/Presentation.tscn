@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui/presentation/intro_short.ogv" type="VideoStream" id=1]
+[ext_resource path="res://game/ui/menus/Presentation.gd" type="Script" id=2]
+
+[node name="Presentation" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene = "res://game/levels/GameLevelBase.tscn"
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+autoplay = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

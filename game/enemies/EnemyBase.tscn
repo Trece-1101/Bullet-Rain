@@ -17,7 +17,7 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=17]
+[sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
@@ -139,6 +139,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Motor:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("BulletDestroyParticles:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "impact"
@@ -166,6 +190,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 3, 3 ), Vector2( 2, 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BulletDestroyParticles:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -228,10 +264,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Explosion:emitting")
@@ -244,6 +280,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Motor:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Gradient" id=7]
@@ -282,7 +330,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.6833
 [sub_resource type="CurveTexture" id=15]
 curve = SubResource( 14 )
 
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=22]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -297,20 +345,20 @@ scale = 0.5
 scale_curve = SubResource( 15 )
 color_ramp = SubResource( 13 )
 
-[sub_resource type="Gradient" id=22]
+[sub_resource type="Gradient" id=17]
 offsets = PoolRealArray( 0, 0.58296, 0.982063 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
 
-[sub_resource type="GradientTexture" id=19]
-gradient = SubResource( 22 )
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
 
-[sub_resource type="Curve" id=20]
+[sub_resource type="Curve" id=19]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=21]
-curve = SubResource( 20 )
+[sub_resource type="CurveTexture" id=20]
+curve = SubResource( 19 )
 
-[sub_resource type="ParticlesMaterial" id=23]
+[sub_resource type="ParticlesMaterial" id=21]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -321,8 +369,8 @@ angular_velocity = 10.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 21 )
-color_ramp = SubResource( 19 )
+scale_curve = SubResource( 20 )
+color_ramp = SubResource( 18 )
 
 [node name="EnemyBase" type="Area2D"]
 z_index = 40
@@ -332,7 +380,8 @@ collision_mask = 8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 17 )
+material = SubResource( 2 )
+scale = Vector2( 1e-05, 1e-05 )
 
 [node name="DamageCollider" type="CollisionShape2D" parent="."]
 
@@ -370,13 +419,12 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 16 )
+process_material = SubResource( 22 )
 texture = ExtResource( 2 )
 
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 5 )]
-scale = Vector2( 5, 5 )
-emitting = false
+scale = Vector2( 3, 3 )
 amount = 15
 lifetime = 0.3
-process_material = SubResource( 23 )
+process_material = SubResource( 21 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

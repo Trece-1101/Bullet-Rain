@@ -1,20 +1,45 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
 [ext_resource path="res://game/enemies/paths/PathInOut.gd" type="Script" id=2]
-[ext_resource path="res://game/enemies/paths/PathOutOut.gd" type="Script" id=3]
-[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=4]
+[ext_resource path="res://game/enemies/waves/WaveLevelBaseTwo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/paths/PathGroupOut.gd" type="Script" id=4]
 [ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/enemies/paths/PathGroupIn.gd" type="Script" id=6]
+[ext_resource path="res://game/enemies/paths/PathInIn.gd" type="Script" id=7]
+[ext_resource path="res://game/enemies/waves/WaveLevelBaseOne.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=10]
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 170.7, 697.695, 0, 0, 0, 0, 1036.65, 277.191 )
+"points": PoolVector2Array( 0, 0, 0, 0, 940.435, -132.622, -14, -74, 14, 74, 865.6, 74.0664, -2, -106, 2, 106, 1075.85, 241.555, -2, -88, 2, 88, 869.163, 394.789, 0, 0, 0, 0, 1093.67, 544.46 )
 }
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 690.984, -118.367, 0, 0, 0, 0, 680.293, 583.66, 0, 0, 0, 0, 1250.47, 605.041, 0, 0, 0, 0, 1767.19, 669.186 )
+"points": PoolVector2Array( 0, 0, 0, 0, 690.097, 452.999, 0, 0, 0, 0, 1120.1, 462.999 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 948.097, 122.999, 0, 0, 0, 0, 758.097, 292.999, 0, 0, 0, 0, 1216.1, 294.999, 0, 0, 0, 0, 1038.1, 116.999 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 834.097, 402.999, 0, 0, 0, 0, 1228.1, -85.0009 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 964.097, 392.999, 0, 0, 0, 0, 666.097, -129.001 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1002.1, -179.001, 0, 0, 0, 0, 984.097, 336.999 )
 }
 
 [node name="WavesLevelBase" type="Node"]
@@ -23,20 +48,99 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 163.156 ]
 }
 
-[node name="Node7" type="Node" parent="."]
-script = ExtResource( 4 )
+[node name="WaveLevelBaseOne" parent="." instance=ExtResource( 8 )]
 
-[node name="Path2D" type="Path2D" parent="Node7"]
-curve = SubResource( 1 )
-script = ExtResource( 2 )
-enemies = [ ExtResource( 5 ) ]
+[node name="EnemyPathCOne" parent="WaveLevelBaseOne" index="0"]
+speed = 100
+spawn_enemy_rate = 1.5
+
+[node name="WaveLevelBaseTwo" parent="." instance=ExtResource( 3 )]
+
+[node name="EnemyPathLOne" parent="WaveLevelBaseTwo" index="0"]
+enemy_number = 4
+speed = 180
+spawn_enemy_rate = 2.5
+
+[node name="EnemyPathROne" parent="WaveLevelBaseTwo" index="1"]
 enemy_number = 4
 
 [node name="Node" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 11 )
 
 [node name="Path2D" type="Path2D" parent="Node"]
+curve = SubResource( 1 )
+script = ExtResource( 4 )
+enemies = [ ExtResource( 9 ), ExtResource( 5 ) ]
+enemy_number = 6
+speed = 200
+allow_enemy_shoot = true
+spawn_enemy_rate = 1.8
+are_aimers = false
+debug = false
+minimun_path_segment = 0.2
+
+[node name="Node2" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Path2D" type="Path2D" parent="Node2"]
 curve = SubResource( 2 )
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 enemies = [ ExtResource( 9 ) ]
 enemy_number = 4
+speed = 200
+allow_enemy_shoot = true
+spawn_enemy_rate = 0.2
+are_aimers = true
+debug = false
+
+[node name="Node3" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Path2D" type="Path2D" parent="Node3"]
+curve = SubResource( 3 )
+script = ExtResource( 7 )
+enemies = [ ExtResource( 9 ), ExtResource( 5 ) ]
+enemy_number = 6
+speed = 200
+allow_enemy_shoot = true
+spawn_enemy_rate = 0.6
+are_aimers = false
+debug = false
+
+[node name="Node4" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Path2D" type="Path2D" parent="Node4"]
+position = Vector2( 158, 0 )
+curve = SubResource( 4 )
+script = ExtResource( 2 )
+enemies = [ ExtResource( 9 ) ]
+enemy_number = 4
+speed = 200
+allow_enemy_shoot = true
+spawn_enemy_rate = 0.5
+are_aimers = false
+debug = false
+
+[node name="Path2D2" type="Path2D" parent="Node4"]
+curve = SubResource( 5 )
+script = ExtResource( 2 )
+enemies = [ ExtResource( 5 ) ]
+enemy_number = 4
+speed = 200
+allow_enemy_shoot = true
+spawn_enemy_rate = 0.5
+are_aimers = false
+debug = false
+
+[node name="Path2D3" type="Path2D" parent="Node4"]
+curve = SubResource( 6 )
+script = ExtResource( 10 )
+enemies = [ ExtResource( 9 ), ExtResource( 5 ) ]
+enemy_number = 4
+spawn_enemy_rate = 1.2
+are_aimers = true
+
+[editable path="WaveLevelBaseOne"]
+
+[editable path="WaveLevelBaseTwo"]
