@@ -1,12 +1,25 @@
+tool
 extends Node
+
+export var make_paths_invisible := false setget set_make_paths_invisible
 
 #### Variables
 var current_wave := 0
 var total_waves := 0
 var send_waves := true
 
+func set_make_paths_invisible(value: bool) -> void:
+	if value:
+		if Engine.editor_hint:
+			for wave in get_children():
+				for path in wave.get_children():
+					print(path.name)
+					path.set_make_invisible(true)
+
+#### Metodos
 func _ready() -> void:
 	yield(owner, "ready")
+	
 
 func start_waves() -> void:
 	if send_waves:

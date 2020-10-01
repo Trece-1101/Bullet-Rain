@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 
 
 func get_top_level() -> Node:
-	var parent := get_parent()
+	var parent := get_parent()	
 	while not "GameLevel" in parent.name:
 		parent = parent.get_parent()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -9,8 +9,7 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/green/green_center.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/levels/waves/WavesLevelBase.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -60,7 +59,7 @@ layer = -1
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
 motion_mirroring = Vector2( 0, 3412 )
 
-[node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
+[node name="BgCenter" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 position = Vector2( 500, 0 )
 texture = ExtResource( 8 )
@@ -72,7 +71,7 @@ layer = 1
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBorder"]
 motion_mirroring = Vector2( 0, 3412 )
 
-[node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
+[node name="BgLats" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 texture = ExtResource( 6 )
 centered = false
@@ -89,6 +88,4 @@ right_border = 1420.0
 
 [node name="BulletsContainer" type="Node" parent="."]
 
-[node name="WavesLevelBase" parent="." instance=ExtResource( 11 )]
-
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 10 )]
+[node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
