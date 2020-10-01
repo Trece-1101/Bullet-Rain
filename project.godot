@@ -130,7 +130,7 @@ _global_script_class_icons={
 
 config/name="Bullet Rain"
 run/main_scene="res://game/levels/GameLevelBase.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/player/extras/shoot.png"
 
 [debug]
 

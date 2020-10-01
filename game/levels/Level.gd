@@ -13,6 +13,7 @@ onready var parallax_bg := $BackGrounds/ParallaxBackground
 onready var parallax_border := $BackGrounds/ParallaxBorder
 onready var hud_layer := $HUD
 
+#### Metodos
 func _ready() -> void:
 	create_timer()
 	
@@ -34,6 +35,10 @@ func _on_send_waves_timer_timeout() -> void:
 			child.set_send_waves(send_waves)
 			child.start_waves()
 
-func _process(delta):
+func _process(delta: float):
 	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
 	parallax_border.scroll_offset += Vector2.DOWN * scroll_speed * delta
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()

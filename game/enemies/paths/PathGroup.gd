@@ -1,9 +1,12 @@
 class_name PathGroup
 extends PathEndOut
 
+#### Variables
 var my_path_segment := 1.0
 var my_return := "stop"
 
+
+#### Metodos
 func _ready() -> void:
 	if self.enemy_number <= 1:
 		self.enemy_number = 2

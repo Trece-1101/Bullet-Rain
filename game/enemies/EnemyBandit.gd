@@ -15,7 +15,7 @@ func _on_AimTimer_timeout() -> void:
 	if not player == null:
 		check_aim_to_player()
 
-func _process(_delta):
+func _process(_delta: float):
 	if is_aimer and not player == null:
 		check_aim_to_player()
 

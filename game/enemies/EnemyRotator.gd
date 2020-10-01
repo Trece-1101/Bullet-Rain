@@ -15,6 +15,6 @@ func _ready() -> void:
 	self.can_shoot = true
 
 
-func _process(delta):
+func _process(delta: float):
 	rotation_degrees += rotation_speed * delta
 	self.bullet_rot_correction = rotation_degrees

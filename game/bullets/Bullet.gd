@@ -9,7 +9,12 @@ export(Color, RGBA) var bullet_color_alt := Color.yellow
 var velocity := Vector2.ZERO
 var type := 1
 var damage: float
+var creater: Object
 
+#### Variables onready
+onready var bullet_sprite := $Sprite
+
+#### Setters y Getters
 func get_damage() -> float:
 	return damage
 
@@ -18,6 +23,7 @@ func get_type() -> int:
 
 #### Metodos
 func create(
+		bullet_creater: Object,
 		bullet_pos: Vector2,
 		bullet_speed: float,
 		bullet_dir: float,
@@ -25,6 +31,7 @@ func create(
 		bullet_damage := 1.0,
 		bullet_angle := 0.0
 		) -> void:
+	creater = bullet_creater
 	position = bullet_pos
 	rotation = bullet_dir
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
@@ -34,14 +41,15 @@ func create(
 
 func _ready() -> void:
 	if type == 1:
-		$Sprite.modulate = bullet_color_one
+		bullet_sprite.modulate = bullet_color_one
 	else:
-		$Sprite.modulate = bullet_color_alt
+		bullet_sprite.modulate = bullet_color_alt
 
 
 func _process(delta: float) -> void:
 	position += velocity * delta
-	$Sprite.rotation += 2* PI * delta / 4
+	if creater is EnemyBase:
+		bullet_sprite.rotation += 2* PI * delta / 4
 
 
 func _on_body_entered(body: Node) -> void:
@@ -54,7 +62,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 
-func _on_area_entered(area) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
 		var other_bullet_type: int = area.get_type()
 		if other_bullet_type == type:

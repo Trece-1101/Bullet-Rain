@@ -78,7 +78,7 @@ func _ready() -> void:
 	get_random_explosion_sfx()
 
 
-func _process(delta) -> void:
+func _process(delta: float) -> void:
 	if path != null:
 		move(delta)
 
@@ -132,7 +132,7 @@ func get_random_explosion_sfx() -> void:
 	var rand_sfx = load(explosions_sfx[rand])
 	explosion_sfx.stream = rand_sfx
 
-func _on_area_entered(area) -> void:
+func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet") and can_take_damage:
 		take_damage(area.get_damage())
 

@@ -62,12 +62,6 @@ func _process(_delta: float) -> void:
 func spawn_enemy() -> void:
 	pass
 
-#func spawn_enemy() -> void:
-#	if enemies_spawned < enemy_number:
-#		create_random_enemy()
-#		spawn_timer.start()
-#	else:
-#		spawn_timer.stop()
 
 func create_random_enemy() -> void:
 	var rand_enemy := 0
@@ -125,12 +119,3 @@ func _get_configuration_warning() -> String:
 func check_other_errors() -> Dictionary:
 	return {"value": false, "error": ""}
 
-#func _on_Timer_timeout() -> void:
-#	if is_timered:
-#		spawn_enemy()
-#	else:
-#		check_enemy_status()
-
-#func _on_Enemy_destroyed():
-#	if not is_timered:
-#		spawn_enemy()

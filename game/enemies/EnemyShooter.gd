@@ -56,6 +56,7 @@ func shoot() -> void:
 	for i in range(self.shoot_positions.get_child_count()):
 		var new_bullet := bullet.instance()
 		new_bullet.create(
+				self,
 				self.shoot_positions.get_child(i).global_position,
 				bullet_speed,
 				0.0,
