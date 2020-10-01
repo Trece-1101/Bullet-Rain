@@ -6,4 +6,4 @@
 [node name="WavesLevelOne" type="Node"]
 script = ExtResource( 2 )
 
-[node name="WaveOne" parent="." instance=ExtResource( 1 )]
+[node name="Wave1" parent="." instance=ExtResource( 1 )]

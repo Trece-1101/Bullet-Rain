@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test_enemy_01.png-fe4af437e4f0e637db3abfcf1ab87555.stex"
+path="res://.import/enemy_rotator_a.png-fabef2747c68e6b88c53b9bb3ae720ff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/test_enemy_01.png"
-dest_files=[ "res://.import/test_enemy_01.png-fe4af437e4f0e637db3abfcf1ab87555.stex" ]
+source_file="res://assets/enemies/rotators/enemy_rotator_a.png"
+dest_files=[ "res://.import/enemy_rotator_a.png-fabef2747c68e6b88c53b9bb3ae720ff.stex" ]
 
 [params]
 

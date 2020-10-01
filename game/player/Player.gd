@@ -168,7 +168,7 @@ func take_damage() -> void:
 		if hitpoints == 0:
 			animation_play.stop()
 			animation_play.clear_queue()
-			explosion.play("Explosion")
+			explosion.play("explosion")
 			animation_play.play("destroy")
 		else:
 			animation_play.queue("damage")

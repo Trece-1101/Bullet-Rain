@@ -31,6 +31,8 @@ onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
 onready var motor := $Motor
 onready var animation_player := $AnimationPlayer
+onready var animation_player_2 := $AnimationPlayer2
+onready var explosion_vfx := $Explosion2.get_node("ExplosionPlayer")
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -139,17 +141,18 @@ func _on_area_entered(area: Area2D) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
-	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
+	#sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
 	if hitpoints <= 0:
 		can_take_damage = false
 		emit_signal("enemy_destroyed")
 		animation_player.play("destroy")
 	else:
-		animation_player.play("impact")
+		animation_player_2.play("impact")
 		hit_sfx.play()
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()
+	explosion_vfx.play("explosion")
 
 func disabled_collider() -> void:
 	self.allow_shoot = false
