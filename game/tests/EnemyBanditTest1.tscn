@@ -49,10 +49,6 @@ scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 
 [node name="EnemyBanditTest1" instance=ExtResource( 2 )]
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
 
 [node name="Sprite" parent="." index="0"]
 visible = true
@@ -63,23 +59,21 @@ texture = ExtResource( 1 )
 shape = SubResource( 3 )
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
-position = Vector2( -24.5, 24.5 )
+position = Vector2( -19, 20 )
 script = ExtResource( 3 )
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
-position = Vector2( 24.5, 24.5 )
+position = Vector2( 18, 20 )
 script = ExtResource( 3 )
 
 [node name="GunTimer" parent="." index="4"]
 wait_time = 0.2
 
 [node name="Motor" parent="." index="9"]
-position = Vector2( 0, -48.5 )
+position = Vector2( 0, -40 )
 
 [node name="Explosion" parent="." index="10"]
 one_shot = false
 
 [node name="BulletDestroyParticles" parent="." index="11"]
-scale = Vector2( 5, 5 )
-emitting = false
 process_material = SubResource( 8 )
