@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/02enemyhitpoint.wav-f7536e0ff7058eb4d779a8f154a3f643.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/enemies/hitpoint/02enemyhitpoint.wav"
+dest_files=[ "res://.import/02enemyhitpoint.wav-f7536e0ff7058eb4d779a8f154a3f643.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

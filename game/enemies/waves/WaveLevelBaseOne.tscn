@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/enemies/paths/EnemyPathROne.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/tests/EnemyBanditTest1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/tests/EnemyBanditTest2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=5]
+[ext_resource path="res://game/enemies/paths/EnemyPathCOne.tscn" type="PackedScene" id=6]
+
+[node name="WaveLevelBaseOne" type="Node"]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_vertical_guides_": [ 504.5 ]
+}
+
+[node name="EnemyPathCOne" parent="." instance=ExtResource( 6 )]
+enemies = [ ExtResource( 2 ), ExtResource( 3 ) ]
+enemy_number = 6
+speed = 300
+spawn_enemy_rate = 0.5
+
+[node name="EnemyPathROne" parent="." instance=ExtResource( 1 )]
+enemies = [ ExtResource( 3 ) ]
+enemy_number = 2
+spawn_enemy_rate = 0.6
+are_aimers = true

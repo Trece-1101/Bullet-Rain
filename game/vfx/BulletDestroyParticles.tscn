@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.58296, 0.982063 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 30.0
+initial_velocity_random = 1.0
+angular_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[node name="BulletDestroyParticles" type="Particles2D"]
+scale = Vector2( 1.2, 1.2 )
+amount = 10
+lifetime = 0.5
+explosiveness = 1.0
+visibility_rect = Rect2( -25, -25, 50, 50 )
+process_material = SubResource( 7 )

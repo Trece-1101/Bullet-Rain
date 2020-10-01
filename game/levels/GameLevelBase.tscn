@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/hud/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/bullets/BulletDestroyer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/backgrounds/green/green_laterals.png" type="Texture" id=6]
+[ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
+[ext_resource path="res://assets/backgrounds/green/green_center.png" type="Texture" id=8]
+[ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/levels/waves/WavesLevelBase.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 960, 100, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.1
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 1.0
+
+[node name="GameLevelBase" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 1023.64, 134.891 ],
+"_edit_vertical_guides_": [ 1420.47, 499.773, 20.22, -181.477 ]
+}
+debug_panel = ExtResource( 2 )
+time_to_start_waves = 1.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="screen_shading" type="Sprite" parent="HUD"]
+texture = ExtResource( 7 )
+centered = false
+
+[node name="GUI" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="Estrellas" type="Particles2D" parent="HUD"]
+position = Vector2( 960, -100 )
+amount = 500
+lifetime = 12.0
+preprocess = 10.0
+visibility_rect = Rect2( -960, -100, 1920, 200 )
+process_material = SubResource( 1 )
+
+[node name="BackGrounds" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="BackGrounds"]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 3412 )
+
+[node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( 500, 0 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBorder"]
+motion_mirroring = Vector2( 0, 3412 )
+
+[node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
+modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="BordersContainer" type="Node" parent="."]
+
+[node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 3 )]
+left_border = 500.0
+right_border = 1420.0
+
+[node name="BulletDestroyer" parent="BordersContainer" instance=ExtResource( 5 )]
+
+[node name="EnemyActivator" parent="BordersContainer" instance=ExtResource( 9 )]
+
+[node name="BulletsContainer" type="Node" parent="."]
+
+[node name="WavesLevelBase" parent="." instance=ExtResource( 11 )]
+
+[node name="PlayerInterceptor" parent="." instance=ExtResource( 10 )]

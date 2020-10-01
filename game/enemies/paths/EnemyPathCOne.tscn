@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/PathOutOut.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 610.349, -197.825, 0, 0, 0, 0, 616.706, 115.776, -237.32, -6.35678, 237.32, 6.35678, 936.664, 304.361, 0, 0, 0, 0, 1553.27, 306.48 )
+}
+
+[node name="EnemyPathCOne" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ 1399.22, 500.165 ]
+}
