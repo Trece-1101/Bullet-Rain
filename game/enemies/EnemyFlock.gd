@@ -7,6 +7,7 @@ export var distance := 150
 
 var leader: EnemyBase
 var rot_center := Vector2.ZERO
+var hitpoints := 5
 
 onready var body := $Sprite
 
@@ -23,7 +24,9 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
-		play_explosion()
+		hitpoints -= 1
+		if hitpoints <= 0:
+			play_explosion()
 
 func play_explosion() -> void:
 	$AnimationPlayer.play("die")
