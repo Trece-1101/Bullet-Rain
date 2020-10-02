@@ -68,3 +68,7 @@ wait_time = 0.2
 [node name="Motor" parent="." index="11"]
 position = Vector2( 0, -70 )
 emitting = true
+
+[node name="BulletDestroyParticles" parent="." index="13"]
+visible = false
+emitting = false

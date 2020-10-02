@@ -166,12 +166,15 @@ func take_damage() -> void:
 		hitpoints -= 1
 		hitpoint_sound.play()
 		if hitpoints == 0:
-			animation_play.stop()
-			animation_play.clear_queue()
-			explosion.play("explosion")
-			animation_play.play("destroy")
+			die()
 		else:
 			animation_play.queue("damage")
+
+func die() -> void:
+	animation_play.stop()
+	animation_play.clear_queue()
+	explosion.play("explosion")
+	animation_play.play("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

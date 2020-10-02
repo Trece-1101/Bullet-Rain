@@ -125,8 +125,10 @@ func check_end_of_path() -> void:
 			self.allow_shoot = true
 
 
+
 func check_mid_of_path() -> void:
 	pass
+
 
 func get_random_explosion_sfx() -> void:
 	randomize()
