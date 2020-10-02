@@ -1,14 +1,18 @@
 class_name EnemyFree
 extends EnemyBandit
 
-export var free_speed := 250.0
+#### Variables Export
+export var teletransportation_rate := 1.2
 
+#### Variables
 var is_at_end := false
 
+#### Variables Onready
 onready var new_position_timer := $NewPositionTimer
 
-
-func _ready() -> void:
+#### Metodos
+func _ready() -> void:	
+	new_position_timer.wait_time = teletransportation_rate
 	set_physics_process(false)
 
 func _process(_delta: float) -> void:
@@ -18,8 +22,6 @@ func _physics_process(_delta: float) -> void:
 	aim_to_player()
 	if can_shoot and self.allow_shoot and self.inside_play_screen:
 		shoot()
-	
-	
 
 func aim_to_player() -> void:
 	if not player == null:
@@ -33,7 +35,6 @@ func check_end_of_path() -> void:
 func go_free_mode() -> void:
 	set_process(false)
 	set_physics_process(true)
-	self.speed = free_speed
 	new_position_timer.start()
 
 func choose_new_position() -> Vector2:
