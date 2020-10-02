@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bulletdestroy11.wav-f8b28399f21eca3c7b49596143be879f.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy11.wav"
+dest_files=[ "res://.import/bulletdestroy11.wav-f8b28399f21eca3c7b49596143be879f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

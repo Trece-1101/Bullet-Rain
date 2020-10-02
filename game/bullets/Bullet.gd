@@ -13,6 +13,7 @@ var creater: Object
 
 #### Variables onready
 onready var bullet_sprite := $Sprite
+onready var destroy_sound := $DestroySFX
 
 #### Setters y Getters
 func get_damage() -> float:
@@ -75,3 +76,6 @@ func _on_area_entered(area: Area2D) -> void:
 func destroy() -> void:
 	velocity = Vector2.ZERO
 	$AnimationPlayer.play("impact")
+	
+func destroy_sfx() -> void:
+	destroy_sound.play()

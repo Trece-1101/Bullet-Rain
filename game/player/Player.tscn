@@ -3,14 +3,14 @@
 [ext_resource path="res://assets/player/player_stealth.png" type="Texture" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://game/bullets/BulletPlayer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sounds/sfx/player/shoot/07shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/sfx/player/shoot/09shoot.wav" type="AudioStream" id=4]
 [ext_resource path="res://game/player/extras/Trail2D.gd" type="Script" id=5]
 [ext_resource path="res://game/player/extras/Combustion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sounds/sfx/player/hitpoint/04hitpoint.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/sfx/player/explosion/02explosion.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/player/extras/shoot.png" type="Texture" id=9]
 [ext_resource path="res://game/player/extras/emitting_light.tres" type="Material" id=10]
-[ext_resource path="res://assets/sounds/sfx/player/bulletchange/bulletchange06.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/sfx/player/bulletchange/bulletchange08.wav" type="AudioStream" id=11]
 [ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve" id=1]
@@ -435,5 +435,6 @@ bus = "Player"
 
 [node name="BulletChangeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -10.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
