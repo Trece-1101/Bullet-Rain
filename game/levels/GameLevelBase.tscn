@@ -90,8 +90,6 @@ right_border = 1420.0
 [node name="BulletsContainer" type="Node" parent="."]
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
-make_paths_invisible = false
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
-hitpoints = 4
 is_in_god_mode = true
