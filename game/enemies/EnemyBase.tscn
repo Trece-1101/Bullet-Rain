@@ -344,7 +344,6 @@ process_material = SubResource( 15 )
 texture = ExtResource( 2 )
 
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 5 )]
-visible = false
 scale = Vector2( 3, 3 )
 emitting = false
 amount = 15

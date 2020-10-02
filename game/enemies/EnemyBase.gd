@@ -125,7 +125,6 @@ func check_end_of_path() -> void:
 			self.allow_shoot = true
 
 
-
 func check_mid_of_path() -> void:
 	pass
 
@@ -145,12 +144,15 @@ func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	#sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
 	if hitpoints <= 0:
-		can_take_damage = false
-		emit_signal("enemy_destroyed")
-		animation_player.play("destroy")
+		die()
 	else:
 		animation_player_2.play("impact")
 		hit_sfx.play()
+
+func die() -> void:
+	can_take_damage = false
+	emit_signal("enemy_destroyed")
+	animation_player.play("destroy")
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()
