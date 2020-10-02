@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=1]
+[ext_resource path="res://game/ui/buttons/ChangeSceneButton.gd" type="Script" id=2]
+
+[node name="ButtonChangerTest" type="Button"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 150, 0 )
+theme = ExtResource( 1 )
+text = "Button"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

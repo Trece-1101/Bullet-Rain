@@ -194,7 +194,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=5]
 resource_name = "init"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BulletDestroyParticles:emitting")
@@ -307,7 +307,7 @@ anims/spawn = ExtResource( 8 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/impact = ExtResource( 7 )
-anims/init = SubResource( 21 )
+anims/init = SubResource( 5 )
 
 [node name="Explosion2" parent="." instance=ExtResource( 9 )]
 scale = Vector2( 0.6, 0.6 )
