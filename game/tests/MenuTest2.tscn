@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/tests/ButtonChangerTest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=2]
-[ext_resource path="res://game/ui/buttons/ChangeSceneButton.gd" type="Script" id=3]
 [ext_resource path="res://game/ui/menus/Menu.gd" type="Script" id=4]
 
 [node name="MenuTest2" type="Control"]
@@ -12,7 +11,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-containers = [ "ButtonContainer" ]
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
@@ -25,6 +23,15 @@ margin_right = 186.0
 margin_bottom = -263.5
 theme = ExtResource( 2 )
 text = "Test Menu 2"
+
+[node name="MenuTest2" parent="." instance=ExtResource( 1 )]
+margin_left = 819.0
+margin_top = 889.105
+margin_right = 1101.0
+margin_bottom = 923.105
+size_flags_horizontal = 3
+text = "A menu test"
+go_to_scene = "res://game/tests/MenuTest.tscn"
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -43,29 +50,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuTest" type="Button" parent="ButtonContainer" instance=ExtResource( 1 )]
+[node name="MenuTest" parent="ButtonContainer" instance=ExtResource( 1 )]
 margin_right = 282.0
 margin_bottom = 34.0
-rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
-theme = ExtResource( 2 )
 text = "A menu test"
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 go_to_scene = "res://game/tests/MenuTest.tscn"
 
-[node name="MenuTest3" type="Button" parent="ButtonContainer" instance=ExtResource( 1 )]
+[node name="MenuTest3" parent="ButtonContainer" instance=ExtResource( 1 )]
 margin_top = 84.0
 margin_right = 282.0
 margin_bottom = 118.0
-rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
-theme = ExtResource( 2 )
 text = "A menu test 3"
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 go_to_scene = "res://game/tests/MenuTest3.tscn"

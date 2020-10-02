@@ -3,15 +3,18 @@ extends EnemyBandit
 
 #### Variables Export
 export var teletransportation_rate := 1.2
+export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
 
 #### Variables
 var is_at_end := false
+var limits := {"left": 0.0, "right": 0.0, "up": 0.0, "down": 0.0}
 
 #### Variables Onready
 onready var new_position_timer := $NewPositionTimer
 
 #### Metodos
-func _ready() -> void:	
+func _ready() -> void:
+	check_cuadrant()
 	new_position_timer.wait_time = teletransportation_rate
 	set_physics_process(false)
 
@@ -22,6 +25,55 @@ func _physics_process(_delta: float) -> void:
 	aim_to_player()
 	if can_shoot and self.allow_shoot and self.inside_play_screen:
 		shoot()
+
+func check_cuadrant() -> void:
+	match cuadrant:
+		1: 
+			limits.left = 560.0
+			limits.right = 960.0
+			limits.up = 140.0
+			limits.down = 600.0
+		2:
+			limits.left = 560.0
+			limits.right = 960.0
+			limits.up = 370.0
+			limits.down = 600.0
+		3:
+			limits.left = 560.0
+			limits.right = 960.0
+			limits.up = 140.0
+			limits.down = 600.0
+		4:
+			limits.left = 960.0
+			limits.right = 1360.0
+			limits.up = 140.0
+			limits.down = 370.0
+		5:
+			limits.left = 560.0
+			limits.right = 1360.0
+			limits.up = 140.0
+			limits.down = 370.0
+		8:
+			limits.left = 960.0
+			limits.right = 1360.0
+			limits.up = 140.0
+			limits.down = 370.0
+		10:
+			limits.left = 560.0
+			limits.right = 1360.0
+			limits.up = 370.0
+			limits.down = 600.0
+		12:
+			limits.left = 960.0
+			limits.right = 1360.0
+			limits.up = 140.0
+			limits.down = 600.0
+		_:
+			limits.left = 560.0
+			limits.right = 1360.0
+			limits.up = 140.0
+			limits.down = 600.0
+
 
 func aim_to_player() -> void:
 	if not player == null:
@@ -39,14 +91,9 @@ func go_free_mode() -> void:
 
 func choose_new_position() -> Vector2:
 	randomize()
-	# Izq_superior [580, 140]
-	# Der_superior [1340, 140]
-	# Izq_inferior [580, 430]
-	# Der_inferior [1340, 430]
-	var new_position_x := rand_range(580, 1341)
-	var new_position_y := rand_range(140, 431)
+	var new_position_x := rand_range(limits.left, limits.right)
+	var new_position_y := rand_range(limits.up, limits.down)	
 	return Vector2(new_position_x, new_position_y)
-
 
 
 func _on_NewPositionTimer_timeout() -> void:
