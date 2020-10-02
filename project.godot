@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/bullets/Bullet.gd"
 }, {
+"base": "Button",
+"class": "ChangeSceneButton",
+"language": "GDScript",
+"path": "res://game/ui/buttons/ChangeSceneButton.gd"
+}, {
 "base": "EnemyShooter",
 "class": "EnemyBandit",
 "language": "GDScript",
@@ -53,6 +58,11 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://game/levels/Level.gd"
+}, {
+"base": "Control",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://game/ui/menus/Menu.gd"
 }, {
 "base": "EnemyPath",
 "class": "PathEndIn",
@@ -116,6 +126,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "",
+"ChangeSceneButton": "",
 "EnemyBandit": "",
 "EnemyBase": "",
 "EnemyFlock": "",
@@ -124,6 +135,7 @@ _global_script_class_icons={
 "EnemyRotator": "",
 "EnemyShooter": "",
 "Level": "",
+"Menu": "",
 "PathEndIn": "",
 "PathEndOut": "",
 "PathGroup": "",

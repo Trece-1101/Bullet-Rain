@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/tests/ButtonChangerTest.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=2]
+
+[node name="MenuTest3" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -185.5
+margin_top = -288.5
+margin_right = 185.5
+margin_bottom = -239.5
+theme = ExtResource( 2 )
+text = "Test Menu 3"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = -113.999
+margin_right = 141.0
+margin_bottom = 290.001
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer3"]
+margin_right = 282.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuTest" parent="VBoxContainer3/VBoxContainer2" instance=ExtResource( 1 )]
+margin_right = 282.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "A menu test"
+go_to_scene = "res://game/tests/MenuTest.tscn"
+
+[node name="MenuTest2" parent="VBoxContainer3/VBoxContainer2" instance=ExtResource( 1 )]
+margin_top = 84.0
+margin_right = 282.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+text = "A menu test 2"
+go_to_scene = "res://game/tests/MenuTest2.tscn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer3"]
+margin_top = 204.0
+margin_right = 282.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuTest" parent="VBoxContainer3/VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 282.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+text = "A menu test"
+go_to_scene = "res://game/tests/MenuTest.tscn"
+
+[node name="MenuTest2" parent="VBoxContainer3/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 84.0
+margin_right = 282.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+text = "A menu test 2"
+go_to_scene = "res://game/tests/MenuTest2.tscn"
