@@ -31,6 +31,8 @@ onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
 onready var motor := $Motor
 onready var animation_player := $AnimationPlayer
+onready var animation_player_2 := $AnimationPlayer2
+onready var explosion_vfx := $Explosion2.get_node("ExplosionPlayer")
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -84,7 +86,7 @@ func _process(delta: float) -> void:
 
 
 func get_top_level() -> Node:
-	var parent := get_parent()
+	var parent := get_parent()	
 	while not "GameLevel" in parent.name:
 		parent = parent.get_parent()
 	
@@ -126,6 +128,7 @@ func check_end_of_path() -> void:
 func check_mid_of_path() -> void:
 	pass
 
+
 func get_random_explosion_sfx() -> void:
 	randomize()
 	var rand = int(rand_range(0, explosions_sfx.size()))
@@ -139,17 +142,21 @@ func _on_area_entered(area: Area2D) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
-	sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
+	#sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
 	if hitpoints <= 0:
-		can_take_damage = false
-		emit_signal("enemy_destroyed")
-		animation_player.play("destroy")
+		die()
 	else:
-		animation_player.play("impact")
+		animation_player_2.play("impact")
 		hit_sfx.play()
+
+func die() -> void:
+	can_take_damage = false
+	emit_signal("enemy_destroyed")
+	animation_player.play("destroy")
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()
+	explosion_vfx.play("explosion")
 
 func disabled_collider() -> void:
 	self.allow_shoot = false

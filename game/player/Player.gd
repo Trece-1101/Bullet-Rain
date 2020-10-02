@@ -27,6 +27,7 @@ var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
 var bullet_speed_using := 0
+var movement_bonus := 0.0
 
 
 #### Variables Onready
@@ -75,6 +76,10 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		movement = speed_using * get_direction().normalized()
+		if movement.y >= 0:
+			movement_bonus = 0
+		else:
+			movement_bonus = -100.0
 	# warning-ignore:return_value_discarded
 
 		move_and_slide(movement, Vector2.ZERO)
@@ -146,7 +151,7 @@ func shoot() -> void:
 		new_bullet.create(
 				self,
 				shoot_positions.get_child(i).global_position,
-				bullet_speed_using,
+				bullet_speed_using + movement_bonus,
 				0.0,
 				bullet_type,
 				bullet_damage)
@@ -161,12 +166,15 @@ func take_damage() -> void:
 		hitpoints -= 1
 		hitpoint_sound.play()
 		if hitpoints == 0:
-			animation_play.stop()
-			animation_play.clear_queue()
-			explosion.play("Explosion")
-			animation_play.play("destroy")
+			die()
 		else:
 			animation_play.queue("damage")
+
+func die() -> void:
+	animation_play.stop()
+	animation_play.clear_queue()
+	explosion.play("explosion")
+	animation_play.play("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

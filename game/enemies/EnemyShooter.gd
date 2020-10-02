@@ -67,22 +67,23 @@ func shoot() -> void:
 
 
 func check_mid_of_path() -> void:
-	if self.follow.unit_offset >= mid_point and path.get_is_timered() and not shoot_lines.mid_stop:
-		shoot_lines.mid_stop = true
-		self.speed = 0.0
-		mid_stoper_timer.start()
+	if self.is_stopper:
+		if self.follow.unit_offset >= mid_point and not shoot_lines.mid_stop:
+			shoot_lines.mid_stop = true
+			self.speed = 0.0
+			mid_stoper_timer.start()
 
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
 func _on_MidStoperTimer_timeout() -> void:
-	self.speed = original_speed * 1.0
+	self.speed = original_speed * 0.6
 
 func create_random_mid_point() -> float:
 	randomize()
-	mid_stoper_timer.wait_time = rand_range(2.5, 3)
-	return rand_range(0.45, 0.55)
+	mid_stoper_timer.wait_time = rand_range(2, 2.5)
+	return rand_range(0.48, 0.52)
 
 func disabled_collider() -> void:
 	.disabled_collider()

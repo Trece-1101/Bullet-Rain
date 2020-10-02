@@ -12,6 +12,8 @@ export(float, 50, 1000) var speed := 200
 export var allow_enemy_shoot := true
 export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
+export var is_stopper := false
+export var make_invisible := false setget set_make_invisible
 export var debug := false
 
 
@@ -21,7 +23,6 @@ var full_path_out := false
 var spawn_timer: Timer
 var is_timered := true
 var start_inside_screen := false
-var is_stopper := false
 var end_of_path := 1.0
 
 #### Setters y Getters
@@ -31,6 +32,10 @@ func get_enemy_number() -> int:
 func get_is_timered() -> bool:
 	return is_timered
 
+func set_make_invisible(value: bool) -> void:
+	if value:
+		if Engine.editor_hint:
+			visible = false
 
 #### Metodos
 func _ready() -> void:
