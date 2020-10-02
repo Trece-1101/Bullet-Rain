@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyFree.gd" type="Script" id=2]
+
+[node name="EnemyFree" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+bullet = null
+cuadrant = 15
+
+[node name="NewPositionTimer" type="Timer" parent="." index="14"]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="NewPositionTimer" to="." method="_on_NewPositionTimer_timeout"]

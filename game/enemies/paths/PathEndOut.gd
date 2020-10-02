@@ -3,7 +3,6 @@ extends EnemyPath
 
 #### Metodos
 func _ready() -> void:
-	self.is_stopper = true
 	create_timer()
 
 func at_end_of_path() -> String:

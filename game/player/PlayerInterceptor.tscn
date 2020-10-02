@@ -6,16 +6,11 @@
 [node name="PlayerInterceptor" instance=ExtResource( 1 )]
 position = Vector2( 960, 919 )
 speed = 710.0
-bullet_damage = 3.5
+bullet_damage = 7.7
 shooting_rate = 0.14
 color_trail = Color( 0.878431, 0.878431, 0.113725, 1 )
 
-[node name="Trail2D" parent="TrailPoint" index="0"]
-visible = true
-resolution = 5.0
-
 [node name="Sprite" parent="." index="3"]
-visible = true
 texture = ExtResource( 2 )
 
 [node name="GunTimer" parent="." index="6"]
@@ -24,11 +19,5 @@ wait_time = 0.14
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -14, 2 )
 
-[node name="LeftCannon" parent="ShootPositions/Left" index="0"]
-visible = true
-
 [node name="Right" parent="ShootPositions" index="1"]
 position = Vector2( 14, 2 )
-
-[node name="RightCannon" parent="ShootPositions/Right" index="0"]
-visible = true

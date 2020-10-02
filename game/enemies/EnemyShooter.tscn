@@ -118,6 +118,7 @@ stream = ExtResource( 4 )
 volume_db = -15.0
 bus = "Enemy"
 
+
 [node name="Motor" parent="." index="9"]
 process_material = SubResource( 7 )
 
@@ -125,6 +126,7 @@ process_material = SubResource( 7 )
 process_material = SubResource( 12 )
 
 [node name="BulletDestroyParticles" parent="." index="11"]
+
 process_material = SubResource( 17 )
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]

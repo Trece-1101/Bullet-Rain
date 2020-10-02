@@ -5,7 +5,7 @@
 
 [node name="PlayerBomber" instance=ExtResource( 1 )]
 speed = 670.0
-bullet_damage = 4.0
+bullet_damage = 8.8
 shooting_rate = 0.16
 color_trail = Color( 0.862745, 0.384314, 0.745098, 1 )
 
