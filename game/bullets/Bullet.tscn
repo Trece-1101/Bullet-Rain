@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/bullets/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://game/vfx/BulletDestroyParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy04.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/sfx/enemies/bulletdestroy/bulletdestroy11.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "impact"
@@ -62,7 +63,7 @@ tracks/4/path = NodePath("DestroySFX")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -70,6 +71,20 @@ tracks/4/keys = {
 "stream": ExtResource( 3 )
 } ],
 "times": PoolRealArray( 0 )
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "destroy_sfx"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -118,12 +133,13 @@ anims/init = SubResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 1.8, 1.8 )
 z_index = 60
 z_as_relative = false
 
 [node name="DestroySFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -15.0
+stream = ExtResource( 4 )
+volume_db = -25.0
 bus = "SFX"
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
