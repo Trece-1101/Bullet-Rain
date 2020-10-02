@@ -19,20 +19,20 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -40,22 +40,22 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 10 )
-color_ramp = SubResource( 8 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=17]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -67,23 +67,23 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 15 )
-color_ramp = SubResource( 13 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.58296, 0.982063 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=15]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 15 )
 
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="ParticlesMaterial" id=17]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -94,8 +94,8 @@ angular_velocity = 10.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 16 )
+color_ramp = SubResource( 14 )
 
 [node name="EnemyShooter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -118,13 +118,13 @@ stream = ExtResource( 4 )
 volume_db = -15.0
 bus = "Enemy"
 
-[node name="Motor" parent="." index="9"]
-process_material = SubResource( 16 )
+[node name="Motor" parent="." index="11"]
+process_material = SubResource( 7 )
 
-[node name="Explosion" parent="." index="10"]
+[node name="Explosion" parent="." index="12"]
+process_material = SubResource( 12 )
+
+[node name="BulletDestroyParticles" parent="." index="13"]
 process_material = SubResource( 17 )
-
-[node name="BulletDestroyParticles" parent="." index="11"]
-process_material = SubResource( 18 )
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]

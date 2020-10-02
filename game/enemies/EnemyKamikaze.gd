@@ -27,8 +27,7 @@ func check_aim_to_player() -> void:
 	var rot = dir.angle()
 	var rot_look = rot - 1.57
 	rotation = rot_look
-	#var my_rotation = rad2deg(rot_look)
-	#rotation_degrees = my_rotation
+
 
 func go_kamikaze() -> void:
 	set_process(false)
@@ -44,9 +43,9 @@ func go_kamikaze() -> void:
 	)
 	$Tween.start()
 
+
 func play_explosion() -> void:
 	$Explosion2/ExplosionPlayer.play("explosion")
-
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
@@ -59,7 +58,6 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 func _on_ExplosionPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "explosion":
 		queue_free()
-
 
 
 func _on_PlayerDestroyer_body_entered(body: Node) -> void:

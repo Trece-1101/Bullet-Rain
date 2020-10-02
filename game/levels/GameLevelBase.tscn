@@ -30,7 +30,7 @@ scale_random = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 1023.64, 134.891 ],
-"_edit_vertical_guides_": [ 1420.47, 499.773, 20.22, -181.477 ]
+"_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
 debug_panel = ExtResource( 2 )
 time_to_start_waves = 1.0

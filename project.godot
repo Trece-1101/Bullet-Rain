@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyFlock.gd"
 }, {
+"base": "EnemyBandit",
+"class": "EnemyFree",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFree.gd"
+}, {
 "base": "EnemyBase",
 "class": "EnemyKamikaze",
 "language": "GDScript",
@@ -130,6 +135,7 @@ _global_script_class_icons={
 "EnemyBandit": "",
 "EnemyBase": "",
 "EnemyFlock": "",
+"EnemyFree": "",
 "EnemyKamikaze": "",
 "EnemyPath": "",
 "EnemyRotator": "",

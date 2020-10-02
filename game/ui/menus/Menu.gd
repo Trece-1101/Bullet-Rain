@@ -13,8 +13,10 @@ func _ready() -> void:
 
 func get_button_connection(child: Object) -> void:
 	if child is ChangeSceneButton:
+# warning-ignore:return_value_discarded
 		child.connect("pressed", self, "change_menu", [child.go_to_scene])
 
 
 func change_menu(menu: String) -> void:
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(menu)
