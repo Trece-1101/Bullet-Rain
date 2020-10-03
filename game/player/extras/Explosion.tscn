@@ -246,6 +246,7 @@ texture = ExtResource( 2 )
 [node name="Sparkle" type="Particles2D" parent="."]
 position = Vector2( -2.37842, -2.37841 )
 scale = Vector2( 0.2, 0.2 )
+emitting = false
 amount = 64
 lifetime = 0.4
 one_shot = true
@@ -259,6 +260,7 @@ texture = ExtResource( 2 )
 [node name="Sparkle2" type="Particles2D" parent="."]
 position = Vector2( 2.97299, 0.594605 )
 scale = Vector2( 0.2, 0.2 )
+emitting = false
 amount = 64
 lifetime = 0.4
 one_shot = true

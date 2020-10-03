@@ -9,6 +9,5 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 visible = true
 
-[node name="BulletDestroyParticles" parent="." index="13"]
-visible = false
-emitting = false
+[node name="Motor" parent="." index="10"]
+position = Vector2( -1.76858e-12, -17.2217 )

@@ -1,17 +1,13 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.gd" type="Script" id=1]
 [ext_resource path="res://assets/bullets/enemy_bullet.png" type="Texture" id=2]
-[ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/enemies_destroy.tres" type="Animation" id=3]
 [ext_resource path="res://assets/sounds/sfx/enemies/explosion/07enemyexplosion.wav" type="AudioStream" id=4]
-[ext_resource path="res://game/vfx/BulletDestroyParticles.tscn" type="PackedScene" id=5]
-
+[ext_resource path="res://assets/animations/enemies_init.tres" type="Animation" id=5]
 [ext_resource path="res://assets/sounds/sfx/enemies/hitpoint/08enemyhitpoint.wav" type="AudioStream" id=6]
-
-[ext_resource path="res://assets/animations/enemiesimpact.tres" type="Animation" id=7]
 [ext_resource path="res://assets/animations/enemies_spawn.tres" type="Animation" id=8]
 [ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=9]
-
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -27,205 +23,20 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
-[sub_resource type="Animation" id=3]
-length = 3.0
-loop = true
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.4, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_explosion_sfx"
-}, {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "disabled_collider"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Motor:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 0.9, 0.9 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ), Vector2( 0.5, 0.5 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -5.0, 5.0, -5.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:material:shader_param/whitening")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = false
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Explosion:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Motor:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("BulletDestroyParticles:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "init"
-tracks/0/type = "value"
-tracks/0/path = NodePath("BulletDestroyParticles:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=8]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=9]
-curve = SubResource( 8 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=15]
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -233,24 +44,26 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 9 )
-color_ramp = SubResource( 7 )
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="StreamTexture" id=16]
+flags = 4
+load_path = "res://.import/Exhaust_1_000.png-72f189fb24a713465f72161f0abb3b7e.stex"
+
+[sub_resource type="Gradient" id=10]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=12]
-gradient = SubResource( 11 )
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=12]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
 
-
-[sub_resource type="ParticlesMaterial" id=16]
-
+[sub_resource type="ParticlesMaterial" id=14]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -262,35 +75,8 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 14 )
-color_ramp = SubResource( 12 )
-
-[sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.58296, 0.982063 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
-
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
-
-[sub_resource type="Curve" id=18]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=19]
-curve = SubResource( 18 )
-
-[sub_resource type="ParticlesMaterial" id=20]
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 1.0
-angular_velocity = 10.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
-scale_curve = SubResource( 19 )
-color_ramp = SubResource( 17 )
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
 
 [node name="EnemyBase" type="Area2D"]
 z_index = 40
@@ -306,15 +92,11 @@ material = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/destroy = SubResource( 3 )
-anims/init = SubResource( 4 )
+anims/destroy = ExtResource( 3 )
+anims/init = ExtResource( 5 )
 anims/spawn = ExtResource( 8 )
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/impact = ExtResource( 7 )
-anims/init = SubResource( 5 )
-
-[node name="Explosion2" parent="." instance=ExtResource( 9 )]
+[node name="ExplosionFire" parent="." instance=ExtResource( 9 )]
 scale = Vector2( 0.6, 0.6 )
 
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
@@ -336,8 +118,8 @@ z_index = -1
 emitting = false
 amount = 4
 visibility_rect = Rect2( -50, -50, 100, 100 )
-process_material = SubResource( 10 )
-texture = ExtResource( 3 )
+process_material = SubResource( 15 )
+texture = SubResource( 16 )
 
 [node name="Explosion" type="Particles2D" parent="."]
 emitting = false
@@ -346,15 +128,6 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-
-process_material = SubResource( 16 )
-
+process_material = SubResource( 14 )
 texture = ExtResource( 2 )
-
-[node name="BulletDestroyParticles" parent="." instance=ExtResource( 5 )]
-visible = false
-scale = Vector2( 3, 3 )
-amount = 15
-lifetime = 0.3
-process_material = SubResource( 20 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

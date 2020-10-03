@@ -27,19 +27,19 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Motor:emitting")
+tracks/2/path = NodePath("Explosion:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Explosion:emitting")
+tracks/3/path = NodePath("Motor:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -48,7 +48,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Motor:visible")

@@ -31,8 +31,7 @@ onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
 onready var motor := $Motor
 onready var animation_player := $AnimationPlayer
-onready var animation_player_2 := $AnimationPlayer2
-onready var explosion_vfx := $Explosion2.get_node("ExplosionPlayer")
+onready var explosion_vfx := $ExplosionFire/ExplosionPlayer
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -146,7 +145,6 @@ func take_damage(damage: float) -> void:
 	if hitpoints <= 0:
 		die()
 	else:
-		animation_player_2.play("impact")
 		hit_sfx.play()
 
 func die() -> void:
