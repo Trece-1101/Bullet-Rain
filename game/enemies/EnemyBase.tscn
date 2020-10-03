@@ -5,10 +5,13 @@
 [ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/sfx/enemies/explosion/07enemyexplosion.wav" type="AudioStream" id=4]
 [ext_resource path="res://game/vfx/BulletDestroyParticles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sounds/sfx/enemies/hitpoint/04enemyhitpoint.wav" type="AudioStream" id=6]
+
+[ext_resource path="res://assets/sounds/sfx/enemies/hitpoint/08enemyhitpoint.wav" type="AudioStream" id=6]
+
 [ext_resource path="res://assets/animations/enemiesimpact.tres" type="Animation" id=7]
 [ext_resource path="res://assets/animations/enemies_spawn.tres" type="Animation" id=8]
 [ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -245,7 +248,9 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.6833
 [sub_resource type="CurveTexture" id=14]
 curve = SubResource( 13 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+
+[sub_resource type="ParticlesMaterial" id=16]
+
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -319,6 +324,7 @@ bus = "Enemy"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -15.0
 bus = "Enemy"
 
 [node name="Motor" type="Particles2D" parent="."]
@@ -340,10 +346,13 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 15 )
+
+process_material = SubResource( 16 )
+
 texture = ExtResource( 2 )
 
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 5 )]
+visible = false
 scale = Vector2( 3, 3 )
 amount = 15
 lifetime = 0.3
