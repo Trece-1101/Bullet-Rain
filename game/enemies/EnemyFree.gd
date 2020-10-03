@@ -13,6 +13,7 @@ var limits := {"left": 0.0, "right": 0.0, "up": 0.0, "down": 0.0}
 onready var new_position_timer := $NewPositionTimer
 onready var sprite_teleport_ring := $SpriteTeleportRing
 onready var animation_teleport := $AnimationTeleport
+onready var animation_teletransportation := $AnimationTeletrasportation
 
 #### Metodos
 func _ready() -> void:
@@ -114,4 +115,5 @@ func _on_NewPositionTimer_timeout() -> void:
 		animation_teleport.play("spawn_ring")
 		yield(get_tree().create_timer(0.4), "timeout")
 		global_position = new_position
+		animation_teletransportation.play("teleport")
 		new_position_timer.start()
