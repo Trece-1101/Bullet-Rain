@@ -23,20 +23,21 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -44,26 +45,26 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 8 )
-color_ramp = SubResource( 6 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
-[sub_resource type="StreamTexture" id=16]
+[sub_resource type="StreamTexture" id=8]
 flags = 4
 load_path = "res://.import/Exhaust_1_000.png-72f189fb24a713465f72161f0abb3b7e.stex"
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=9]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=13]
-curve = SubResource( 12 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -75,8 +76,8 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 11 )
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
 
 [node name="EnemyBase" type="Area2D"]
 z_index = 40
@@ -118,8 +119,8 @@ z_index = -1
 emitting = false
 amount = 4
 visibility_rect = Rect2( -50, -50, 100, 100 )
-process_material = SubResource( 15 )
-texture = SubResource( 16 )
+process_material = SubResource( 7 )
+texture = SubResource( 8 )
 
 [node name="Explosion" type="Particles2D" parent="."]
 emitting = false
@@ -128,6 +129,6 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 13 )
 texture = ExtResource( 2 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

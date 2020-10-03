@@ -19,20 +19,21 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=13]
+resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -40,14 +41,14 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 8 )
-color_ramp = SubResource( 6 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
-[sub_resource type="Gradient" id=16]
+[sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 16 )
+gradient = SubResource( 8 )
 
 [sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
@@ -82,7 +83,8 @@ script = ExtResource( 3 )
 
 [node name="Motor" parent="." index="10"]
 position = Vector2( 9.10522e-12, -65.0452 )
-process_material = SubResource( 15 )
+emitting = true
+process_material = SubResource( 13 )
 texture = ExtResource( 4 )
 
 [node name="Explosion" parent="." index="11"]

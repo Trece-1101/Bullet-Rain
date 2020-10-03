@@ -35,8 +35,8 @@ func check_aim_to_player() -> void:
 
 func die() -> void:
 	.die()
-	yield(get_tree().create_timer(0.8), "timeout")
 	if floackers.size() > 0:
+		yield(get_tree().create_timer(0.8), "timeout")
 		for floacker in floackers:
 			if floacker != null:
 				floacker.play_explosion()

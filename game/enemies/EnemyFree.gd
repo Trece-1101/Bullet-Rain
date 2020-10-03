@@ -95,6 +95,12 @@ func choose_new_position() -> Vector2:
 	var new_position_y := rand_range(limits.up, limits.down)	
 	return Vector2(new_position_x, new_position_y)
 
+func die() -> void:
+	.die()
+	self.can_shoot = false
+	self.gun_timer.stop()
+	set_physics_process(false)
+	
 
 func _on_NewPositionTimer_timeout() -> void:
 	global_position = choose_new_position()

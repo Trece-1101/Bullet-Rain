@@ -141,7 +141,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
-	#sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
 	if hitpoints <= 0:
 		die()
 	else:
