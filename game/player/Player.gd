@@ -71,7 +71,7 @@ func _ready() -> void:
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
 	bullet_speed_using = bullet_speed
-	bullet_container = check_bullet_container()
+	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
 func _physics_process(_delta: float) -> void:
@@ -111,16 +111,6 @@ func get_direction() -> Vector2:
 			change_state(States.IDLE)
 	
 	return direction
-
-func check_bullet_container() -> Node:
-	return get_tree().get_nodes_in_group("bullets_container")[0]
-#	if owner != null:
-#		if owner.get_node("BulletsContainer") != null:
-#			return owner.get_node("BulletsContainer")
-#		else:
-#			return owner
-#	else:
-#		return self
 
 
 func shoot_input() -> void:
@@ -185,7 +175,6 @@ func disabled_collider() -> void:
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
-
 
 
 func change_state(new_state) -> void:

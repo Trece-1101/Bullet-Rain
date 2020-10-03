@@ -13,8 +13,10 @@ export var allow_enemy_shoot := true
 export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
 export var is_stopper := false
+export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
 export var make_invisible := false setget set_make_invisible
 export var debug := false
+
 
 
 #### Variables
@@ -87,15 +89,19 @@ func create_enemy(rand_enemy: int) -> void:
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_inside_play_screen(start_inside_screen)
 	my_enemy.set_end_of_path(end_of_path)
-	if my_enemy is EnemyKamikaze or my_enemy is EnemyFree:
+	if my_enemy is EnemyKamikaze:
 		my_enemy.set_is_aimer(true)
 		my_enemy.set_is_stopper(false)
+	elif my_enemy is EnemyFree:
+		my_enemy.set_is_aimer(true)
+		my_enemy.set_is_stopper(false)
+		my_enemy.set_cuadrant(cuadrant)
 	elif my_enemy is EnemyRotator:
 		my_enemy.set_is_aimer(false)
 		my_enemy.set_is_stopper(false)
 	else:
 		my_enemy.set_is_aimer(are_aimers)
-		my_enemy.set_is_stopper(is_stopper)
+		my_enemy.set_is_stopper(is_stopper)	
 	check_new_end_of_path()
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)

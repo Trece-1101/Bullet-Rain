@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/enemies/EnemyFree.gd" type="Script" id=2]
+[ext_resource path="res://assets/enemies/kamikazes/enemy_kamikaze_a.png" type="Texture" id=1]
+[ext_resource path="res://game/enemies/EnemyFreeMover.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CircleShape2D" id=1]
+radius = 45.2703
+
+[sub_resource type="Animation" id=2]
 resource_name = "turn_off_engine"
 length = 0.001
 tracks/0/type = "value"
@@ -56,19 +61,29 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="EnemyFree" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
-cuadrant = 15
+[node name="EnemyFreeMoverTest" instance=ExtResource( 2 )]
+z_index = 40
+z_as_relative = false
+collision_layer = 4
+collision_mask = 8
+bullet = ExtResource( 4 )
+cuadrant = 12
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 1 )
+
+[node name="DamageCollider" parent="." index="1"]
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/turn_off_engine = SubResource( 1 )
+anims/turn_off_engine = SubResource( 2 )
 
 [node name="Motor" parent="." index="10"]
-position = Vector2( 0, -25 )
-emitting = false
+visible = false
+rotation = 3.14159
+scale = Vector2( 0.1, 0.1 )
+z_index = -1
+amount = 4
+visibility_rect = Rect2( -50, -50, 100, 100 )
 process_material = SubResource( 7 )
-
-[node name="NewPositionTimer" type="Timer" parent="." index="12"]
-wait_time = 2.0
-one_shot = true
-[connection signal="timeout" from="NewPositionTimer" to="." method="_on_NewPositionTimer_timeout"]
+texture = ExtResource( 3 )
