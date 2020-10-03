@@ -4,23 +4,23 @@
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=1]
 radius = 48.445
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=18]
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -28,22 +28,22 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 10 )
-color_ramp = SubResource( 8 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="Gradient" id=7]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
 
-[sub_resource type="ParticlesMaterial" id=17]
+[sub_resource type="ParticlesMaterial" id=11]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -55,23 +55,23 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 15 )
-color_ramp = SubResource( 13 )
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
 
-[sub_resource type="Gradient" id=19]
+[sub_resource type="Gradient" id=12]
 offsets = PoolRealArray( 0, 0.58296, 0.982063 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
 
-[sub_resource type="GradientTexture" id=20]
-gradient = SubResource( 19 )
+[sub_resource type="GradientTexture" id=13]
+gradient = SubResource( 12 )
 
-[sub_resource type="Curve" id=21]
+[sub_resource type="Curve" id=14]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=22]
-curve = SubResource( 21 )
+[sub_resource type="CurveTexture" id=15]
+curve = SubResource( 14 )
 
-[sub_resource type="ParticlesMaterial" id=23]
+[sub_resource type="ParticlesMaterial" id=16]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -82,19 +82,18 @@ angular_velocity = 10.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 22 )
-color_ramp = SubResource( 20 )
+scale_curve = SubResource( 15 )
+color_ramp = SubResource( 13 )
 
 [node name="EnemyBanditTest2" instance=ExtResource( 2 )]
 bullet_speed = 500
 
 [node name="Sprite" parent="." index="0"]
 visible = true
-scale = Vector2( 1, 1 )
 texture = ExtResource( 1 )
 
 [node name="DamageCollider" parent="." index="1"]
-shape = SubResource( 16 )
+shape = SubResource( 1 )
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 position = Vector2( 0, 59 )
@@ -103,13 +102,12 @@ script = ExtResource( 3 )
 [node name="GunTimer" parent="." index="4"]
 wait_time = 0.3
 
-[node name="Motor" parent="." index="9"]
-visible = false
+[node name="Motor" parent="." index="11"]
 position = Vector2( 0, -58 )
-process_material = SubResource( 18 )
+process_material = SubResource( 6 )
 
-[node name="Explosion" parent="." index="10"]
-process_material = SubResource( 17 )
+[node name="Explosion" parent="." index="12"]
+process_material = SubResource( 11 )
 
-[node name="BulletDestroyParticles" parent="." index="11"]
-process_material = SubResource( 23 )
+[node name="BulletDestroyParticles" parent="." index="13"]
+process_material = SubResource( 16 )

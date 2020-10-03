@@ -171,10 +171,11 @@ func take_damage() -> void:
 			animation_play.queue("damage")
 
 func die() -> void:
-	animation_play.stop()
-	animation_play.clear_queue()
-	explosion.play("explosion")
-	animation_play.play("destroy")
+	if not is_in_god_mode:
+		animation_play.stop()
+		animation_play.clear_queue()
+		explosion.play("explosion")
+		animation_play.play("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

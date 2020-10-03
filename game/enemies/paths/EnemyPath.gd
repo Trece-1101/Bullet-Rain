@@ -80,11 +80,18 @@ func create_enemy(rand_enemy: int) -> void:
 	var my_enemy: EnemyBase = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
-	my_enemy.set_allow_shoot(allow_enemy_shoot)
-	my_enemy.set_is_aimer(are_aimers)
+	my_enemy.set_allow_shoot(allow_enemy_shoot)	
 	my_enemy.set_inside_play_screen(start_inside_screen)
 	my_enemy.set_is_stopper(is_stopper)
 	my_enemy.set_end_of_path(end_of_path)
+	
+	if my_enemy is EnemyKamikaze or my_enemy is EnemyFree:
+		my_enemy.set_is_aimer(true)
+	elif my_enemy is EnemyRotator:
+		my_enemy.set_is_aimer(false)
+	else:
+		my_enemy.set_is_aimer(are_aimers)
+		
 	check_new_end_of_path()
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)

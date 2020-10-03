@@ -1,11 +1,34 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyKamikaze.gd" type="Script" id=2]
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 142.676
+
 [node name="EnemyKamikaze" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Explosion2" parent="." index="4"]
+scale = Vector2( 1.66606, 1.66606 )
+
+[node name="Sparkle" parent="Explosion2" index="5"]
+emitting = false
+
+[node name="Sparkle2" parent="Explosion2" index="6"]
+emitting = false
+
 [node name="BulletDestroyParticles" parent="." index="9"]
 visible = false
-emitting = false
+
+[node name="PlayerDestroyer" type="Area2D" parent="." index="10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDestroyer" index="0"]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="11"]
+[connection signal="animation_finished" from="Explosion2/ExplosionPlayer" to="." method="_on_ExplosionPlayer_animation_finished"]
+[connection signal="body_entered" from="PlayerDestroyer" to="." method="_on_PlayerDestroyer_body_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+
+[editable path="Explosion2"]
