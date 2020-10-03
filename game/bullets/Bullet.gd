@@ -74,6 +74,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func destroy() -> void:
+	$CollisionShape2D.set_deferred("disabled", true)
 	velocity = Vector2.ZERO
 	$AnimationPlayer.play("impact")
 	

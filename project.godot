@@ -39,6 +39,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyFree.gd"
 }, {
+"base": "EnemyFree",
+"class": "EnemyFreeMover",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFreeMover.gd"
+}, {
+"base": "EnemyFree",
+"class": "EnemyFreeTeleporter",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFreeTeleporter.gd"
+}, {
 "base": "EnemyBase",
 "class": "EnemyKamikaze",
 "language": "GDScript",
@@ -136,6 +146,8 @@ _global_script_class_icons={
 "EnemyBase": "",
 "EnemyFlock": "",
 "EnemyFree": "",
+"EnemyFreeMover": "",
+"EnemyFreeTeleporter": "",
 "EnemyKamikaze": "",
 "EnemyPath": "",
 "EnemyRotator": "",

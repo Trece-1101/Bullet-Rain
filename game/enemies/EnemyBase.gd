@@ -11,6 +11,7 @@ export var is_aimer := false setget set_is_aimer
 #### Variables
 var can_take_damage := true
 var player: Player
+var is_alive := true
 var speed := 0.0 setget set_speed
 var path: Path2D setget set_path
 var follow: PathFollow2D
@@ -18,6 +19,7 @@ var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
 var is_stopper := false setget set_is_stopper
+var explosion_limits := Vector2.ZERO
 var explosions_sfx := [
 	"res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav",
 	"res://assets/sounds/sfx/enemies/explosion/05enemyexplosion.wav",
@@ -31,8 +33,8 @@ onready var explosion_sfx := $ExplosionSFX
 onready var damage_collider := $DamageCollider
 onready var motor := $Motor
 onready var animation_player := $AnimationPlayer
-onready var animation_player_2 := $AnimationPlayer2
-onready var explosion_vfx := $Explosion2.get_node("ExplosionPlayer")
+onready var explosion_vfx := $ExplosionFire/ExplosionPlayer
+onready var mini_explosion_vfx := $ExplosionFire2
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -69,6 +71,7 @@ func set_is_stopper(value: bool) -> void:
 
 #### Metodos
 func _ready() -> void:
+	explosion_limits = sprite.texture.get_size() * 0.4
 	if path != null:
 		follow = PathFollow2D.new()
 		path.add_child(follow)
@@ -86,7 +89,7 @@ func _process(delta: float) -> void:
 
 
 func get_top_level() -> Node:
-	var parent := get_parent()	
+	var parent := get_parent()
 	while not "GameLevel" in parent.name:
 		parent = parent.get_parent()
 	
@@ -101,13 +104,12 @@ func get_player() -> void:
 
 
 func move(delta: float) -> void:
-	if (!motor.emitting):
-		motor.emitting = true
 	follow.offset += speed * delta
 	position = follow.global_position
 
 	if is_stopper:
 		 check_mid_of_path()
+	
 	check_end_of_path()
 
 
@@ -117,10 +119,8 @@ func check_end_of_path() -> void:
 		if action == "free":
 			queue_free()
 		elif action == "stop":
-			motor.emitting = false
 			speed = 0.0
 		elif action == "stop and shoot":
-			motor.emitting = false
 			speed = 0.0
 			self.allow_shoot = true
 
@@ -142,14 +142,18 @@ func _on_area_entered(area: Area2D) -> void:
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
-	#sprite.modulate = sprite.modulate.linear_interpolate(Color(1.0, 0.0, 0.0, 1.0), hitpoints * 0.001)
 	if hitpoints <= 0:
 		die()
 	else:
-		animation_player_2.play("impact")
+		randomize()
+		var pos_x := rand_range(-explosion_limits.x, explosion_limits.x)
+		var pos_y := rand_range(-explosion_limits.y, explosion_limits.y)
+		mini_explosion_vfx.position = Vector2(pos_x, pos_y)
+		mini_explosion_vfx.get_node("ExplosionPlayer").play("explosion")
 		hit_sfx.play()
 
 func die() -> void:
+	is_alive = false
 	can_take_damage = false
 	emit_signal("enemy_destroyed")
 	animation_player.play("destroy")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/enemy_g1_a.png-d66b50a1c64aad7c10e974f823c7f3c0.stex"
+path="res://.import/enemy_rotator_g1.png-d7b00a5aa257f0fa4a7523610fa1a692.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/g1/enemy_g1_a.png"
-dest_files=[ "res://.import/enemy_g1_a.png-d66b50a1c64aad7c10e974f823c7f3c0.stex" ]
+source_file="res://assets/enemies/rotators/enemy_rotator_g1.png"
+dest_files=[ "res://.import/enemy_rotator_g1.png-d7b00a5aa257f0fa4a7523610fa1a692.stex" ]
 
 [params]
 

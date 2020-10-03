@@ -3,7 +3,7 @@ extends EnemyBandit
 
 #### Variables Export
 export var teletransportation_rate := 1.2
-export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
+export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0 setget set_cuadrant
 
 #### Variables
 var is_at_end := false
@@ -11,6 +11,11 @@ var limits := {"left": 0.0, "right": 0.0, "up": 0.0, "down": 0.0}
 
 #### Variables Onready
 onready var new_position_timer := $NewPositionTimer
+
+#### Setters y Getters
+func set_cuadrant(value: int) -> void:
+	cuadrant = value
+
 
 #### Metodos
 func _ready() -> void:
@@ -92,10 +97,22 @@ func go_free_mode() -> void:
 func choose_new_position() -> Vector2:
 	randomize()
 	var new_position_x := rand_range(limits.left, limits.right)
-	var new_position_y := rand_range(limits.up, limits.down)	
+	var new_position_y := rand_range(limits.up, limits.down)
 	return Vector2(new_position_x, new_position_y)
+
+func die() -> void:
+	.die()
+	new_position_timer.stop()
+	self.gun_timer.stop()
+	set_physics_process(false)
+	self.can_shoot = false
+	
 
 
 func _on_NewPositionTimer_timeout() -> void:
-	global_position = choose_new_position()
-	new_position_timer.start()
+	if self.is_alive:
+		var new_position := choose_new_position()
+		make_your_move(new_position)
+
+func make_your_move(_new_position: Vector2):
+	pass

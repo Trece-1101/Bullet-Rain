@@ -27,7 +27,9 @@ var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
 var bullet_speed_using := 0
+var bullet_damage_using := 0.0
 var movement_bonus := 0.0
+var damage_penalty := 0.85
 
 
 #### Variables Onready
@@ -63,14 +65,16 @@ func set_move_to_start(value: bool) -> void:
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("player")
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
 	animation_play.play("init")
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
+	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
-	bullet_container = check_bullet_container()
+	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
 func _physics_process(_delta: float) -> void:
@@ -111,15 +115,6 @@ func get_direction() -> Vector2:
 	
 	return direction
 
-func check_bullet_container() -> Node:
-	if owner != null:
-		if owner.get_node("BulletsContainer") != null:
-			return owner.get_node("BulletsContainer")
-		else:
-			return owner
-	else:
-		return self
-
 
 func shoot_input() -> void:
 	if Input.is_action_just_pressed("ui_change_bullet"):
@@ -140,8 +135,10 @@ func change_bullet() -> void:
 	bullet_type *= -1
 	if bullet_type == 1:
 		bullet_speed_using = bullet_speed
+		bullet_damage_using = bullet_damage * 1.0 
 	else:
 		bullet_speed_using = bullet_speed_alt
+		bullet_damage_using = bullet_damage * damage_penalty
 
 func shoot() -> void:
 	animation_effects.play("shoot")
@@ -154,7 +151,7 @@ func shoot() -> void:
 				bullet_speed_using + movement_bonus,
 				0.0,
 				bullet_type,
-				bullet_damage)
+				bullet_damage_using)
 		bullet_container.add_child(new_bullet)
 
 
@@ -183,7 +180,6 @@ func disabled_collider() -> void:
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
-
 
 
 func change_state(new_state) -> void:
