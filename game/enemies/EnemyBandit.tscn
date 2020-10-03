@@ -81,11 +81,13 @@ material = SubResource( 2 )
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 script = ExtResource( 3 )
 
-[node name="Motor" parent="." index="10"]
+[node name="Motor" parent="." index="11"]
 position = Vector2( 9.10522e-12, -65.0452 )
 emitting = true
 process_material = SubResource( 7 )
 texture = ExtResource( 4 )
 
-[node name="Explosion" parent="." index="11"]
+[node name="Explosion" parent="." index="12"]
 process_material = SubResource( 12 )
+
+[editable path="ExplosionFire2"]

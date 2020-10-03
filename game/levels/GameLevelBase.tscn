@@ -33,7 +33,9 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 1023.64, 134.891 ],
 "_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
+debuggeable = true
 debug_panel = ExtResource( 2 )
+send_waves = false
 time_to_start_waves = 1.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -63,7 +65,7 @@ motion_mirroring = Vector2( 0, 3412 )
 
 [node name="BgCenter" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
-position = Vector2( 500, 0 )
+position = Vector2( 500, -1.12244 )
 texture = ExtResource( 8 )
 centered = false
 
@@ -91,6 +93,7 @@ right_border = 1420.0
 [node name="BulletsContainer" parent="." instance=ExtResource( 11 )]
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
+bullet_speed_alt = -850
 is_in_god_mode = true
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]

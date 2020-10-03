@@ -129,6 +129,9 @@ anims/turn_off_engine = SubResource( 3 )
 [node name="ExplosionFire" parent="." instance=ExtResource( 9 )]
 scale = Vector2( 0.6, 0.6 )
 
+[node name="ExplosionFire2" parent="." instance=ExtResource( 9 )]
+scale = Vector2( 0.15, 0.15 )
+
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -20.0
@@ -161,3 +164,5 @@ local_coords = false
 process_material = SubResource( 14 )
 texture = ExtResource( 2 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
+[editable path="ExplosionFire2"]

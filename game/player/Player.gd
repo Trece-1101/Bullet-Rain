@@ -27,7 +27,9 @@ var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
 var bullet_speed_using := 0
+var bullet_damage_using := 0.0
 var movement_bonus := 0.0
+var damage_penalty := 0.85
 
 
 #### Variables Onready
@@ -70,6 +72,7 @@ func _ready() -> void:
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
+	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
@@ -132,8 +135,10 @@ func change_bullet() -> void:
 	bullet_type *= -1
 	if bullet_type == 1:
 		bullet_speed_using = bullet_speed
+		bullet_damage_using = bullet_damage * 1.0 
 	else:
 		bullet_speed_using = bullet_speed_alt
+		bullet_damage_using = bullet_damage * damage_penalty
 
 func shoot() -> void:
 	animation_effects.play("shoot")
@@ -146,7 +151,7 @@ func shoot() -> void:
 				bullet_speed_using + movement_bonus,
 				0.0,
 				bullet_type,
-				bullet_damage)
+				bullet_damage_using)
 		bullet_container.add_child(new_bullet)
 
 

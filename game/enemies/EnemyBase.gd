@@ -19,6 +19,7 @@ var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
 var is_stopper := false setget set_is_stopper
+var explosion_limits := Vector2.ZERO
 var explosions_sfx := [
 	"res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav",
 	"res://assets/sounds/sfx/enemies/explosion/05enemyexplosion.wav",
@@ -33,6 +34,7 @@ onready var damage_collider := $DamageCollider
 onready var motor := $Motor
 onready var animation_player := $AnimationPlayer
 onready var explosion_vfx := $ExplosionFire/ExplosionPlayer
+onready var mini_explosion_vfx := $ExplosionFire2
 onready var sprite := $Sprite
 
 #### Setters y Getters
@@ -69,6 +71,7 @@ func set_is_stopper(value: bool) -> void:
 
 #### Metodos
 func _ready() -> void:
+	explosion_limits = sprite.texture.get_size() * 0.4
 	if path != null:
 		follow = PathFollow2D.new()
 		path.add_child(follow)
@@ -142,6 +145,11 @@ func take_damage(damage: float) -> void:
 	if hitpoints <= 0:
 		die()
 	else:
+		randomize()
+		var pos_x := rand_range(-explosion_limits.x, explosion_limits.x)
+		var pos_y := rand_range(-explosion_limits.y, explosion_limits.y)
+		mini_explosion_vfx.position = Vector2(pos_x, pos_y)
+		mini_explosion_vfx.get_node("ExplosionPlayer").play("explosion")
 		hit_sfx.play()
 
 func die() -> void:
