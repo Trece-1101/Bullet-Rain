@@ -86,12 +86,6 @@ anims/init = SubResource( 3 )
 
 [node name="Explosion" parent="." instance=ExtResource( 3 )]
 scale = Vector2( 0.3, 0.3 )
-
-[node name="Sparkle" parent="Explosion" index="5"]
-emitting = false
-
-[node name="Sparkle2" parent="Explosion" index="6"]
-emitting = false
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 
 [editable path="Explosion"]

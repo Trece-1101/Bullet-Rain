@@ -32,7 +32,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0,
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -84,7 +84,7 @@ script = ExtResource( 3 )
 [node name="Motor" parent="." index="10"]
 position = Vector2( 9.10522e-12, -65.0452 )
 emitting = true
-process_material = SubResource( 13 )
+process_material = SubResource( 7 )
 texture = ExtResource( 4 )
 
 [node name="Explosion" parent="." index="11"]

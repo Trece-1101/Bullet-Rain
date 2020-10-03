@@ -1,31 +1,60 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyKamikaze.gd" type="Script" id=2]
+[ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+
+[sub_resource type="CircleShape2D" id=6]
 radius = 142.676
 
 [node name="EnemyKamikaze" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Explosion2" parent="." index="3"]
-scale = Vector2( 1.66606, 1.66606 )
-
-[node name="Sparkle" parent="Explosion2" index="5"]
-emitting = false
-
-[node name="Sparkle2" parent="Explosion2" index="6"]
-emitting = false
+[node name="Motor" parent="." index="6"]
+process_material = SubResource( 5 )
 
 [node name="PlayerDestroyer" type="Area2D" parent="." index="8"]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDestroyer" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 6 )
+disabled = true
 
 [node name="Tween" type="Tween" parent="." index="9"]
-[connection signal="animation_finished" from="Explosion2/ExplosionPlayer" to="." method="_on_ExplosionPlayer_animation_finished"]
+
+[node name="ExplosionFire2" parent="." index="10" instance=ExtResource( 3 )]
+scale = Vector2( 2.25042, 2.25042 )
+
+[node name="TimerDestroyer" type="Timer" parent="." index="11"]
+wait_time = 0.2
+one_shot = true
 [connection signal="body_entered" from="PlayerDestroyer" to="." method="_on_PlayerDestroyer_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="TimerDestroyer" to="." method="_on_TimerDestroyer_timeout"]
 
-[editable path="Explosion2"]
+[editable path="ExplosionFire2"]

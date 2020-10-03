@@ -24,6 +24,7 @@ var spawn_timer: Timer
 var is_timered := true
 var start_inside_screen := false
 var end_of_path := 1.0
+var enemy_container_node: Node
 
 #### Setters y Getters
 func get_enemy_number() -> int:
@@ -56,13 +57,16 @@ func create_path() -> void:
 	var enemy_container = Node.new()
 	add_child(enemy_container)
 	enemy_container.name = "Enemies"
+	enemy_container_node = enemy_container
 	spawn_enemy()
 
+
 func _process(_delta: float) -> void:
-	var enemies_remaining = $Enemies.get_child_count()
+	var enemies_remaining = enemy_container_node.get_child_count()
 	if full_path_out and enemies_remaining == 0:
 		emit_signal("full_path_dead")
 		queue_free()
+
 
 func spawn_enemy() -> void:
 	pass
@@ -80,22 +84,22 @@ func create_enemy(rand_enemy: int) -> void:
 	var my_enemy: EnemyBase = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
-	my_enemy.set_allow_shoot(allow_enemy_shoot)	
+	my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_inside_play_screen(start_inside_screen)
-	my_enemy.set_is_stopper(is_stopper)
 	my_enemy.set_end_of_path(end_of_path)
-	
 	if my_enemy is EnemyKamikaze or my_enemy is EnemyFree:
 		my_enemy.set_is_aimer(true)
+		my_enemy.set_is_stopper(false)
 	elif my_enemy is EnemyRotator:
 		my_enemy.set_is_aimer(false)
+		my_enemy.set_is_stopper(false)
 	else:
 		my_enemy.set_is_aimer(are_aimers)
-		
+		my_enemy.set_is_stopper(is_stopper)
 	check_new_end_of_path()
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)
-	$Enemies.add_child(my_enemy)
+	enemy_container_node.add_child(my_enemy)
 	enemies_spawned += 1
 	check_enemy_status()
 	if debug:

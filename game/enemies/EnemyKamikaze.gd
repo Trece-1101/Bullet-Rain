@@ -1,15 +1,20 @@
 class_name EnemyKamikaze
 extends EnemyBase
 
+#### Variables export
 export var dive_speed := 1.5
 export var stop_before_dive := 0.8
 
+#### Variables
 var is_at_end := false
 var player_pos := Vector2.ZERO
+var is_alive := true
 
+#### Variables Onready
 onready var player_destroyer := $PlayerDestroyer/CollisionShape2D
 
 
+#### Metodos
 func _process(_delta: float) -> void:
 	if not player == null:
 		check_aim_to_player()
@@ -19,7 +24,8 @@ func check_end_of_path() -> void:
 	if follow.unit_offset >= self.end_of_path and not is_at_end:
 		is_at_end = true
 		yield(get_tree().create_timer(stop_before_dive), "timeout")
-		go_kamikaze()
+		if is_alive:
+			go_kamikaze()
 
 
 func check_aim_to_player() -> void:
@@ -45,15 +51,17 @@ func go_kamikaze() -> void:
 
 
 func play_explosion() -> void:
-	$Explosion2/ExplosionPlayer.play("explosion")
+	$ExplosionFire2/ExplosionPlayer.play("explosion")
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	play_explosion()
 	player_destroyer.set_deferred("disabled", false)
-	$Sprite.visible = false
-	self.motor.visible = false
-	self.damage_collider.set_deferred("disabled", true)
+	$TimerDestroyer.start()
+	die()
+#	$Sprite.visible = false
+#	self.motor.visible = false
+
 
 func _on_ExplosionPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "explosion":
@@ -63,3 +71,12 @@ func _on_ExplosionPlayer_animation_finished(anim_name: String) -> void:
 func _on_PlayerDestroyer_body_entered(body: Node) -> void:
 	if body is Player:
 		body.die()
+
+func die() -> void:
+	.die()
+	is_alive = false
+	$Tween.stop_all()
+
+
+func _on_TimerDestroyer_timeout() -> void:
+	player_destroyer.set_deferred("disabled", true)

@@ -178,7 +178,7 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 
-[node name="Explosion" type="Node2D"]
+[node name="ExplosionFire" type="Node2D"]
 
 [node name="Smoke" type="Particles2D" parent="."]
 scale = Vector2( 2, 2 )

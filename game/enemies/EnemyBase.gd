@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 
 
 func get_top_level() -> Node:
-	var parent := get_parent()	
+	var parent := get_parent()
 	while not "GameLevel" in parent.name:
 		parent = parent.get_parent()
 	
@@ -100,12 +100,12 @@ func get_player() -> void:
 
 
 func move(delta: float) -> void:
-
 	follow.offset += speed * delta
 	position = follow.global_position
 
 	if is_stopper:
 		 check_mid_of_path()
+	
 	check_end_of_path()
 
 
@@ -115,10 +115,8 @@ func check_end_of_path() -> void:
 		if action == "free":
 			queue_free()
 		elif action == "stop":
-			#motor.emitting = false
 			speed = 0.0
 		elif action == "stop and shoot":
-			#motor.emitting = false
 			speed = 0.0
 			self.allow_shoot = true
 

@@ -97,10 +97,11 @@ func choose_new_position() -> Vector2:
 
 func die() -> void:
 	.die()
-	self.can_shoot = false
+	new_position_timer.stop()
 	self.gun_timer.stop()
 	set_physics_process(false)
-	
+	self.can_shoot = false
+
 
 func _on_NewPositionTimer_timeout() -> void:
 	global_position = choose_new_position()

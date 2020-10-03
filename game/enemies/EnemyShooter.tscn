@@ -5,7 +5,7 @@
 [ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/sfx/enemies/shoot/04enemyshoot.wav" type="AudioStream" id=4]
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float whitening;
@@ -15,8 +15,8 @@ void fragment() {
     COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a);
 }"
 
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 7 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
 [sub_resource type="Gradient" id=3]
@@ -32,7 +32,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0,
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -44,19 +44,19 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
-[sub_resource type="Curve" id=12]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=13]
-curve = SubResource( 12 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -68,8 +68,8 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 11 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 
 [node name="EnemyShooter" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -77,7 +77,7 @@ bullet = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 visible = false
-material = SubResource( 8 )
+material = SubResource( 2 )
 
 [node name="ShootPositions" type="Node2D" parent="." index="3"]
 
@@ -93,9 +93,9 @@ volume_db = -15.0
 bus = "Enemy"
 
 [node name="Motor" parent="." index="10"]
-process_material = SubResource( 9 )
+process_material = SubResource( 7 )
 
 [node name="Explosion" parent="." index="11"]
-process_material = SubResource( 14 )
+process_material = SubResource( 12 )
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]
