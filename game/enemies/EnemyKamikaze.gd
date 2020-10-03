@@ -8,7 +8,7 @@ export var stop_before_dive := 0.8
 #### Variables
 var is_at_end := false
 var player_pos := Vector2.ZERO
-var is_alive := true
+#var is_alive := true
 
 #### Variables Onready
 onready var player_destroyer := $PlayerDestroyer/CollisionShape2D
@@ -24,7 +24,7 @@ func check_end_of_path() -> void:
 	if follow.unit_offset >= self.end_of_path and not is_at_end:
 		is_at_end = true
 		yield(get_tree().create_timer(stop_before_dive), "timeout")
-		if is_alive:
+		if self.is_alive:
 			go_kamikaze()
 
 
@@ -74,7 +74,6 @@ func _on_PlayerDestroyer_body_entered(body: Node) -> void:
 
 func die() -> void:
 	.die()
-	is_alive = false
 	$Tween.stop_all()
 
 

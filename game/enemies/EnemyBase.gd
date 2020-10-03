@@ -11,6 +11,7 @@ export var is_aimer := false setget set_is_aimer
 #### Variables
 var can_take_damage := true
 var player: Player
+var is_alive := true
 var speed := 0.0 setget set_speed
 var path: Path2D setget set_path
 var follow: PathFollow2D
@@ -144,6 +145,7 @@ func take_damage(damage: float) -> void:
 		hit_sfx.play()
 
 func die() -> void:
+	is_alive = false
 	can_take_damage = false
 	emit_signal("enemy_destroyed")
 	animation_player.play("destroy")

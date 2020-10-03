@@ -91,5 +91,6 @@ right_border = 1420.0
 [node name="BulletsContainer" parent="." instance=ExtResource( 11 )]
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
+is_in_god_mode = true
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]

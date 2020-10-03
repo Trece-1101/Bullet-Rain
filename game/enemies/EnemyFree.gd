@@ -11,9 +11,12 @@ var limits := {"left": 0.0, "right": 0.0, "up": 0.0, "down": 0.0}
 
 #### Variables Onready
 onready var new_position_timer := $NewPositionTimer
+onready var sprite_teleport_ring := $SpriteTeleportRing
+onready var animation_teleport := $AnimationTeleport
 
 #### Metodos
 func _ready() -> void:
+	sprite_teleport_ring.set_as_toplevel(true)
 	check_cuadrant()
 	new_position_timer.wait_time = teletransportation_rate
 	set_physics_process(false)
@@ -92,11 +95,12 @@ func go_free_mode() -> void:
 func choose_new_position() -> Vector2:
 	randomize()
 	var new_position_x := rand_range(limits.left, limits.right)
-	var new_position_y := rand_range(limits.up, limits.down)	
+	var new_position_y := rand_range(limits.up, limits.down)
 	return Vector2(new_position_x, new_position_y)
 
 func die() -> void:
 	.die()
+	animation_teleport.play("init")
 	new_position_timer.stop()
 	self.gun_timer.stop()
 	set_physics_process(false)
@@ -104,5 +108,10 @@ func die() -> void:
 
 
 func _on_NewPositionTimer_timeout() -> void:
-	global_position = choose_new_position()
-	new_position_timer.start()
+	if self.is_alive:
+		var new_position := choose_new_position()
+		sprite_teleport_ring.global_position = new_position
+		animation_teleport.play("spawn_ring")
+		yield(get_tree().create_timer(0.4), "timeout")
+		global_position = new_position
+		new_position_timer.start()
