@@ -100,8 +100,7 @@ func get_player() -> void:
 
 
 func move(delta: float) -> void:
-	if (!motor.emitting):
-		motor.emitting = true
+
 	follow.offset += speed * delta
 	position = follow.global_position
 
@@ -116,10 +115,10 @@ func check_end_of_path() -> void:
 		if action == "free":
 			queue_free()
 		elif action == "stop":
-			motor.emitting = false
+			#motor.emitting = false
 			speed = 0.0
 		elif action == "stop and shoot":
-			motor.emitting = false
+			#motor.emitting = false
 			speed = 0.0
 			self.allow_shoot = true
 

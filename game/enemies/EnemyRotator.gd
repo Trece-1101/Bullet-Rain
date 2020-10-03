@@ -13,6 +13,7 @@ func set_is_aimer(_value: bool) -> void:
 #### Metodos
 func _ready() -> void:
 	self.is_aimer = false
+	
 
 
 func _process(delta: float):
