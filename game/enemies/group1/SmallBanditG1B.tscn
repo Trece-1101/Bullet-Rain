@@ -3,23 +3,23 @@
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/g1/enemy_g1_b_small.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=1]
 radius = 26.8215
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -28,14 +28,14 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="SmallBanditG1B" instance=ExtResource( 1 )]
 position = Vector2( 0, 9.51365 )
-hitpoints = 54.0
-bullet_speed = 500
-shooting_rate = 0.3
+hitpoints = 25.0
+bullet_speed = 280
+shooting_rate = 1.2
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -5.35143 )
@@ -43,13 +43,13 @@ texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
 position = Vector2( 0, -8.91905 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( 0, 20.7134 )
 
 [node name="Motor" parent="." index="11"]
 position = Vector2( 1.45519e-11, -39.18 )
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]

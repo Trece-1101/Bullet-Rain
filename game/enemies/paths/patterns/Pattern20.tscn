@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 705.416, -60.0197, -73.7308, -59.4603, 73.7308, 59.4603, 774.39, 158.794, -40.433, -57.0819, 40.433, 57.0819, 1093.1, 289.607, 57.0819, -57.0819, -57.0819, 57.0819, 1083.58, 496.529, 4.75683, -73.7308, -4.75683, 73.7308, 774.39, 555.99, 0, 0, 0, 0, 767.254, 677.289 )
+}
+
+[node name="Pattern20" type="Path2D"]
+position = Vector2( 1884.75, 90.8266 )
+scale = Vector2( -1, 1 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+speed = 160
