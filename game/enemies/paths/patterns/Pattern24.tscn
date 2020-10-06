@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/PathGroupIn.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1171.01, 369.837, 68.0357, -88.1945, -68.0357, 88.1945, 1150.72, 467.687, 0, 0, 0, 0, 966.726, 540.451 )
+}
+
+[node name="Pattern24" type="Path2D"]
+position = Vector2( -71.8376, 0 )
+curve = SubResource( 2 )
+script = ExtResource( 1 )
+enemies = [  ]
+enemy_number = 4
+speed = 220
+allow_enemy_shoot = false
+spawn_enemy_rate = 0.8
+are_aimers = false
+is_stopper = false
+cuadrant = 0
+make_invisible = false
+debug = false

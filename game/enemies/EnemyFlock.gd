@@ -2,7 +2,7 @@ class_name EnemyFlock
 extends Area2D
 
 export var angle := 0.0
-export(float, 0.5, 3.5) var speed := 1.5
+export(float, -3.5, 3.5) var speed := 1.5
 export var distance := 150
 
 var leader: EnemyBase

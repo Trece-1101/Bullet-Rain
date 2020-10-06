@@ -2,6 +2,7 @@ class_name EnemyShooter
 extends EnemyBase
 
 #### Variables Export
+export var is_boss := false setget ,get_is_boss
 export var bullet: PackedScene
 export var bullet_speed := 400
 export var shooting_rate := 1.0
@@ -29,6 +30,9 @@ func set_can_shoot(value: bool) -> void:
 
 func get_can_shoot() -> bool:
 	return can_shoot
+
+func get_is_boss() -> bool:
+	return is_boss
 
 
 #### Metodos
