@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/patterns/PatternMidBossG1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=2]
+
+[node name="WaveMidBossLevelOne" type="Node"]
+script = ExtResource( 2 )
+
+[node name="PatternMidBossG1" parent="." instance=ExtResource( 1 )]
+enemy_number = 1
+allow_enemy_shoot = true
+spawn_enemy_rate = 1.0
+are_aimers = false
+is_stopper = false
+cuadrant = 0
+make_invisible = false
+debug = false

@@ -4,13 +4,13 @@ extends EnemyShooter
 #### Variables
 var aim_error := 0.0
 var is_leader := false
-var floackers := []
+var orbitals := []
 
 #### Metodos
 func _ready() -> void:
 	for child in get_children():
-		if child is EnemyFlock:
-			floackers.append(child)
+		if child is EnemyOrbital:
+			orbitals.append(child)
 	
 	if is_aimer and not player == null:
 		randomize()
@@ -35,8 +35,8 @@ func check_aim_to_player() -> void:
 
 func die() -> void:
 	.die()
-	if floackers.size() > 0:
+	if orbitals.size() > 0:
 		yield(get_tree().create_timer(0.8), "timeout")
-		for floacker in floackers:
-			if floacker != null:
-				floacker.play_explosion()
+		for orbital in orbitals:
+			if orbital != null:
+				orbital.play_explosion()

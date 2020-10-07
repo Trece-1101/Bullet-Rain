@@ -38,7 +38,14 @@ z_as_relative = false
 collision_layer = 4
 collision_mask = 8
 script = ExtResource( 2 )
+hitpoints = 50.0
+speed = 0.0
+is_boss = false
 bullet = ExtResource( 6 )
+bullet_speed = 400
+shooting_rate = 1.0
+test_shoot = false
+teletransportation_rate = 1.2
 cuadrant = 0
 
 [node name="AnimationPlayer" parent="." index="2"]
