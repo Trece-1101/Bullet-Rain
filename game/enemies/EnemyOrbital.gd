@@ -14,3 +14,8 @@ func _process(delta: float) -> void:
 	if leader != null:
 		global_position = leader.global_position + Vector2(cos(angle), sin(angle)) * distance
 		angle += speed * delta
+
+func die() -> void:
+	is_alive = false
+	can_take_damage = false
+	animation_player.play("destroy")

@@ -1,7 +1,6 @@
 class_name EnemyBase
 extends Area2D
-#### Señales
-signal enemy_destroyed()
+
 
 #### Variables Export
 export var hitpoints := 50.0
@@ -97,10 +96,7 @@ func take_damage(damage: float) -> void:
 		hit_sfx.play()
 
 func die() -> void:
-	is_alive = false
-	can_take_damage = false
-	emit_signal("enemy_destroyed")
-	animation_player.play("destroy")
+	pass
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()

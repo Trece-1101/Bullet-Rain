@@ -1,5 +1,7 @@
 class_name EnemyPather
 extends EnemyBase
+#### Señales
+signal enemy_destroyed()
 
 export var is_aimer := false setget set_is_aimer
 
@@ -63,6 +65,10 @@ func check_end_of_path() -> void:
 func check_mid_of_path() -> void:
 	pass
 
-
+func die() -> void:
+	is_alive = false
+	can_take_damage = false
+	emit_signal("enemy_destroyed")
+	animation_player.play("destroy")
 
 

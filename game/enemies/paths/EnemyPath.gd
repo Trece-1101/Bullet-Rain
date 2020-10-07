@@ -83,7 +83,7 @@ func create_random_enemy() -> void:
 	create_enemy(rand_enemy)
 
 func create_enemy(rand_enemy: int) -> void:
-	var my_enemy: EnemyBase = enemies[rand_enemy].instance()
+	var my_enemy: EnemyPather = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
 	my_enemy.set_allow_shoot(allow_enemy_shoot)
