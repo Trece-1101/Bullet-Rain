@@ -5,20 +5,17 @@ signal enemy_destroyed()
 
 #### Variables Export
 export var hitpoints := 50.0
-export var is_aimer := false setget set_is_aimer
+export var speed := 0.0 setget set_speed
 
 
 #### Variables
 var can_take_damage := true
 var player: Player
 var is_alive := true
-var speed := 0.0 setget set_speed
-var path: Path2D setget set_path
-var follow: PathFollow2D
+
 var allow_shoot := true setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
-var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
-var is_stopper := false setget set_is_stopper
+
 var explosion_limits := Vector2.ZERO
 var explosions_sfx := [
 	"res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav",
@@ -41,17 +38,11 @@ onready var sprite := $Sprite
 func set_speed(value: float) -> void:
 	speed = value
 
-func set_path(value: Path2D) -> void:
-	path = value
-
 func set_allow_shoot(value: bool) -> void:
 	allow_shoot = value
 
 func get_allow_shoot() -> bool:
 	return allow_shoot
-
-func set_is_aimer(value: bool) -> void:
-	is_aimer = value
 
 func set_inside_play_screen(value: bool) -> void:
 	inside_play_screen = value
@@ -59,34 +50,14 @@ func set_inside_play_screen(value: bool) -> void:
 func get_inside_play_screen() -> bool:
 	return inside_play_screen
 
-func set_end_of_path(value: float) -> void:
-	end_of_path = value
-
-func get_end_of_path() -> float:
-	return end_of_path
-
-func set_is_stopper(value: bool) -> void:
-	is_stopper = value
-
 
 #### Metodos
 func _ready() -> void:
-	explosion_limits = sprite.texture.get_size() * 0.4
-	if path != null:
-		follow = PathFollow2D.new()
-		path.add_child(follow)
-		follow.loop = false
-
-	if is_aimer:
-		get_player()
-	
+	explosion_limits = sprite.texture.get_size() * 0.4	
 	get_random_explosion_sfx()
 
-
-func _process(delta: float) -> void:
-	if path != null:
-		move(delta)
-
+func _process(_delta: float) -> void:
+	pass
 
 func get_top_level() -> Node:
 	var parent := get_parent()
@@ -95,38 +66,11 @@ func get_top_level() -> Node:
 	
 	return parent
 
-
 func get_player() -> void:
 	for child in get_top_level().get_children():
 		if child is Player:
 			player = child
 			break
-
-
-func move(delta: float) -> void:
-	follow.offset += speed * delta
-	position = follow.global_position
-
-	if is_stopper:
-		 check_mid_of_path()
-	
-	check_end_of_path()
-
-
-func check_end_of_path() -> void:
-	if follow.unit_offset >= self.end_of_path:
-		var action:String = path.at_end_of_path()
-		if action == "free":
-			queue_free()
-		elif action == "stop":
-			speed = 0.0
-		elif action == "stop and shoot":
-			speed = 0.0
-			self.allow_shoot = true
-
-
-func check_mid_of_path() -> void:
-	pass
 
 
 func get_random_explosion_sfx() -> void:

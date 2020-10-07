@@ -4,12 +4,12 @@
 [ext_resource path="res://game/enemies/EnemyRotator.gd" type="Script" id=2]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
 [sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 5 )
+gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
@@ -17,7 +17,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0,
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=5]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -40,7 +40,7 @@ script = ExtResource( 3 )
 
 [node name="Motor" parent="." index="11"]
 position = Vector2( -1.76858e-12, -17.2217 )
-process_material = SubResource( 6 )
+process_material = SubResource( 5 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="ExplosionFire2"]

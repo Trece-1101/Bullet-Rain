@@ -3,12 +3,12 @@
 [ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyKamikaze.gd" type="Script" id=2]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
 [sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 5 )
+gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
@@ -16,7 +16,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0,
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=5]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -34,8 +34,11 @@ radius = 142.676
 [node name="EnemyKamikaze" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="ExplosionFire2" parent="." index="4"]
+scale = Vector2( 2.25042, 2.25042 )
+
 [node name="Motor" parent="." index="7"]
-process_material = SubResource( 7 )
+process_material = SubResource( 5 )
 
 [node name="PlayerDestroyer" type="Area2D" parent="." index="8"]
 collision_layer = 0
@@ -46,16 +49,11 @@ disabled = true
 
 [node name="Tween" type="Tween" parent="." index="9"]
 
-[node name="ExplosionFire2" parent="." index="10"]
-scale = Vector2( 2.25042, 2.25042 )
-
 [node name="TimerDestroyer" type="Timer" parent="." index="11"]
 wait_time = 0.2
 one_shot = true
 [connection signal="body_entered" from="PlayerDestroyer" to="." method="_on_PlayerDestroyer_body_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="TimerDestroyer" to="." method="_on_TimerDestroyer_timeout"]
-
-[editable path="ExplosionFire2"]
 
 [editable path="ExplosionFire2"]

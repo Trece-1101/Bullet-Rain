@@ -1,5 +1,5 @@
 class_name EnemyShooter
-extends EnemyBase
+extends EnemyPather
 
 #### Variables Export
 export var is_boss := false setget ,get_is_boss

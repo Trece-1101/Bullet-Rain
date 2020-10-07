@@ -1,24 +1,28 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/enemies/EnemyFree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/animations/teleport.tres" type="Animation" id=2]
 [ext_resource path="res://assets/enemies/free/telepor_ring_1.png" type="Texture" id=3]
 [ext_resource path="res://game/enemies/EnemyFreeTeleporter.gd" type="Script" id=4]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/animations/enemies_init.tres" type="Animation" id=6]
+[ext_resource path="res://assets/animations/enemies_spawn.tres" type="Animation" id=7]
+[ext_resource path="res://assets/animations/enemies_destroy.tres" type="Animation" id=8]
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=5]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -27,11 +31,10 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "init"
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteTeleportRing:visible")
@@ -99,11 +102,35 @@ tracks/2/keys = {
 }
 
 [node name="EnemyFreeTeleporter" instance=ExtResource( 1 )]
+z_index = 40
+z_as_relative = false
+collision_layer = 4
+collision_mask = 8
 script = ExtResource( 4 )
+hitpoints = 50.0
+speed = 0.0
+is_boss = false
+bullet = ExtResource( 5 )
+bullet_speed = 400
+shooting_rate = 1.0
+test_shoot = false
+teletransportation_rate = 1.2
 cuadrant = 0
 
-[node name="Motor" parent="." index="10"]
-process_material = SubResource( 8 )
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "spawn"
+anims/destroy = ExtResource( 8 )
+anims/init = ExtResource( 6 )
+anims/spawn = ExtResource( 7 )
+
+[node name="Motor" parent="." index="11"]
+visible = false
+rotation = 3.14159
+scale = Vector2( 0.1, 0.1 )
+z_index = -1
+amount = 4
+visibility_rect = Rect2( -50, -50, 100, 100 )
+process_material = SubResource( 5 )
 
 [node name="SpriteTeleportRing" type="Sprite" parent="." index="13"]
 visible = false
@@ -113,8 +140,10 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="AnimationTeleport" type="AnimationPlayer" parent="." index="14"]
-anims/init = SubResource( 1 )
+anims/init = SubResource( 6 )
 anims/spawn_ring = SubResource( 7 )
 
 [node name="AnimationTeletrasportation" type="AnimationPlayer" parent="." index="15"]
 anims/teleport = ExtResource( 2 )
+
+[editable path="ExplosionFire2"]

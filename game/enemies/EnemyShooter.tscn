@@ -92,10 +92,12 @@ stream = ExtResource( 4 )
 volume_db = -15.0
 bus = "Enemy"
 
-[node name="Motor" parent="." index="10"]
+[node name="Motor" parent="." index="11"]
 process_material = SubResource( 7 )
 
-[node name="Explosion" parent="." index="11"]
+[node name="Explosion" parent="." index="12"]
 process_material = SubResource( 12 )
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="MidStoperTimer" to="." method="_on_MidStoperTimer_timeout"]
+
+[editable path="ExplosionFire2"]

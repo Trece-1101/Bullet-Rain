@@ -92,5 +92,7 @@ right_border = 1420.0
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
 bullet_speed_alt = -850
+hitpoints = 4
+is_in_god_mode = false
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]

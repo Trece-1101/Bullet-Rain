@@ -1,5 +1,5 @@
 class_name EnemyKamikaze
-extends EnemyBase
+extends EnemyPather
 
 #### Variables export
 export var dive_speed := 1.5
