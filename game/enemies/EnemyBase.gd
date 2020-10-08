@@ -52,7 +52,11 @@ func get_inside_play_screen() -> bool:
 
 #### Metodos
 func _ready() -> void:
-	explosion_limits = sprite.texture.get_size() * 0.4	
+	set_explosion_vars()
+
+
+func set_explosion_vars() -> void:
+	explosion_limits = sprite.texture.get_size() * 0.4
 	get_random_explosion_sfx()
 
 func _process(_delta: float) -> void:
