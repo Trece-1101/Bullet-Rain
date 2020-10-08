@@ -4,7 +4,13 @@ extends EnemyShooter
 #### Variables
 var aim_error := 0.0
 var is_leader := false
-var orbitals := []
+var orbitals := [] setget ,get_orbitals
+export var orbital_enemy: PackedScene
+
+#### Setters y Getters
+func get_orbitals() -> Array:
+	return orbitals
+
 
 #### Metodos
 func _ready() -> void:
@@ -15,6 +21,14 @@ func _ready() -> void:
 	if is_aimer and not player == null:
 		randomize()
 		aim_error = rand_range(-10.0, 10.0)
+
+
+func create_orbital() -> void:
+	if orbital_enemy != null:
+		var minion := orbital_enemy.instance()
+		minion.create(self, 1.5, 45, 200)
+		add_child(minion)
+		orbitals.append(minion)
 
 
 func _on_AimTimer_timeout() -> void:
@@ -33,10 +47,13 @@ func check_aim_to_player() -> void:
 	bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
 	rotation_degrees = my_rotation
 
+func remove_orbital(orbital: EnemyOrbital) -> void:
+	orbitals.erase(orbital)
+
 func die() -> void:
 	.die()
 	if orbitals.size() > 0:
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.6), "timeout")
 		for orbital in orbitals:
 			if orbital != null:
-				orbital.play_explosion()
+				orbital.die_on_leader_death()

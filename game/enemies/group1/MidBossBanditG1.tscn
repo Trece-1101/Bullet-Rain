@@ -38,6 +38,7 @@ hitpoints = 500.0
 is_boss = true
 bullet_speed = 280
 shooting_rate = 0.8
+orbital_enemy = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -81,8 +82,8 @@ script = ExtResource( 3 )
 bullet_angle = -45.0
 
 [node name="Motor" parent="." index="11"]
-visible = true
 position = Vector2( 2.10567e-11, -117.608 )
+emitting = false
 process_material = SubResource( 6 )
 
 [node name="OrbitalG1" parent="." index="13" instance=ExtResource( 4 )]
