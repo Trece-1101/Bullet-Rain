@@ -80,18 +80,13 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		movement = speed_using * get_direction().normalized()
-		if movement.y >= 0:
-			movement_bonus = 0
-		else:
-			movement_bonus = -100.0
+		movement_bonus = 0.0 if movement.y >= 0 else -100.0
 	# warning-ignore:return_value_discarded
-
+	
 		move_and_slide(movement, Vector2.ZERO)
-
 
 func _process(_delta: float) -> void:
 	shoot_input()
-
 
 func get_direction() -> Vector2:
 	var direction := Vector2(
@@ -108,10 +103,8 @@ func get_direction() -> Vector2:
 			sprite.set_frame(0)
 	
 	if not state in [States.SHOOTING, States.DEAD, States.RESPAWNING]:
-		if direction.length() > 0:
-			change_state(States.MOVING)
-		else:
-			change_state(States.IDLE)
+# warning-ignore:standalone_ternary
+		change_state(States.MOVING) if direction.length() > 0 else change_state(States.IDLE)
 	
 	return direction
 
