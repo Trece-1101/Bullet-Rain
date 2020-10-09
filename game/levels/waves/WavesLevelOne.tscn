@@ -5,6 +5,5 @@
 
 [node name="WavesLevelOne" type="Node"]
 script = ExtResource( 2 )
-make_paths_invisible = false
 
 [node name="WaveMidBossLevelOne" parent="." instance=ExtResource( 1 )]

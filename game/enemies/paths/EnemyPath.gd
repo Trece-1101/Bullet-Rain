@@ -1,5 +1,5 @@
 tool
-class_name EnemyPath
+class_name EnemyPath, "res://assets/enemies/extras/path_img.png"
 extends Path2D
 
 #### Señales

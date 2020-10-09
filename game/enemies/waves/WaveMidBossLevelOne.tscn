@@ -7,11 +7,3 @@
 script = ExtResource( 2 )
 
 [node name="PatternMidBossG1" parent="." instance=ExtResource( 1 )]
-enemy_number = 1
-allow_enemy_shoot = true
-spawn_enemy_rate = 1.0
-are_aimers = false
-is_stopper = false
-cuadrant = 0
-make_invisible = false
-debug = false

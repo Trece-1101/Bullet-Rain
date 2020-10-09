@@ -1,4 +1,4 @@
-class_name Level
+class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
 
 #### Variables Export
