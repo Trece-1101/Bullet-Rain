@@ -1,4 +1,5 @@
 tool
+class_name LevelWaves, "res://assets/enemies/extras/sea-waves.png"
 extends Node
 
 export var make_paths_invisible := false setget set_make_paths_invisible

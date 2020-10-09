@@ -1,5 +1,5 @@
 tool
-class_name Player
+class_name Player, "res://assets/player/extras/player_editor_icon.png"
 extends KinematicBody2D
 
 #### Enumerables
@@ -93,7 +93,7 @@ func get_direction() -> Vector2:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	
+
 	if (direction.x == 0 and sprite.get_frame() != 1):
 		sprite.set_frame(1)
 	else:

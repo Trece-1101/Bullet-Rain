@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/levels/Level.gd"
 }, {
+"base": "Node",
+"class": "LevelWaves",
+"language": "GDScript",
+"path": "res://game/levels/waves/LevelWaves.gd"
+}, {
 "base": "Control",
 "class": "Menu",
 "language": "GDScript",
@@ -145,7 +150,7 @@ _global_script_classes=[ {
 "path": "res://game/player/extras/Trail2D.gd"
 } ]
 _global_script_class_icons={
-"Bullet": "",
+"Bullet": "res://assets/bullets/enemy_bullet_temp.png",
 "ChangeSceneButton": "",
 "EnemyBandit": "",
 "EnemyBase": "",
@@ -159,6 +164,7 @@ _global_script_class_icons={
 "EnemyRotator": "",
 "EnemyShooter": "",
 "Level": "",
+"LevelWaves": "res://assets/enemies/extras/sea-waves.png",
 "Menu": "",
 "PathEndIn": "",
 "PathEndOut": "",
@@ -169,7 +175,7 @@ _global_script_class_icons={
 "PathInOut": "",
 "PathOutIn": "",
 "PathOutOut": "",
-"Player": "",
+"Player": "res://assets/player/extras/player_editor_icon.png",
 "ShootPosition": "",
 "Trail2D": ""
 }

@@ -1,4 +1,4 @@
-class_name Bullet
+class_name Bullet, "res://assets/bullets/enemy_bullet_temp.png"
 extends Area2D
 
 #### Variables Export
@@ -7,8 +7,8 @@ export(Color, RGBA) var bullet_color_alt := Color.yellow
 
 #### Variables
 var velocity := Vector2.ZERO
-var type := 1
-var damage: float
+var type := 1 setget ,get_type
+var damage: float setget ,get_damage
 var creater: Object
 
 #### Variables onready
@@ -38,7 +38,7 @@ func create(
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
 	type = bullet_type
 	damage = bullet_damage
-  
+
 
 func _ready() -> void:
 	if type == 1:
@@ -65,9 +65,9 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet"):
-		var other_bullet_type: int = area.get_type()
-		if other_bullet_type == type:
-			area.destroy()
+		var other_bullet:Bullet = area
+		if other_bullet.get_type() == type:
+			other_bullet.destroy()
 			destroy()
 	else:
 		queue_free()
