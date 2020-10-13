@@ -21,9 +21,10 @@ func get_bullet_type() -> int:
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("shoot_position")
 	if owner != null:
 		parent = owner
-		bullet = owner.get_bullet()
+		bullet = parent.get_bullet()
 	
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
@@ -38,7 +39,7 @@ func shoot_bullet(
 	) -> void:
 		var new_bullet:Bullet = bullet.instance()
 		new_bullet.create(
-			owner,
+			parent,
 			global_position,
 			speed,
 			dir,

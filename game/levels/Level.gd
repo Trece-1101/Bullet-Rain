@@ -16,7 +16,6 @@ onready var hud_layer := $HUD
 #### Metodos
 func _ready() -> void:
 	create_timer()
-	
 	if debuggeable:
 		hud_layer.add_child(debug_panel.instance())
 

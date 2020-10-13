@@ -12,7 +12,7 @@ export var test_shoot := false
 var bullet_rot_correction := 0.0
 var is_shooting := false
 var shoot_lines := {"mid_stop": false}
-var bullet_container: Node
+#var bullet_container: Node
 var original_speed := 0.0
 var mid_point := 0.5
 var can_shoot := true setget set_can_shoot, get_can_shoot
@@ -46,7 +46,7 @@ func _ready() -> void:
 	
 	original_speed = self.speed
 	gun_timer.wait_time = shooting_rate
-	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
+	#bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 	mid_point = create_random_mid_point()
 
 
