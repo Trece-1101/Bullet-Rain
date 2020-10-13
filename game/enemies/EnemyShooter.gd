@@ -34,6 +34,8 @@ func get_can_shoot() -> bool:
 func get_is_boss() -> bool:
 	return is_boss
 
+func get_bullet() -> PackedScene:
+	return bullet
 
 #### Metodos
 func _ready() -> void:
@@ -57,17 +59,26 @@ func shoot() -> void:
 	can_shoot = false
 	self.gun_timer.start()
 	self.shoot_sound.play()
-	for i in range(self.shoot_positions.get_child_count()):
-		var new_bullet := bullet.instance()
-		new_bullet.create(
-				self,
-				self.shoot_positions.get_child(i).global_position,
-				bullet_speed,
-				0.0,
-				self.shoot_positions.get_child(i).get_bullet_type(),
-				1.0,
-				self.shoot_positions.get_child(i).get_bullet_angle() + bullet_rot_correction)
-		bullet_container.add_child(new_bullet)
+	for shoot_position in shoot_positions.get_children():
+		shoot_position.shoot_bullet(
+			bullet_speed,
+			0.0,
+			-1,
+			1.0,
+			bullet_rot_correction
+		)
+	
+#	for i in range(self.shoot_positions.get_child_count()):
+#		var new_bullet := bullet.instance()
+#		new_bullet.create(
+#				self,
+#				self.shoot_positions.get_child(i).global_position,
+#				bullet_speed,
+#				0.0,
+#				self.shoot_positions.get_child(i).get_bullet_type(),
+#				1.0,
+#				self.shoot_positions.get_child(i).get_bullet_angle() + bullet_rot_correction)
+#		bullet_container.add_child(new_bullet)
 
 
 func check_mid_of_path() -> void:

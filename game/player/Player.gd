@@ -33,7 +33,7 @@ var damage_penalty := 0.85
 
 
 #### Variables Onready
-onready var bullet_container: Node
+#onready var bullet_container: Node
 onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
 onready var movement := Vector2.ZERO
@@ -63,6 +63,12 @@ func set_move_to_start(value: bool) -> void:
 	if value:
 		self.position = Vector2(960.0, 920.0)
 
+func get_bullet() -> PackedScene:
+	return bullet
+
+func get_bullet_type() -> int:
+	return bullet_type
+
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
@@ -74,7 +80,7 @@ func _ready() -> void:
 	speed_using = speed
 	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
-	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
+	#bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
 func _physics_process(_delta: float) -> void:
@@ -136,16 +142,24 @@ func change_bullet() -> void:
 func shoot() -> void:
 	animation_effects.play("shoot")
 	shoot_sound.play()
-	for i in range(shoot_positions.get_child_count()):
-		var new_bullet := bullet.instance()
-		new_bullet.create(
-				self,
-				shoot_positions.get_child(i).global_position,
-				bullet_speed_using + movement_bonus,
-				0.0,
-				bullet_type,
-				bullet_damage_using)
-		bullet_container.add_child(new_bullet)
+	for shoot_position in shoot_positions.get_children():
+		shoot_position.shoot_bullet(
+			bullet_speed_using + movement_bonus,
+			0.0,
+			bullet_type,
+			bullet_damage_using
+			)
+	
+#	for i in range(shoot_positions.get_child_count()):
+#		var new_bullet := bullet.instance()
+#		new_bullet.create(
+#				self,
+#				shoot_positions.get_child(i).global_position,
+#				bullet_speed_using + movement_bonus,
+#				0.0,
+#				bullet_type,
+#				bullet_damage_using)
+#		bullet_container.add_child(new_bullet)
 
 
 func _on_GunTimer_timeout() -> void:

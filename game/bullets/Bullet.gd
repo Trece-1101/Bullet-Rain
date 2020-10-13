@@ -31,7 +31,7 @@ func create(
 		bullet_type: int,
 		bullet_damage := 1.0,
 		bullet_angle := 0.0
-		) -> void:
+	) -> void:
 	creater = bullet_creater
 	position = bullet_pos
 	rotation = bullet_dir
@@ -50,7 +50,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta
 	if creater is EnemyBase:
-		bullet_sprite.rotation += 2* PI * delta / 4
+		bullet_sprite.rotation += 2 * PI * delta / 4
 
 
 func _on_body_entered(body: Node) -> void:
