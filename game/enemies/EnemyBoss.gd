@@ -28,6 +28,7 @@ var shield := preload("res://game/enemies/EnemyShield.tscn").instance()
 #onready var shoot_sound := $ShootSFX
 onready var gun_timer := $GunTimer
 onready var wait_timer := $WaitTimer
+onready var shoot_sfx := $ShootSFX
 onready var shoot_positions_container := {
 	1: $ShootPositions1,
 	2: $ShootPositions2
@@ -102,7 +103,8 @@ func add_shoot_positions_to_container(key: String, shoot_positions: ShootPositio
 func shoot(shoot_positions: Node2D) -> void:
 	if not can_shoot:
 		return
-
+	
+	shoot_sfx.play()
 	can_shoot = false
 	gun_timer.start()
 	for shoot_position in shoot_positions.get_children():
@@ -161,4 +163,8 @@ func _on_WaitTimer_timeout() -> void:
 
 
 func die() -> void:
-	pass
+	is_aimer = false
+	can_shoot = false
+	gun_timer.stop()
+	wait_timer.stop()
+	animation_player.play("ultra_destroy")

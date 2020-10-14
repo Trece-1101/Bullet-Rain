@@ -8,8 +8,6 @@ var can_make_move := true
 onready var tween := $Tween
 
 func _ready() -> void:
-	#$ShootPositions1/Two.set_bullet_type(0)
-	#$ShootPositions2/Three.set_bullet_type(0)
 	make_your_move(choose_new_position())
 
 
@@ -34,6 +32,7 @@ func execute_half_life_behavior() -> void:
 func execute_low_life_behavior() -> void:
 	free_speed *= 0.6
 	current_shoot_positions_shooting = shoot_positions_container[2]
+# warning-ignore:narrowing_conversion
 	bullet_speed *= 1.4
 	gun_timer.wait_time = gun_timer.wait_time * 0.85
 

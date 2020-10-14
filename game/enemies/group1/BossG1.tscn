@@ -45,6 +45,7 @@ minion = ExtResource( 5 )
 indestructible_bullets = [ NodePath("ShootPositions1/Two"), NodePath("ShootPositions2/Three") ]
 
 [node name="Sprite" parent="." index="0"]
+rotation = -0.0193925
 texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
@@ -92,5 +93,7 @@ position = Vector2( 0, 257.314 )
 
 [node name="Tween" type="Tween" parent="." index="14"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+
+[editable path="ExplosionFire"]
 
 [editable path="ExplosionFire2"]
