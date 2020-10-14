@@ -51,7 +51,8 @@ process_material = SubResource( 6 )
 
 [node name="One" parent="ShootPositions1" index="0"]
 position = Vector2( 2.24493, 168.545 )
-bullet_angle = 10.0
+bullet_quantity = 4
+angle_separation = 90.0
 
 [node name="One" parent="ShootPositions2" index="0"]
 position = Vector2( 0.943909, 166.122 )

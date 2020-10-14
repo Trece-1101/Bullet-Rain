@@ -40,8 +40,13 @@ func _ready() -> void:
 
 
 func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_correction := 0.0, debug := false) -> void:
-	var ang_sep := -angle_separation
-	for _i in range(bullet_quantity):
+	var cone_range := angle_separation * 0.5
+	var separation := 0.0
+	var defase_pos := bullet_quantity - 1
+	if defase_pos > 1:
+		separation = angle_separation / defase_pos
+	
+	for i in range(bullet_quantity):
 		var new_bullet:Bullet = bullet.instance()
 		new_bullet.create(
 			parent,
@@ -50,10 +55,9 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 			dir,
 			type,
 			damage,
-			bullet_angle + angle_correction + ang_sep
+			bullet_angle + angle_correction + (cone_range - separation * i)
 		)
-		
-		ang_sep += angle_separation
+
 		bullet_container.add_child(new_bullet)
 	
 	if debug:
