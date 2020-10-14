@@ -2,15 +2,15 @@ class_name ShootPosition
 extends Position2D
 
 #### Variables Export
-export var bullet_angle := 0.0
+export var bullet_angle := 0.0 setget set_bullet_angle
 export var bullet_quantity := 1
-export var angle_separation := 0.0
+export var angle_separation := 0.0 setget set_angle_separation
 
 #### Variables
 var bullet_container: Node
 var parent: Object
 var bullet: PackedScene
-var can_shoot := true setget set_can_shoot, get_can_shoot
+#var can_shoot := true setget set_can_shoot, get_can_shoot
 
 #### Variables Onready
 onready var bullet_type := -1
@@ -22,11 +22,12 @@ func get_bullet_angle () -> float:
 func get_bullet_type() -> int:
 	return bullet_type
 
-func set_can_shoot(value: bool) -> void:
-	can_shoot = value
+func set_bullet_angle(value: float) -> void:
+	bullet_angle = value
 
-func get_can_shoot() -> bool:
-	return can_shoot
+func set_angle_separation(value: float) -> void:
+	angle_separation = value
+
 
 #### Metodos
 func _ready() -> void:
@@ -39,10 +40,13 @@ func _ready() -> void:
 
 
 func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_correction := 0.0, debug := false) -> void:
-	if not can_shoot:
-		return
-	var ang_sep := -angle_separation
-	for _i in range(bullet_quantity):
+	var cone_range := angle_separation * 0.5
+	var separation := 0.0
+	var defase_pos := bullet_quantity - 1
+	if defase_pos > 1:
+		separation = angle_separation / defase_pos
+	
+	for i in range(bullet_quantity):
 		var new_bullet:Bullet = bullet.instance()
 		new_bullet.create(
 			parent,
@@ -51,10 +55,9 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 			dir,
 			type,
 			damage,
-			bullet_angle + angle_correction + ang_sep
+			bullet_angle + angle_correction + (cone_range - separation * i)
 		)
-		
-		ang_sep += angle_separation
+
 		bullet_container.add_child(new_bullet)
 	
 	if debug:
@@ -64,3 +67,8 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 			})
 		)
 
+func change_angle(value: float) -> void:
+	bullet_angle += value
+
+func change_separation(value: float) -> void:
+	angle_separation += value

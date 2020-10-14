@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/enemies/group1/BossG1.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -33,6 +34,7 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 1023.64, 134.891 ],
 "_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
+debuggeable = true
 debug_panel = ExtResource( 2 )
 send_waves = false
 time_to_start_waves = 1.0
@@ -94,7 +96,9 @@ right_border = 1420.0
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
 bullet_damage = 10.0
 bullet_speed_alt = -850
-hitpoints = 4
 is_in_god_mode = true
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
+
+[node name="BossG1" parent="." instance=ExtResource( 13 )]
+position = Vector2( 958.916, 199.275 )
