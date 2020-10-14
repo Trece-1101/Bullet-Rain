@@ -46,7 +46,7 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 	var cone_range := angle_separation * 0.5
 	var separation := 0.0
 	var defase_pos := bullet_quantity - 1
-	if defase_pos > 1:
+	if defase_pos > 0:
 		separation = angle_separation / defase_pos
 	
 	for i in range(bullet_quantity):

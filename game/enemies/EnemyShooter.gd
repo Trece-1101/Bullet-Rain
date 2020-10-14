@@ -7,6 +7,7 @@ export var bullet: PackedScene
 export var bullet_speed := 400
 export var shooting_rate := 1.0
 export var test_shoot := false
+export(Array, NodePath) var indestructible_bullets
 
 #### Variables
 var bullet_rot_correction := 0.0
@@ -44,6 +45,9 @@ func _ready() -> void:
 		can_shoot = true
 		inside_play_screen = true
 	
+	if indestructible_bullets.size() > 0:
+		set_indestructible_bullet()
+	
 	original_speed = self.speed
 	gun_timer.wait_time = shooting_rate
 	mid_point = create_random_mid_point()
@@ -62,7 +66,7 @@ func shoot() -> void:
 		shoot_position.shoot_bullet(
 			bullet_speed,
 			0.0,
-			-1,
+			shoot_position.get_bullet_type(),
 			1.0,
 			bullet_rot_correction
 		)
@@ -93,6 +97,12 @@ func _on_GunTimer_timeout() -> void:
 
 func _on_MidStoperTimer_timeout() -> void:
 	self.speed = original_speed * 0.6
+
+
+func set_indestructible_bullet() -> void:
+	for path in indestructible_bullets:
+		get_node(path).set_bullet_type(0)
+
 
 func create_random_mid_point() -> float:
 	randomize()

@@ -10,6 +10,7 @@ export var start_position := Vector2.ZERO
 export var minion_spawn_delay := 1.5
 export(Array, Vector2) var minions_positions := []
 export var minion: PackedScene
+export(Array, NodePath) var indestructible_bullets
 
 #### Variables
 var bullet_rot_correction := 0.0
@@ -49,13 +50,15 @@ func get_bullet() -> PackedScene:
 
 #### Metodos
 func _ready() -> void:
+	if indestructible_bullets.size() > 0:
+		set_indestructible_bullet()
 	global_position = start_position
 	original_hitpoints = hitpoints
 	current_shoot_positions_shooting = shoot_positions_container[1]
 	#ToDo: borrar esto en el build definitivo
-	if test_shoot:
-		can_shoot = true
-		self.allow_shoot = true
+#	if test_shoot:
+	can_shoot = true
+	self.allow_shoot = true
 	
 	original_speed = self.speed
 	get_player()
@@ -76,6 +79,9 @@ func _process(_delta: float) -> void:
 	if can_shoot and self.allow_shoot:
 		manage_shooting()
 
+func set_indestructible_bullet() -> void:
+	for path in indestructible_bullets:
+		get_node(path).set_bullet_type(0)
 
 func manage_shooting() -> void:
 	pass
@@ -155,4 +161,4 @@ func _on_WaitTimer_timeout() -> void:
 
 
 func die() -> void:
-	queue_free()
+	pass

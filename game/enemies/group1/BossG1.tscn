@@ -40,8 +40,9 @@ hitpoints = 2500.0
 bullet_speed = 220
 start_position = Vector2( 960, 40 )
 minion_spawn_delay = 1.0
-minions_positions = [ Vector2( 960, 650 ), Vector2( 660, 550 ), Vector2( 1260, 550 ) ]
+minions_positions = [ Vector2( 960, 550 ), Vector2( 660, 480 ), Vector2( 1260, 480 ) ]
 minion = ExtResource( 5 )
+indestructible_bullets = [ NodePath("ShootPositions1/Two"), NodePath("ShootPositions2/Three") ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
