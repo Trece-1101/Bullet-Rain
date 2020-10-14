@@ -3,6 +3,8 @@ extends Position2D
 
 #### Variables Export
 export var bullet_angle := 0.0
+export var bullet_quantity := 1
+export var angle_separation := 0.0
 
 #### Variables
 var bullet_container: Node
@@ -29,14 +31,9 @@ func _ready() -> void:
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
-func shoot_bullet(
-	speed: float,
-	dir: float,
-	type: int,
-	damage: float,
-	angle_correction := 0.0,
-	debug := false
-	) -> void:
+func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_correction := 0.0, debug := false) -> void:
+	var ang_sep := -angle_separation
+	for _i in range(bullet_quantity):
 		var new_bullet:Bullet = bullet.instance()
 		new_bullet.create(
 			parent,
@@ -45,13 +42,16 @@ func shoot_bullet(
 			dir,
 			type,
 			damage,
-			bullet_angle + angle_correction
+			bullet_angle + angle_correction + ang_sep
 		)
+		
+		ang_sep += angle_separation
 		bullet_container.add_child(new_bullet)
-		if debug:
-			print(
-				"Creador: {c} - Vel: {s} - Daño: {d}".format({
-					"c": owner, "s": speed, "d": damage
-				})
-			)
+	
+	if debug:
+		print(
+			"Creador: {c} - Vel: {s} - Daño: {d}".format({
+				"c": owner, "s": speed, "d": damage
+			})
+		)
 

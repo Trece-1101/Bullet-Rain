@@ -34,6 +34,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
 debug_panel = ExtResource( 2 )
+send_waves = false
 time_to_start_waves = 1.0
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -93,6 +94,7 @@ right_border = 1420.0
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
 bullet_damage = 10.0
 bullet_speed_alt = -850
+hitpoints = 4
 is_in_god_mode = true
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
