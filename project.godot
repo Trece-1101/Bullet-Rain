@@ -159,6 +159,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/ShootPosition.gd"
 }, {
+"base": "ShootPosition",
+"class": "ShootPositionBoss",
+"language": "GDScript",
+"path": "res://game/enemies/ShootPositionBoss.gd"
+}, {
 "base": "Line2D",
 "class": "Trail2D",
 "language": "GDScript",
@@ -195,6 +200,7 @@ _global_script_class_icons={
 "PathOutOut": "",
 "Player": "res://assets/player/extras/player_editor_icon.png",
 "ShootPosition": "",
+"ShootPositionBoss": "",
 "Trail2D": ""
 }
 

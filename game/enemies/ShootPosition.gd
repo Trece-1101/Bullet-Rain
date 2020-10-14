@@ -10,6 +10,7 @@ export var angle_separation := 0.0
 var bullet_container: Node
 var parent: Object
 var bullet: PackedScene
+var can_shoot := true setget set_can_shoot, get_can_shoot
 
 #### Variables Onready
 onready var bullet_type := -1
@@ -20,6 +21,12 @@ func get_bullet_angle () -> float:
 
 func get_bullet_type() -> int:
 	return bullet_type
+
+func set_can_shoot(value: bool) -> void:
+	can_shoot = value
+
+func get_can_shoot() -> bool:
+	return can_shoot
 
 #### Metodos
 func _ready() -> void:
@@ -32,6 +39,8 @@ func _ready() -> void:
 
 
 func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_correction := 0.0, debug := false) -> void:
+	if not can_shoot:
+		return
 	var ang_sep := -angle_separation
 	for _i in range(bullet_quantity):
 		var new_bullet:Bullet = bullet.instance()
