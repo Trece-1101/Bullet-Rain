@@ -101,7 +101,7 @@ func create_enemy(rand_enemy: int) -> void:
 		my_enemy.set_is_stopper(false)
 	else:
 		my_enemy.set_is_aimer(are_aimers)
-		my_enemy.set_is_stopper(is_stopper)	
+		my_enemy.set_is_stopper(is_stopper)
 	check_new_end_of_path()
 # warning-ignore:return_value_discarded
 	my_enemy.connect("enemy_destroyed", self, "_on_Enemy_destroyed", [], CONNECT_DEFERRED)

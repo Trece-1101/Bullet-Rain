@@ -4,6 +4,7 @@ extends Area2D
 #### Variables Export
 export(Color, RGBA) var bullet_color_one := Color.red
 export(Color, RGBA) var bullet_color_alt := Color.yellow
+export(Color, RGBA) var bullet_color_indestructible := Color.purple
 
 #### Variables
 var velocity := Vector2.ZERO
@@ -41,10 +42,18 @@ func create(
 
 
 func _ready() -> void:
-	if type == 1:
-		bullet_sprite.modulate = bullet_color_one
-	else:
-		bullet_sprite.modulate = bullet_color_alt
+	match type:
+		-1:
+			bullet_sprite.modulate = bullet_color_alt
+		1:
+			bullet_sprite.modulate = bullet_color_one
+		0:
+			bullet_sprite.modulate = bullet_color_indestructible
+		_:
+			print("ERROR")
+		
+#	if type == 1:
+#	else:
 
 
 func _process(delta: float) -> void:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/g1/boss_g1_end.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/group1/BossG1.gd" type="Script" id=3]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=4]
+[ext_resource path="res://game/enemies/group1/MedBanditG1C.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 169.911
@@ -34,8 +36,12 @@ color_ramp = SubResource( 3 )
 
 [node name="BossG1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-hitpoints = 1500.0
-bullet_speed = 400
+hitpoints = 2500.0
+bullet_speed = 220
+start_position = Vector2( 960, 40 )
+minion_spawn_delay = 1.0
+minions_positions = [ Vector2( 960, 650 ), Vector2( 660, 550 ), Vector2( 1260, 550 ) ]
+minion = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -51,14 +57,39 @@ process_material = SubResource( 6 )
 
 [node name="One" parent="ShootPositions1" index="0"]
 position = Vector2( 2.24493, 168.545 )
-bullet_quantity = 4
+bullet_quantity = 5
+angle_separation = 60.0
+
+[node name="Two" type="Position2D" parent="ShootPositions1" index="1"]
+position = Vector2( 0, 136 )
+script = ExtResource( 4 )
+bullet_quantity = 8
 angle_separation = 90.0
 
 [node name="One" parent="ShootPositions2" index="0"]
-position = Vector2( 0.943909, 166.122 )
-bullet_angle = 15.0
+position = Vector2( -80.0561, 69.122 )
+bullet_quantity = 6
+angle_separation = 80.0
 
-[node name="GunTimer" parent="." index="11"]
-wait_time = 0.8
+[node name="Two" type="Position2D" parent="ShootPositions2" index="1"]
+position = Vector2( 82, 69 )
+script = ExtResource( 4 )
+bullet_quantity = 6
+angle_separation = 80.0
+
+[node name="Three" type="Position2D" parent="ShootPositions2" index="2"]
+position = Vector2( 0, 165 )
+script = ExtResource( 4 )
+bullet_quantity = 9
+angle_separation = 90.0
+
+[node name="WaitTimer" parent="." index="12"]
+wait_time = 8.0
+
+[node name="ShieldPosition" parent="." index="13"]
+position = Vector2( 0, 257.314 )
+
+[node name="Tween" type="Tween" parent="." index="14"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 
 [editable path="ExplosionFire2"]

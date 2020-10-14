@@ -9,6 +9,7 @@ var current_wave := 0
 var total_waves := 0
 var send_waves := true
 
+
 func set_make_paths_invisible(value: bool) -> void:
 	if value:
 		if Engine.editor_hint:
@@ -16,6 +17,7 @@ func set_make_paths_invisible(value: bool) -> void:
 				for path in wave.get_children():
 					print(path.name)
 					path.set_make_invisible(true)
+
 
 #### Metodos
 func _ready() -> void:

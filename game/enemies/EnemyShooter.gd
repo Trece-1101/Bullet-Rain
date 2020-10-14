@@ -46,7 +46,6 @@ func _ready() -> void:
 	
 	original_speed = self.speed
 	gun_timer.wait_time = shooting_rate
-	#bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 	mid_point = create_random_mid_point()
 
 

@@ -56,6 +56,8 @@ one_shot = true
 [node name="WaitTimer" type="Timer" parent="." index="12"]
 wait_time = 2.5
 one_shot = true
+
+[node name="ShieldPosition" type="Position2D" parent="." index="13"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 

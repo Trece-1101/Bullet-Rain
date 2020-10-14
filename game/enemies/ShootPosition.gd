@@ -19,6 +19,9 @@ onready var bullet_type := -1
 func get_bullet_angle () -> float:
 	return bullet_angle
 
+func set_bullet_type(value: int) -> void:
+	bullet_type = value
+
 func get_bullet_type() -> int:
 	return bullet_type
 
