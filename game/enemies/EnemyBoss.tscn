@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyBoss.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -30,8 +32,31 @@ color_ramp = SubResource( 2 )
 
 [node name="EnemyBoss" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+hitpoints = 1000.0
+bullet = ExtResource( 4 )
+bullet_speed = 380
 
 [node name="Motor" parent="." index="7"]
 process_material = SubResource( 5 )
+
+[node name="ShootPositions1" type="Node2D" parent="." index="9"]
+
+[node name="One" type="Position2D" parent="ShootPositions1" index="0"]
+script = ExtResource( 3 )
+
+[node name="ShootPositions2" type="Node2D" parent="." index="10"]
+
+[node name="One" type="Position2D" parent="ShootPositions2" index="0"]
+script = ExtResource( 3 )
+
+[node name="GunTimer" type="Timer" parent="." index="11"]
+wait_time = 1.4
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="." index="12"]
+wait_time = 2.5
+one_shot = true
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 
 [editable path="ExplosionFire2"]
