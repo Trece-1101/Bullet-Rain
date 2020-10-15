@@ -32,9 +32,9 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="MedBanditG1C" instance=ExtResource( 2 )]
-hitpoints = 60.0
-bullet_speed = 280
-shooting_rate = 0.6
+hitpoints = 50.0
+bullet_speed = 300
+shooting_rate = 0.8
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
