@@ -2,11 +2,13 @@
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/player/PlayerBomber.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=3]
 
 [node name="GameLevelOne" instance=ExtResource( 1 )]
 send_waves = true
+time_to_start_waves = 2.5
 
-[node name="PlayerBomber" parent="." index="5" instance=ExtResource( 3 )]
+[node name="WavesLevelOne" parent="." index="5" instance=ExtResource( 2 )]
 
-[node name="WavesLevelOne" parent="." index="6" instance=ExtResource( 2 )]
+[node name="PlayerInterceptor" parent="." index="6" instance=ExtResource( 3 )]
+hitpoints = 8

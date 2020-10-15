@@ -1,4 +1,3 @@
-tool
 class_name EnemyPath, "res://assets/enemies/extras/path_img.png"
 extends Path2D
 
@@ -14,7 +13,7 @@ export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
 export var is_stopper := false
 export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
-export var make_invisible := false setget set_make_invisible
+#export var make_invisible := false setget set_make_invisible
 export var debug := false
 
 
@@ -35,10 +34,10 @@ func get_enemy_number() -> int:
 func get_is_timered() -> bool:
 	return is_timered
 
-func set_make_invisible(value: bool) -> void:
-	if value:
-		if Engine.editor_hint:
-			visible = false
+#func set_make_invisible(value: bool) -> void:
+#	if value:
+#		if Engine.editor_hint:
+#			visible = false
 
 #### Metodos
 func _ready() -> void:

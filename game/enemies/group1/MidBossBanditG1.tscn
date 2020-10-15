@@ -34,10 +34,10 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="MidBossBanditG1" instance=ExtResource( 1 )]
-hitpoints = 500.0
+hitpoints = 1000.0
 is_boss = true
-bullet_speed = 280
-shooting_rate = 0.8
+bullet_speed = 260
+shooting_rate = 1.6
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
 orbital_enemy = ExtResource( 4 )
 
@@ -65,6 +65,9 @@ script = ExtResource( 3 )
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 position = Vector2( 65.7611, 49.4976 )
 script = ExtResource( 3 )
+
+[node name="GunTimer" parent="." index="4"]
+wait_time = 2.2
 
 [node name="ExplosionFire" parent="." index="7"]
 scale = Vector2( 1.5, 1.5 )

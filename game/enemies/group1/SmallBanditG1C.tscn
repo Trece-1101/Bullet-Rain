@@ -32,9 +32,8 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="SmallBanditG1C" instance=ExtResource( 2 )]
-hitpoints = 55.0
-bullet_speed = 500
-shooting_rate = 0.6
+hitpoints = 15.0
+shooting_rate = 3.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
@@ -44,6 +43,8 @@ shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( 0, 37.8403 )
+bullet_quantity = 3
+angle_separation = 90.0
 
 [node name="Motor" parent="." index="11"]
 position = Vector2( 4.77401e-12, -45.9964 )
