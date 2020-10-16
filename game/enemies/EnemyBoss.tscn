@@ -1,0 +1,207 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyBoss.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
+[ext_resource path="res://game/bullets/BulletEnemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sounds/sfx/enemies/explosion/04enemyexplosion.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/sfx/enemies/explosion/11enemyexplosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/sfx/enemies/shoot/11enemyshoot.wav" type="AudioStream" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "ultra_destroy"
+length = 5.0
+loop = true
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "disabled_collider"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 5.0, -5.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Explosion:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Motor:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Motor:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("ExplosionSFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0.9, 2.05 )
+}
+tracks/8/type = "animation"
+tracks/8/path = NodePath("ExplosionFire/ExplosionPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": PoolStringArray( "explosion", "explosion" ),
+"times": PoolRealArray( 0.6, 2.15 )
+}
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="EnemyBoss" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+hitpoints = 1000.0
+bullet = ExtResource( 4 )
+bullet_speed = 380
+
+[node name="Sprite" parent="." index="0"]
+rotation = -0.0482751
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/ultra_destroy = SubResource( 1 )
+
+[node name="ExplosionFire" parent="." index="3"]
+scale = Vector2( 2.5, 2.5 )
+
+[node name="ExplosionSFX" parent="." index="6"]
+stream = ExtResource( 5 )
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="7"]
+stream = ExtResource( 7 )
+bus = "Enemy"
+
+[node name="Motor" parent="." index="8"]
+process_material = SubResource( 6 )
+
+[node name="ShootPositions1" type="Node2D" parent="." index="10"]
+
+[node name="One" type="Position2D" parent="ShootPositions1" index="0"]
+script = ExtResource( 3 )
+
+[node name="ShootPositions2" type="Node2D" parent="." index="11"]
+
+[node name="One" type="Position2D" parent="ShootPositions2" index="0"]
+script = ExtResource( 3 )
+
+[node name="GunTimer" type="Timer" parent="." index="12"]
+wait_time = 1.4
+one_shot = true
+
+[node name="WaitTimer" type="Timer" parent="." index="13"]
+wait_time = 2.5
+one_shot = true
+
+[node name="ShieldPosition" type="Position2D" parent="." index="14"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
+
+[editable path="ExplosionFire"]
+
+[editable path="ExplosionFire2"]

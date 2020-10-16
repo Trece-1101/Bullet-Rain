@@ -12,7 +12,7 @@ var can_take_damage := true
 var player: Player
 var is_alive := true
 
-var allow_shoot := true setget set_allow_shoot, get_allow_shoot
+var allow_shoot := false setget set_allow_shoot, get_allow_shoot
 var inside_play_screen := false setget set_inside_play_screen, get_inside_play_screen
 
 var explosion_limits := Vector2.ZERO
