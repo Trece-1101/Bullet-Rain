@@ -23,7 +23,7 @@ var enemies_spawned := 0
 var full_path_out := false
 var spawn_timer: Timer
 var is_timered := true
-var start_inside_screen := false
+var start_inside_screen := false setget set_start_inside_scree, get_start_inside_screen
 var end_of_path := 1.0
 var enemy_container_node: Node
 
@@ -33,6 +33,12 @@ func get_enemy_number() -> int:
 
 func get_is_timered() -> bool:
 	return is_timered
+
+func set_start_inside_scree(value: bool) -> void:
+	start_inside_screen = value
+
+func get_start_inside_screen() -> bool:
+	return start_inside_screen
 
 #func set_make_invisible(value: bool) -> void:
 #	if value:
@@ -85,7 +91,7 @@ func create_enemy(rand_enemy: int) -> void:
 	var my_enemy: EnemyPather = enemies[rand_enemy].instance()
 	my_enemy.set_speed(speed)
 	my_enemy.set_path(self)
-	my_enemy.set_allow_shoot(allow_enemy_shoot)
+	#my_enemy.set_allow_shoot(allow_enemy_shoot)
 	my_enemy.set_inside_play_screen(start_inside_screen)
 	my_enemy.set_end_of_path(end_of_path)
 	if my_enemy is EnemyKamikaze:

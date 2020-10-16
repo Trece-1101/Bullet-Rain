@@ -123,14 +123,14 @@ __meta__ = {
 
 [node name="Pattern1" parent="Wave01" instance=ExtResource( 8 )]
 visible = false
-position = Vector2( 186.4, 0 )
+position = Vector2( 29.5996, 0 )
 enemies = [ ExtResource( 35 ), ExtResource( 14 ) ]
 enemy_number = 3
 spawn_enemy_rate = 6.0
 
 [node name="Pattern6" parent="Wave01" instance=ExtResource( 1 )]
 visible = false
-position = Vector2( 1928.85, 98.5045 )
+position = Vector2( 1882.23, 98.5045 )
 enemies = [ ExtResource( 35 ), ExtResource( 14 ) ]
 enemy_number = 3
 spawn_enemy_rate = 6.0

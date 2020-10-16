@@ -31,12 +31,12 @@ func create_orbital() -> void:
 		orbitals.append(minion)
 
 
-func _on_AimTimer_timeout() -> void:
-	if not player == null:
-		check_aim_to_player()
+#func _on_AimTimer_timeout() -> void:
+#	if not player == null:
+#		check_aim_to_player()
 
 func _process(_delta: float):
-	if is_aimer and not player == null:
+	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
 
 func check_aim_to_player() -> void:

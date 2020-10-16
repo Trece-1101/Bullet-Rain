@@ -74,7 +74,7 @@ func _process(_delta: float) -> void:
 		life_status.low_life = true
 		execute_low_life_behavior()
 	
-	if is_aimer and not player == null:
+	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
 	
 	if can_shoot and self.allow_shoot:
