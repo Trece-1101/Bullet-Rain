@@ -1,21 +1,12 @@
 class_name LevelWaves, "res://assets/enemies/extras/sea-waves.png"
 extends Node
 
-#export var make_paths_invisible := false setget set_make_paths_invisible
+export var big_boss: PackedScene
 
 #### Variables
 var current_wave := 0
 var total_waves := 0
 var send_waves := true
-
-
-#func set_make_paths_invisible(value: bool) -> void:
-#	if value:
-#		if Engine.editor_hint:
-#			for wave in get_children():
-#				for path in wave.get_children():
-#					print(path.name)
-#					path.set_make_invisible(true)
 
 
 #### Metodos
@@ -35,7 +26,10 @@ func spawn_wave() -> void:
 	if current_wave < total_waves:
 		get_children()[current_wave].create_paths()
 	else:
-		print("Larga ese Boss maquinola")
+		yield(get_tree().create_timer(4.0),"timeout")
+		var new_boss := big_boss.instance()
+		add_child(new_boss)
+		#print("Larga ese Boss maquinola")
 
 
 func set_send_waves(value: bool) -> void:

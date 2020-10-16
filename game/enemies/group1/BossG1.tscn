@@ -36,7 +36,7 @@ color_ramp = SubResource( 3 )
 
 [node name="BossG1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-hitpoints = 2500.0
+hitpoints = 2800.0
 bullet_speed = 220
 start_position = Vector2( 960, 40 )
 minion_spawn_delay = 1.0
@@ -54,7 +54,7 @@ shape = SubResource( 1 )
 [node name="ExplosionFire2" parent="." index="4"]
 scale = Vector2( 0.25, 0.25 )
 
-[node name="Motor" parent="." index="7"]
+[node name="Motor" parent="." index="8"]
 process_material = SubResource( 6 )
 
 [node name="One" parent="ShootPositions1" index="0"]
@@ -85,13 +85,13 @@ script = ExtResource( 4 )
 bullet_quantity = 9
 angle_separation = 90.0
 
-[node name="WaitTimer" parent="." index="12"]
+[node name="WaitTimer" parent="." index="13"]
 wait_time = 8.0
 
-[node name="ShieldPosition" parent="." index="13"]
-position = Vector2( 0, 257.314 )
-
 [node name="Tween" type="Tween" parent="." index="14"]
+
+[node name="ShieldPosition" parent="." index="15"]
+position = Vector2( 0, 257.314 )
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 
 [editable path="ExplosionFire"]

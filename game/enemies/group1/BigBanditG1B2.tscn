@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/enemies/g1/enemy_g1_c_small.png" type="Texture" id=1]
-[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/g1/enemy_g1_b_big.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 32.3958
+radius = 49.8425
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -31,23 +32,32 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="SmallBanditG1C" instance=ExtResource( 2 )]
-hitpoints = 15.0
-shooting_rate = 2.8
+[node name="BigBanditG1B2" instance=ExtResource( 3 )]
+hitpoints = 42.0
+bullet_speed = 280
+shooting_rate = 1.2
 
 [node name="Sprite" parent="." index="0"]
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, -11.9055 )
 shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
-position = Vector2( 0, 37.8403 )
-bullet_quantity = 3
-angle_separation = 90.0
+position = Vector2( 0.840897, 57.181 )
+bullet_quantity = 2
+angle_separation = 10.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( -40.363, 0 )
+script = ExtResource( 1 )
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( 42.0448, 0 )
+script = ExtResource( 1 )
 
 [node name="Motor" parent="." index="11"]
-position = Vector2( 4.77401e-12, -45.9964 )
 process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]

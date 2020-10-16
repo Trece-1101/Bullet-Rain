@@ -35,7 +35,7 @@ color_ramp = SubResource( 3 )
 [node name="SmallBanditG1A" instance=ExtResource( 1 )]
 hitpoints = 10.0
 bullet_speed = 360
-shooting_rate = 2.5
+shooting_rate = 2.2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

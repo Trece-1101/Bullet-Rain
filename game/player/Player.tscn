@@ -363,8 +363,8 @@ z_as_relative = false
 collision_mask = 2
 script = ExtResource( 2 )
 bullet = ExtResource( 3 )
-bullet_speed = -1100
-bullet_speed_alt = -800
+bullet_speed = -1200
+bullet_speed_alt = -850
 
 [node name="Combustion" parent="." instance=ExtResource( 6 )]
 

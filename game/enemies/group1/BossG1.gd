@@ -30,6 +30,8 @@ func execute_half_life_behavior() -> void:
 
 
 func execute_low_life_behavior() -> void:
+	tween.stop_all()
+	make_your_move(start_position + Vector2(0.0, 100.0), 0.5)
 	free_speed *= 0.6
 	current_shoot_positions_shooting = shoot_positions_container[2]
 # warning-ignore:narrowing_conversion
@@ -56,10 +58,12 @@ func make_your_move(new_position: Vector2, speed := free_speed) -> void:
 	)
 	tween.start()
 
+
 func _on_Tween_tween_all_completed() -> void:
 	if can_make_move:
 		yield(get_tree().create_timer(0.5), "timeout")
 		make_your_move(choose_new_position())
+
 
 func _on_WaitTimer_timeout() -> void:
 	._on_WaitTimer_timeout()

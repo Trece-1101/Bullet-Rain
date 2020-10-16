@@ -37,6 +37,7 @@ func _on_send_waves_timer_timeout() -> void:
 func _process(delta: float):
 	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
 	parallax_border.scroll_offset += Vector2.DOWN * scroll_speed * delta
+	$HUD/Label.text ="%s" % (OS.get_ticks_msec() * 0.001)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

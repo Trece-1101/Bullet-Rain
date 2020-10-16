@@ -34,7 +34,7 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="MidBossBanditG1" instance=ExtResource( 1 )]
-hitpoints = 1000.0
+hitpoints = 1200.0
 is_boss = true
 bullet_speed = 260
 shooting_rate = 1.6

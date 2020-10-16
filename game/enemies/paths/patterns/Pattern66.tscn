@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/PathOutOut.gd" type="Script" id=1]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -10,13 +10,3 @@ _data = {
 [node name="Pattern66" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
-enemies = [  ]
-enemy_number = 1
-speed = 200
-allow_enemy_shoot = true
-spawn_enemy_rate = 1.0
-are_aimers = false
-is_stopper = false
-cuadrant = 0
-make_invisible = false
-debug = false
