@@ -1,150 +1,15 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-[gd_scene load_steps=83 format=2]
-
-[ext_resource path="res://game/enemies/paths/patterns/Pattern6.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern4.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/enemies/paths/patterns/PatternMidBossG1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern3.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/enemies/group1/MedBanditG1A2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game/enemies/group1/MedBanditG1B2.tscn" type="PackedScene" id=7]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=9]
-[ext_resource path="res://game/enemies/group1/MedBanditG1B.tscn" type="PackedScene" id=10]
-[ext_resource path="res://game/enemies/group1/MedBanditG1C.tscn" type="PackedScene" id=11]
-[ext_resource path="res://game/enemies/group1/MedBanditG1C2.tscn" type="PackedScene" id=12]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern8.tscn" type="PackedScene" id=13]
-[ext_resource path="res://game/enemies/group1/SmallBanditG1C.tscn" type="PackedScene" id=14]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern64.tscn" type="PackedScene" id=15]
-[ext_resource path="res://game/enemies/group1/SmallBanditG1A.tscn" type="PackedScene" id=16]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern48.tscn" type="PackedScene" id=17]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern24.tscn" type="PackedScene" id=18]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern52.tscn" type="PackedScene" id=19]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern18.tscn" type="PackedScene" id=20]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern15.tscn" type="PackedScene" id=21]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern54.tscn" type="PackedScene" id=22]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern43.tscn" type="PackedScene" id=23]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern53.tscn" type="PackedScene" id=24]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern29.tscn" type="PackedScene" id=25]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern45.tscn" type="PackedScene" id=26]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern28.tscn" type="PackedScene" id=27]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern34.tscn" type="PackedScene" id=28]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern40.tscn" type="PackedScene" id=29]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern42.tscn" type="PackedScene" id=30]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern19.tscn" type="PackedScene" id=31]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern35.tscn" type="PackedScene" id=32]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern63.tscn" type="PackedScene" id=33]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern27.tscn" type="PackedScene" id=34]
-[ext_resource path="res://game/enemies/group1/SmallBanditG1B.tscn" type="PackedScene" id=35]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern9.tscn" type="PackedScene" id=36]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern20.tscn" type="PackedScene" id=37]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern51.tscn" type="PackedScene" id=38]
-[ext_resource path="res://game/enemies/group1/SmallRotatorG1.tscn" type="PackedScene" id=39]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern56.tscn" type="PackedScene" id=40]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern30.tscn" type="PackedScene" id=41]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern66.tscn" type="PackedScene" id=42]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern37.tscn" type="PackedScene" id=43]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern41.tscn" type="PackedScene" id=44]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern67.tscn" type="PackedScene" id=45]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern12.tscn" type="PackedScene" id=46]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern17.tscn" type="PackedScene" id=47]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern21.tscn" type="PackedScene" id=48]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern39.tscn" type="PackedScene" id=49]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern58.tscn" type="PackedScene" id=50]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern47.tscn" type="PackedScene" id=51]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern23.tscn" type="PackedScene" id=52]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern25.tscn" type="PackedScene" id=53]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern32.tscn" type="PackedScene" id=54]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern22.tscn" type="PackedScene" id=55]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern46.tscn" type="PackedScene" id=56]
-[ext_resource path="res://game/enemies/group1/BigBanditG1B2.tscn" type="PackedScene" id=57]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern59.tscn" type="PackedScene" id=58]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern60.tscn" type="PackedScene" id=59]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern61.tscn" type="PackedScene" id=60]
-[ext_resource path="res://game/enemies/group1/MedKamikazeG1.tscn" type="PackedScene" id=61]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern62.tscn" type="PackedScene" id=62]
-[ext_resource path="res://game/enemies/group1/MedBanditG1A.tscn" type="PackedScene" id=63]
-[ext_resource path="res://game/enemies/group1/BigBanditG1A2.tscn" type="PackedScene" id=64]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern68.tscn" type="PackedScene" id=65]
-[ext_resource path="res://game/enemies/group1/BigBanditG1C2.tscn" type="PackedScene" id=66]
-[ext_resource path="res://game/enemies/group1/BigBanditG1C.tscn" type="PackedScene" id=67]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern71.tscn" type="PackedScene" id=68]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern72.tscn" type="PackedScene" id=69]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern70.tscn" type="PackedScene" id=70]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern69.tscn" type="PackedScene" id=71]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern75.tscn" type="PackedScene" id=72]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern77.tscn" type="PackedScene" id=73]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern76.tscn" type="PackedScene" id=74]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern78.tscn" type="PackedScene" id=75]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern79.tscn" type="PackedScene" id=76]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern80.tscn" type="PackedScene" id=77]
-[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=78]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern82.tscn" type="PackedScene" id=79]
-[ext_resource path="res://game/enemies/paths/patterns/Pattern81.tscn" type="PackedScene" id=80]
-[ext_resource path="res://game/enemies/group1/BigBanditG1CMinionated.tscn" type="PackedScene" id=81]
-
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 958.899, -44.0461, 0, 0, 0, 0, 953.56, 246.949 )
-}
-=======
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/enemies/waves/WaveMidBossLevelOne.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
 [ext_resource path="res://game/enemies/waves/Wave2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/enemies/waves/Wave1.tscn" type="PackedScene" id=4]
->>>>>>> parent of 0d3ca02... Merge branch 'dev' into dev_arte
 
 [node name="WavesLevelOne" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Wave1" parent="." instance=ExtResource( 4 )]
 
-<<<<<<< HEAD
-[node name="Pattern6" parent="Wave22" instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 2062.35, 55.7896 )
-enemies = [ ExtResource( 81 ) ]
-enemy_number = 2
-speed = 100.0
-spawn_enemy_rate = 6.0
-are_aimers = true
-=======
 [node name="Wave2" parent="." instance=ExtResource( 3 )]
-=======
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://game/enemies/waves/WaveMidBossLevelOne.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
-
-[node name="WavesLevelOne" type="Node"]
-script = ExtResource( 2 )
-make_paths_invisible = false
->>>>>>> parent of f2dfccf... BR-13 BR-26
-=======
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://game/enemies/waves/WaveMidBossLevelOne.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
-
-[node name="WavesLevelOne" type="Node"]
-script = ExtResource( 2 )
-make_paths_invisible = false
->>>>>>> parent of f2dfccf... BR-13 BR-26
-=======
-[gd_scene load_steps=3 format=2]
-
-[ext_resource path="res://game/enemies/waves/WaveMidBossLevelOne.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
-
-[node name="WavesLevelOne" type="Node"]
-script = ExtResource( 2 )
-make_paths_invisible = false
->>>>>>> parent of f2dfccf... BR-13 BR-26
 
 [node name="WaveMidBossLevelOne" parent="." instance=ExtResource( 1 )]
->>>>>>> parent of 0d3ca02... Merge branch 'dev' into dev_arte
