@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -12,20 +12,10 @@
 [ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=12]
-
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 2
-emission_box_extents = Vector3( 960, 100, 1 )
-flag_disable_z = true
-direction = Vector3( 0, 1, 0 )
-spread = 0.0
-gravity = Vector3( 0, 1, 0 )
-initial_velocity = 200.0
-initial_velocity_random = 0.1
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 3.0
-scale_random = 1.0
+[ext_resource path="res://assets/backgrounds/Planets.png" type="Texture" id=13]
+[ext_resource path="res://game/levels/extras/stars.tres" type="Material" id=14]
+[ext_resource path="res://game/levels/extras/stars_left.tres" type="Material" id=15]
+[ext_resource path="res://game/levels/extras/stars_right.tres" type="Material" id=16]
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -46,18 +36,26 @@ centered = false
 
 [node name="GUI" parent="HUD" instance=ExtResource( 4 )]
 
-[node name="Estrellas" type="Particles2D" parent="HUD"]
-position = Vector2( 960, -100 )
-amount = 500
+[node name="StarsRight" type="Particles2D" parent="HUD"]
+position = Vector2( 1670, -100 )
+amount = 250
 lifetime = 12.0
 preprocess = 10.0
-visibility_rect = Rect2( -960, -100, 1920, 200 )
-process_material = SubResource( 1 )
+visibility_rect = Rect2( -250, -100, 500, 200 )
+process_material = ExtResource( 16 )
+
+[node name="StarsLeft" type="Particles2D" parent="HUD"]
+position = Vector2( 250, -100 )
+amount = 250
+lifetime = 12.0
+preprocess = 10.0
+visibility_rect = Rect2( -250, -100, 500, 200 )
+process_material = ExtResource( 15 )
 
 [node name="BackGrounds" type="Node" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BackGrounds"]
-layer = -1
+layer = -3
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxBackground"]
 motion_mirroring = Vector2( 0, 3412 )
@@ -67,6 +65,27 @@ modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
 position = Vector2( 500, -1.12244 )
 texture = ExtResource( 8 )
 centered = false
+
+[node name="StarsLayer" type="CanvasLayer" parent="BackGrounds"]
+layer = -2
+
+[node name="StarsCenter" type="Particles2D" parent="BackGrounds/StarsLayer"]
+position = Vector2( 960, -100 )
+amount = 500
+lifetime = 12.0
+preprocess = 10.0
+visibility_rect = Rect2( -460, -100, 920, 200 )
+process_material = ExtResource( 14 )
+
+[node name="ParallaxDecor" type="ParallaxBackground" parent="BackGrounds"]
+layer = -1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxDecor"]
+
+[node name="Decor" type="Sprite" parent="BackGrounds/ParallaxDecor/ParallaxLayer"]
+position = Vector2( 960, 770 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 13 )
 
 [node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]
 layer = 1
@@ -94,8 +113,6 @@ right_border = 1420.0
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
 bullet_damage = 500.0
 bullet_speed_alt = -850
-
 is_in_god_mode = true
-
 
 [node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
