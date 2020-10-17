@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 [gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://game/enemies/paths/patterns/Pattern6.tscn" type="PackedScene" id=1]
@@ -112,6 +113,16 @@ spawn_enemy_rate = 6.0
 are_aimers = true
 =======
 [node name="Wave2" parent="." instance=ExtResource( 3 )]
+=======
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/waves/WaveMidBossLevelOne.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
+
+[node name="WavesLevelOne" type="Node"]
+script = ExtResource( 2 )
+make_paths_invisible = false
+>>>>>>> parent of f2dfccf... BR-13 BR-26
 
 [node name="WaveMidBossLevelOne" parent="." instance=ExtResource( 1 )]
 >>>>>>> parent of 0d3ca02... Merge branch 'dev' into dev_arte

@@ -26,6 +26,7 @@ expand_margin_bottom = 13.0
 shadow_color = Color( 1, 1, 1, 0.6 )
 =======
 [sub_resource type="DynamicFont" id=2]
+size = 40
 font_data = ExtResource( 1 )
 >>>>>>> parent of 0d3ca02... Merge branch 'dev' into dev_arte
 
