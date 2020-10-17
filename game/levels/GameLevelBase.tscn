@@ -31,12 +31,15 @@ scale_random = 1.0
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=12]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [ext_resource path="res://assets/backgrounds/Planets.png" type="Texture" id=13]
 [ext_resource path="res://game/levels/extras/stars.tres" type="Material" id=14]
 [ext_resource path="res://game/levels/extras/stars_left.tres" type="Material" id=15]
 [ext_resource path="res://game/levels/extras/stars_right.tres" type="Material" id=16]
 >>>>>>> parent of 0d3ca02... Merge branch 'dev' into dev_arte
 =======
+=======
+>>>>>>> parent of f2dfccf... BR-13 BR-26
 =======
 >>>>>>> parent of f2dfccf... BR-13 BR-26
 
@@ -54,6 +57,9 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of f2dfccf... BR-13 BR-26
+=======
 >>>>>>> parent of f2dfccf... BR-13 BR-26
 =======
 >>>>>>> parent of f2dfccf... BR-13 BR-26
@@ -80,6 +86,7 @@ centered = false
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 [node name="StarsRight" type="Particles2D" parent="HUD"]
 position = Vector2( 1670, -100 )
@@ -92,6 +99,11 @@ process_material = ExtResource( 16 )
 [node name="StarsLeft" type="Particles2D" parent="HUD"]
 position = Vector2( 250, -100 )
 amount = 250
+=======
+[node name="Estrellas" type="Particles2D" parent="HUD"]
+position = Vector2( 960, -100 )
+amount = 500
+>>>>>>> parent of f2dfccf... BR-13 BR-26
 =======
 [node name="Estrellas" type="Particles2D" parent="HUD"]
 position = Vector2( 960, -100 )
