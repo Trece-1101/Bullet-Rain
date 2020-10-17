@@ -1,5 +1,5 @@
 tool
-class_name Player, "res://assets/player/extras/player_editor_icon.png"
+class_name Player
 extends KinematicBody2D
 
 #### Enumerables
@@ -33,7 +33,7 @@ var damage_penalty := 0.85
 
 
 #### Variables Onready
-#onready var bullet_container: Node
+onready var bullet_container: Node
 onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
 onready var movement := Vector2.ZERO
@@ -63,12 +63,6 @@ func set_move_to_start(value: bool) -> void:
 	if value:
 		self.position = Vector2(960.0, 920.0)
 
-func get_bullet() -> PackedScene:
-	return bullet
-
-func get_bullet_type() -> int:
-	return bullet_type
-
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
@@ -80,7 +74,7 @@ func _ready() -> void:
 	speed_using = speed
 	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
-	#bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
+	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
 func _physics_process(_delta: float) -> void:
@@ -99,7 +93,7 @@ func get_direction() -> Vector2:
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-
+	
 	if (direction.x == 0 and sprite.get_frame() != 1):
 		sprite.set_frame(1)
 	else:
@@ -142,24 +136,16 @@ func change_bullet() -> void:
 func shoot() -> void:
 	animation_effects.play("shoot")
 	shoot_sound.play()
-	for shoot_position in shoot_positions.get_children():
-		shoot_position.shoot_bullet(
-			bullet_speed_using + movement_bonus,
-			0.0,
-			bullet_type,
-			bullet_damage_using
-			)
-	
-#	for i in range(shoot_positions.get_child_count()):
-#		var new_bullet := bullet.instance()
-#		new_bullet.create(
-#				self,
-#				shoot_positions.get_child(i).global_position,
-#				bullet_speed_using + movement_bonus,
-#				0.0,
-#				bullet_type,
-#				bullet_damage_using)
-#		bullet_container.add_child(new_bullet)
+	for i in range(shoot_positions.get_child_count()):
+		var new_bullet := bullet.instance()
+		new_bullet.create(
+				self,
+				shoot_positions.get_child(i).global_position,
+				bullet_speed_using + movement_bonus,
+				0.0,
+				bullet_type,
+				bullet_damage_using)
+		bullet_container.add_child(new_bullet)
 
 
 func _on_GunTimer_timeout() -> void:
@@ -212,12 +198,3 @@ func change_state(new_state) -> void:
 			gun_timer.stop()
 			state_text = "DEAD"
 	state = new_state
-
-
-#TODO: quitar esto
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_pause"):
-		pause_mode = PAUSE_MODE_PROCESS
-		get_tree().paused = !get_tree().paused
-
-

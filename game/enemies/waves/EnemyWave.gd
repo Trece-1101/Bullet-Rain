@@ -1,4 +1,3 @@
-class_name EnemyWave, "res://assets/enemies/extras/sea_waves_2.png"
 extends Node
 
 #### Señales

@@ -81,7 +81,7 @@ func check_cuadrant() -> void:
 
 
 func aim_to_player() -> void:
-	if not player == null and is_alive:
+	if not player == null:
 		check_aim_to_player()
 
 func check_end_of_path() -> void:

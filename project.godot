@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/bullets/Bullet.gd"
 }, {
-"base": "Node",
-"class": "BulletContainer",
-"language": "GDScript",
-"path": "res://game/levels/BulletsContainer.gd"
-}, {
 "base": "Button",
 "class": "ChangeSceneButton",
 "language": "GDScript",
@@ -33,11 +28,6 @@ _global_script_classes=[ {
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyBase.gd"
-}, {
-"base": "EnemyBase",
-"class": "EnemyBoss",
-"language": "GDScript",
-"path": "res://game/enemies/EnemyBoss.gd"
 }, {
 "base": "EnemyBandit",
 "class": "EnemyFree",
@@ -85,19 +75,9 @@ _global_script_classes=[ {
 "path": "res://game/enemies/EnemyShooter.gd"
 }, {
 "base": "Node",
-"class": "EnemyWave",
-"language": "GDScript",
-"path": "res://game/enemies/waves/EnemyWave.gd"
-}, {
-"base": "Node",
 "class": "Level",
 "language": "GDScript",
 "path": "res://game/levels/Level.gd"
-}, {
-"base": "Node",
-"class": "LevelWaves",
-"language": "GDScript",
-"path": "res://game/levels/waves/LevelWaves.gd"
 }, {
 "base": "Control",
 "class": "Menu",
@@ -165,24 +145,20 @@ _global_script_classes=[ {
 "path": "res://game/player/extras/Trail2D.gd"
 } ]
 _global_script_class_icons={
-"Bullet": "res://assets/bullets/enemy_bullet_temp.png",
-"BulletContainer": "res://assets/bullets/bullets_container_img.png",
+"Bullet": "",
 "ChangeSceneButton": "",
 "EnemyBandit": "",
 "EnemyBase": "",
-"EnemyBoss": "",
 "EnemyFree": "",
 "EnemyFreeMover": "",
 "EnemyFreeTeleporter": "",
 "EnemyKamikaze": "",
 "EnemyOrbital": "",
-"EnemyPath": "res://assets/enemies/extras/path_img.png",
+"EnemyPath": "",
 "EnemyPather": "",
 "EnemyRotator": "",
 "EnemyShooter": "",
-"EnemyWave": "res://assets/enemies/extras/sea_waves_2.png",
-"Level": "res://assets/backgrounds/level_2.png",
-"LevelWaves": "res://assets/enemies/extras/sea-waves.png",
+"Level": "",
 "Menu": "",
 "PathEndIn": "",
 "PathEndOut": "",
@@ -193,7 +169,7 @@ _global_script_class_icons={
 "PathInOut": "",
 "PathOutIn": "",
 "PathOutOut": "",
-"Player": "res://assets/player/extras/player_editor_icon.png",
+"Player": "",
 "ShootPosition": "",
 "Trail2D": ""
 }
@@ -263,11 +239,6 @@ ui_change_bullet={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
- ]
-}
-ui_pause={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/enemies/EnemyShooter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyBandit.gd" type="Script" id=2]
@@ -19,40 +19,12 @@ void fragment() {
 shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
-[sub_resource type="Animation" id=3]
-resource_name = "turn_off_engine"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Motor:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Motor:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Gradient" id=13]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
 [sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 13 )
+gradient = SubResource( 3 )
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
@@ -105,10 +77,6 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 visible = true
 material = SubResource( 2 )
-rotation = 0.0
-
-[node name="AnimationPlayer" parent="." index="2"]
-anims/turn_off_engine = SubResource( 3 )
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 script = ExtResource( 3 )

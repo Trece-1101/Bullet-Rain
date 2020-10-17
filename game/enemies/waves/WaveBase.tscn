@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
-[ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=2]
 
 [node name="WaveBase" type="Node"]
 script = ExtResource( 1 )
@@ -9,5 +8,3 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 540.852 ],
 "_edit_vertical_guides_": [ 959.523 ]
 }
-
-[node name="EnemyActivator" parent="." instance=ExtResource( 2 )]
