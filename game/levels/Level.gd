@@ -1,4 +1,4 @@
-class_name Level
+class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
 
 #### Variables Export
@@ -16,8 +16,8 @@ onready var hud_layer := $HUD
 
 #### Metodos
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
-	
 	if debuggeable:
 		hud_layer.add_child(debug_panel.instance())
 
@@ -44,3 +44,4 @@ func _process(delta: float):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
+

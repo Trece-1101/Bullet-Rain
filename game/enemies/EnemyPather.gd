@@ -38,7 +38,7 @@ func _ready() -> void:
 		get_player()
 
 func _process(delta: float) -> void:
-	if path != null:
+	if path != null and is_alive:
 		move(delta)
 
 func move(delta: float) -> void:

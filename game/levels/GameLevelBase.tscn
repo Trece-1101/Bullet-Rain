@@ -9,13 +9,15 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/green/green_center.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
-[ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
+
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/backgrounds/Planets.png" type="Texture" id=13]
 [ext_resource path="res://game/levels/extras/stars.tres" type="Material" id=14]
 [ext_resource path="res://game/levels/extras/stars_left.tres" type="Material" id=15]
 [ext_resource path="res://game/levels/extras/stars_right.tres" type="Material" id=16]
+
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -27,6 +29,16 @@ debuggeable = true
 debug_panel = ExtResource( 2 )
 time_to_start_waves = 1.0
 
+[node name="Estrellas" type="Particles2D" parent="."]
+position = Vector2( 960, -100 )
+z_index = 29
+z_as_relative = false
+amount = 500
+lifetime = 12.0
+preprocess = 10.0
+visibility_rect = Rect2( -960, -100, 1920, 200 )
+process_material = SubResource( 1 )
+
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -35,6 +47,7 @@ texture = ExtResource( 7 )
 centered = false
 
 [node name="GUI" parent="HUD" instance=ExtResource( 4 )]
+
 
 [node name="StarsRight" type="Particles2D" parent="HUD"]
 position = Vector2( 1670, -100 )
@@ -51,6 +64,7 @@ lifetime = 12.0
 preprocess = 10.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
 process_material = ExtResource( 15 )
+
 
 [node name="BackGrounds" type="Node" parent="."]
 
@@ -110,9 +124,7 @@ right_border = 1420.0
 
 [node name="BulletsContainer" parent="." instance=ExtResource( 11 )]
 
-[node name="PlayerInterceptor" parent="." instance=ExtResource( 12 )]
-bullet_damage = 500.0
-bullet_speed_alt = -850
-is_in_god_mode = true
 
-[node name="WavesLevelOne" parent="." instance=ExtResource( 10 )]
+[node name="PlayerInterceptor" parent="." instance=ExtResource( 10 )]
+
+[node name="WavesLevelOne" parent="." instance=ExtResource( 12 )]
