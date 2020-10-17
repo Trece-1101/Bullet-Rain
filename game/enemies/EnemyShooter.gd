@@ -7,12 +7,13 @@ export var bullet: PackedScene
 export var bullet_speed := 400
 export var shooting_rate := 1.0
 export var test_shoot := false
+export(Array, NodePath) var indestructible_bullets
 
 #### Variables
 var bullet_rot_correction := 0.0
 var is_shooting := false
 var shoot_lines := {"mid_stop": false}
-var bullet_container: Node
+#var bullet_container: Node
 var original_speed := 0.0
 var mid_point := 0.5
 var can_shoot := true setget set_can_shoot, get_can_shoot
@@ -34,6 +35,8 @@ func get_can_shoot() -> bool:
 func get_is_boss() -> bool:
 	return is_boss
 
+func get_bullet() -> PackedScene:
+	return bullet
 
 #### Metodos
 func _ready() -> void:
@@ -42,9 +45,11 @@ func _ready() -> void:
 		can_shoot = true
 		inside_play_screen = true
 	
+	if indestructible_bullets.size() > 0:
+		set_indestructible_bullet()
+	
 	original_speed = self.speed
 	gun_timer.wait_time = shooting_rate
-	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 	mid_point = create_random_mid_point()
 
 
@@ -57,17 +62,26 @@ func shoot() -> void:
 	can_shoot = false
 	self.gun_timer.start()
 	self.shoot_sound.play()
-	for i in range(self.shoot_positions.get_child_count()):
-		var new_bullet := bullet.instance()
-		new_bullet.create(
-				self,
-				self.shoot_positions.get_child(i).global_position,
-				bullet_speed,
-				0.0,
-				self.shoot_positions.get_child(i).get_bullet_type(),
-				1.0,
-				self.shoot_positions.get_child(i).get_bullet_angle() + bullet_rot_correction)
-		bullet_container.add_child(new_bullet)
+	for shoot_position in shoot_positions.get_children():
+		shoot_position.shoot_bullet(
+			bullet_speed,
+			0.0,
+			shoot_position.get_bullet_type(),
+			1.0,
+			bullet_rot_correction
+		)
+	
+#	for i in range(self.shoot_positions.get_child_count()):
+#		var new_bullet := bullet.instance()
+#		new_bullet.create(
+#				self,
+#				self.shoot_positions.get_child(i).global_position,
+#				bullet_speed,
+#				0.0,
+#				self.shoot_positions.get_child(i).get_bullet_type(),
+#				1.0,
+#				self.shoot_positions.get_child(i).get_bullet_angle() + bullet_rot_correction)
+#		bullet_container.add_child(new_bullet)
 
 
 func check_mid_of_path() -> void:
@@ -83,6 +97,12 @@ func _on_GunTimer_timeout() -> void:
 
 func _on_MidStoperTimer_timeout() -> void:
 	self.speed = original_speed * 0.6
+
+
+func set_indestructible_bullet() -> void:
+	for path in indestructible_bullets:
+		get_node(path).set_bullet_type(0)
+
 
 func create_random_mid_point() -> float:
 	randomize()

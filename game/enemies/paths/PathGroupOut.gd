@@ -1,9 +1,8 @@
-tool
 class_name PathGroupOut
 extends PathGroup
 
 #### Variables export
-export var minimun_path_segment := 0.2
+export var minimun_path_segment := 0.4
 
 #### Metodos
 func _ready() -> void:

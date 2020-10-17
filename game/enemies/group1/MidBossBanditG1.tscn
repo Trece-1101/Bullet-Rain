@@ -34,10 +34,11 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="MidBossBanditG1" instance=ExtResource( 1 )]
-hitpoints = 500.0
+hitpoints = 1200.0
 is_boss = true
-bullet_speed = 280
-shooting_rate = 0.8
+bullet_speed = 260
+shooting_rate = 1.6
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
 orbital_enemy = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
@@ -48,38 +49,28 @@ shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( 0, 105.203 )
+bullet_quantity = 4
+angle_separation = 60.0
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
-position = Vector2( 0, 64.8859 )
+position = Vector2( 0, 74.2464 )
 script = ExtResource( 3 )
+bullet_quantity = 3
+angle_separation = 90.0
 
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
-position = Vector2( 0, 73.7054 )
+position = Vector2( -68.5895, 49.4976 )
 script = ExtResource( 3 )
-bullet_angle = 30.0
 
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
-position = Vector2( 0, 73.7054 )
-script = ExtResource( 3 )
-bullet_angle = -30.0
-
-[node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
-position = Vector2( -69.9256, 42.2074 )
+position = Vector2( 65.7611, 49.4976 )
 script = ExtResource( 3 )
 
-[node name="ShootPosition6" type="Position2D" parent="ShootPositions" index="5"]
-position = Vector2( 69.2957, 42.2074 )
-script = ExtResource( 3 )
+[node name="GunTimer" parent="." index="4"]
+wait_time = 2.2
 
-[node name="ShootPosition7" type="Position2D" parent="ShootPositions" index="6"]
-position = Vector2( -69.9256, 42.2074 )
-script = ExtResource( 3 )
-bullet_angle = 45.0
-
-[node name="ShootPosition8" type="Position2D" parent="ShootPositions" index="7"]
-position = Vector2( 69.2957, 42.2074 )
-script = ExtResource( 3 )
-bullet_angle = -45.0
+[node name="ExplosionFire" parent="." index="7"]
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Motor" parent="." index="11"]
 position = Vector2( 2.10567e-11, -117.608 )
@@ -87,34 +78,38 @@ emitting = false
 process_material = SubResource( 6 )
 
 [node name="OrbitalG1" parent="." index="13" instance=ExtResource( 4 )]
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
 speed = 1.5
 
 [node name="OrbitalG2" parent="." index="14" instance=ExtResource( 4 )]
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
 speed = 1.5
-angle = 45.0
+angle = 30.0
 
 [node name="OrbitalG3" parent="." index="15" instance=ExtResource( 4 )]
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
+speed = 1.5
+angle = 60.0
+
+[node name="OrbitalG4" parent="." index="16" instance=ExtResource( 4 )]
 speed = 1.5
 angle = 90.0
 
-[node name="OrbitalG4" parent="." index="16" instance=ExtResource( 4 )]
-z_index = 40
-z_as_relative = false
-collision_layer = 4
-collision_mask = 8
+[node name="OrbitalG5" parent="." index="17" instance=ExtResource( 4 )]
 speed = 1.5
-angle = 135.0
+angle = 120.0
+
+[node name="OrbitalG6" parent="." index="18" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 150.0
+
+[node name="OrbitalG7" parent="." index="19" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 180.0
+
+[node name="OrbitalG8" parent="." index="20" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 210.0
+
+[node name="OrbitalG9" parent="." index="21" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 240.0
 
 [editable path="ExplosionFire2"]
