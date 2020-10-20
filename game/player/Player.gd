@@ -149,17 +149,7 @@ func shoot() -> void:
 			bullet_type,
 			bullet_damage_using
 			)
-	
-#	for i in range(shoot_positions.get_child_count()):
-#		var new_bullet := bullet.instance()
-#		new_bullet.create(
-#				self,
-#				shoot_positions.get_child(i).global_position,
-#				bullet_speed_using + movement_bonus,
-#				0.0,
-#				bullet_type,
-#				bullet_damage_using)
-#		bullet_container.add_child(new_bullet)
+
 
 
 func _on_GunTimer_timeout() -> void:
