@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/green/green_center.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/levels/waves/WavesTest.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ParticlesMaterial" id=1]
@@ -31,9 +32,8 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 1023.64, 134.891 ],
 "_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
-debuggeable = true
 debug_panel = ExtResource( 2 )
-time_to_start_waves = 1.0
+time_to_start_waves = 4.0
 
 [node name="Estrellas" type="Particles2D" parent="."]
 position = Vector2( 960, -100 )
@@ -90,3 +90,5 @@ right_border = 1420.0
 [node name="EnemyActivator" parent="BordersContainer" instance=ExtResource( 9 )]
 
 [node name="BulletsContainer" parent="." instance=ExtResource( 11 )]
+
+[node name="WavesTest" parent="." instance=ExtResource( 10 )]

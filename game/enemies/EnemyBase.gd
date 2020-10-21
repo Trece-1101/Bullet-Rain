@@ -53,6 +53,8 @@ func get_inside_play_screen() -> bool:
 #### Metodos
 func _ready() -> void:
 	set_explosion_vars()
+# warning-ignore:return_value_discarded
+	get_top_level().connect("get_new_player", self, "get_player")
 
 
 func set_explosion_vars() -> void:
@@ -68,6 +70,7 @@ func get_top_level() -> Node:
 		parent = parent.get_parent()
 	
 	return parent
+
 
 func get_player() -> void:
 	for child in get_top_level().get_children():
@@ -111,8 +114,3 @@ func disabled_collider() -> void:
 	for child in get_children():
 		if child.is_in_group("damage_collider"):
 			child.set_deferred("disabled", true)
-	
-#	colliders = get_nodes_in_group("damage_collider")
-#	print(colliders)
-##	for collider in damage_collider:
-##		collider.set_deferred("disabled", true)

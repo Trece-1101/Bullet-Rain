@@ -12,6 +12,7 @@ var send_waves := true
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("waves_level")
 	yield(owner, "ready")
 	
 
