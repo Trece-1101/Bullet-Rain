@@ -14,13 +14,8 @@ func _ready() -> void:
 func manage_shooting():
 	shoot(current_shoot_positions_shooting)
 
-
-func manage_process() -> void:
-	pass
-
-
 func execute_half_life_behavior() -> void:
-	tween.stop_all()
+	tween.stop(self)
 	make_your_move(start_position + Vector2(0.0, 100.0), 0.5)
 	can_make_move = false
 	switch_shootin_state(false)
@@ -30,8 +25,7 @@ func execute_half_life_behavior() -> void:
 
 
 func execute_low_life_behavior() -> void:
-	tween.stop_all()
-	make_your_move(start_position + Vector2(0.0, 100.0), 0.5)
+	#make_your_move(start_position + Vector2(0.0, 100.0), 0.5)
 	free_speed *= 0.6
 	current_shoot_positions_shooting = shoot_positions_container[2]
 # warning-ignore:narrowing_conversion
@@ -42,7 +36,7 @@ func execute_low_life_behavior() -> void:
 func choose_new_position() -> Vector2:
 	randomize()
 	var new_position_x := rand_range(700.0, 1220.0)
-	var new_position_y := rand_range(180.0, 300.0)
+	var new_position_y := rand_range(140.0, 280.0)
 	return Vector2(new_position_x, new_position_y)
 
 

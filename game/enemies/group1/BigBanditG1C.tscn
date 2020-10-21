@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemies/g1/enemy_g1_c_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/g1/G1 - L.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 47.9537
+radius = 54.4198
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -58,6 +58,7 @@ bullet_angle = 15.0
 
 [node name="Motor" parent="." index="11"]
 position = Vector2( 1.16373e-11, -76.1814 )
+emitting = false
 process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]

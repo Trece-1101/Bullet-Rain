@@ -204,6 +204,10 @@ config/name="Bullet Rain"
 run/main_scene="res://game/levels/GameLevelBase.tscn"
 config/icon="res://assets/player/extras/shoot.png"
 
+[autoload]
+
+GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
+
 [debug]
 
 settings/fps/force_fps=120
@@ -218,10 +222,6 @@ window/size/test_height=720
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "mixing-desk" )
 
 [input]
 
@@ -272,6 +272,11 @@ ui_change_bullet={
 ui_pause={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_test_player_dead={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"unicode":0,"echo":false,"script":null)
  ]
 }
 

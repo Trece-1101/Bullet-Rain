@@ -37,17 +37,18 @@ func check_aim_to_player() -> void:
 
 func go_kamikaze() -> void:
 	set_process(false)
-	player_pos = self.player.global_position
-	$Tween.interpolate_property(
-		self,
-		"global_position",
-		global_position,
-		player_pos,
-		dive_speed,
-		Tween.TRANS_LINEAR,
-		Tween.EASE_IN_OUT
-	)
-	$Tween.start()
+	if player != null:
+		player_pos = self.player.global_position
+		$Tween.interpolate_property(
+			self,
+			"global_position",
+			global_position,
+			player_pos,
+			dive_speed,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT
+		)
+		$Tween.start()
 
 
 func play_explosion() -> void:
