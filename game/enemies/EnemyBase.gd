@@ -102,12 +102,15 @@ func take_damage(damage: float) -> void:
 		mini_explosion_vfx.get_node("ExplosionPlayer").play("explosion")
 		hit_sfx.play()
 
+
 func die() -> void:
 	pass
+
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()
 	explosion_vfx.play("explosion")
+
 
 func disabled_collider() -> void:
 	self.allow_shoot = false
