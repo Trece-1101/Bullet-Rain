@@ -1,28 +1,32 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBoss.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/enemies/g1/boss_g1_end.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/g1/G1 - FinalBoss.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/group1/BossG1.gd" type="Script" id=3]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=4]
 [ext_resource path="res://game/enemies/group1/MedBanditG1C.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 169.911
+radius = 163.787
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 38.4857
+height = 146.536
+
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -31,8 +35,8 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="BossG1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -51,11 +55,25 @@ texture = ExtResource( 2 )
 [node name="DamageCollider" parent="." index="1"]
 shape = SubResource( 1 )
 
-[node name="ExplosionFire2" parent="." index="4"]
+[node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
+"damage_collider",
+]]
+position = Vector2( -198.452, -5.88629 )
+rotation = 0.435154
+shape = SubResource( 2 )
+
+[node name="DamageCollider3" type="CollisionShape2D" parent="." index="3" groups=[
+"damage_collider",
+]]
+position = Vector2( 198, -5.886 )
+rotation = -0.434587
+shape = SubResource( 2 )
+
+[node name="ExplosionFire2" parent="." index="6"]
 scale = Vector2( 0.25, 0.25 )
 
-[node name="Motor" parent="." index="8"]
-process_material = SubResource( 6 )
+[node name="Motor" parent="." index="10"]
+process_material = SubResource( 7 )
 
 [node name="One" parent="ShootPositions1" index="0"]
 position = Vector2( 2.24493, 168.545 )
@@ -85,12 +103,12 @@ script = ExtResource( 4 )
 bullet_quantity = 9
 angle_separation = 90.0
 
-[node name="WaitTimer" parent="." index="13"]
+[node name="WaitTimer" parent="." index="15"]
 wait_time = 8.0
 
-[node name="Tween" type="Tween" parent="." index="14"]
+[node name="Tween" type="Tween" parent="." index="16"]
 
-[node name="ShieldPosition" parent="." index="15"]
+[node name="ShieldPosition" parent="." index="17"]
 position = Vector2( 0, 257.314 )
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 

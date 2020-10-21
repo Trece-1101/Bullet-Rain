@@ -204,6 +204,10 @@ config/name="Bullet Rain"
 run/main_scene="res://game/levels/GameLevelBase.tscn"
 config/icon="res://assets/player/extras/shoot.png"
 
+[autoload]
+
+GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
+
 [debug]
 
 settings/fps/force_fps=120

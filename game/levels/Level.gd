@@ -15,6 +15,7 @@ onready var hud_layer := $HUD
 
 #### Metodos
 func _ready() -> void:
+	GlobalMusic.play_music(GlobalMusic.musics.level_one)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
 	if debuggeable:

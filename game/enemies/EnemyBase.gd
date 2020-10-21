@@ -108,4 +108,11 @@ func play_explosion_sfx() -> void:
 
 func disabled_collider() -> void:
 	self.allow_shoot = false
-	damage_collider.set_deferred("disabled", true)
+	for child in get_children():
+		if child.is_in_group("damage_collider"):
+			child.set_deferred("disabled", true)
+	
+#	colliders = get_nodes_in_group("damage_collider")
+#	print(colliders)
+##	for collider in damage_collider:
+##		collider.set_deferred("disabled", true)

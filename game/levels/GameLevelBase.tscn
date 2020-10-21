@@ -33,7 +33,6 @@ __meta__ = {
 }
 debuggeable = true
 debug_panel = ExtResource( 2 )
-send_waves = false
 time_to_start_waves = 1.0
 
 [node name="Estrellas" type="Particles2D" parent="."]
