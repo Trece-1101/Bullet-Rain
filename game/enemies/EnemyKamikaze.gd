@@ -49,6 +49,8 @@ func go_kamikaze() -> void:
 			Tween.EASE_IN_OUT
 		)
 		$Tween.start()
+	else:
+		make_the_despelote()
 
 
 func play_explosion() -> void:
@@ -56,13 +58,13 @@ func play_explosion() -> void:
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
+	make_the_despelote()
+
+func make_the_despelote() -> void:
 	play_explosion()
 	player_destroyer.set_deferred("disabled", false)
 	$TimerDestroyer.start()
 	die()
-#	$Sprite.visible = false
-#	self.motor.visible = false
-
 
 func _on_ExplosionPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "explosion":
