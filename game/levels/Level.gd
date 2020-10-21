@@ -39,7 +39,8 @@ func _ready() -> void:
 func player_destroyed() -> void:
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
-		pass
+# warning-ignore:return_value_discarded
+		get_tree().reload_current_scene()
 		#aca se termina todo
 	else:
 		create_player()

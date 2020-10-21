@@ -2,7 +2,7 @@ class_name LevelWaves, "res://assets/enemies/extras/sea-waves.png"
 extends Node
 
 export var big_boss: PackedScene
-export(String, "level_one_to_boss", "dummy") var big_boss_music_transition
+export(String, "level_one_to_boss", "dummy") var big_boss_music_transition = "level_one_to_boss"
 
 #### Variables
 var current_wave := 0
@@ -32,7 +32,6 @@ func spawn_wave() -> void:
 		yield(get_tree().create_timer(4.0),"timeout")
 		var new_boss := big_boss.instance()
 		add_child(new_boss)
-		#print("Larga ese Boss maquinola")
 
 
 func set_send_waves(value: bool) -> void:
