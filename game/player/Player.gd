@@ -1,6 +1,8 @@
 tool
-class_name Player
+class_name Player, "res://assets/player/extras/player_editor_icon.png"
 extends KinematicBody2D
+#### Señales
+signal destroy
 
 #### Enumerables
 enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
@@ -12,7 +14,7 @@ export var bullet_damage := 1.0
 export var bullet_speed := -700
 export var bullet_speed_alt := -700
 export(float, 0.08, 0.32) var shooting_rate := 0.2
-export var hitpoints := 4
+export var hitpoints := 2
 export(Color, RGBA) var color_trail: Color
 export var is_in_god_mode := false
 
@@ -27,10 +29,13 @@ var speed_shooting: float
 var speed_respawning := 0
 var bullet_type := 1
 var bullet_speed_using := 0
+var bullet_damage_using := 0.0
+var movement_bonus := 0.0
+var damage_penalty := 0.85
 
 
 #### Variables Onready
-onready var bullet_container: Node
+#onready var bullet_container: Node
 onready var shoot_positions := $ShootPositions
 onready var gun_timer := $GunTimer
 onready var movement := Vector2.ZERO
@@ -60,36 +65,43 @@ func set_move_to_start(value: bool) -> void:
 	if value:
 		self.position = Vector2(960.0, 920.0)
 
+func get_bullet() -> PackedScene:
+	return bullet
+
+func get_bullet_type() -> int:
+	return bullet_type
+
 #### Metodos
 func _ready() -> void:
+	add_to_group("player")
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
 	animation_play.play("init")
 	speed_shooting = speed * speed_multiplier
 	gun_timer.wait_time = shooting_rate
 	speed_using = speed
+	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
-	bullet_container = check_bullet_container()
+	#bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
 func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
 		movement = speed_using * get_direction().normalized()
+		movement_bonus = 0.0 if movement.y >= 0 else -100.0
 	# warning-ignore:return_value_discarded
-
+	
 		move_and_slide(movement, Vector2.ZERO)
-
 
 func _process(_delta: float) -> void:
 	shoot_input()
-
 
 func get_direction() -> Vector2:
 	var direction := Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
-	
+
 	if (direction.x == 0 and sprite.get_frame() != 1):
 		sprite.set_frame(1)
 	else:
@@ -99,21 +111,10 @@ func get_direction() -> Vector2:
 			sprite.set_frame(0)
 	
 	if not state in [States.SHOOTING, States.DEAD, States.RESPAWNING]:
-		if direction.length() > 0:
-			change_state(States.MOVING)
-		else:
-			change_state(States.IDLE)
+# warning-ignore:standalone_ternary
+		change_state(States.MOVING) if direction.length() > 0 else change_state(States.IDLE)
 	
 	return direction
-
-func check_bullet_container() -> Node:
-	if owner != null:
-		if owner.get_node("BulletsContainer") != null:
-			return owner.get_node("BulletsContainer")
-		else:
-			return owner
-	else:
-		return self
 
 
 func shoot_input() -> void:
@@ -130,27 +131,28 @@ func shoot_input() -> void:
 	if Input.is_action_just_released("ui_shoot"):
 		change_state(States.IDLE)
 
+
 func change_bullet() -> void:
 	bullet_change_sound.play()
 	bullet_type *= -1
 	if bullet_type == 1:
 		bullet_speed_using = bullet_speed
+		bullet_damage_using = bullet_damage * 1.0 
 	else:
 		bullet_speed_using = bullet_speed_alt
+		bullet_damage_using = bullet_damage * damage_penalty
+
 
 func shoot() -> void:
 	animation_effects.play("shoot")
 	shoot_sound.play()
-	for i in range(shoot_positions.get_child_count()):
-		var new_bullet := bullet.instance()
-		new_bullet.create(
-				self,
-				shoot_positions.get_child(i).global_position,
-				bullet_speed_using,
-				0.0,
-				bullet_type,
-				bullet_damage)
-		bullet_container.add_child(new_bullet)
+	for shoot_position in shoot_positions.get_children():
+		shoot_position.shoot_bullet(
+			bullet_speed_using + movement_bonus,
+			0.0,
+			bullet_type,
+			bullet_damage_using
+			)
 
 
 func _on_GunTimer_timeout() -> void:
@@ -161,12 +163,17 @@ func take_damage() -> void:
 		hitpoints -= 1
 		hitpoint_sound.play()
 		if hitpoints == 0:
-			animation_play.stop()
-			animation_play.clear_queue()
-			explosion.play("Explosion")
-			animation_play.play("destroy")
+			die()
 		else:
 			animation_play.queue("damage")
+
+func die() -> void:
+	if not is_in_god_mode:
+		emit_signal("destroy")
+		animation_play.stop()
+		animation_play.clear_queue()
+		explosion.play("explosion")
+		animation_play.play("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)
@@ -174,7 +181,6 @@ func disabled_collider() -> void:
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
-
 
 
 func change_state(new_state) -> void:
@@ -200,3 +206,15 @@ func change_state(new_state) -> void:
 			gun_timer.stop()
 			state_text = "DEAD"
 	state = new_state
+
+
+#TODO: quitar esto
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_pause"):
+		pause_mode = PAUSE_MODE_PROCESS
+		get_tree().paused = !get_tree().paused
+	
+	if Input.is_action_just_pressed("ui_test_player_dead"):
+		die()
+
+

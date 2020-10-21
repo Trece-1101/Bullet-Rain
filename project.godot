@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/bullets/Bullet.gd"
 }, {
+"base": "Node",
+"class": "BulletContainer",
+"language": "GDScript",
+"path": "res://game/levels/BulletsContainer.gd"
+}, {
+"base": "Button",
+"class": "ChangeSceneButton",
+"language": "GDScript",
+"path": "res://game/ui/buttons/ChangeSceneButton.gd"
+}, {
 "base": "EnemyShooter",
 "class": "EnemyBandit",
 "language": "GDScript",
@@ -24,25 +34,75 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyBase.gd"
 }, {
+"base": "EnemyBase",
+"class": "EnemyBoss",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyBoss.gd"
+}, {
+"base": "EnemyBandit",
+"class": "EnemyFree",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFree.gd"
+}, {
+"base": "EnemyFree",
+"class": "EnemyFreeMover",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFreeMover.gd"
+}, {
+"base": "EnemyFree",
+"class": "EnemyFreeTeleporter",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFreeTeleporter.gd"
+}, {
+"base": "EnemyPather",
+"class": "EnemyKamikaze",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyKamikaze.gd"
+}, {
+"base": "EnemyBase",
+"class": "EnemyOrbital",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyOrbital.gd"
+}, {
 "base": "Path2D",
 "class": "EnemyPath",
 "language": "GDScript",
 "path": "res://game/enemies/paths/EnemyPath.gd"
+}, {
+"base": "EnemyBase",
+"class": "EnemyPather",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyPather.gd"
 }, {
 "base": "EnemyShooter",
 "class": "EnemyRotator",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyRotator.gd"
 }, {
-"base": "EnemyBase",
+"base": "EnemyPather",
 "class": "EnemyShooter",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyShooter.gd"
 }, {
 "base": "Node",
+"class": "EnemyWave",
+"language": "GDScript",
+"path": "res://game/enemies/waves/EnemyWave.gd"
+}, {
+"base": "Node",
 "class": "Level",
 "language": "GDScript",
 "path": "res://game/levels/Level.gd"
+}, {
+"base": "Node",
+"class": "LevelWaves",
+"language": "GDScript",
+"path": "res://game/levels/waves/LevelWaves.gd"
+}, {
+"base": "Control",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://game/ui/menus/Menu.gd"
 }, {
 "base": "EnemyPath",
 "class": "PathEndIn",
@@ -105,13 +165,25 @@ _global_script_classes=[ {
 "path": "res://game/player/extras/Trail2D.gd"
 } ]
 _global_script_class_icons={
-"Bullet": "",
+"Bullet": "res://assets/bullets/enemy_bullet_temp.png",
+"BulletContainer": "res://assets/bullets/bullets_container_img.png",
+"ChangeSceneButton": "",
 "EnemyBandit": "",
 "EnemyBase": "",
-"EnemyPath": "",
+"EnemyBoss": "",
+"EnemyFree": "",
+"EnemyFreeMover": "",
+"EnemyFreeTeleporter": "",
+"EnemyKamikaze": "",
+"EnemyOrbital": "",
+"EnemyPath": "res://assets/enemies/extras/path_img.png",
+"EnemyPather": "",
 "EnemyRotator": "",
 "EnemyShooter": "",
-"Level": "",
+"EnemyWave": "res://assets/enemies/extras/sea_waves_2.png",
+"Level": "res://assets/backgrounds/level_2.png",
+"LevelWaves": "res://assets/enemies/extras/sea-waves.png",
+"Menu": "",
 "PathEndIn": "",
 "PathEndOut": "",
 "PathGroup": "",
@@ -121,7 +193,7 @@ _global_script_class_icons={
 "PathInOut": "",
 "PathOutIn": "",
 "PathOutOut": "",
-"Player": "",
+"Player": "res://assets/player/extras/player_editor_icon.png",
 "ShootPosition": "",
 "Trail2D": ""
 }
@@ -129,8 +201,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Bullet Rain"
-run/main_scene="res://game/levels/GameLevelBase.tscn"
+run/main_scene="res://game/levels/GameLevelOne.tscn"
 config/icon="res://assets/player/extras/shoot.png"
+
+[autoload]
+
+GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
 
 [debug]
 
@@ -154,6 +230,7 @@ ui_left={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":14,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
  ]
 }
 ui_right={
@@ -161,6 +238,7 @@ ui_right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
  ]
 }
 ui_up={
@@ -168,6 +246,7 @@ ui_up={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":12,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
  ]
 }
 ui_down={
@@ -175,16 +254,29 @@ ui_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":13,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
  ]
 }
 ui_shoot={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":7,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 ui_change_bullet={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":6,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_test_player_dead={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":77,"unicode":0,"echo":false,"script":null)
  ]
 }
 

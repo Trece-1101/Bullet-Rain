@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyFree.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "turn_off_engine"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Motor:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Motor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="EnemyFree" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+cuadrant = 15
+
+[node name="AnimationPlayer" parent="." index="2"]
+anims/turn_off_engine = SubResource( 1 )
+
+[node name="Motor" parent="." index="11"]
+position = Vector2( 0, -25 )
+emitting = false
+process_material = SubResource( 6 )
+
+[node name="NewPositionTimer" type="Timer" parent="." index="12"]
+wait_time = 2.0
+one_shot = true
+[connection signal="timeout" from="NewPositionTimer" to="." method="_on_NewPositionTimer_timeout"]
+
+[editable path="ExplosionFire2"]

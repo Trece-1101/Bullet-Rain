@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/g1/G1 - XL.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 45.1217
+height = 112.087
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="BigBanditG1B2" instance=ExtResource( 3 )]
+hitpoints = 42.0
+bullet_speed = 280
+shooting_rate = 1.2
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, -3.49651 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( 0.840897, 57.181 )
+bullet_quantity = 2
+angle_separation = 10.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( -40.363, 0 )
+script = ExtResource( 1 )
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( 42.0448, 0 )
+script = ExtResource( 1 )
+
+[node name="Motor" parent="." index="11"]
+process_material = SubResource( 6 )
+
+[editable path="ExplosionFire2"]

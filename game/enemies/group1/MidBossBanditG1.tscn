@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/g1/G1 - MidBoss.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
+[ext_resource path="res://game/enemies/group1/OrbitalG1.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 141.652
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 34.6317
+height = 85.7519
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[node name="MidBossBanditG1" instance=ExtResource( 1 )]
+hitpoints = 1200.0
+is_boss = true
+bullet_speed = 260
+shooting_rate = 1.6
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
+orbital_enemy = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
+"damage_collider",
+]]
+position = Vector2( -147.5, -59.4004 )
+rotation = -0.607125
+shape = SubResource( 2 )
+
+[node name="DamageCollider3" type="CollisionShape2D" parent="." index="3" groups=[
+"damage_collider",
+]]
+position = Vector2( 144.83, -58.0655 )
+rotation = 0.593412
+shape = SubResource( 2 )
+
+[node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( 0, 105.203 )
+bullet_quantity = 4
+angle_separation = 60.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( 0, 74.2464 )
+script = ExtResource( 3 )
+bullet_quantity = 3
+angle_separation = 90.0
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( -68.5895, 49.4976 )
+script = ExtResource( 3 )
+
+[node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
+position = Vector2( 65.7611, 49.4976 )
+script = ExtResource( 3 )
+
+[node name="GunTimer" parent="." index="6"]
+wait_time = 2.2
+
+[node name="ExplosionFire" parent="." index="9"]
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Motor" parent="." index="13"]
+position = Vector2( 2.10567e-11, -117.608 )
+emitting = false
+process_material = SubResource( 7 )
+
+[node name="OrbitalG1" parent="." index="15" instance=ExtResource( 4 )]
+speed = 1.5
+
+[node name="OrbitalG2" parent="." index="16" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 30.0
+
+[node name="OrbitalG3" parent="." index="17" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 60.0
+
+[node name="OrbitalG4" parent="." index="18" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 90.0
+
+[node name="OrbitalG5" parent="." index="19" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 120.0
+
+[node name="OrbitalG6" parent="." index="20" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 150.0
+
+[node name="OrbitalG7" parent="." index="21" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 180.0
+
+[node name="OrbitalG8" parent="." index="22" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 210.0
+
+[node name="OrbitalG9" parent="." index="23" instance=ExtResource( 4 )]
+speed = 1.5
+angle = 240.0
+
+[editable path="ExplosionFire2"]

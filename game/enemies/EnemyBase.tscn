@@ -1,11 +1,13 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBase.gd" type="Script" id=1]
 [ext_resource path="res://assets/bullets/enemy_bullet.png" type="Texture" id=2]
-[ext_resource path="res://assets/enemies/extras/Exhaust_1_000.png" type="Texture" id=3]
+[ext_resource path="res://assets/animations/enemies_destroy.tres" type="Animation" id=3]
 [ext_resource path="res://assets/sounds/sfx/enemies/explosion/07enemyexplosion.wav" type="AudioStream" id=4]
-[ext_resource path="res://game/vfx/BulletDestroyParticles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/sounds/sfx/enemies/hitpoint/04enemyhitpoint.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/animations/enemies_init.tres" type="Animation" id=5]
+[ext_resource path="res://assets/sounds/sfx/enemies/hitpoint/08enemyhitpoint.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/animations/enemies_spawn.tres" type="Animation" id=8]
+[ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -22,292 +24,48 @@ shader = SubResource( 1 )
 shader_param/whitening = 0.0
 
 [sub_resource type="Animation" id=3]
-length = 3.0
-loop = true
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.5, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_explosion_sfx"
-}, {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "disabled_collider"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Motor:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:rotation_degrees")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -5.0, 5.0, -5.0 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:material:shader_param/whitening")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 1.0 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Explosion:emitting")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.5, 3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ false, true, false ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Sprite:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Motor:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("BulletDestroyParticles:visible")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "impact"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("BulletDestroyParticles:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BulletDestroyParticles:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 3, 3 ), Vector2( 2, 2 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BulletDestroyParticles:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=5]
+resource_name = "turn_off_engine"
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
+tracks/0/path = NodePath("Motor:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Motor:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Explosion:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Motor:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("Motor:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=9]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=8]
+resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
 spread = 0.0
@@ -315,22 +73,26 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 10 )
-color_ramp = SubResource( 8 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="StreamTexture" id=9]
+flags = 4
+load_path = "res://.import/Exhaust_1_000.png-72f189fb24a713465f72161f0abb3b7e.stex"
+
+[sub_resource type="Gradient" id=10]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
 
-[sub_resource type="Curve" id=14]
+[sub_resource type="Curve" id=12]
 _data = [ Vector2( 0, 1 ), 0.0, -0.149558, 0, 0, Vector2( 1, 0.488392 ), -0.683333, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=15]
-curve = SubResource( 14 )
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=22]
+[sub_resource type="ParticlesMaterial" id=14]
 emission_shape = 1
 emission_sphere_radius = 5.0
 flag_disable_z = true
@@ -342,35 +104,8 @@ initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.5
-scale_curve = SubResource( 15 )
-color_ramp = SubResource( 13 )
-
-[sub_resource type="Gradient" id=17]
-offsets = PoolRealArray( 0, 0.58296, 0.982063 )
-colors = PoolColorArray( 1, 1, 1, 1, 0.964844, 0.950651, 0.0565338, 1, 0.699219, 0.132981, 0.0218506, 1 )
-
-[sub_resource type="GradientTexture" id=18]
-gradient = SubResource( 17 )
-
-[sub_resource type="Curve" id=19]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.19148, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=20]
-curve = SubResource( 19 )
-
-[sub_resource type="ParticlesMaterial" id=21]
-flag_disable_z = true
-direction = Vector3( 0, 0, 0 )
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 1.0
-angular_velocity = 10.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
-scale_curve = SubResource( 20 )
-color_ramp = SubResource( 18 )
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
 
 [node name="EnemyBase" type="Area2D"]
 z_index = 40
@@ -381,16 +116,24 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
-scale = Vector2( 1e-05, 1e-05 )
+rotation = -0.0841498
 
-[node name="DamageCollider" type="CollisionShape2D" parent="."]
+[node name="DamageCollider" type="CollisionShape2D" parent="." groups=[
+"damage_collider",
+]]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
-anims/destroy = SubResource( 3 )
-anims/impact = SubResource( 4 )
-anims/init = SubResource( 5 )
-anims/spawn = SubResource( 6 )
+anims/destroy = ExtResource( 3 )
+anims/init = ExtResource( 5 )
+anims/spawn = ExtResource( 8 )
+anims/turn_off_engine = SubResource( 3 )
+
+[node name="ExplosionFire" parent="." instance=ExtResource( 9 )]
+scale = Vector2( 0.6, 0.6 )
+
+[node name="ExplosionFire2" parent="." instance=ExtResource( 9 )]
+scale = Vector2( 0.15, 0.15 )
 
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -399,9 +142,11 @@ bus = "Enemy"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -15.0
 bus = "Enemy"
 
 [node name="Motor" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 0, -25 )
 rotation = 3.14159
 scale = Vector2( 0.1, 0.1 )
@@ -409,8 +154,8 @@ z_index = -1
 emitting = false
 amount = 4
 visibility_rect = Rect2( -50, -50, 100, 100 )
-process_material = SubResource( 11 )
-texture = ExtResource( 3 )
+process_material = SubResource( 8 )
+texture = SubResource( 9 )
 
 [node name="Explosion" type="Particles2D" parent="."]
 emitting = false
@@ -419,12 +164,8 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 22 )
+process_material = SubResource( 14 )
 texture = ExtResource( 2 )
-
-[node name="BulletDestroyParticles" parent="." instance=ExtResource( 5 )]
-scale = Vector2( 3, 3 )
-amount = 15
-lifetime = 0.3
-process_material = SubResource( 21 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
+[editable path="ExplosionFire2"]

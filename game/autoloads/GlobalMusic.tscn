@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/autoloads/GlobalMusic.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/music/level01/mainmusic-looop-no-intro.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/music/level01/boss01.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/mainmenu/mainmenumusic.ogg" type="AudioStream" id=4]
+
+[node name="GlobalMusic" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Presentation" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="Credits" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
+[node name="LevelOne" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Music"
+
+[node name="LevelOneBoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="TweenFadeIn" type="Tween" parent="."]
+
+[node name="TweenFadeOut" type="Tween" parent="."]
+[connection signal="tween_completed" from="TweenFadeOut" to="." method="_on_TweenFadeOut_tween_completed"]

@@ -90,7 +90,9 @@ scale_curve = SubResource( 14 )
 color_ramp = SubResource( 12 )
 
 [sub_resource type="Animation" id=16]
+resource_name = "explosion"
 length = 1.5
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sparkle:emitting")
 tracks/0/interp = 1
@@ -110,7 +112,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1, 0.2 ),
+"times": PoolRealArray( 0.05, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ true, false ]
@@ -127,8 +129,56 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("FireBurst2:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FireBurst3:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.15, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("FireBurst4:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sparkle2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
-[node name="Explosion" type="Node2D"]
+[node name="ExplosionFire" type="Node2D"]
 
 [node name="Smoke" type="Particles2D" parent="."]
 scale = Vector2( 2, 2 )
@@ -138,7 +188,50 @@ process_material = SubResource( 5 )
 texture = ExtResource( 2 )
 
 [node name="FireBurst" type="Particles2D" parent="."]
-scale = Vector2( 2, 2 )
+position = Vector2( -23.7841, 29.1356 )
+scale = Vector2( 2.5, 2.5 )
+emitting = false
+amount = 64
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 1.0
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 10 )
+texture = ExtResource( 2 )
+
+[node name="FireBurst2" type="Particles2D" parent="."]
+position = Vector2( 27.9464, -23.1895 )
+scale = Vector2( 2.5, 2.5 )
+emitting = false
+amount = 64
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 1.0
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 10 )
+texture = ExtResource( 2 )
+
+[node name="FireBurst3" type="Particles2D" parent="."]
+position = Vector2( -35.6762, -29.7302 )
+scale = Vector2( 2.5, 2.5 )
+emitting = false
+amount = 64
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.3
+randomness = 1.0
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 10 )
+texture = ExtResource( 2 )
+
+[node name="FireBurst4" type="Particles2D" parent="."]
+position = Vector2( 41.0276, 42.2168 )
+scale = Vector2( 2.5, 2.5 )
 emitting = false
 amount = 64
 lifetime = 0.6
@@ -151,6 +244,21 @@ process_material = SubResource( 10 )
 texture = ExtResource( 2 )
 
 [node name="Sparkle" type="Particles2D" parent="."]
+position = Vector2( -2.37842, -2.37841 )
+scale = Vector2( 0.2, 0.2 )
+emitting = false
+amount = 64
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.2
+randomness = 0.5
+visibility_rect = Rect2( -50, -50, 100, 100 )
+draw_order = 1
+process_material = SubResource( 15 )
+texture = ExtResource( 2 )
+
+[node name="Sparkle2" type="Particles2D" parent="."]
+position = Vector2( 2.97299, 0.594605 )
 scale = Vector2( 0.2, 0.2 )
 emitting = false
 amount = 64
@@ -164,4 +272,4 @@ process_material = SubResource( 15 )
 texture = ExtResource( 2 )
 
 [node name="ExplosionPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 16 )
+anims/explosion = SubResource( 16 )

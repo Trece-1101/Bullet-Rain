@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern3.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern6.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern5.tscn" type="PackedScene" id=7]
+
+[node name="Wave1" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern1" parent="." instance=ExtResource( 4 )]
+cuadrant = 0
+
+[node name="Pattern2" parent="." instance=ExtResource( 2 )]
+cuadrant = 0
+
+[node name="Pattern3" parent="." instance=ExtResource( 3 )]
+cuadrant = 0
+
+[node name="Pattern4" parent="." instance=ExtResource( 6 )]
+cuadrant = 0
+
+[node name="Pattern5" parent="." instance=ExtResource( 7 )]
+cuadrant = 0
+
+[node name="Pattern6" parent="." instance=ExtResource( 5 )]
+cuadrant = 0

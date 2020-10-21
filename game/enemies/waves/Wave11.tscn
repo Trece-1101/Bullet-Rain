@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern60.tscn" type="PackedScene" id=2]
+
+[node name="Wave11" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 543.694 ],
+"_edit_vertical_guides_": [ 960.274 ]
+}
+
+[node name="Pattern60" parent="." instance=ExtResource( 2 )]
+position = Vector2( 18.6876, -89.4344 )
