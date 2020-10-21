@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemies/rotators/enemy_rotator_g1.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/rotators/G1 - Rotator.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/EnemyRotator.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.4593, 40.6588 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 46.2906
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -40,6 +40,7 @@ indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("S
 rotation_speed = 150.0
 
 [node name="Sprite" parent="." index="0"]
+rotation = 0.0
 texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]

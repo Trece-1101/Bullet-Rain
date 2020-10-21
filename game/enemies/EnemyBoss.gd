@@ -1,6 +1,8 @@
 class_name EnemyBoss
 extends EnemyBase
 
+#### Enumerables
+enum States {IDLE, HIGH_LIFE, HALF_LIFE, LOW_LIFE, DEAD }
 
 #### Variables Export
 export var bullet: PackedScene
@@ -11,6 +13,7 @@ export var minion_spawn_delay := 1.5
 export(Array, Vector2) var minions_positions := []
 export var minion: PackedScene
 export(Array, NodePath) var indestructible_bullets
+export var life_thresholds := {"half_life": 0.5, "low_life": 0.25}
 
 #### Variables
 var bullet_rot_correction := 0.0
@@ -23,6 +26,7 @@ var life_status := {"half_life": false, "low_life": false}
 var original_hitpoints: float
 var is_aimer = true
 var shield := preload("res://game/enemies/EnemyShield.tscn").instance()
+var state = States.HIGH_LIFE
 
 #### Variables Onready
 #onready var shoot_sound := $ShootSFX
@@ -53,11 +57,10 @@ func get_bullet() -> PackedScene:
 func _ready() -> void:
 	if indestructible_bullets.size() > 0:
 		set_indestructible_bullet()
+	
 	global_position = start_position
 	original_hitpoints = hitpoints
 	current_shoot_positions_shooting = shoot_positions_container[1]
-	#ToDo: borrar esto en el build definitivo
-#	if test_shoot:
 	can_shoot = true
 	self.allow_shoot = true
 	
@@ -66,19 +69,36 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	manage_process()
-	if hitpoints <= original_hitpoints * 0.5 and not life_status.half_life:
-		life_status.half_life = true
-		execute_half_life_behavior()
-	elif hitpoints <= original_hitpoints * 0.25 and not life_status.low_life:
-		life_status.low_life = true
-		execute_low_life_behavior()
+	if hitpoints <= original_hitpoints * life_thresholds.half_life and not life_status.half_life:
+		change_state(States.HALF_LIFE)
+	elif hitpoints <= original_hitpoints * life_thresholds.low_life and not life_status.low_life:
+		change_state(States.LOW_LIFE)
 	
 	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
-	
 	if can_shoot and self.allow_shoot:
 		manage_shooting()
+
+func change_state(new_state) -> void:
+	match new_state:
+		States.IDLE:
+			can_shoot = false
+		States.HIGH_LIFE:
+			execute_high_life_behavior()
+		States.HALF_LIFE:
+			life_status.half_life = true
+			execute_half_life_behavior()
+		States.LOW_LIFE:
+			life_status.low_life = true
+			execute_low_life_behavior()
+		States.DEAD:
+			is_aimer = false
+			can_shoot = false
+			gun_timer.stop()
+			wait_timer.stop()
+			animation_player.play("ultra_destroy")
+	state = new_state
+
 
 func set_indestructible_bullet() -> void:
 	for path in indestructible_bullets:
@@ -87,7 +107,7 @@ func set_indestructible_bullet() -> void:
 func manage_shooting() -> void:
 	pass
 
-func manage_process() -> void:
+func execute_high_life_behavior() -> void:
 	pass
 
 func execute_half_life_behavior() -> void:
@@ -133,6 +153,7 @@ func check_aim_to_player() -> void:
 	bullet_rot_correction = rad2deg(rot) - 90.0
 	rotation_degrees = my_rotation
 
+
 func spawn_minions() -> void:
 	for pos in minions_positions:
 		yield(get_tree().create_timer(minion_spawn_delay),"timeout")
@@ -144,9 +165,11 @@ func spawn_minions() -> void:
 		new_minion.set_inside_play_screen(true)
 		get_parent().add_child(new_minion)
 
+
 func spawn_shield() -> void:
 	shield.position = $ShieldPosition.position
 	add_child(shield)
+
 
 func disabled_collider() -> void:
 	.disabled_collider()
@@ -163,8 +186,9 @@ func _on_WaitTimer_timeout() -> void:
 
 
 func die() -> void:
-	is_aimer = false
-	can_shoot = false
-	gun_timer.stop()
-	wait_timer.stop()
-	animation_player.play("ultra_destroy")
+	change_state(States.DEAD)
+#	is_aimer = false
+#	can_shoot = false
+#	gun_timer.stop()
+#	wait_timer.stop()
+#	animation_player.play("ultra_destroy")

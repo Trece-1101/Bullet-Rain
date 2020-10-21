@@ -1,27 +1,31 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemies/g1/enemy_g1_a_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/g1/G1 - L.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 22.8585
-height = 72.871
+radius = 29.5337
+height = 48.4393
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 21.6483
+height = 103.357
+
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -30,8 +34,8 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="BigBanditG1A2" instance=ExtResource( 3 )]
 hitpoints = 40.0
@@ -43,6 +47,11 @@ texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="DamageCollider2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0, -3.96851 )
+rotation = 1.5708
+shape = SubResource( 2 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( -20, 24 )
@@ -57,8 +66,9 @@ bullet_angle = -20.0
 bullet_quantity = 2
 angle_separation = 40.0
 
-[node name="Motor" parent="." index="11"]
+[node name="Motor" parent="." index="12"]
 position = Vector2( 7.12009e-12, -56.3145 )
-process_material = SubResource( 6 )
+emitting = false
+process_material = SubResource( 7 )
 
 [editable path="ExplosionFire2"]

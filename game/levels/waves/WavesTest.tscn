@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/group1/BigBanditG1CMinionated.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/group1/MedKamikazeG1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern6.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern4.tscn" type="PackedScene" id=8]
+
+[node name="WavesTest" type="Node"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_vertical_guides_": [ 960.818 ]
+}
+
+[node name="Wave21" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern1" parent="Wave21" instance=ExtResource( 6 )]
+visible = false
+enemies = [ ExtResource( 4 ) ]
+speed = 500.0
+
+[node name="Pattern3" parent="Wave21" instance=ExtResource( 5 )]
+visible = false
+enemies = [ ExtResource( 4 ) ]
+speed = 500.0
+
+[node name="Pattern4" parent="Wave21" instance=ExtResource( 8 )]
+visible = false
+enemies = [ ExtResource( 4 ) ]
+speed = 500.0
+
+[node name="Pattern6" parent="Wave21" instance=ExtResource( 7 )]
+visible = false
+enemies = [ ExtResource( 4 ) ]
+speed = 500.0
+
+[node name="Wave22" type="Node" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern1" parent="Wave22" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 0, -42.7149 )
+enemies = [ ExtResource( 3 ) ]
+enemy_number = 2
+speed = 100.0
+spawn_enemy_rate = 6.0
+are_aimers = true
+
+[node name="Pattern6" parent="Wave22" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 2062.35, 55.7896 )
+enemies = [ ExtResource( 3 ) ]
+enemy_number = 2
+speed = 100.0
+spawn_enemy_rate = 6.0
+are_aimers = true

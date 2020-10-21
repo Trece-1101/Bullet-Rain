@@ -1,11 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemies/g1/enemy_g1_b_big.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/g1/G1 - XL.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 49.8425
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 45.1217
+height = 112.087
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -41,7 +42,8 @@ shooting_rate = 1.2
 texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
-position = Vector2( 0, -11.9055 )
+position = Vector2( 0, -3.49651 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
