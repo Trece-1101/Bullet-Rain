@@ -7,6 +7,7 @@ export var debuggeable := false
 export var debug_panel: PackedScene
 export var scroll_speed := 200.0
 export var send_waves := true
+export var send_player_ship := true
 export var time_to_start_waves := 3.0
 
 #### Variables Onready
@@ -25,7 +26,9 @@ var current_ship_index := 0
 
 #### Metodos
 func _ready() -> void:
-	create_player()
+	if send_player_ship:
+		create_player()
+	
 	GlobalMusic.play_music(GlobalMusic.musics.level_one)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
