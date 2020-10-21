@@ -1,6 +1,8 @@
 tool
 class_name Player, "res://assets/player/extras/player_editor_icon.png"
 extends KinematicBody2D
+#### Señales
+signal destroy
 
 #### Enumerables
 enum States { INIT, IDLE, RESPAWNING, MOVING, SHOOTING, GOD, DEAD }
@@ -12,7 +14,7 @@ export var bullet_damage := 1.0
 export var bullet_speed := -700
 export var bullet_speed_alt := -700
 export(float, 0.08, 0.32) var shooting_rate := 0.2
-export var hitpoints := 4
+export var hitpoints := 2
 export(Color, RGBA) var color_trail: Color
 export var is_in_god_mode := false
 
@@ -129,6 +131,7 @@ func shoot_input() -> void:
 	if Input.is_action_just_released("ui_shoot"):
 		change_state(States.IDLE)
 
+
 func change_bullet() -> void:
 	bullet_change_sound.play()
 	bullet_type *= -1
@@ -138,6 +141,7 @@ func change_bullet() -> void:
 	else:
 		bullet_speed_using = bullet_speed_alt
 		bullet_damage_using = bullet_damage * damage_penalty
+
 
 func shoot() -> void:
 	animation_effects.play("shoot")
@@ -149,7 +153,6 @@ func shoot() -> void:
 			bullet_type,
 			bullet_damage_using
 			)
-
 
 
 func _on_GunTimer_timeout() -> void:
@@ -166,6 +169,7 @@ func take_damage() -> void:
 
 func die() -> void:
 	if not is_in_god_mode:
+		emit_signal("destroy")
 		animation_play.stop()
 		animation_play.clear_queue()
 		explosion.play("explosion")
@@ -209,5 +213,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):
 		pause_mode = PAUSE_MODE_PROCESS
 		get_tree().paused = !get_tree().paused
+	
+	if Input.is_action_just_pressed("ui_test_player_dead"):
+		die()
 
 
