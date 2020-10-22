@@ -1,6 +1,7 @@
 class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
 signal get_new_player
+signal wait_new_player(time)
 
 #### Variables Export
 export var debuggeable := false
@@ -9,6 +10,7 @@ export var scroll_speed := 200.0
 export var send_waves := true
 export var send_player_ship := true
 export var time_to_start_waves := 3.0
+export var time_to_spawn_player := 2.5
 
 #### Variables Onready
 onready var parallax_bg := $BackGrounds/ParallaxBackground
@@ -37,6 +39,7 @@ func _ready() -> void:
 		hud_layer.add_child(debug_panel.instance())
 
 func player_destroyed() -> void:
+	emit_signal("wait_new_player", time_to_spawn_player)
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
 # warning-ignore:return_value_discarded
@@ -49,7 +52,7 @@ func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
 # warning-ignore:return_value_discarded
 	new_player.connect("destroy", self, "player_destroyed")
-	yield(get_tree().create_timer(3.5), "timeout")
+	yield(get_tree().create_timer(time_to_spawn_player), "timeout")
 	add_child(new_player)
 	emit_signal("get_new_player")
 

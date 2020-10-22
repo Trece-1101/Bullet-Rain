@@ -36,7 +36,7 @@ func create_orbital() -> void:
 #		check_aim_to_player()
 
 func _process(_delta: float):
-	if is_aimer and not player == null and is_alive:
+	if is_aimer and player != null and is_alive:
 		check_aim_to_player()
 
 func check_aim_to_player() -> void:
@@ -46,6 +46,34 @@ func check_aim_to_player() -> void:
 	var my_rotation = rad2deg(rot_look) + aim_error
 	bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
 	rotation_degrees = my_rotation
+
+func check_aim_to_center() -> float:
+	var dir = Vector2(960.0, 920.0) - global_position
+	var rot = dir.angle()
+	var rot_look = rot - 1.57
+	var my_rotation = rad2deg(rot_look) + aim_error
+	bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
+	rotation_degrees = my_rotation
+	print(rotation_degrees)
+	return my_rotation
+
+func wait(time_to_wait: float) -> void:
+	if is_aimer:
+		print(rotation_degrees)
+		check_aim_to_center()
+#		print(rotation_degrees)
+#		print(check_aim_to_center())
+#		$Tween.interpolate_property(
+#			self,
+#			"rotation_degrees",
+#			rotation_degrees,
+#			check_aim_to_center(),
+#			time_to_wait * 0.3,
+#			Tween.TRANS_LINEAR,
+#			Tween.EASE_IN_OUT
+#		)
+#		$Tween.start()
+
 
 func remove_orbital(orbital: EnemyOrbital) -> void:
 	orbitals.erase(orbital)

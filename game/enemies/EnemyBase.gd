@@ -55,7 +55,12 @@ func _ready() -> void:
 	set_explosion_vars()
 # warning-ignore:return_value_discarded
 	get_top_level().connect("get_new_player", self, "get_player")
+# warning-ignore:return_value_discarded
+	get_top_level().connect("wait_new_player", self, "wait")
 
+# warning-ignore:unused_argument
+func wait(time_to_wait: float) -> void:
+	pass
 
 func set_explosion_vars() -> void:
 	explosion_limits = sprite.texture.get_size() * 0.4
