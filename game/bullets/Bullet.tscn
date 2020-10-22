@@ -132,6 +132,7 @@ anims/init = SubResource( 2 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="BulletDestroyParticles" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 1.8, 1.8 )
 z_index = 60
 z_as_relative = false
 emitting = false

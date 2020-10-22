@@ -25,6 +25,7 @@ func execute_half_life_behavior() -> void:
 
 
 func execute_low_life_behavior() -> void:
+	#make_your_move(start_position + Vector2(0.0, 100.0), 0.5)
 	free_speed *= 0.6
 	current_shoot_positions_shooting = shoot_positions_container[2]
 # warning-ignore:narrowing_conversion

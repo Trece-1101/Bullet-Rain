@@ -4,8 +4,8 @@
 
 [node name="PlayerStealth" instance=ExtResource( 1 )]
 speed = 750.0
-bullet_damage_base = 9.9
-shooting_rate_base = 0.18
+bullet_damage = 9.9
+shooting_rate = 0.18
 color_trail = Color( 0.121569, 0.796078, 0.811765, 1 )
 
 [node name="Combustion" parent="." index="0"]
@@ -15,7 +15,7 @@ z_index = -1
 z_index = -2
 
 [node name="GunTimer" parent="." index="6"]
-wait_time = 0.1
+wait_time = 0.18
 
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -12, 2 )
