@@ -127,7 +127,6 @@
 [ext_resource path="res://assets/ui/menu/video/0065.jpg" type="Texture" id=126]
 [ext_resource path="res://assets/ui/menu/video/0059.jpg" type="Texture" id=127]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 33 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 50 ), ExtResource( 37 ), ExtResource( 59 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 36 ), ExtResource( 58 ), ExtResource( 49 ), ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 42 ), ExtResource( 38 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 65 ), ExtResource( 63 ), ExtResource( 60 ), ExtResource( 64 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 123 ), ExtResource( 127 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 124 ), ExtResource( 122 ), ExtResource( 125 ), ExtResource( 126 ), ExtResource( 106 ), ExtResource( 78 ), ExtResource( 108 ), ExtResource( 67 ), ExtResource( 107 ), ExtResource( 83 ), ExtResource( 79 ), ExtResource( 95 ), ExtResource( 102 ), ExtResource( 109 ), ExtResource( 91 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 110 ), ExtResource( 99 ), ExtResource( 89 ), ExtResource( 80 ), ExtResource( 101 ), ExtResource( 69 ), ExtResource( 85 ), ExtResource( 104 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 116 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 117 ), ExtResource( 114 ), ExtResource( 94 ), ExtResource( 92 ), ExtResource( 76 ), ExtResource( 82 ), ExtResource( 93 ), ExtResource( 74 ), ExtResource( 70 ), ExtResource( 118 ), ExtResource( 105 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 98 ), ExtResource( 111 ), ExtResource( 96 ), ExtResource( 112 ), ExtResource( 90 ), ExtResource( 113 ), ExtResource( 71 ), ExtResource( 97 ), ExtResource( 72 ), ExtResource( 81 ), ExtResource( 73 ), ExtResource( 115 ), ExtResource( 119 ) ],
@@ -415,44 +414,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BtnNewGame" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_right = 1839.43
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1447.0
+margin_top = 338.0
+margin_right = 1807.0
+margin_bottom = 918.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="BtnLoadGame" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_top = 450.0
-margin_right = 1839.43
-margin_bottom = 553.0
+[node name="BtnNewGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+
+[node name="BtnLoadGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 104.0
+margin_bottom = 204.0
 text = "Load Game     "
 
-[node name="BtnOptions" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_top = 550.0
-margin_right = 1839.43
-margin_bottom = 653.0
+[node name="BtnOptions" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 208.0
+margin_bottom = 308.0
 text = "Options        "
 
-[node name="BtnLeaderboard" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_top = 650.0
-margin_right = 1839.43
-margin_bottom = 753.0
+[node name="BtnLeaderboard" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 312.0
+margin_bottom = 412.0
 text = "Leaderboard  "
 
-[node name="BtnCredits" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_top = 750.0
-margin_right = 1839.43
-margin_bottom = 853.0
+[node name="BtnCredits" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 416.0
+margin_bottom = 516.0
 text = "Credits         "
 
-[node name="BtnExitGame" parent="Control" instance=ExtResource( 2 )]
-margin_left = 1481.43
-margin_top = 850.0
-margin_right = 1839.43
-margin_bottom = 953.0
+[node name="BtnExitGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 520.0
+margin_bottom = 620.0
 text = "Exit Game      "
+is_quitter = true
 
 [node name="Version" type="Label" parent="."]
 visible = false

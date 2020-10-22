@@ -5,7 +5,7 @@ extends Area2D
 #### Variables Export
 export var hitpoints := 50.0
 export var speed := 0.0 setget set_speed
-
+export var is_boss := false setget ,get_is_boss
 
 #### Variables
 var can_take_damage := true
@@ -49,6 +49,8 @@ func set_inside_play_screen(value: bool) -> void:
 func get_inside_play_screen() -> bool:
 	return inside_play_screen
 
+func get_is_boss() -> bool:
+	return is_boss
 
 #### Metodos
 func _ready() -> void:
@@ -98,6 +100,11 @@ func _on_area_entered(area: Area2D) -> void:
 		take_damage(area.get_damage())
 
 
+func _on_body_entered(body: Node) -> void:
+	body.die()
+	if not is_boss:
+		die()
+
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
@@ -125,3 +132,4 @@ func disabled_collider() -> void:
 	for child in get_children():
 		if child.is_in_group("damage_collider"):
 			child.set_deferred("disabled", true)
+

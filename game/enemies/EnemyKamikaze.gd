@@ -23,9 +23,8 @@ func _process(_delta: float) -> void:
 func check_end_of_path() -> void:
 	if follow.unit_offset >= self.end_of_path and not is_at_end:
 		is_at_end = true
-		yield(get_tree().create_timer(stop_before_dive), "timeout")
-		if self.is_alive:
-			go_kamikaze()
+		$TimerStopper.start()
+
 
 
 func check_aim_to_player() -> void:
@@ -82,3 +81,8 @@ func die() -> void:
 
 func _on_TimerDestroyer_timeout() -> void:
 	player_destroyer.set_deferred("disabled", true)
+
+
+func _on_TimerStopper_timeout() -> void:
+	if self.is_alive:
+		go_kamikaze()

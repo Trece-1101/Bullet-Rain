@@ -51,9 +51,8 @@ func _ready() -> void:
 			bullet_sprite.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")
-		
-#	if type == 1:
-#	else:
+
+
 
 
 func _process(delta: float) -> void:

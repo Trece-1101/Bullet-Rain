@@ -1,20 +1,24 @@
 extends Area2D
 
+#### Variables export
 export var grow_rate = 100.0
 export var is_power_upper := false
 
+#### Variables onready
+onready var collider := $CollisionShape2D
+
 func _ready() -> void:
-	$CollisionShape2D.shape.radius = 0.1
+	restart_size()
 	set_process(false)
 
-func _process(delta: float) -> void:
-	change_size(grow_rate * delta)
 
-func change_size(value: float) -> void:
-	$CollisionShape2D.shape.radius += value
+func _process(delta: float) -> void:
+	collider.shape.radius += grow_rate * delta
+
 
 func restart_size() -> void:
-	$CollisionShape2D.shape.radius = 0.1
+	collider.shape.radius = 0.1
+
 
 func _on_area_entered(area: Area2D) -> void:
 	area.destroy()

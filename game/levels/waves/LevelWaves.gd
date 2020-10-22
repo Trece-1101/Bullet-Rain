@@ -1,6 +1,7 @@
 class_name LevelWaves, "res://assets/enemies/extras/sea-waves.png"
 extends Node
 
+#### Variables export
 export var big_boss: PackedScene
 export var time_for_spawn_boss := 4.0
 export(String, "level_one_to_boss", "dummy") var big_boss_music_transition = "level_one_to_boss"
@@ -15,7 +16,7 @@ var send_waves := true
 func _ready() -> void:
 	add_to_group("waves_level")
 	yield(owner, "ready")
-	
+
 
 func start_waves() -> void:
 	if send_waves:
