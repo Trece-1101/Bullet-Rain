@@ -1,6 +1,7 @@
 class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
 signal get_new_player
+signal wait_new_player(time)
 
 #### Variables Export
 export var debuggeable := false
@@ -9,12 +10,14 @@ export var scroll_speed := 200.0
 export var send_waves := true
 export var send_player_ship := true
 export var time_to_start_waves := 3.0
+export var time_to_spawn_player := 2.5
 
 #### Variables Onready
 onready var parallax_bg := $BackGrounds/ParallaxBackground
 onready var parallax_border := $BackGrounds/ParallaxBorder
 onready var parallax_decor := $BackGrounds/ParallaxDecor
 onready var hud_layer := $HUD
+onready var player_timer: Timer
 
 #### Variables
 var player_ships := {
@@ -28,7 +31,9 @@ var current_ship_index := 0
 #### Metodos
 func _ready() -> void:
 	if send_player_ship:
-		create_player()
+		#create_player()
+		create_player_timer()
+		player_timer.start()
 	
 	GlobalMusic.play_music(GlobalMusic.musics.level_one)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -36,20 +41,32 @@ func _ready() -> void:
 	if debuggeable:
 		hud_layer.add_child(debug_panel.instance())
 
+func create_player_timer() -> void:
+	player_timer = Timer.new()
+	player_timer.name = "player_timer"
+	player_timer.connect("timeout", self, "_on_player_timer_timeout")
+	player_timer.one_shot = true
+	player_timer.autostart = false
+	player_timer.wait_time = time_to_spawn_player
+	add_child(player_timer)
+
 func player_destroyed() -> void:
+	emit_signal("wait_new_player", time_to_spawn_player)
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
-# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 		#aca se termina todo
 	else:
-		create_player()
+		player_timer.start()
+		#create_player()
+
+func _on_player_timer_timeout() -> void:
+	create_player()
 
 func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
 # warning-ignore:return_value_discarded
 	new_player.connect("destroy", self, "player_destroyed")
-	yield(get_tree().create_timer(3.5), "timeout")
 	add_child(new_player)
 	emit_signal("get_new_player")
 
@@ -58,7 +75,6 @@ func create_timer() -> void:
 	var send_waves_timer := Timer.new()
 	send_waves_timer.one_shot = true
 	send_waves_timer.wait_time = time_to_start_waves
-# warning-ignore:return_value_discarded
 	send_waves_timer.connect("timeout", self, "_on_send_waves_timer_timeout")
 	add_child(send_waves_timer)
 	send_waves_timer.start()

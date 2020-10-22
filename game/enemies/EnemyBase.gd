@@ -5,7 +5,7 @@ extends Area2D
 #### Variables Export
 export var hitpoints := 50.0
 export var speed := 0.0 setget set_speed
-
+export var is_boss := false setget ,get_is_boss
 
 #### Variables
 var can_take_damage := true
@@ -49,13 +49,20 @@ func set_inside_play_screen(value: bool) -> void:
 func get_inside_play_screen() -> bool:
 	return inside_play_screen
 
+func get_is_boss() -> bool:
+	return is_boss
 
 #### Metodos
 func _ready() -> void:
 	set_explosion_vars()
 # warning-ignore:return_value_discarded
-	get_top_level().connect("get_new_player", self, "get_player")
+	get_top_level().connect("get_new_player", self, "player_respawn")
+# warning-ignore:return_value_discarded
+	get_top_level().connect("wait_new_player", self, "wait")
 
+# warning-ignore:unused_argument
+func wait(time_to_wait: float) -> void:
+	pass
 
 func set_explosion_vars() -> void:
 	explosion_limits = sprite.texture.get_size() * 0.4
@@ -71,6 +78,9 @@ func get_top_level() -> Node:
 	
 	return parent
 
+func player_respawn() -> void:
+	allow_shoot = true
+	get_player()
 
 func get_player() -> void:
 	for child in get_top_level().get_children():
@@ -89,6 +99,11 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Bullet") and can_take_damage:
 		take_damage(area.get_damage())
 
+
+func _on_body_entered(body: Node) -> void:
+	body.die()
+	if not is_boss:
+		die()
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage
@@ -117,3 +132,4 @@ func disabled_collider() -> void:
 	for child in get_children():
 		if child.is_in_group("damage_collider"):
 			child.set_deferred("disabled", true)
+
