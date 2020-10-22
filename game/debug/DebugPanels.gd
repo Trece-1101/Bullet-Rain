@@ -33,10 +33,12 @@ func _process(delta: float) -> void:
 		set_process(false)
 		return
 	bullets_count = bullets_container.get_child_count()
-	debug_1.text = "  Movimiento: {mov}\n  Cad Disparo: {cad}".format(
+	debug_1.text = "  Movimiento: {mov}\n  Cad Disparo: {cad}\n  Daño Disparo: {dmg}\n  DPS: {dps}".format(
 		{
 			"mov": stepify(player.get_movement(), 0.01),
 			"cad": player.get_shoot_rate(),
+			"dmg": player.get_bullet_damage_using(),
+			"dps": (player.get_bullet_damage_using() * 2) / player.get_shoot_rate()
 		}
 	)
 
