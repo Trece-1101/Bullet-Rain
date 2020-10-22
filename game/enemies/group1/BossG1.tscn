@@ -41,6 +41,7 @@ color_ramp = SubResource( 4 )
 [node name="BossG1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 hitpoints = 2800.0
+is_boss = true
 bullet_speed = 220
 start_position = Vector2( 960, 40 )
 minion_spawn_delay = 1.0
