@@ -54,7 +54,7 @@ func get_inside_play_screen() -> bool:
 func _ready() -> void:
 	set_explosion_vars()
 # warning-ignore:return_value_discarded
-	get_top_level().connect("get_new_player", self, "get_player")
+	get_top_level().connect("get_new_player", self, "player_respawn")
 # warning-ignore:return_value_discarded
 	get_top_level().connect("wait_new_player", self, "wait")
 
@@ -76,6 +76,9 @@ func get_top_level() -> Node:
 	
 	return parent
 
+func player_respawn() -> void:
+	allow_shoot = true
+	get_player()
 
 func get_player() -> void:
 	for child in get_top_level().get_children():

@@ -79,7 +79,8 @@ func _on_area_entered(area: Area2D) -> void:
 			other_bullet.destroy()
 			destroy()
 	else:
-		queue_free()
+		destroy()
+		#queue_free()
 
 
 func destroy() -> void:

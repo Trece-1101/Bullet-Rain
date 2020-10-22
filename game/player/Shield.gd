@@ -13,5 +13,8 @@ func _process(delta: float) -> void:
 func change_size(value: float) -> void:
 	$CollisionShape2D.shape.radius += value
 
+func restart_size() -> void:
+	$CollisionShape2D.shape.radius = 0.1
+
 func _on_area_entered(area: Area2D) -> void:
 	area.destroy()

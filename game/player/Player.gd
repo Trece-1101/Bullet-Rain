@@ -28,7 +28,7 @@ export(
 	"Nivel 4") var rate_level = 0 setget set_rate_level, get_rate_level
 export var bullet_speed := -700
 export var bullet_speed_alt := -700
-export var hitpoints := 2
+var hitpoints := 3
 export(Color, RGBA) var color_trail: Color
 export var is_in_god_mode := false
 

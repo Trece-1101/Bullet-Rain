@@ -4,6 +4,7 @@ extends EnemyShooter
 #### Variables
 var aim_error := 0.0
 var is_leader := false
+var aim := true
 var orbitals := [] setget ,get_orbitals
 export var orbital_enemy: PackedScene
 
@@ -18,7 +19,7 @@ func _ready() -> void:
 		if child is EnemyOrbital:
 			orbitals.append(child)
 	
-	if is_aimer and not player == null:
+	if is_aimer and player != null:
 		randomize()
 		aim_error = rand_range(-10.0, 10.0)
 
@@ -31,12 +32,8 @@ func create_orbital() -> void:
 		orbitals.append(minion)
 
 
-#func _on_AimTimer_timeout() -> void:
-#	if not player == null:
-#		check_aim_to_player()
-
 func _process(_delta: float):
-	if is_aimer and player != null and is_alive:
+	if is_aimer and aim and player != null and is_alive:
 		check_aim_to_player()
 
 func check_aim_to_player() -> void:
@@ -54,26 +51,26 @@ func check_aim_to_center() -> float:
 	var my_rotation = rad2deg(rot_look) + aim_error
 	bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
 	rotation_degrees = my_rotation
-	print(rotation_degrees)
 	return my_rotation
 
 func wait(time_to_wait: float) -> void:
+	allow_shoot = false
 	if is_aimer:
-		print(rotation_degrees)
-		check_aim_to_center()
-#		print(rotation_degrees)
-#		print(check_aim_to_center())
-#		$Tween.interpolate_property(
-#			self,
-#			"rotation_degrees",
-#			rotation_degrees,
-#			check_aim_to_center(),
-#			time_to_wait * 0.3,
-#			Tween.TRANS_LINEAR,
-#			Tween.EASE_IN_OUT
-#		)
-#		$Tween.start()
+		aim = false
+		$Tween.interpolate_property(
+			self,
+			"rotation_degrees",
+			rotation_degrees,
+			check_aim_to_center(),
+			time_to_wait * 0.9,
+			Tween.TRANS_LINEAR,
+			Tween.EASE_IN_OUT
+		)
+		$Tween.start()
 
+func _on_Tween_tween_all_completed() -> void:
+	aim = true
+	allow_shoot = true
 
 func remove_orbital(orbital: EnemyOrbital) -> void:
 	orbitals.erase(orbital)
@@ -85,3 +82,5 @@ func die() -> void:
 		for orbital in orbitals:
 			if orbital != null:
 				orbital.die_on_leader_death()
+
+

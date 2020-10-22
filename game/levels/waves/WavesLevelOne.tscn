@@ -106,7 +106,6 @@ position = Vector2( 60.4079, 0 )
 enemies = [ ExtResource( 16 ) ]
 enemy_number = 2
 spawn_enemy_rate = 4.5
-are_aimers = true
 
 [node name="Pattern6" parent="Wave0" instance=ExtResource( 1 )]
 visible = false

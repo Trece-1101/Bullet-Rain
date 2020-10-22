@@ -123,5 +123,6 @@ texture = ExtResource( 4 )
 process_material = SubResource( 13 )
 
 [node name="Tween" type="Tween" parent="." index="13"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 
 [editable path="ExplosionFire2"]
