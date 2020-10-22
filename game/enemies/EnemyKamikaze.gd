@@ -23,8 +23,9 @@ func _process(_delta: float) -> void:
 func check_end_of_path() -> void:
 	if follow.unit_offset >= self.end_of_path and not is_at_end:
 		is_at_end = true
-		$TimerStopper.start()
-
+		yield(get_tree().create_timer(stop_before_dive), "timeout")
+		if self.is_alive:
+			go_kamikaze()
 
 
 func check_aim_to_player() -> void:
@@ -48,8 +49,6 @@ func go_kamikaze() -> void:
 			Tween.EASE_IN_OUT
 		)
 		$Tween.start()
-	else:
-		make_the_despelote()
 
 
 func play_explosion() -> void:
@@ -57,13 +56,13 @@ func play_explosion() -> void:
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
-	make_the_despelote()
-
-func make_the_despelote() -> void:
 	play_explosion()
 	player_destroyer.set_deferred("disabled", false)
 	$TimerDestroyer.start()
 	die()
+#	$Sprite.visible = false
+#	self.motor.visible = false
+
 
 func _on_ExplosionPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "explosion":
@@ -81,8 +80,3 @@ func die() -> void:
 
 func _on_TimerDestroyer_timeout() -> void:
 	player_destroyer.set_deferred("disabled", true)
-
-
-func _on_TimerStopper_timeout() -> void:
-	if self.is_alive:
-		go_kamikaze()

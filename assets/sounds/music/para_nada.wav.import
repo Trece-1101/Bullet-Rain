@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/para_nada.wav-952ac0071522431e071ad3b0b7233413.sample"
+
+[deps]
+
+source_file="res://assets/sounds/music/para_nada.wav"
+dest_files=[ "res://.import/para_nada.wav-952ac0071522431e071ad3b0b7233413.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

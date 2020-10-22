@@ -51,8 +51,9 @@ func _ready() -> void:
 			bullet_sprite.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")
-
-
+		
+#	if type == 1:
+#	else:
 
 
 func _process(delta: float) -> void:
@@ -78,8 +79,7 @@ func _on_area_entered(area: Area2D) -> void:
 			other_bullet.destroy()
 			destroy()
 	else:
-		destroy()
-		#queue_free()
+		queue_free()
 
 
 func destroy() -> void:

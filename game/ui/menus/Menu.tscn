@@ -1,7 +1,7 @@
 [gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=1]
-[ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/ui/buttons/btn_menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/menu/video/0049.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=5]
@@ -414,44 +414,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1447.0
-margin_top = 338.0
-margin_right = 1807.0
-margin_bottom = 918.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="BtnNewGame" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_right = 1839.43
 
-[node name="BtnNewGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-
-[node name="BtnLoadGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 104.0
-margin_bottom = 204.0
+[node name="BtnLoadGame" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_top = 450.0
+margin_right = 1839.43
+margin_bottom = 553.0
 text = "Load Game     "
 
-[node name="BtnOptions" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 208.0
-margin_bottom = 308.0
+[node name="BtnOptions" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_top = 550.0
+margin_right = 1839.43
+margin_bottom = 653.0
 text = "Options        "
 
-[node name="BtnLeaderboard" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 312.0
-margin_bottom = 412.0
+[node name="BtnLeaderboard" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_top = 650.0
+margin_right = 1839.43
+margin_bottom = 753.0
 text = "Leaderboard  "
 
-[node name="BtnCredits" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 416.0
-margin_bottom = 516.0
+[node name="BtnCredits" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_top = 750.0
+margin_right = 1839.43
+margin_bottom = 853.0
 text = "Credits         "
 
-[node name="BtnExitGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 520.0
-margin_bottom = 620.0
+[node name="BtnExitGame" parent="Control" instance=ExtResource( 2 )]
+margin_left = 1481.43
+margin_top = 850.0
+margin_right = 1839.43
+margin_bottom = 953.0
 text = "Exit Game      "
-is_quitter = true
 
 [node name="Version" type="Label" parent="."]
 visible = false
