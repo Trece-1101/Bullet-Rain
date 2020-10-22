@@ -27,9 +27,6 @@ animations = [ {
 "speed": 42.0
 } ]
 
-[node name="PlayerShield" type="Node2D"]
-
-[node name="AnimatedShield" type="AnimatedSprite" parent="."]
+[node name="PlayerShield" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "shield"
-frame = 1
