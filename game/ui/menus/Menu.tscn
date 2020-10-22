@@ -1,7 +1,7 @@
 [gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=1]
-[ext_resource path="res://game/ui/buttons/btn_menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/menu/video/0049.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=5]
@@ -126,6 +126,7 @@
 [ext_resource path="res://assets/ui/menu/video/0064.jpg" type="Texture" id=125]
 [ext_resource path="res://assets/ui/menu/video/0065.jpg" type="Texture" id=126]
 [ext_resource path="res://assets/ui/menu/video/0059.jpg" type="Texture" id=127]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

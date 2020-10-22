@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/player/player_stealth.png" type="Texture" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/sounds/sfx/player/bulletchange/bulletchange08.wav" type="AudioStream" id=11]
 [ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=12]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=13]
+[ext_resource path="res://assets/animations/playerrespawning.tres" type="Animation" id=14]
+[ext_resource path="res://game/player/Shield.gd" type="Script" id=15]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.31058, 0, 0, Vector2( 1, 1 ), 0.701913, 0.0, 0, 0 ]
@@ -48,7 +50,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("ShootPositions/Left/LeftCannon:emitting")
@@ -75,7 +77,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -102,8 +104,9 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.662745, 0.0705882, 0.0705882, 0.882353 ), Color( 0.945098, 0.027451, 0.027451, 0.729412 ), Color( 0.94902, 0.254902, 0.141176, 0.482353 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 0.164706, 0.164706, 1 ), Color( 1, 1, 1, 0.545098 ), Color( 0.945098, 0.027451, 0.027451, 0.478431 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 2.0
+step = 0.05
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -123,11 +126,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "die"
+}, {
 "args": [  ],
 "method": "disabled_collider"
 } ]
@@ -219,7 +225,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -330,20 +336,20 @@ tracks/8/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0, 0.457944 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.843137 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.541684 ), -1.29404, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 1
 emission_sphere_radius = 1.0
 flag_disable_z = true
@@ -353,8 +359,11 @@ gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 1.5
-scale_curve = SubResource( 11 )
-color_ramp = SubResource( 9 )
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
+
+[sub_resource type="CircleShape2D" id=14]
+radius = 0.01
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 960, 920 )
@@ -400,15 +409,17 @@ frame = 1
 
 [node name="AnimationEffects" type="AnimationPlayer" parent="."]
 anims/init = SubResource( 3 )
-anims/shoot = SubResource( 4 )
+anims/shoot = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/damage = SubResource( 5 )
-anims/destroy = SubResource( 6 )
-anims/init = SubResource( 7 )
+autoplay = "respawning"
+anims/damage = SubResource( 6 )
+anims/destroy = SubResource( 7 )
+anims/init = SubResource( 8 )
+anims/respawning = ExtResource( 14 )
 
 [node name="GunTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
 
 [node name="ShootPositions" type="Node2D" parent="."]
 position = Vector2( 0, -8 )
@@ -425,7 +436,7 @@ emitting = false
 amount = 3
 lifetime = 0.1
 visibility_rect = Rect2( -15, -15, 30, 30 )
-process_material = SubResource( 12 )
+process_material = SubResource( 13 )
 texture = ExtResource( 9 )
 
 [node name="Right" type="Position2D" parent="ShootPositions"]
@@ -440,7 +451,7 @@ emitting = false
 amount = 3
 lifetime = 0.1
 visibility_rect = Rect2( -15, -15, 30, 30 )
-process_material = SubResource( 12 )
+process_material = SubResource( 13 )
 texture = ExtResource( 9 )
 
 [node name="DamageCollider" type="CollisionPolygon2D" parent="."]
@@ -466,4 +477,16 @@ bus = "Player"
 stream = ExtResource( 11 )
 volume_db = -10.0
 bus = "Player"
+
+[node name="Shield" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 15 )
+grow_rate = 600.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2( 0, 5.66321 )
+shape = SubResource( 14 )
+disabled = true
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="area_entered" from="Shield" to="Shield" method="_on_area_entered"]
