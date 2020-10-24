@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/autoloads/GlobalMusic.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/music/level01/mainmusic-looop-no-intro.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/sounds/music/level01/boss01.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/level01/boss.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/music/mainmenu/mainmenumusic.ogg" type="AudioStream" id=4]
 
 [node name="GlobalMusic" type="Node"]
@@ -23,6 +23,7 @@ bus = "Music"
 
 [node name="LevelOneBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = 2.0
 bus = "Music"
 
 [node name="TweenFadeIn" type="Tween" parent="."]
