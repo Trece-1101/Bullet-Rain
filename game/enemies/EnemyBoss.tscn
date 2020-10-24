@@ -161,9 +161,6 @@ hitpoints = 1000.0
 bullet = ExtResource( 4 )
 bullet_speed = 380
 
-[node name="Sprite" parent="." index="0"]
-rotation = -0.0482751
-
 [node name="AnimationPlayer" parent="." index="2"]
 anims/ultra_destroy = SubResource( 1 )
 

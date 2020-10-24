@@ -4,8 +4,13 @@ extends Node
 #### Señales
 signal send_next_wave()
 
+export var send := true setget ,get_send
+
 #### Variables
 var total_paths := 0
+
+func get_send() -> bool:
+	return send
 
 #### Metodos
 func create_paths() -> void:

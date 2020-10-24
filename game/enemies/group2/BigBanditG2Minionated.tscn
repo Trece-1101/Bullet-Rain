@@ -39,10 +39,11 @@ scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
 [node name="BigBanditG2Minionated" instance=ExtResource( 2 )]
-hitpoints = 80.0
+hitpoints = 90.0
 bullet_speed = 340
 shooting_rate = 1.4
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition") ]
+has_orbitals = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
