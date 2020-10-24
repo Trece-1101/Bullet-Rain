@@ -97,6 +97,7 @@ __meta__ = {
 "_edit_vertical_guides_": [ 1418.27, 499.773, 20.22, -181.477 ]
 }
 debug_panel = ExtResource( 2 )
+send_waves = false
 time_to_start_waves = 4.0
 
 [node name="HUD" type="CanvasLayer" parent="."]

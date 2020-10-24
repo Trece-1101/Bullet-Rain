@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/enemies/EnemyOrbital.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/EnemyOrbital.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/orbitals/G2 - Orbital.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 25.6797
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -28,14 +31,17 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[node name="EnemyOrbital" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="OrbitalG2" instance=ExtResource( 1 )]
+hitpoints = 10.0
 
 [node name="Sprite" parent="." index="0"]
-rotation = 0.0
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, -2.91353 )
+shape = SubResource( 6 )
 
 [node name="Motor" parent="." index="7"]
 process_material = SubResource( 5 )
-[connection signal="animation_finished" from="ExplosionFire2/ExplosionPlayer" to="." method="_on_ExplosionPlayer_animation_finished"]
 
 [editable path="ExplosionFire2"]

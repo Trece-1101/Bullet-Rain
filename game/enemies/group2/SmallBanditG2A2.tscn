@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/enemies/kamikazes/G1 - Kamikaze.png" type="Texture" id=1]
-[ext_resource path="res://game/enemies/EnemyKamikaze.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/g2/G2 - XS.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 40.8654
-height = 27.4989
+radius = 33.111
+height = 27.5491
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
@@ -32,23 +32,21 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="MedKamikazeG1" instance=ExtResource( 2 )]
-hitpoints = 18.0
-dive_speed = 1.4
-stop_before_dive = 0.5
+[node name="SmallBanditG2A2" instance=ExtResource( 1 )]
+hitpoints = 15.0
+bullet_speed = 380
+shooting_rate = 2.0
 
 [node name="Sprite" parent="." index="0"]
-rotation = 0.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
-position = Vector2( 0, -5.46582 )
 shape = SubResource( 1 )
 
-[node name="ExplosionFire2" parent="." index="4"]
-scale = Vector2( 0.15, 0.15 )
+[node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( 0, 32.8434 )
 
-[node name="Motor" parent="." index="7"]
+[node name="Motor" parent="." index="11"]
 process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]
