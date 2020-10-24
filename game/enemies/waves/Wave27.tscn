@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern89.tscn" type="PackedScene" id=2]
+
+[node name="Wave27" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern89" parent="." instance=ExtResource( 2 )]

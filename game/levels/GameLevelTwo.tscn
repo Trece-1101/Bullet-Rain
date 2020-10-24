@@ -14,4 +14,5 @@ time_to_spawn_player = 0.5
 
 [node name="PlayerInterceptor" parent="." index="5" instance=ExtResource( 3 )]
 damage_level = 1
-rate_level = 1
+rate_level = 0
+is_in_god_mode = false

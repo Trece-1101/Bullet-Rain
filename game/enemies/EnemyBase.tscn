@@ -157,6 +157,7 @@ process_material = SubResource( 8 )
 texture = SubResource( 9 )
 
 [node name="Explosion" type="Particles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.235294 )
 emitting = false
 amount = 64
 lifetime = 3.0

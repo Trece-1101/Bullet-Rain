@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
 [ext_resource path="res://game/enemies/paths/patterns/PatternMidBossG2.tscn" type="PackedScene" id=2]
@@ -28,13 +28,29 @@
 [ext_resource path="res://game/enemies/group1/MedBanditG1A2.tscn" type="PackedScene" id=26]
 [ext_resource path="res://game/enemies/group1/MedBanditG1B.tscn" type="PackedScene" id=27]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern49.tscn" type="PackedScene" id=28]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern88.tscn" type="PackedScene" id=29]
+[ext_resource path="res://game/enemies/group2/MedBanditG2B2.tscn" type="PackedScene" id=30]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern62.tscn" type="PackedScene" id=31]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern61.tscn" type="PackedScene" id=32]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern89.tscn" type="PackedScene" id=33]
+[ext_resource path="res://game/enemies/group2/RotatorG2B.tscn" type="PackedScene" id=34]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern58.tscn" type="PackedScene" id=35]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern59.tscn" type="PackedScene" id=36]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern56.tscn" type="PackedScene" id=37]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern57.tscn" type="PackedScene" id=38]
+[ext_resource path="res://game/enemies/group1/BigBanditG1C.tscn" type="PackedScene" id=39]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern55.tscn" type="PackedScene" id=40]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern63.tscn" type="PackedScene" id=41]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern65.tscn" type="PackedScene" id=42]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern64.tscn" type="PackedScene" id=43]
+[ext_resource path="res://game/enemies/group2/MedBanditG2C2.tscn" type="PackedScene" id=44]
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 830.501, 189.694, 0, 0, 0, 0, 829.66, 320.874 )
 }
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 382.343, 447.495, 0, 0, 0, 0, 767.009, 448.909 )
 }
@@ -42,6 +58,16 @@ _data = {
 [sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 382.343, 447.495, 0, 0, 0, 0, 767.009, 448.909, 0, 0, 0, 0, 856, 626.407 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 367.464, 314.109, 0, 0, 0, 0, 697.563, 142.76, 0, 0, 0, 0, 700.083, 442.621, 0, 0, 0, 0, 839.351, 286.293 )
+}
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 765.219, 191.599, 0, 0, 0, 0, 895.386, 191.599 )
 }
 
 [node name="WavesLevelTwo" type="Node"]
@@ -96,7 +122,7 @@ speed = 160.0
 [node name="Pattern87" type="Path2D" parent="Wave22"]
 visible = false
 position = Vector2( 256.473, 0 )
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -105,7 +131,7 @@ speed = 160.0
 [node name="Pattern88" type="Path2D" parent="Wave22"]
 visible = false
 position = Vector2( 130.339, 99.2258 )
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -129,7 +155,7 @@ are_aimers = true
 [node name="Pattern87" type="Path2D" parent="Wave22B"]
 visible = false
 position = Vector2( 408.692, 0 )
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -139,7 +165,7 @@ are_aimers = true
 [node name="Pattern88" type="Path2D" parent="Wave22B"]
 visible = false
 position = Vector2( 130.339, 99.2258 )
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -188,7 +214,7 @@ are_aimers = true
 [node name="Pattern89" type="Path2D" parent="Wave25"]
 visible = false
 position = Vector2( -65.0538, -272.877 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 script = ExtResource( 15 )
 enemies = [ ExtResource( 18 ) ]
 speed = 220.0
@@ -199,7 +225,7 @@ visible = false
 position = Vector2( 1916.83, -149.84 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 script = ExtResource( 15 )
 enemies = [ ExtResource( 18 ) ]
 speed = 220.0
@@ -210,7 +236,7 @@ visible = false
 position = Vector2( 1980.47, -274.291 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 script = ExtResource( 15 )
 enemies = [ ExtResource( 19 ) ]
 speed = 220.0
@@ -276,6 +302,25 @@ enemies = [ ExtResource( 19 ), ExtResource( 18 ) ]
 speed = 120.0
 spawn_enemy_rate = 2.5
 
+[node name="Wave30" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern89" parent="Wave30" instance=ExtResource( 33 )]
+visible = false
+enemies = [ ExtResource( 34 ) ]
+speed = 80.0
+
+[node name="Pattern90" parent="Wave30" instance=ExtResource( 33 )]
+visible = false
+position = Vector2( 1912.25, -11.8921 )
+scale = Vector2( -1, 1 )
+enemies = [ ExtResource( 34 ) ]
+speed = 80.0
+
 [node name="Wave27" type="Node" parent="."]
 script = ExtResource( 3 )
 __meta__ = {
@@ -308,6 +353,255 @@ spawn_enemy_rate = 0.8
 visible = false
 enemies = [ ExtResource( 26 ) ]
 enemy_number = 2
+
+[node name="Wave28" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern88" parent="Wave28" instance=ExtResource( 29 )]
+visible = false
+enemies = [ ExtResource( 30 ) ]
+enemy_number = 2
+speed = 220.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern89" parent="Wave28" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( -78.1152, 156.23 )
+enemies = [ ExtResource( 18 ) ]
+enemy_number = 2
+speed = 180.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern90" parent="Wave28" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 1781.38, 0 )
+scale = Vector2( -1, 1 )
+enemies = [ ExtResource( 30 ) ]
+enemy_number = 2
+speed = 220.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern91" parent="Wave28" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 1912.56, 156.23 )
+scale = Vector2( -1, 1 )
+enemies = [ ExtResource( 18 ) ]
+enemy_number = 2
+speed = 180.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Wave28B" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern89" parent="Wave28B" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( -78.1152, 111.04 )
+curve = SubResource( 4 )
+enemies = [ ExtResource( 18 ) ]
+enemy_number = 2
+speed = 120.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern91" parent="Wave28B" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 1912.56, 111.04 )
+scale = Vector2( -1, 1 )
+curve = SubResource( 4 )
+enemies = [ ExtResource( 18 ) ]
+speed = 120.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern88" parent="Wave28B" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 0, -45.1899 )
+curve = SubResource( 4 )
+enemies = [ ExtResource( 30 ) ]
+enemy_number = 2
+speed = 200.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Pattern90" parent="Wave28B" instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 1845.6, -45.1899 )
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+curve = SubResource( 4 )
+enemies = [ ExtResource( 30 ) ]
+speed = 200.0
+spawn_enemy_rate = 1.4
+are_aimers = true
+
+[node name="Wave12" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 572.162 ],
+"_edit_vertical_guides_": [ 960.57 ]
+}
+
+[node name="Pattern61" parent="Wave12" instance=ExtResource( 32 )]
+visible = false
+enemies = [ ExtResource( 30 ) ]
+enemy_number = 4
+speed = 260.0
+are_aimers = true
+
+[node name="Pattern62" parent="Wave12" instance=ExtResource( 31 )]
+visible = false
+enemies = [ ExtResource( 30 ) ]
+enemy_number = 4
+speed = 260.0
+are_aimers = true
+
+[node name="Wave29" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern89" parent="Wave29" instance=ExtResource( 33 )]
+visible = false
+enemies = [ ExtResource( 16 ) ]
+speed = 80.0
+
+[node name="Pattern90" parent="Wave29" instance=ExtResource( 33 )]
+visible = false
+position = Vector2( 1912.25, -33.2978 )
+scale = Vector2( -1, 1 )
+enemies = [ ExtResource( 16 ) ]
+speed = 80.0
+
+[node name="Wave31" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern" type="Path2D" parent="Wave31"]
+visible = false
+curve = SubResource( 1 )
+script = ExtResource( 4 )
+enemies = [ ExtResource( 16 ) ]
+enemy_number = 2
+speed = 50.0
+
+[node name="Pattern2" type="Path2D" parent="Wave31"]
+visible = false
+position = Vector2( 1917.59, 0 )
+scale = Vector2( -1, 1 )
+curve = SubResource( 1 )
+script = ExtResource( 4 )
+enemies = [ ExtResource( 16 ) ]
+enemy_number = 2
+speed = 50.0
+
+[node name="Wave10" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 541.028 ],
+"_edit_vertical_guides_": [ 918.917 ]
+}
+
+[node name="Pattern55" parent="Wave10" instance=ExtResource( 40 )]
+visible = false
+enemies = [ ExtResource( 12 ) ]
+speed = 500.0
+are_aimers = true
+
+[node name="Pattern57" parent="Wave10" instance=ExtResource( 38 )]
+visible = false
+rotation = -3.14159
+scale = Vector2( 1, -1 )
+enemies = [ ExtResource( 12 ) ]
+speed = 500.0
+are_aimers = true
+
+[node name="Pattern56" parent="Wave10" instance=ExtResource( 37 )]
+visible = false
+enemies = [ ExtResource( 39 ) ]
+enemy_number = 2
+speed = 350.0
+
+[node name="Pattern58" parent="Wave10" instance=ExtResource( 35 )]
+visible = false
+enemies = [ ExtResource( 19 ) ]
+speed = 240.0
+
+[node name="Pattern59" parent="Wave10" instance=ExtResource( 36 )]
+visible = false
+enemies = [ ExtResource( 19 ) ]
+speed = 240.0
+
+[node name="Wave32" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern86" parent="Wave32" instance=ExtResource( 7 )]
+visible = false
+enemies = [ ExtResource( 13 ) ]
+enemy_number = 5
+speed = 160.0
+
+[node name="Pattern87" type="Path2D" parent="Wave32"]
+visible = false
+position = Vector2( 256.473, 0 )
+curve = SubResource( 5 )
+script = ExtResource( 4 )
+enemies = [ ExtResource( 13 ) ]
+enemy_number = 5
+speed = 160.0
+
+[node name="Pattern88" type="Path2D" parent="Wave32"]
+visible = false
+position = Vector2( 130.339, 99.2258 )
+curve = SubResource( 5 )
+script = ExtResource( 4 )
+enemies = [ ExtResource( 13 ) ]
+enemy_number = 5
+speed = 160.0
+
+[node name="Wave13" type="Node" parent="."]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.698, 297.972 ],
+"_edit_vertical_guides_": [ 959.071 ]
+}
+
+[node name="Pattern63" parent="Wave13" instance=ExtResource( 41 )]
+visible = false
+enemies = [ ExtResource( 30 ) ]
+speed = 100.0
+are_aimers = true
+
+[node name="Pattern64" parent="Wave13" instance=ExtResource( 43 )]
+visible = false
+enemies = [ ExtResource( 44 ) ]
+speed = 120.0
+
+[node name="Pattern65" parent="Wave13" instance=ExtResource( 42 )]
+visible = false
+enemies = [ ExtResource( 30 ) ]
+speed = 100.0
+are_aimers = true
 
 [node name="WaveMidBossLevelTwo" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -350,7 +644,7 @@ __meta__ = {
 [node name="Pattern89" type="Path2D" parent="Wave24"]
 visible = false
 position = Vector2( -65.0538, -263.364 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 script = ExtResource( 15 )
 enemies = [ ExtResource( 16 ) ]
 speed = 130.0
@@ -359,7 +653,7 @@ speed = 130.0
 visible = false
 position = Vector2( 1916.83, -140.327 )
 scale = Vector2( -1, 1 )
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 script = ExtResource( 15 )
 enemies = [ ExtResource( 16 ) ]
 speed = 130.0

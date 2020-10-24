@@ -145,6 +145,7 @@ centered = false
 layer = -3
 
 [node name="StarCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( 960, -100 )
 amount = 150
 lifetime = 2.0
@@ -153,6 +154,7 @@ visibility_rect = Rect2( -460, -100, 920, 200 )
 process_material = SubResource( 3 )
 
 [node name="Galaxys" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( 960, -100 )
 amount = 4
 lifetime = 12.0
@@ -168,6 +170,7 @@ layer = -2
 motion_mirroring = Vector2( 0, 8000 )
 
 [node name="Decor" type="Sprite" parent="BackGrounds/ParallaxDecor/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 960, -2920 )
 texture = ExtResource( 12 )
 
