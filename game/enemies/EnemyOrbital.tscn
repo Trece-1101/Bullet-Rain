@@ -31,11 +31,7 @@ color_ramp = SubResource( 2 )
 [node name="EnemyOrbital" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
-rotation = 0.0
-
 [node name="Motor" parent="." index="7"]
 process_material = SubResource( 5 )
-[connection signal="animation_finished" from="ExplosionFire2/ExplosionPlayer" to="." method="_on_ExplosionPlayer_animation_finished"]
 
 [editable path="ExplosionFire2"]

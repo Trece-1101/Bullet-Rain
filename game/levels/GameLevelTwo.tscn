@@ -1,5 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/levels/waves/WavesLevelTwo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=3]
 
 [node name="GameLevelTwo" instance=ExtResource( 1 )]
+send_waves = true
+send_player_ship = false
+time_to_start_waves = 1.0
+time_to_spawn_player = 0.5
+
+[node name="WavesLevelTwo" parent="." index="4" instance=ExtResource( 2 )]
+
+[node name="PlayerInterceptor" parent="." index="5" instance=ExtResource( 3 )]
+damage_level = 1
+rate_level = 1

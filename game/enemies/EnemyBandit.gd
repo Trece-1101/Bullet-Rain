@@ -24,10 +24,10 @@ func _ready() -> void:
 		aim_error = rand_range(-10.0, 10.0)
 
 
-func create_orbital() -> void:
+func create_orbital(speed := 1.5, angle := 45, distance := 200) -> void:
 	if orbital_enemy != null:
 		var minion := orbital_enemy.instance()
-		minion.create(self, 1.5, 45, 200)
+		minion.create(self, speed, angle, distance)
 		add_child(minion)
 		orbitals.append(minion)
 
