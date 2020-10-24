@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/player/Shield.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/sfx/player/shield/shield03.wav" type="AudioStream" id=2]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=1]
 radius = 0.01
 
 [node name="Shield" type="Area2D"]
@@ -13,5 +14,9 @@ grow_rate = 600.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5.66321 )
-shape = SubResource( 13 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Player"
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
