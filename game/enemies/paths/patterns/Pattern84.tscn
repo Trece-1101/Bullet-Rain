@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/enemies/paths/PathOutOut.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 301.948, 147.799, -57.3981, -24.0271, 57.3981, 24.0271, 1188.93, 137.72, 0, -65.4072, 0, 65.4072, 1350.2, 273.791, 45.3846, -52.0588, -45.3846, 52.0588, 1327.52, 939.03, 49.3891, 45.3846, -49.3891, -45.3846, 609.369, 954.149, 0, 0, 0, 0, 601.809, 145.279, 0, 0, 0, 0, 1675.26, 142.76 )
+}
+
+[node name="Pattern84" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )

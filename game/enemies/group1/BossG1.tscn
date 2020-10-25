@@ -50,7 +50,6 @@ minion = ExtResource( 5 )
 indestructible_bullets = [ NodePath("ShootPositions1/Two"), NodePath("ShootPositions2/Three") ]
 
 [node name="Sprite" parent="." index="0"]
-rotation = -0.0193925
 texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
@@ -74,6 +73,7 @@ shape = SubResource( 2 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="Motor" parent="." index="10"]
+position = Vector2( 3.35173e-11, -172.411 )
 process_material = SubResource( 7 )
 
 [node name="One" parent="ShootPositions1" index="0"]

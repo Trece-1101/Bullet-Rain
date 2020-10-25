@@ -4,7 +4,13 @@ extends Node
 #### Variables export
 export var big_boss: PackedScene
 export var time_for_spawn_boss := 4.0
-export(String, "level_one_to_boss", "dummy") var big_boss_music_transition = "level_one_to_boss"
+export(
+	String,
+	"dummy",
+	"level_one_to_boss",
+	"level_two_to_boss") var big_boss_music_transition = "dummy"
+
+export var start_from_wave := 0
 
 #### Variables
 var current_wave := 0
@@ -14,6 +20,8 @@ var send_waves := true
 
 #### Metodos
 func _ready() -> void:
+	if start_from_wave > 0:
+		current_wave = start_from_wave
 	add_to_group("waves_level")
 	yield(owner, "ready")
 

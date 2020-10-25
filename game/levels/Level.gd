@@ -11,6 +11,9 @@ export var send_waves := true
 export var send_player_ship := true
 export var time_to_start_waves := 3.0
 export var time_to_spawn_player := 2.5
+#TODO: quitar esto
+export var player_dmg_level := 0
+export var player_rate_level := 0
 
 #### Variables Onready
 onready var parallax_bg := $BackGrounds/ParallaxBackground
@@ -67,6 +70,10 @@ func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
 # warning-ignore:return_value_discarded
 	new_player.connect("destroy", self, "player_destroyed")
+	#TODO: SACAR ESTO
+	new_player.set_damage_level(player_dmg_level)
+	new_player.set_rate_level(player_rate_level)
+	#
 	add_child(new_player)
 	emit_signal("get_new_player")
 

@@ -43,6 +43,7 @@ is_boss = true
 bullet_speed = 260
 shooting_rate = 1.6
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
+has_orbitals = true
 orbital_enemy = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
