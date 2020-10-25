@@ -75,6 +75,7 @@ func _process(_delta: float) -> void:
 	
 	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
+	
 	if can_shoot and self.allow_shoot:
 		manage_shooting()
 

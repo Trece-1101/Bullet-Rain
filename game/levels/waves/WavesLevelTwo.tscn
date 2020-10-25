@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
 [ext_resource path="res://game/enemies/paths/patterns/PatternMidBossG2.tscn" type="PackedScene" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://game/enemies/paths/patterns/Pattern76.tscn" type="PackedScene" id=64]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern77.tscn" type="PackedScene" id=65]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern78.tscn" type="PackedScene" id=66]
+[ext_resource path="res://game/enemies/group2/BossG2.tscn" type="PackedScene" id=67]
 
 [sub_resource type="Curve2D" id=7]
 _data = {
@@ -104,6 +105,7 @@ _data = {
 
 [node name="WavesLevelTwo" type="Node"]
 script = ExtResource( 1 )
+big_boss = ExtResource( 67 )
 big_boss_music_transition = "level_two_to_boss"
 
 [node name="Wave21" type="Node" parent="."]

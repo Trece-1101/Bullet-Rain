@@ -34,7 +34,7 @@ func add_orbitals() -> void:
 func create_orbital(speed := 1.5, angle := 45, distance := 200) -> void:
 	if orbital_enemy != null:
 		var new_orbital := orbital_enemy.instance()
-		new_orbital.create(self, speed, angle, distance)
+		new_orbital.create(speed, angle, distance)
 		add_child(new_orbital)
 		orbitals.append(new_orbital)
 
@@ -88,6 +88,7 @@ func die() -> void:
 		yield(get_tree().create_timer(0.6), "timeout")
 		for orbital in orbitals:
 			if orbital != null:
+				print(orbital.name)
 				orbital.die_on_leader_death()
 
 

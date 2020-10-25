@@ -30,7 +30,8 @@ export var bullet_speed := -700
 export var bullet_speed_alt := -700
 var hitpoints := 3
 export(Color, RGBA) var color_trail: Color
-export var is_in_god_mode := false
+var is_in_god_mode := false setget set_is_in_god_mode
+export var god := false
 
 
 #### Variables
@@ -108,6 +109,9 @@ func set_can_move(value: bool) -> void:
 
 func get_can_move() -> bool:
 	return can_move
+
+func set_is_in_god_mode(value: bool) -> void:
+	is_in_god_mode = value
 
 #### Metodos
 func _ready() -> void:
@@ -252,7 +256,8 @@ func change_state(new_state) -> void:
 		States.ALIVE:
 			speed_using = speed
 			can_shoot = true
-			is_in_god_mode = false
+			if not god:
+				is_in_god_mode = false
 			state_text = "ALIVE"
 		States.SHOOTING:
 			speed_using = speed_shooting

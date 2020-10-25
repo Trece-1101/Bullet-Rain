@@ -42,13 +42,18 @@ color_ramp = SubResource( 3 )
 [node name="BossG2" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
 hitpoints = 3500.0
+speed = 220.0
 is_boss = true
-bullet_speed = 250
-start_position = Vector2( 960, 30 )
-minion_spawn_delay = 1.0
-minions_positions = [ Vector2( 900, 550 ), Vector2( 1020, 550 ), Vector2( 660, 550 ), Vector2( 1260, 550 ) ]
+bullet_speed = 330
+start_position = Vector2( 960, 220 )
+minion_spawn_delay = 1.6
+minions_positions = [ Vector2( 880, 500 ), Vector2( 1040, 500 ), Vector2( 660, 400 ), Vector2( 1260, 400 ) ]
 minion = ExtResource( 4 )
 indestructible_bullets = [ NodePath("ShootPositions1/One"), NodePath("ShootPositions1/ShootPosition4"), NodePath("ShootPositions1/ShootPosition6"), NodePath("ShootPositions2/ShootPosition7"), NodePath("ShootPositions2/ShootPosition8") ]
+life_thresholds = {
+"half_life": 0.6,
+"low_life": 0.3
+}
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -68,16 +73,20 @@ process_material = SubResource( 6 )
 
 [node name="One" parent="ShootPositions1" index="0"]
 position = Vector2( 2.99658, 110.126 )
-bullet_quantity = 3
+bullet_quantity = 5
 angle_separation = 30.0
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions1" index="1"]
 position = Vector2( -74.9153, 84.6544 )
 script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 30.0
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions1" index="2"]
 position = Vector2( 80.1595, 84.6544 )
 script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 30.0
 
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions1" index="3"]
 position = Vector2( 242.726, 55.4374 )
@@ -86,6 +95,8 @@ script = ExtResource( 3 )
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions1" index="4"]
 position = Vector2( 283.929, 55.4374 )
 script = ExtResource( 3 )
+bullet_quantity = 3
+angle_separation = 45.0
 
 [node name="ShootPosition5" type="Position2D" parent="ShootPositions1" index="5"]
 position = Vector2( -241.227, 55.4374 )
@@ -94,6 +105,8 @@ script = ExtResource( 3 )
 [node name="ShootPosition6" type="Position2D" parent="ShootPositions1" index="6"]
 position = Vector2( -281.682, 55.4374 )
 script = ExtResource( 3 )
+bullet_quantity = 3
+angle_separation = 45.0
 
 [node name="One" parent="ShootPositions2" index="0"]
 position = Vector2( 2.99661, 108.627 )
@@ -118,7 +131,7 @@ script = ExtResource( 3 )
 position = Vector2( 283.929, 55.4374 )
 script = ExtResource( 3 )
 bullet_quantity = 4
-angle_separation = 90.0
+angle_separation = 80.0
 
 [node name="ShootPosition11" type="Position2D" parent="ShootPositions2" index="5"]
 position = Vector2( -241.227, 55.4374 )
@@ -128,7 +141,7 @@ script = ExtResource( 3 )
 position = Vector2( -281.682, 55.4374 )
 script = ExtResource( 3 )
 bullet_quantity = 4
-angle_separation = 90.0
+angle_separation = 80.0
 
 [node name="ShootPosition13" type="Position2D" parent="ShootPositions2" index="7"]
 position = Vector2( -17.2304, 151.329 )
@@ -138,11 +151,19 @@ script = ExtResource( 3 )
 position = Vector2( 23.2238, 151.329 )
 script = ExtResource( 3 )
 
+[node name="GunTimer" parent="." index="13"]
+wait_time = 1.2
+
 [node name="WaitTimer" parent="." index="14"]
 wait_time = 12.0
 
 [node name="ShieldPosition" parent="." index="15"]
 position = Vector2( 0, 286.055 )
+
+[node name="DetectorCoolDown" type="Timer" parent="." index="16"]
+wait_time = 0.6
+one_shot = true
+[connection signal="timeout" from="DetectorCoolDown" to="." method="_on_DetectorCoolDown_timeout"]
 
 [editable path="ExplosionFire"]
 
