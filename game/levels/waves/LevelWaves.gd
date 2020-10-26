@@ -4,6 +4,7 @@ extends Node
 #### Constantes
 const overlay_warning := preload("res://game/ui/overlays/Warning.tscn")
 
+
 #### Variables export
 export var big_boss: PackedScene
 export var time_for_spawn_boss := 4.0

@@ -3,6 +3,10 @@ extends Node
 signal get_new_player
 signal wait_new_player(time)
 
+#### Constantes
+const overlay_pause := preload("res://game/ui/overlays/Pause.tscn")
+const overlay_game_over := preload("res://game/ui/overlays/GameOver.tscn")
+
 #### Variables Export
 export var debuggeable := false
 export var debug_panel: PackedScene
@@ -35,8 +39,9 @@ var current_ship_index := 0
 
 #### Metodos
 func _ready() -> void:
+	var new_pause := overlay_pause.instance()
+	add_child(new_pause)
 	if send_player_ship:
-		#create_player()
 		create_player_timer()
 		player_timer.start()
 	
@@ -64,7 +69,9 @@ func player_destroyed() -> void:
 	emit_signal("wait_new_player", time_to_spawn_player)
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
-		get_tree().reload_current_scene()
+		var new_game_over := overlay_game_over.instance()
+		add_child(new_game_over)
+		#get_tree().reload_current_scene()
 		#aca se termina todo
 	else:
 		player_timer.start()

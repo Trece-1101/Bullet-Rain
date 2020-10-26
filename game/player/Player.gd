@@ -272,13 +272,3 @@ func change_state(new_state) -> void:
 			$DamageCollider.set_deferred("disabled", true)
 			state_text = "DEAD"
 	state = new_state
-
-
-#TODO: quitar esto
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_pause"):
-		pause_mode = PAUSE_MODE_PROCESS
-		get_tree().paused = !get_tree().paused
-	
-	if Input.is_action_just_pressed("ui_test_player_dead"):
-		die()
