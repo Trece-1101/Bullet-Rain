@@ -138,7 +138,7 @@ emitting = false
 
 [node name="DestroySFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -25.0
+volume_db = -35.0
 bus = "SFX"
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

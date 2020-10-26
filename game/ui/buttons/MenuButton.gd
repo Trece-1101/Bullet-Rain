@@ -3,8 +3,12 @@ extends Button
 export var is_quitter := false
 export var go_to_scene := "res://game/levels/GameLevelOne.tscn"
 
+onready var selection_sound := $Selection
+onready var move_sound := $Move
+
 func _on_button_down() -> void:
-	$AudioStreamPlayer.play()
+	$Selection.play()
+	
 
 func _on_button_up() -> void:
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -12,3 +16,7 @@ func _on_button_up() -> void:
 		get_tree().quit()
 	else:
 		get_tree().change_scene(go_to_scene)
+
+
+func _on_Button_mouse_entered():
+	$Move.play()

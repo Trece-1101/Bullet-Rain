@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/levels/waves/WavesTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/group1/BossG1.tscn" type="PackedScene" id=3]
 
 [node name="GameLevelOne" instance=ExtResource( 1 )]
 debuggeable = true
+send_waves = true
 
 [node name="StarCenter" parent="BackGrounds/StarCenterLayer" index="0"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -15,4 +17,5 @@ modulate = Color( 1, 1, 1, 0.607843 )
 [node name="Decor" parent="BackGrounds/ParallaxDecor/ParallaxLayer" index="0"]
 modulate = Color( 1, 1, 1, 0.843137 )
 
-[node name="WavesTest" parent="." index="4" instance=ExtResource( 2 )]
+[node name="WavesLevelOne" parent="." index="4" instance=ExtResource( 2 )]
+big_boss = ExtResource( 3 )

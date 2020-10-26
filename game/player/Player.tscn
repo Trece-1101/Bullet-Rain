@@ -542,7 +542,7 @@ texture = ExtResource( 9 )
 
 [node name="PlayerShield" parent="." instance=ExtResource( 16 )]
 scale = Vector2( 0.1, 0.1 )
-frame = 13
+frame = 3
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
@@ -552,21 +552,22 @@ bus = "Player"
 
 [node name="HitpointSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0
+volume_db = -18.0
 bus = "Player"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -5.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="BulletChangeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -10.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="Respawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
+volume_db = -10.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 
