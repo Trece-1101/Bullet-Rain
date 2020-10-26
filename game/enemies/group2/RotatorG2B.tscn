@@ -34,10 +34,10 @@ color_ramp = SubResource( 3 )
 
 [node name="RotatorG2B" instance=ExtResource( 2 )]
 hitpoints = 85.0
-bullet_speed = 160
-shooting_rate = 0.4
+bullet_speed = 200
+shooting_rate = 0.5
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
-rotation_speed = 120.0
+rotation_speed = 220.0
 rotate_clock_wise = false
 
 [node name="Sprite" parent="." index="0"]

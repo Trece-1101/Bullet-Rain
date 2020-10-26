@@ -42,6 +42,7 @@ hitpoints = 60.0
 bullet_speed = 330
 shooting_rate = 1.5
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition") ]
+has_orbitals = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )

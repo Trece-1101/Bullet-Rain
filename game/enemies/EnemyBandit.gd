@@ -1,35 +1,42 @@
 class_name EnemyBandit
 extends EnemyShooter
 
+#### Variables export
+export var has_orbitals := false
+export var orbital_enemy: PackedScene
+
+
 #### Variables
 var aim_error := 0.0
 var is_leader := false
 var aim := true
 var orbitals := [] setget ,get_orbitals
-export var orbital_enemy: PackedScene
 
 #### Setters y Getters
 func get_orbitals() -> Array:
 	return orbitals
 
-
 #### Metodos
 func _ready() -> void:
-	for child in get_children():
-		if child is EnemyOrbital:
-			orbitals.append(child)
+	if has_orbitals:
+		add_orbitals()
+
 	
 	if is_aimer and player != null:
 		randomize()
 		aim_error = rand_range(-10.0, 10.0)
 
+func add_orbitals() -> void:
+	for child in get_children():
+		if child is EnemyOrbital:
+			orbitals.append(child)
 
-func create_orbital() -> void:
+func create_orbital(speed := 1.5, angle := 45, distance := 200) -> void:
 	if orbital_enemy != null:
-		var minion := orbital_enemy.instance()
-		minion.create(self, 1.5, 45, 200)
-		add_child(minion)
-		orbitals.append(minion)
+		var new_orbital := orbital_enemy.instance()
+		new_orbital.create(speed, angle, distance)
+		add_child(new_orbital)
+		orbitals.append(new_orbital)
 
 
 func _process(_delta: float):
@@ -81,6 +88,7 @@ func die() -> void:
 		yield(get_tree().create_timer(0.6), "timeout")
 		for orbital in orbitals:
 			if orbital != null:
+				print(orbital.name)
 				orbital.die_on_leader_death()
 
 

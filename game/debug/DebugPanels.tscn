@@ -15,10 +15,10 @@ __meta__ = {
 }
 
 [node name="DebugPanel1" type="TextEdit" parent="."]
-margin_left = 18.2705
-margin_top = 685.993
-margin_right = 289.271
-margin_bottom = 854.993
+margin_left = 18.0
+margin_top = 635.0
+margin_right = 368.0
+margin_bottom = 852.0
 custom_fonts/font = SubResource( 1 )
 readonly = true
 wrap_enabled = true
@@ -28,9 +28,9 @@ __meta__ = {
 
 [node name="DebugPanel3" type="TextEdit" parent="."]
 margin_left = 18.2705
-margin_top = 640.972
-margin_right = 289.271
-margin_bottom = 683.972
+margin_top = 587.0
+margin_right = 368.271
+margin_bottom = 630.0
 custom_fonts/font = SubResource( 1 )
 readonly = true
 wrap_enabled = true
@@ -41,7 +41,7 @@ __meta__ = {
 [node name="DebugPanel2" type="TextEdit" parent="."]
 margin_left = 18.2705
 margin_top = 854.972
-margin_right = 289.271
+margin_right = 368.271
 margin_bottom = 969.972
 custom_fonts/font = SubResource( 1 )
 readonly = true
@@ -53,7 +53,7 @@ __meta__ = {
 [node name="DebugPanel4" type="TextEdit" parent="."]
 margin_left = 18.2705
 margin_top = 971.438
-margin_right = 289.271
+margin_right = 368.271
 margin_bottom = 1014.44
 custom_fonts/font = SubResource( 1 )
 readonly = true
@@ -61,3 +61,8 @@ wrap_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

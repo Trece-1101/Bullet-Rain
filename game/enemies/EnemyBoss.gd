@@ -18,7 +18,6 @@ export var life_thresholds := {"half_life": 0.5, "low_life": 0.25}
 #### Variables
 var bullet_rot_correction := 0.0
 var is_shooting := false
-#var is_boss := true setget ,get_is_boss
 var original_speed := 0.0
 var can_shoot := false setget set_can_shoot, get_can_shoot
 var current_shoot_positions_shooting: Node2D
@@ -76,6 +75,7 @@ func _process(_delta: float) -> void:
 	
 	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
+	
 	if can_shoot and self.allow_shoot:
 		manage_shooting()
 
