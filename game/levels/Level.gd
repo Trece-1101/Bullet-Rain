@@ -11,6 +11,8 @@ export var send_waves := true
 export var send_player_ship := true
 export var time_to_start_waves := 3.0
 export var time_to_spawn_player := 2.5
+export(String, "dummy", "level_one", "level_two", "level_three") var music = "dummy"
+
 #TODO: quitar esto
 export var player_dmg_level := 0
 export var player_rate_level := 0
@@ -38,11 +40,16 @@ func _ready() -> void:
 		create_player_timer()
 		player_timer.start()
 	
-	GlobalMusic.play_music(GlobalMusic.musics.level_one)
+	GlobalMusic.play_music(music)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
 	if debuggeable:
 		hud_layer.add_child(debug_panel.instance())
+
+func _process(delta: float):
+	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
+	parallax_border.scroll_offset += Vector2.DOWN * scroll_speed * delta
+	parallax_decor.scroll_offset += Vector2.DOWN * scroll_speed * delta * 0.5
 
 func create_player_timer() -> void:
 	player_timer = Timer.new()
@@ -61,14 +68,13 @@ func player_destroyed() -> void:
 		#aca se termina todo
 	else:
 		player_timer.start()
-		#create_player()
+
 
 func _on_player_timer_timeout() -> void:
 	create_player()
 
 func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
-# warning-ignore:return_value_discarded
 	new_player.connect("destroy", self, "player_destroyed")
 	#TODO: SACAR ESTO
 	new_player.set_damage_level(player_dmg_level)
@@ -92,10 +98,7 @@ func _on_send_waves_timer_timeout() -> void:
 			child.set_send_waves(send_waves)
 			child.start_waves()
 
-func _process(delta: float):
-	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
-	parallax_border.scroll_offset += Vector2.DOWN * scroll_speed * delta
-	parallax_decor.scroll_offset += Vector2.DOWN * scroll_speed * delta * 0.5
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):

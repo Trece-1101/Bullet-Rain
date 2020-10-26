@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 			speed = original_speed
 	
 	if oscilation != 0:
-		if position.y < 150.0 or position.y > 300.0:
+		if position.y < 180.0 or position.y > 380.0:
 			oscilation *= -1
 	
 	position.x += speed * delta
@@ -50,7 +50,7 @@ func execute_low_life_behavior() -> void:
 	bullet_speed *= 1.2
 	gun_timer.wait_time = gun_timer.wait_time * 0.85
 	original_speed *= 1.15
-	oscilation = 10.0
+	oscilation = 25.0
 
 
 

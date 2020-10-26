@@ -1,38 +1,78 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://game/enemies/EnemyShield.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_12.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_04.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_15.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_06.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_03.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_07.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_02.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_14.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_18.png" type="Texture" id=10]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_08.png" type="Texture" id=11]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_17.png" type="Texture" id=12]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_10.png" type="Texture" id=13]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_13.png" type="Texture" id=14]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_11.png" type="Texture" id=15]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_16.png" type="Texture" id=16]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_01.png" type="Texture" id=17]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_05.png" type="Texture" id=18]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_09.png" type="Texture" id=19]
 
 [sub_resource type="Animation" id=1]
 resource_name = "activated"
-length = 2.0
+length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Polygon2D:scale")
+tracks/0/path = NodePath("AnimatedSprite:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.03695, 1.03695 ), Vector2( 0.968963, 0.968963 ), Vector2( 1.04971, 1.04971 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 3.09079, 2.26667 ), Vector2( 3.291, 2.467 ), Vector2( 3.09079, 2.26667 ), Vector2( 2.891, 2.067 ), Vector2( 3.09079, 2.26667 ) ]
 }
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 17 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 18 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 19 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 100.0
+} ]
 
 [node name="EnemyShield" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
 script = ExtResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.992157, 0.509804, 0, 1 )
-polygon = PoolVector2Array( -129, -1, 127, 0, 322, -128, 0, -90, -320, -126 )
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PoolVector2Array( -319, -127, 0, -65, 321, -129, 127, 1, -131, -1 )
+position = Vector2( 0, -33 )
+polygon = PoolVector2Array( -304, -164, -1, -16, 307, -171, 299, -60, 253, 3, 161, 64, 44, 91, -45, 93, -178, 55, -264, -18, -305, -90 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activated"
 anims/activated = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -74 )
+scale = Vector2( 3.09079, 2.26667 )
+frames = SubResource( 2 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

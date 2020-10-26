@@ -88,7 +88,6 @@ func die() -> void:
 		yield(get_tree().create_timer(0.6), "timeout")
 		for orbital in orbitals:
 			if orbital != null:
-				print(orbital.name)
 				orbital.die_on_leader_death()
 
 

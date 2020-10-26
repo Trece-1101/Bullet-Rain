@@ -1,6 +1,9 @@
 class_name LevelWaves, "res://assets/enemies/extras/sea-waves.png"
 extends Node
 
+#### Constantes
+const overlay_warning := preload("res://game/ui/overlays/Warning.tscn")
+
 #### Variables export
 export var big_boss: PackedScene
 export var time_for_spawn_boss := 4.0
@@ -38,6 +41,8 @@ func spawn_wave() -> void:
 	if current_wave < total_waves:
 		get_children()[current_wave].create_paths()
 	else:
+		var new_warning := overlay_warning.instance()
+		get_parent().add_child(new_warning)
 		GlobalMusic.music_transition(big_boss_music_transition)
 		yield(get_tree().create_timer(time_for_spawn_boss),"timeout")
 		var new_boss := big_boss.instance()

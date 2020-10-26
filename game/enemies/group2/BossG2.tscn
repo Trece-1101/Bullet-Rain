@@ -6,7 +6,7 @@
 [ext_resource path="res://game/enemies/group2/BigBanditG2C.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/enemies/group2/BossG2.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 95.7299
 height = 404.456
 
@@ -14,20 +14,20 @@ height = 404.456
 radius = 47.4116
 height = 315.965
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -36,8 +36,8 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="BossG2" instance=ExtResource( 1 )]
 script = ExtResource( 5 )
@@ -45,9 +45,9 @@ hitpoints = 3500.0
 speed = 220.0
 is_boss = true
 bullet_speed = 330
-start_position = Vector2( 960, 220 )
+start_position = Vector2( 960, 200 )
 minion_spawn_delay = 1.6
-minions_positions = [ Vector2( 880, 500 ), Vector2( 1040, 500 ), Vector2( 660, 400 ), Vector2( 1260, 400 ) ]
+minions_positions = [ Vector2( 880, 520 ), Vector2( 1040, 520 ), Vector2( 660, 420 ), Vector2( 1260, 420 ) ]
 minion = ExtResource( 4 )
 indestructible_bullets = [ NodePath("ShootPositions1/One"), NodePath("ShootPositions1/ShootPosition4"), NodePath("ShootPositions1/ShootPosition6"), NodePath("ShootPositions2/ShootPosition7"), NodePath("ShootPositions2/ShootPosition8") ]
 life_thresholds = {
@@ -60,7 +60,7 @@ texture = ExtResource( 2 )
 
 [node name="DamageCollider" parent="." index="1"]
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 
 [node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
 "damage_collider",
@@ -69,7 +69,7 @@ shape = SubResource( 8 )
 
 [node name="Motor" parent="." index="9"]
 position = Vector2( 4.36018e-11, -216.763 )
-process_material = SubResource( 6 )
+process_material = SubResource( 7 )
 
 [node name="One" parent="ShootPositions1" index="0"]
 position = Vector2( 2.99658, 110.126 )

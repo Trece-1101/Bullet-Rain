@@ -9,7 +9,9 @@ onready var musics := {
 	"main_menu": $Menu,
 	"credits": $Credits,
 	"level_one": $LevelOne,
-	"level_one_boos": $LevelOneBoss
+	"level_one_boss": $LevelOneBoss,
+	"level_two": $LevelTwo,
+	"level_two_boss": $LevelTwoBoss
 }
 
 onready var transitions := {
@@ -22,7 +24,11 @@ onready var tween_fade_out := $TweenFadeOut
 func get_transitions() -> Dictionary:
 	return transitions
 
-func play_music(music: Object) -> void:
+func play_music(music: String) -> void:
+	stop_all_music()
+	musics[music].play()
+
+func play_music_obj(music: Object) -> void:
 	stop_all_music()
 	music.play()
 
