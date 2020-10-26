@@ -5,6 +5,7 @@
 
 [node name="GameLevelThree" instance=ExtResource( 1 )]
 send_waves = true
+music = "level_three"
 player_dmg_level = 1
 player_rate_level = 1
 

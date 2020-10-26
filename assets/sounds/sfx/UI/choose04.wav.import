@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/choose04.wav-08e5fb626d0fa91c884ae1fefa72f4ab.sample"
+path="res://.import/choose04.wav-0bd02137763e48bb278a91c47894c470.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sfx/ui/choose04.wav"
-dest_files=[ "res://.import/choose04.wav-08e5fb626d0fa91c884ae1fefa72f4ab.sample" ]
+source_file="res://assets/sounds/sfx/UI/choose04.wav"
+dest_files=[ "res://.import/choose04.wav-0bd02137763e48bb278a91c47894c470.sample" ]
 
 [params]
 
