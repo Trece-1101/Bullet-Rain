@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/PathOutIn.gd" type="Script" id=2]
+[ext_resource path="res://game/enemies/group3/MidBossTeleporterG3.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 722.762, -23.5501, 0, 0, 0, 0, 949.548, 208.276 )
+}
+
+[node name="WaveMidBossLevelThree" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="PatternMidBossLevelThree" type="Path2D" parent="."]
+visible = false
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+enemies = [ ExtResource( 3 ) ]
+speed = 250.0
+are_aimers = true
+cuadrant = 5

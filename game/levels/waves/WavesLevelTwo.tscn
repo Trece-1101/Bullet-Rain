@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
-[ext_resource path="res://game/enemies/paths/patterns/PatternMidBossG2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/waves/WaveMidBossLevelTwo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=3]
 [ext_resource path="res://game/enemies/paths/PathInIn.gd" type="Script" id=4]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern85.tscn" type="PackedScene" id=5]
@@ -68,7 +68,7 @@
 [ext_resource path="res://game/enemies/paths/patterns/Pattern78.tscn" type="PackedScene" id=66]
 [ext_resource path="res://game/enemies/group2/BossG2.tscn" type="PackedScene" id=67]
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 830.501, 189.694, 0, 0, 0, 0, 829.66, 320.874 )
 }
@@ -98,7 +98,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 361.432, 104.622, 0, 0, 0, 0, 621.968, 238.514 )
 }
 
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 958.569, 191.037, 0, 0, 0, 0, 1089.71, 256.392 )
 }
@@ -159,7 +159,7 @@ speed = 160.0
 [node name="Pattern87" type="Path2D" parent="Wave22"]
 visible = false
 position = Vector2( 256.473, 0 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -168,7 +168,7 @@ speed = 160.0
 [node name="Pattern88" type="Path2D" parent="Wave22"]
 visible = false
 position = Vector2( 130.339, 99.2258 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -193,7 +193,7 @@ are_aimers = true
 [node name="Pattern87" type="Path2D" parent="Wave22B"]
 visible = false
 position = Vector2( 408.692, 0 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -203,7 +203,7 @@ are_aimers = true
 [node name="Pattern88" type="Path2D" parent="Wave22B"]
 visible = false
 position = Vector2( 130.339, 99.2258 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -613,7 +613,7 @@ speed = 160.0
 [node name="Pattern87" type="Path2D" parent="Wave32"]
 visible = false
 position = Vector2( 256.473, 0 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -622,7 +622,7 @@ speed = 160.0
 [node name="Pattern88" type="Path2D" parent="Wave32"]
 visible = false
 position = Vector2( 130.339, 99.2258 )
-curve = SubResource( 7 )
+curve = SubResource( 1 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 13 ) ]
 enemy_number = 5
@@ -653,12 +653,7 @@ enemies = [ ExtResource( 30 ) ]
 speed = 100.0
 are_aimers = true
 
-[node name="WaveMidBossLevelTwo" type="Node" parent="."]
-script = ExtResource( 3 )
-send = false
-
-[node name="PatternMidBossG2" parent="WaveMidBossLevelTwo" instance=ExtResource( 2 )]
-visible = false
+[node name="WaveMidBossLevelTwo" parent="." instance=ExtResource( 2 )]
 
 [node name="Wave23B" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -976,7 +971,7 @@ are_aimers = false
 [node name="Pattern" type="Path2D" parent="Wave41"]
 visible = false
 position = Vector2( -132.936, 0 )
-curve = SubResource( 8 )
+curve = SubResource( 7 )
 script = ExtResource( 4 )
 enemies = [ ExtResource( 16 ), ExtResource( 34 ) ]
 enemy_number = 3
