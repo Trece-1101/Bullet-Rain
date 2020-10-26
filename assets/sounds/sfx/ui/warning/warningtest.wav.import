@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/warningtest.wav-f5cc90cdeb4fb1a72d5c15e1ce0e3732.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/ui/warning/warningtest.wav"
+dest_files=[ "res://.import/warningtest.wav-f5cc90cdeb4fb1a72d5c15e1ce0e3732.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
