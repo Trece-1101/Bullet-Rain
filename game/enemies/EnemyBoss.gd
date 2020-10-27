@@ -166,8 +166,9 @@ func spawn_minions() -> void:
 		get_parent().add_child(new_minion)
 
 
-func spawn_shield() -> void:
+func spawn_shield(size := 1.0) -> void:
 	shield.position = $ShieldPosition.position
+	shield.scale = Vector2(size, size)
 	add_child(shield)
 
 
@@ -187,8 +188,3 @@ func _on_WaitTimer_timeout() -> void:
 
 func die() -> void:
 	change_state(States.DEAD)
-#	is_aimer = false
-#	can_shoot = false
-#	gun_timer.stop()
-#	wait_timer.stop()
-#	animation_player.play("ultra_destroy")

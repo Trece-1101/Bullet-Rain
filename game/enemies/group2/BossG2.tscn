@@ -10,7 +10,7 @@
 radius = 95.7299
 height = 404.456
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 47.4116
 height = 315.965
 
@@ -40,6 +40,7 @@ scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
 [node name="BossG2" instance=ExtResource( 1 )]
+position = Vector2( 0, -28.0616 )
 script = ExtResource( 5 )
 hitpoints = 3500.0
 speed = 220.0
@@ -65,7 +66,7 @@ shape = SubResource( 1 )
 [node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
 "damage_collider",
 ]]
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="Motor" parent="." index="9"]
 position = Vector2( 4.36018e-11, -216.763 )
@@ -158,7 +159,7 @@ wait_time = 1.2
 wait_time = 12.0
 
 [node name="ShieldPosition" parent="." index="15"]
-position = Vector2( 0, 286.055 )
+position = Vector2( 0, 259.116 )
 
 [node name="DetectorCoolDown" type="Timer" parent="." index="16"]
 wait_time = 0.6

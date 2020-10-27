@@ -1,0 +1,127 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBoss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/enemies/EnemyPart.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/enemies/g3/G3 - FinalBoss - Center.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/g3/G3 - FinalBoss - Left.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/g3/G3 - FinalBoss - Right.png" type="Texture" id=5]
+[ext_resource path="res://game/enemies/group3/BossG3.gd" type="Script" id=6]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 64.7654
+height = 241.773
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 64.7654
+height = 248.123
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 47.3039
+height = 214.787
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="BossG3" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+hitpoints = 50.0
+bullet = null
+bullet_speed = 400
+start_position = Vector2( 960, 200 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="EnemyPart" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( -243, -17 )
+
+[node name="Sprite" parent="EnemyPart" index="0"]
+texture = ExtResource( 4 )
+
+[node name="DamageCollider" parent="EnemyPart" index="1"]
+polygon = PoolVector2Array( 101.152, -133.495, 88.471, -159.524, -101.744, -124.151, -133.78, -68.0878, -132.541, 43.3731, -98.4066, 168.846, -37.6714, 169.514, -1.63072, 67.3985, 65.1113, 70.0681, 65.1113, -46.0629, 102.487, -45.3955 )
+
+[node name="ExplosionFire" parent="EnemyPart" index="3"]
+position = Vector2( -66.7462, -27.5461 )
+
+[node name="ShootPosition" parent="EnemyPart/ShootPositions" index="0"]
+position = Vector2( -65.8771, 67.4645 )
+bullet_quantity = 3
+angle_separation = 30.0
+
+[node name="BombPosition" parent="EnemyPart" index="10"]
+position = Vector2( -64.2897, 67.497 )
+
+[node name="EnemyPart2" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( 243, -17 )
+
+[node name="Sprite" parent="EnemyPart2" index="0"]
+texture = ExtResource( 5 )
+
+[node name="DamageCollider" parent="EnemyPart2" index="1"]
+polygon = PoolVector2Array( -105.811, -128.86, -80.4123, -159.814, 97.3765, -125.685, 128.331, -70.1261, 129.918, 48.929, 91.8207, 168.778, 32.2931, 171.159, -6.59819, 62.4219, -67.7131, 67.9778, -69.3005, -47.9024, -103.43, -49.4898 )
+
+[node name="ExplosionFire" parent="EnemyPart2" index="3"]
+position = Vector2( 61.4488, -19.0703 )
+
+[node name="ShootPosition" parent="EnemyPart2/ShootPositions" index="0"]
+position = Vector2( 60.3212, 69.8456 )
+bullet_quantity = 3
+angle_separation = 30.0
+
+[node name="BombPosition" parent="EnemyPart2" index="10"]
+position = Vector2( 61.1149, 61.1149 )
+
+[node name="DamageCollider" parent="." index="3"]
+position = Vector2( -111.118, 0 )
+shape = SubResource( 6 )
+
+[node name="DamageCollider2" type="CollisionShape2D" parent="." index="4" groups=[
+"damage_collider",
+]]
+position = Vector2( 107.943, 0 )
+shape = SubResource( 7 )
+
+[node name="DamageCollider3" type="CollisionShape2D" parent="." index="5" groups=[
+"damage_collider",
+]]
+shape = SubResource( 8 )
+
+[node name="Motor" parent="." index="12"]
+position = Vector2( 4.19111e-11, -209.327 )
+process_material = SubResource( 9 )
+
+[node name="ShieldPosition" parent="." index="18"]
+position = Vector2( 0, 242.709 )
+[connection signal="destroyed" from="EnemyPart" to="." method="_on_EnemyPart_destroyed"]
+[connection signal="destroyed" from="EnemyPart2" to="." method="_on_EnemyPart_destroyed"]
+
+[editable path="EnemyPart"]
+
+[editable path="EnemyPart2"]
+
+[editable path="ExplosionFire"]
+
+[editable path="ExplosionFire2"]

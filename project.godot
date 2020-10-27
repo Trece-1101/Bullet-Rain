@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Bomb",
+"language": "GDScript",
+"path": "res://game/bullets/Bomb.gd"
+}, {
+"base": "Area2D",
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://game/bullets/Bullet.gd"
@@ -63,6 +68,11 @@ _global_script_classes=[ {
 "class": "EnemyOrbital",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyOrbital.gd"
+}, {
+"base": "Area2D",
+"class": "EnemyPart",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyPart.gd"
 }, {
 "base": "Path2D",
 "class": "EnemyPath",
@@ -170,6 +180,7 @@ _global_script_classes=[ {
 "path": "res://game/player/extras/Trail2D.gd"
 } ]
 _global_script_class_icons={
+"Bomb": "res://assets/bullets/enemy_bullet_temp.png",
 "Bullet": "res://assets/bullets/enemy_bullet_temp.png",
 "BulletContainer": "res://assets/bullets/bullets_container_img.png",
 "ChangeSceneButton": "",
@@ -181,6 +192,7 @@ _global_script_class_icons={
 "EnemyFreeTeleporter": "",
 "EnemyKamikaze": "",
 "EnemyOrbital": "",
+"EnemyPart": "",
 "EnemyPath": "res://assets/enemies/extras/path_img.png",
 "EnemyPather": "",
 "EnemyRotator": "",

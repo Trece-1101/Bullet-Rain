@@ -32,8 +32,6 @@ func set_can_shoot(value: bool) -> void:
 func get_can_shoot() -> bool:
 	return can_shoot
 
-#func get_is_boss() -> bool:
-#	return is_boss
 
 func get_bullet() -> PackedScene:
 	return bullet
