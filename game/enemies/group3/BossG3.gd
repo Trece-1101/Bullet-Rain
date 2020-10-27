@@ -89,6 +89,7 @@ func execute_low_life_behavior() -> void:
 
 
 func shoot_bomb() -> void:
+	shoot_sfx.play()
 	for pos in $BombPositions.get_children():
 		var new_bomb := bomb.instance()
 		new_bomb.global_position = pos.position
