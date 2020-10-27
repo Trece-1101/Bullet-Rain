@@ -156,6 +156,7 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="EnemyBoss" instance=ExtResource( 1 )]
+z_index = 41
 script = ExtResource( 2 )
 hitpoints = 1000.0
 bullet = ExtResource( 4 )

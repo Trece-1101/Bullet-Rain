@@ -46,7 +46,6 @@ func get_player_x() -> float:
 
 func execute_low_life_behavior() -> void:
 	current_shoot_positions_shooting = shoot_positions_container[2]
-# warning-ignore:narrowing_conversion
 	bullet_speed *= 1.2
 	gun_timer.wait_time = gun_timer.wait_time * 0.85
 	original_speed *= 1.15

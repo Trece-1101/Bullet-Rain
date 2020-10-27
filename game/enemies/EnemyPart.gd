@@ -3,6 +3,8 @@ extends Area2D
 
 #### Señales
 signal destroyed
+signal half_life
+
 
 #### Variables export
 export var hitpoints := 50.0
@@ -16,6 +18,11 @@ var can_shoot := false setget set_can_shoot, get_can_shoot
 var can_shoot_bomb := false setget set_can_shoot_bomb, get_can_shoot_bomb
 var explosion_limits := Vector2.ZERO
 var can_take_damage := true
+var shield := preload("res://game/enemies/EnemyShield.tscn")
+var original_hitpoints := 0.0
+var half_life := false
+var is_alive := true setget ,get_is_alive
+
 
 #### Variables onready
 onready var mini_explosion_vfx := $ExplosionFire2
@@ -41,14 +48,21 @@ func get_can_shoot_bomb() -> bool:
 func get_bullet() -> PackedScene:
 	return bullet
 
+func get_is_alive() -> bool:
+	return is_alive
+
 #### Metodos
 func _ready() -> void:
-	#can_shoot = true
+	original_hitpoints = hitpoints
 	explosion_limits = $Sprite.texture.get_size() * 0.4
 	if indestructible_bullets.size() > 0:
 		set_indestructible_bullet()
 
 func _process(_delta: float) -> void:
+	if hitpoints <= (original_hitpoints * 0.5) and not half_life:
+		half_life = true
+		emit_signal("half_life")
+	
 	if can_shoot:
 		shoot()
 	
@@ -99,20 +113,51 @@ func shoot_bomb() -> void:
 	new_bomb.global_position = $BombPosition.position
 	add_child(new_bomb)
 
-func die() -> void:
-	can_shoot = false
-	emit_signal("destroyed")
-	$AnimationPlayer.play("destroyed")
+func spawn_shield(size := 1.0) -> void:
+	var new_shield := shield.instance()
+	new_shield.position = $ShieldPosition.position
+	new_shield.scale = Vector2(size, size)
+	new_shield.name = "PartShield"
+	add_child(new_shield)
 
+func destroy_shield() -> void:
+	get_node_or_null("PartShield").queue_free()
+
+func toogle_shooting(type: String, value) -> void:
+	match type:
+		"bullet":
+			can_shoot = value
+			if not value:
+				gun_timer.stop()
+		"bomb":
+			can_shoot_bomb = value
+			if not value:
+				bomb_timer.stop()
+		_:
+			pass
+
+func die() -> void:
+	is_alive = false
+	emit_signal("destroyed")
+	die_from_boss()
 
 func die_from_boss() -> void:
+	bomb_timer.stop()
+	gun_timer.stop()
 	can_shoot = false
+	can_shoot_bomb = false
+	
+	if get_node_or_null("PartShield") != null:
+		destroy_shield()
+	
+	for child in get_children():
+		if child is Bomb:
+			child.destroy()
 	$AnimationPlayer.play("destroyed")
 
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
-
 
 func _on_BombTimer_timeout() -> void:
 	can_shoot_bomb = true
