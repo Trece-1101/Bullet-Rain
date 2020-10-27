@@ -96,6 +96,7 @@ func change_state(new_state) -> void:
 			can_shoot = false
 			gun_timer.stop()
 			wait_timer.stop()
+			is_alive = false
 			animation_player.play("ultra_destroy")
 	state = new_state
 
@@ -187,7 +188,6 @@ func _on_GunTimer_timeout() -> void:
 func _on_WaitTimer_timeout() -> void:
 	can_shoot = true
 	get_node_or_null("EnemyShield").queue_free()
-#	shield.queue_free()
 
 
 func die() -> void:

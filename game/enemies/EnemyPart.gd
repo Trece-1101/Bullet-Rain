@@ -121,7 +121,8 @@ func spawn_shield(size := 1.0) -> void:
 	add_child(new_shield)
 
 func destroy_shield() -> void:
-	get_node_or_null("PartShield").queue_free()
+	if get_node_or_null("PartShield") != null:
+		get_node("PartShield").queue_free()
 
 func toogle_shooting(type: String, value) -> void:
 	match type:
@@ -142,13 +143,14 @@ func die() -> void:
 	die_from_boss()
 
 func die_from_boss() -> void:
+	set_process(false)
 	bomb_timer.stop()
 	gun_timer.stop()
 	can_shoot = false
 	can_shoot_bomb = false
 	
 	if get_node_or_null("PartShield") != null:
-		destroy_shield()
+		get_node("PartShield").queue_free()
 	
 	for child in get_children():
 		if child is Bomb:
