@@ -46,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2, 3, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 3.09079, 2.26667 ), Vector2( 3.291, 2.467 ), Vector2( 3.09079, 2.26667 ), Vector2( 2.891, 2.067 ), Vector2( 3.09079, 2.26667 ) ]
+"values": [ Vector2( 3, 1.6 ), Vector2( 3.1, 1.7 ), Vector2( 3, 1.6 ), Vector2( 2.9, 1.5 ), Vector2( 3, 1.6 ) ]
 }
 
 [sub_resource type="SpriteFrames" id=2]
@@ -59,20 +59,21 @@ animations = [ {
 
 [node name="EnemyShield" type="Area2D"]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 9
 script = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-position = Vector2( 0, -33 )
-polygon = PoolVector2Array( -304, -164, -1, -16, 307, -171, 299, -60, 253, 3, 161, 64, 44, 91, -45, 93, -178, 55, -264, -18, -305, -90 )
+position = Vector2( 0, -6.06097 )
+polygon = PoolVector2Array( -304.183, -138.147, -1, -16, 302.997, -147.671, 298.235, -55.602, 255.375, 11.0688, 161, 64, 44, 91, -45, 93, -178, 55, -257.355, 1.54442, -304.183, -74.6508 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activated"
 anims/activated = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -74 )
-scale = Vector2( 3.09079, 2.26667 )
+scale = Vector2( 3, 1.6 )
 frames = SubResource( 2 )
+frame = 34
+playing = true
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

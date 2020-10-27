@@ -167,6 +167,9 @@ anims/ultra_destroy = SubResource( 1 )
 [node name="ExplosionFire" parent="." index="3"]
 scale = Vector2( 2.5, 2.5 )
 
+[node name="ExplosionFire2" parent="." index="4"]
+scale = Vector2( 0.25, 0.25 )
+
 [node name="ExplosionSFX" parent="." index="6"]
 stream = ExtResource( 5 )
 
