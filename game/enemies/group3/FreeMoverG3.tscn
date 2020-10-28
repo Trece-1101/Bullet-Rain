@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/EnemyFreeMover.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/free/G3 - Free.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 59.4599
@@ -33,6 +34,9 @@ color_ramp = SubResource( 3 )
 
 [node name="FreeMoverG3" instance=ExtResource( 1 )]
 hitpoints = 140.0
+shooting_rate = 0.8
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition4") ]
+free_speed = 0.7
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -40,6 +44,29 @@ texture = ExtResource( 2 )
 [node name="DamageCollider" parent="." index="1"]
 position = Vector2( 0, -5.6123 )
 shape = SubResource( 1 )
+
+[node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( 0, 41.0122 )
+bullet_quantity = 2
+angle_separation = 40.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( 0, 20.1525 )
+script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 20.0
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( -51.6188, -17.3241 )
+script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 20.0
+
+[node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
+position = Vector2( 52.3259, -17.3241 )
+script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 20.0
 
 [node name="Motor" parent="." index="11"]
 process_material = SubResource( 6 )

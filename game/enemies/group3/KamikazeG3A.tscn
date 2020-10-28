@@ -34,6 +34,8 @@ color_ramp = SubResource( 3 )
 
 [node name="KamikazeG3A" instance=ExtResource( 1 )]
 hitpoints = 35.0
+dive_speed = 1.1
+stop_before_dive = 0.4
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
