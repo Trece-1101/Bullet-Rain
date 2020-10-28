@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/PathInIn.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 705.134, 259.072, 0, 0, 0, 0, 832.126, 386.064, 0, 0, 0, 0, 641.638, 451.147, 0, 0, 0, 0, 706.721, 260.659 )
+}
+
+[node name="Wave38" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern" type="Path2D" parent="."]
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Pattern2" type="Path2D" parent="."]
+position = Vector2( 1917.16, 0 )
+scale = Vector2( -1, 1 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )

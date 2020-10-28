@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/warningtest.wav-f5cc90cdeb4fb1a72d5c15e1ce0e3732.sample"
+path="res://.import/warningtest.wav-fb842092bb6cfd6bd48b93c9d380a629.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sfx/ui/warning/warningtest.wav"
-dest_files=[ "res://.import/warningtest.wav-f5cc90cdeb4fb1a72d5c15e1ce0e3732.sample" ]
+source_file="res://assets/sounds/sfx/UI/warning/warningtest.wav"
+dest_files=[ "res://.import/warningtest.wav-fb842092bb6cfd6bd48b93c9d380a629.sample" ]
 
 [params]
 
