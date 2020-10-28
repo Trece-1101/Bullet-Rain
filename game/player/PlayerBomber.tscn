@@ -12,11 +12,11 @@ color_trail = Color( 0.862745, 0.384314, 0.745098, 1 )
 [node name="Trail2D" parent="TrailPoint" index="0"]
 width = 50.0
 
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="4"]
 texture = ExtResource( 2 )
 
-[node name="GunTimer" parent="." index="6"]
-wait_time = 0.1
+[node name="GunTimer" parent="." index="7"]
+wait_time = 0.16
 
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -17, 2 )
@@ -29,3 +29,8 @@ position = Vector2( 17, 2 )
 
 [node name="RightCannon" parent="ShootPositions/Right" index="0"]
 position = Vector2( 0, -14 )
+
+[node name="PlayerShield" parent="Shield" index="2"]
+frame = 17
+
+[editable path="Shield"]
