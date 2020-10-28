@@ -27,6 +27,8 @@ bus = "Music"
 stream = ExtResource( 2 )
 bus = "Music"
 
+[node name="LevelThree" type="AudioStreamPlayer" parent="."]
+
 [node name="LevelOneBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = 2.0
@@ -36,6 +38,8 @@ bus = "Music"
 stream = ExtResource( 3 )
 volume_db = 2.0
 bus = "Music"
+
+[node name="LevelThreeBoss" type="AudioStreamPlayer" parent="."]
 
 [node name="TweenFadeIn" type="Tween" parent="."]
 

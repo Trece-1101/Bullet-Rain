@@ -35,6 +35,10 @@ func _process(delta: float) -> void:
 	
 	position += velocity * delta
 
+func destroy() -> void:
+	$AnimationPlayer.play("destroy")
+
+
 func explote() -> void:
 	for _i in range(24):
 		var new_bullet := bullet.instance()
@@ -51,7 +55,6 @@ func explote() -> void:
 		angle += 15.0
 	
 	queue_free()
-
 
 
 

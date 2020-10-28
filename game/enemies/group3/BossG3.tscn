@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/enemies/EnemyPart.tscn" type="PackedScene" id=2]
@@ -6,33 +6,34 @@
 [ext_resource path="res://assets/enemies/g3/G3 - FinalBoss - Left.png" type="Texture" id=4]
 [ext_resource path="res://assets/enemies/g3/G3 - FinalBoss - Right.png" type="Texture" id=5]
 [ext_resource path="res://game/enemies/group3/BossG3.gd" type="Script" id=6]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=7]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 64.7654
 height = 241.773
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 64.7654
 height = 248.123
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 47.3039
 height = 214.787
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
-curve = SubResource( 4 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=8]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -41,86 +42,188 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
 
 [node name="BossG3" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
-hitpoints = 50.0
-bullet = null
-bullet_speed = 400
-start_position = Vector2( 960, 200 )
+hitpoints = 3800.0
+speed = 50.0
+is_boss = true
+bullet_speed = 400.0
+start_position = Vector2( 960, 140 )
+indestructible_bullets = [ NodePath("ShootPositions1/One"), NodePath("ShootPositions1/ShootPosition") ]
+life_thresholds = {
+"half_life": 0.5,
+"low_life": 0.35
+}
+speed_decay = 0.1
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
 
-[node name="EnemyPart" parent="." index="1" instance=ExtResource( 2 )]
+[node name="LeftPart" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( -243, -17 )
+hitpoints = 1600.0
 
-[node name="Sprite" parent="EnemyPart" index="0"]
+[node name="Sprite" parent="LeftPart" index="0"]
 texture = ExtResource( 4 )
 
-[node name="DamageCollider" parent="EnemyPart" index="1"]
+[node name="DamageCollider" parent="LeftPart" index="1"]
 polygon = PoolVector2Array( 101.152, -133.495, 88.471, -159.524, -101.744, -124.151, -133.78, -68.0878, -132.541, 43.3731, -98.4066, 168.846, -37.6714, 169.514, -1.63072, 67.3985, 65.1113, 70.0681, 65.1113, -46.0629, 102.487, -45.3955 )
 
-[node name="ExplosionFire" parent="EnemyPart" index="3"]
+[node name="ExplosionFire" parent="LeftPart" index="3"]
 position = Vector2( -66.7462, -27.5461 )
 
-[node name="ShootPosition" parent="EnemyPart/ShootPositions" index="0"]
+[node name="ShootPosition" parent="LeftPart/ShootPositions" index="0"]
 position = Vector2( -65.8771, 67.4645 )
 bullet_quantity = 3
 angle_separation = 30.0
 
-[node name="BombPosition" parent="EnemyPart" index="10"]
+[node name="BombPosition" parent="LeftPart" index="10"]
 position = Vector2( -64.2897, 67.497 )
 
-[node name="EnemyPart2" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( 243, -17 )
+[node name="ShieldPosition" parent="LeftPart" index="12"]
+position = Vector2( -63, 215 )
 
-[node name="Sprite" parent="EnemyPart2" index="0"]
+[node name="RightPart" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( 243, -17 )
+hitpoints = 1600.0
+
+[node name="Sprite" parent="RightPart" index="0"]
 texture = ExtResource( 5 )
 
-[node name="DamageCollider" parent="EnemyPart2" index="1"]
+[node name="DamageCollider" parent="RightPart" index="1"]
 polygon = PoolVector2Array( -105.811, -128.86, -80.4123, -159.814, 97.3765, -125.685, 128.331, -70.1261, 129.918, 48.929, 91.8207, 168.778, 32.2931, 171.159, -6.59819, 62.4219, -67.7131, 67.9778, -69.3005, -47.9024, -103.43, -49.4898 )
 
-[node name="ExplosionFire" parent="EnemyPart2" index="3"]
+[node name="ExplosionFire" parent="RightPart" index="3"]
 position = Vector2( 61.4488, -19.0703 )
 
-[node name="ShootPosition" parent="EnemyPart2/ShootPositions" index="0"]
+[node name="ShootPosition" parent="RightPart/ShootPositions" index="0"]
 position = Vector2( 60.3212, 69.8456 )
 bullet_quantity = 3
 angle_separation = 30.0
 
-[node name="BombPosition" parent="EnemyPart2" index="10"]
+[node name="BombPosition" parent="RightPart" index="10"]
 position = Vector2( 61.1149, 61.1149 )
+
+[node name="ShieldPosition" parent="RightPart" index="12"]
+position = Vector2( 63, 215 )
 
 [node name="DamageCollider" parent="." index="3"]
 position = Vector2( -111.118, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="DamageCollider2" type="CollisionShape2D" parent="." index="4" groups=[
 "damage_collider",
 ]]
 position = Vector2( 107.943, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="DamageCollider3" type="CollisionShape2D" parent="." index="5" groups=[
 "damage_collider",
 ]]
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="Motor" parent="." index="12"]
 position = Vector2( 4.19111e-11, -209.327 )
-process_material = SubResource( 9 )
+process_material = SubResource( 8 )
 
-[node name="ShieldPosition" parent="." index="18"]
+[node name="One" parent="ShootPositions1" index="0"]
+position = Vector2( -41.5774, 136.071 )
+bullet_quantity = 3
+angle_separation = 45.0
+
+[node name="ShootPosition" type="Position2D" parent="ShootPositions1" index="1"]
+position = Vector2( 42.2073, 136.701 )
+script = ExtResource( 7 )
+bullet_quantity = 3
+angle_separation = 45.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions1" index="2"]
+position = Vector2( 108.803, 102.214 )
+script = ExtResource( 7 )
+bullet_quantity = 2
+angle_separation = 60.0
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions1" index="3"]
+position = Vector2( -111.2, 102.214 )
+script = ExtResource( 7 )
+bullet_quantity = 2
+angle_separation = 60.0
+
+[node name="ShootPosition4" type="Position2D" parent="ShootPositions1" index="4"]
+position = Vector2( 0.258728, 63.504 )
+script = ExtResource( 7 )
+
+[node name="One" parent="ShootPositions2" index="0"]
+position = Vector2( -15.892, 79.4597 )
+bullet_quantity = 3
+angle_separation = 30.0
+
+[node name="ShootPosition" type="Position2D" parent="ShootPositions2" index="1"]
+position = Vector2( 16.9515, 79.4597 )
+script = ExtResource( 7 )
+bullet_quantity = 3
+angle_separation = 30.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions2" index="2"]
+position = Vector2( -41.319, 135.611 )
+script = ExtResource( 7 )
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions2" index="3"]
+position = Vector2( 43.438, 138.79 )
+script = ExtResource( 7 )
+
+[node name="ShootPosition4" type="Position2D" parent="ShootPositions2" index="4"]
+position = Vector2( -112.303, 100.649 )
+script = ExtResource( 7 )
+bullet_quantity = 4
+angle_separation = 40.0
+
+[node name="ShootPosition5" type="Position2D" parent="ShootPositions2" index="5"]
+position = Vector2( 108.065, 100.649 )
+script = ExtResource( 7 )
+bullet_quantity = 4
+angle_separation = 40.0
+
+[node name="ShootPositions3" type="Node2D" parent="." index="16"]
+
+[node name="ShootPosition" type="Position2D" parent="ShootPositions3" index="0"]
+position = Vector2( 0, 61.4489 )
+script = ExtResource( 7 )
+
+[node name="ShieldPosition" parent="." index="19"]
 position = Vector2( 0, 242.709 )
-[connection signal="destroyed" from="EnemyPart" to="." method="_on_EnemyPart_destroyed"]
-[connection signal="destroyed" from="EnemyPart2" to="." method="_on_EnemyPart_destroyed"]
 
-[editable path="EnemyPart"]
+[node name="PartTimer" type="Timer" parent="." index="20"]
+wait_time = 5.0
+one_shot = true
 
-[editable path="EnemyPart2"]
+[node name="BombPositions" type="Node2D" parent="." index="21"]
+
+[node name="BombPosition" type="Position2D" parent="BombPositions" index="0"]
+position = Vector2( 141.701, 25.4983 )
+
+[node name="BombPosition2" type="Position2D" parent="BombPositions" index="1"]
+position = Vector2( -140.457, 27.5838 )
+
+[node name="BombPosition3" type="Position2D" parent="BombPositions" index="2"]
+position = Vector2( 0, -6.20952 )
+
+[node name="BombTimer" type="Timer" parent="." index="22"]
+wait_time = 3.0
+one_shot = true
+[connection signal="destroyed" from="LeftPart" to="." method="_on_EnemyPart_destroyed"]
+[connection signal="half_life" from="LeftPart" to="." method="_on_Part_half_life"]
+[connection signal="destroyed" from="RightPart" to="." method="_on_EnemyPart_destroyed"]
+[connection signal="half_life" from="RightPart" to="." method="_on_Part_half_life"]
+[connection signal="timeout" from="PartTimer" to="." method="_on_PartTimer_timeout"]
+[connection signal="timeout" from="BombTimer" to="." method="_on_BombTimer_timeout"]
+
+[editable path="LeftPart"]
+
+[editable path="RightPart"]
 
 [editable path="ExplosionFire"]
 

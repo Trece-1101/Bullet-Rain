@@ -12,7 +12,8 @@ export(
 	String,
 	"dummy",
 	"level_one_to_boss",
-	"level_two_to_boss") var big_boss_music_transition = "dummy"
+	"level_two_to_boss",
+	"level_three_to_boss") var big_boss_music_transition = "dummy"
 
 export var start_from_wave := 0
 
