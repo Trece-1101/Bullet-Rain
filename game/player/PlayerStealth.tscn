@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/player/player_interceptor.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/player_stealth.png" type="Texture" id=2]
 
 [node name="PlayerStealth" instance=ExtResource( 1 )]
 speed = 750.0
@@ -34,6 +34,7 @@ position = Vector2( 12, 2 )
 position = Vector2( 0, -16 )
 
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 14
+frame = 3
+playing = true
 
 [editable path="Shield"]

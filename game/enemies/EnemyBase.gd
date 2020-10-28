@@ -55,9 +55,7 @@ func get_is_boss() -> bool:
 #### Metodos
 func _ready() -> void:
 	set_explosion_vars()
-# warning-ignore:return_value_discarded
 	get_top_level().connect("get_new_player", self, "player_respawn")
-# warning-ignore:return_value_discarded
 	get_top_level().connect("wait_new_player", self, "wait")
 
 # warning-ignore:unused_argument

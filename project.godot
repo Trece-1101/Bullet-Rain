@@ -183,6 +183,26 @@ _global_script_classes=[ {
 "class": "Trail2D",
 "language": "GDScript",
 "path": "res://game/player/extras/Trail2D.gd"
+}, {
+"base": "Node",
+"class": "Ultimate",
+"language": "GDScript",
+"path": "res://game/player/Ultimate.gd"
+}, {
+"base": "Ultimate",
+"class": "UltimateBomber",
+"language": "GDScript",
+"path": "res://game/player/UltimateBomber.gd"
+}, {
+"base": "Ultimate",
+"class": "UltimateInterceptor",
+"language": "GDScript",
+"path": "res://game/player/UltimateInterceptor.gd"
+}, {
+"base": "Ultimate",
+"class": "UltimateStealth",
+"language": "GDScript",
+"path": "res://game/player/UltimateStealth.gd"
 } ]
 _global_script_class_icons={
 "Bomb": "res://assets/bullets/enemy_bullet_temp.png",
@@ -219,7 +239,11 @@ _global_script_class_icons={
 "PathOutOut": "",
 "Player": "res://assets/player/extras/player_editor_icon.png",
 "ShootPosition": "",
-"Trail2D": ""
+"Trail2D": "",
+"Ultimate": "",
+"UltimateBomber": "",
+"UltimateInterceptor": "",
+"UltimateStealth": ""
 }
 
 [application]
@@ -307,6 +331,12 @@ ui_drone={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":2,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+ui_ultimate={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 

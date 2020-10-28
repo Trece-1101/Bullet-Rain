@@ -42,6 +42,7 @@ func create(
 
 
 func _ready() -> void:
+	add_to_group("bullet_enemy")
 	match type:
 		-1:
 			bullet_sprite.modulate = bullet_color_alt

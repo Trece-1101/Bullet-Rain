@@ -54,6 +54,7 @@ var drone := preload("res://game/player/Drone.tscn")
 var has_drones := false
 var allow_drones := true
 var drone_can_shoot := false
+var can_ultimatear := true 
 
 
 #### Variables Onready
@@ -116,6 +117,7 @@ func get_can_move() -> bool:
 func set_is_in_god_mode(value: bool) -> void:
 	is_in_god_mode = value
 
+
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
@@ -147,6 +149,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			new_drone.position = pos.position
 			new_drone.connect("end_drone", self, "stop_drone_shooting")
 			add_child(new_drone)
+	
+	if event.is_action_pressed("ui_ultimate") and can_ultimatear:
+		get_node("Ultimate").use_ultimate()
 
 
 func get_direction() -> Vector2:
@@ -178,6 +183,20 @@ func set_ship_atributes() -> void:
 	speed_using = speed
 	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
+	var new_ultimate: Ultimate
+	
+	match self.name:
+		"PlayerInterceptor":
+			new_ultimate = UltimateInterceptor.new()
+		"PlayerBomber":
+			new_ultimate = UltimateBomber.new()
+		"PlayerStealth":
+			new_ultimate = UltimateStealth.new()
+		_:
+			print("ERROR")
+	
+	new_ultimate.name = "Ultimate"
+	add_child(new_ultimate)
 
 func attribute_calculator(attribute: String) -> float:
 	if attribute == "shooting_rate":
@@ -273,7 +292,7 @@ func die() -> void:
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)
-	
+
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
