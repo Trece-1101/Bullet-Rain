@@ -11,12 +11,15 @@ onready var musics := {
 	"level_one": $LevelOne,
 	"level_one_boss": $LevelOneBoss,
 	"level_two": $LevelTwo,
-	"level_two_boss": $LevelTwoBoss
+	"level_three": $LevelThree,
+	"level_two_boss": $LevelTwoBoss,
+	"level_three_boss": $LevelThreeBoss
 }
 
 onready var transitions := {
 	"level_one_to_boss": [$LevelOne, $LevelOneBoss],
-	"level_two_to_boss": [$LevelTwo, $LevelTwoBoss]} setget ,get_transitions
+	"level_two_to_boss": [$LevelTwo, $LevelTwoBoss],
+	"level_three_to_boss": [$LevelThree, $LevelThreeBoss]} setget ,get_transitions
 
 onready var tween_fade_in := $TweenFadeIn
 onready var tween_fade_out := $TweenFadeOut

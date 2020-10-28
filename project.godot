@@ -219,7 +219,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Bullet Rain"
-run/main_scene="res://game/levels/GameLevelTwo.tscn"
+run/main_scene="res://game/levels/GameLevelThree.tscn"
 config/icon="res://assets/player/extras/shoot.png"
 
 [autoload]

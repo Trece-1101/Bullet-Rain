@@ -47,7 +47,7 @@ color_ramp = SubResource( 5 )
 
 [node name="BossG3" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
-hitpoints = 3500.0
+hitpoints = 3800.0
 speed = 50.0
 is_boss = true
 bullet_speed = 400.0
@@ -203,10 +203,10 @@ one_shot = true
 [node name="BombPositions" type="Node2D" parent="." index="21"]
 
 [node name="BombPosition" type="Position2D" parent="BombPositions" index="0"]
-position = Vector2( 141.701, 86.6045 )
+position = Vector2( 141.701, 25.4983 )
 
 [node name="BombPosition2" type="Position2D" parent="BombPositions" index="1"]
-position = Vector2( -140.457, 88.69 )
+position = Vector2( -140.457, 27.5838 )
 
 [node name="BombPosition3" type="Position2D" parent="BombPositions" index="2"]
 position = Vector2( 0, -6.20952 )
