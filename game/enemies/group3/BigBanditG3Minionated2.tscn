@@ -36,9 +36,11 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="BigBanditG3Minionated2" instance=ExtResource( 1 )]
-hitpoints = 140.0
+hitpoints = 180.0
 bullet_speed = 300
-indestructible_bullets = [ NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition4") ]
+shooting_rate = 0.9
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition4"), NodePath("ShootPositions/ShootPosition5") ]
+has_orbitals = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -67,25 +69,67 @@ angle_separation = 30.0
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
 position = Vector2( -22.6274, 19.4454 )
 script = ExtResource( 3 )
-bullet_quantity = 2
-angle_separation = 45.0
+bullet_quantity = 5
+angle_separation = 60.0
 
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 position = Vector2( 24.0416, 19.4454 )
 script = ExtResource( 3 )
-bullet_quantity = 2
-angle_separation = 45.0
+bullet_quantity = 5
+angle_separation = 60.0
 
 [node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
 position = Vector2( 0.444767, 33.1316 )
 script = ExtResource( 3 )
+bullet_quantity = 5
+angle_separation = 60.0
 
 [node name="Motor" parent="." index="12"]
 emitting = false
 process_material = SubResource( 6 )
 
 [node name="OrbitalG3A" parent="." index="15" instance=ExtResource( 5 )]
+speed = 8.0
+distance = 160
 
 [node name="OrbitalG3B" parent="." index="16" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 30.0
+distance = 160
+
+[node name="OrbitalG3B2" parent="." index="17" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 60.0
+distance = 160
+
+[node name="OrbitalG3B3" parent="." index="18" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 90.0
+distance = 160
+
+[node name="OrbitalG3B4" parent="." index="19" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 120.0
+distance = 160
+
+[node name="OrbitalG3B5" parent="." index="20" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 150.0
+distance = 160
+
+[node name="OrbitalG3B6" parent="." index="21" instance=ExtResource( 4 )]
+speed = 8.0
+angle = 180.0
+distance = 160
+
+[node name="OrbitalG3B7" parent="." index="22" instance=ExtResource( 4 )]
+speed = 8.0
+angle = -60.0
+distance = 160
+
+[node name="OrbitalG3B8" parent="." index="23" instance=ExtResource( 4 )]
+speed = 8.0
+angle = -30.0
+distance = 160
 
 [editable path="ExplosionFire2"]

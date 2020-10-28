@@ -35,8 +35,8 @@ color_ramp = SubResource( 3 )
 
 [node name="BigBanditG3C2" instance=ExtResource( 1 )]
 hitpoints = 95.0
-bullet_speed = 300
-indestructible_bullets = [ NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition4") ]
+shooting_rate = 1.2
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition5") ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -53,30 +53,28 @@ polygon = PoolVector2Array( -61.3464, 18.7288, -104.281, -51.425, -80.1476, -34.
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( -60, 26 )
-bullet_quantity = 2
-angle_separation = 30.0
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
 position = Vector2( 60, 26 )
 script = ExtResource( 3 )
-bullet_quantity = 2
-angle_separation = 30.0
 
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
 position = Vector2( -22.6274, 19.4454 )
 script = ExtResource( 3 )
-bullet_quantity = 2
-angle_separation = 45.0
+bullet_quantity = 3
+angle_separation = 30.0
 
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 position = Vector2( 24.0416, 19.4454 )
 script = ExtResource( 3 )
-bullet_quantity = 2
-angle_separation = 45.0
+bullet_quantity = 3
+angle_separation = 30.0
 
 [node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
 position = Vector2( 0.444767, 33.1316 )
 script = ExtResource( 3 )
+bullet_quantity = 5
+angle_separation = 50.0
 
 [node name="Motor" parent="." index="12"]
 emitting = false

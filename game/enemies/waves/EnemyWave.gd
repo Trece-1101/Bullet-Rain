@@ -14,6 +14,7 @@ func get_send() -> bool:
 
 #### Metodos
 func create_paths() -> void:
+	print(name)
 	for path in get_children():
 		path.connect("full_path_dead", self, "_on_full_path_dead")
 		total_paths += 1
