@@ -1,4 +1,3 @@
-tool
 class_name Player, "res://assets/player/extras/player_editor_icon.png"
 extends KinematicBody2D
 #### Señales
@@ -51,6 +50,11 @@ var damage_penalty := 0.85
 var rate_damage_factor := 0.08
 var bullet_damage := 0.0
 var shooting_rate := 0.0
+var drone := preload("res://game/player/Drone.tscn")
+var has_drones := false
+var allow_drones := true
+var drone_can_shoot := false
+var can_ultimatear := true 
 
 
 #### Variables Onready
@@ -113,25 +117,43 @@ func get_can_move() -> bool:
 func set_is_in_god_mode(value: bool) -> void:
 	is_in_god_mode = value
 
+
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
+	global_position = Vector2(960.0, 920.0)
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
-	#animation_play.play("init")
 	speed_shooting = speed * speed_multiplier
 	set_ship_atributes()
 
 func _physics_process(_delta: float) -> void:
-	if not Engine.is_editor_hint():
-		movement = speed_using * get_direction().normalized()
-		movement_bonus = 0.0 if movement.y >= 0 else -100.0
-	# warning-ignore:return_value_discarded
+	movement = speed_using * get_direction().normalized()
+	movement_bonus = 0.0 if movement.y >= 0 else -100.0
 	
-		move_and_slide(movement, Vector2.ZERO)
+	move_and_slide(movement, Vector2.ZERO)
 
 func _process(_delta: float) -> void:
+	if has_drones and drone_can_shoot:
+		shoot_drone()
 	shoot_input()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_drone") and not has_drones:
+		has_drones = true
+		drone_can_shoot = true
+		$DroneGunTimer.start()
+		for pos in $DronesPositions.get_children():
+			var new_drone := drone.instance()
+			new_drone.position = pos.position
+			new_drone.connect("end_drone", self, "stop_drone_shooting")
+			add_child(new_drone)
+	
+	if event.is_action_pressed("ui_ultimate") and can_ultimatear:
+		can_ultimatear = false
+		get_node("Ultimate").use_ultimate()
+
 
 func get_direction() -> Vector2:
 	var direction := Vector2(
@@ -158,9 +180,24 @@ func set_ship_atributes() -> void:
 	shooting_rate = attribute_calculator("shooting_rate")
 	bullet_damage = attribute_calculator("bullet_damage")
 	gun_timer.wait_time = shooting_rate
+	$DroneGunTimer.wait_time = shooting_rate
 	speed_using = speed
 	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
+	var new_ultimate: Ultimate
+	
+	match self.name:
+		"PlayerInterceptor":
+			new_ultimate = UltimateInterceptor.new()
+		"PlayerBomber":
+			new_ultimate = UltimateBomber.new()
+		"PlayerStealth":
+			new_ultimate = UltimateStealth.new()
+		_:
+			print("ERROR")
+	
+	new_ultimate.name = "Ultimate"
+	add_child(new_ultimate)
 
 func attribute_calculator(attribute: String) -> float:
 	if attribute == "shooting_rate":
@@ -209,9 +246,32 @@ func shoot() -> void:
 			bullet_damage_using
 			)
 
+func shoot_drone() -> void:
+	drone_can_shoot = false
+	$DronesPositions/DroneLeft/ShootPosition.shoot_bullet(
+		bullet_speed_using + movement_bonus,
+		0.0,
+		bullet_type,
+		bullet_damage_using
+	)
+
+	$DronesPositions/DroneRight/ShootPosition.shoot_bullet(
+		bullet_speed_using + movement_bonus,
+		0.0,
+		bullet_type,
+		bullet_damage_using
+	)
+
+func stop_drone_shooting() -> void:
+	has_drones = false
+	drone_can_shoot = false
+	$DroneGunTimer.stop()
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
+
+func _on_DroneGunTimer_timeout() -> void:
+	drone_can_shoot = true
 
 func take_damage() -> void:
 	if not is_in_god_mode:
@@ -233,7 +293,7 @@ func die() -> void:
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)
-	
+
 
 func play_explosion_sfx() -> void:
 	explosion_sound.play()
@@ -272,3 +332,8 @@ func change_state(new_state) -> void:
 			$DamageCollider.set_deferred("disabled", true)
 			state_text = "DEAD"
 	state = new_state
+
+
+
+
+

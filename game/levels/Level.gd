@@ -34,7 +34,9 @@ var player_ships := {
 	"bomber": preload("res://game/player/PlayerBomber.tscn"),
 	"stealth": preload("res://game/player/PlayerStealth.tscn")
 }
-var ship_order := [player_ships.interceptor, player_ships.bomber, player_ships.stealth]
+#var ship_order := [player_ships.interceptor, player_ships.bomber, player_ships.stealth]
+#var ship_order := [player_ships.stealth, player_ships.interceptor, player_ships.bomber]
+var ship_order := [player_ships.bomber, player_ships.stealth, player_ships.interceptor]
 var current_ship_index := 0
 
 #### Metodos

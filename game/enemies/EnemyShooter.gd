@@ -38,6 +38,7 @@ func get_bullet() -> PackedScene:
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("enemy_shooter")
 	#ToDo: borrar esto en el build definitivo
 	if test_shoot:
 		can_shoot = true
@@ -100,3 +101,9 @@ func disabled_collider() -> void:
 	.disabled_collider()
 	self.can_shoot = false
 	gun_timer.stop()
+
+func disabled_shooting() -> void:
+	if not is_boss:
+		can_shoot = false
+		allow_shoot = false
+		gun_timer.stop()

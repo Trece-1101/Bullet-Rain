@@ -5,7 +5,7 @@ export var grow_rate = 100.0
 export var is_power_upper := false
 
 #### Variables onready
-onready var collider := $CollisionShape2D
+onready var collider := $BulletSponge
 
 func _ready() -> void:
 	restart_size()
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 
 
 func restart_size() -> void:
-	collider.shape.radius = 0.1
+	collider.shape.radius = 0.05
 
 
 func _on_area_entered(area: Area2D) -> void:
