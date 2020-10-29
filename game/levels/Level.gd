@@ -4,7 +4,6 @@ signal get_new_player
 signal wait_new_player(time)
 
 #### Constantes
-const overlay_pause := preload("res://game/ui/overlays/Pause.tscn")
 const overlay_game_over := preload("res://game/ui/overlays/GameOver.tscn")
 
 #### Variables Export
@@ -35,13 +34,16 @@ var player_ships := {
 }
 #var ship_order := [player_ships.interceptor, player_ships.bomber, player_ships.stealth]
 #var ship_order := [player_ships.stealth, player_ships.interceptor, player_ships.bomber]
-var ship_order := [player_ships.bomber, player_ships.stealth, player_ships.interceptor]
+var ship_order := [player_ships.bomber, player_ships.stealth, player_ships.interceptor] setget set_ship_order
 var current_ship_index := 0
+
+func set_ship_order(value: Array) -> void:
+	ship_order = value
 
 #### Metodos
 func _ready() -> void:
-	#var new_pause := overlay_pause.instance()
-	#add_child(new_pause)
+	print(ship_order)
+	add_to_group("level")
 	if send_player_ship:
 		create_player_timer()
 		player_timer.start()
@@ -104,7 +106,6 @@ func _on_send_waves_timer_timeout() -> void:
 		if child.is_in_group("waves_level"):
 			child.set_send_waves(send_waves)
 			child.start_waves()
-
 
 
 func _input(event: InputEvent) -> void:
