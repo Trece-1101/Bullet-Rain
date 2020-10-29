@@ -20,27 +20,31 @@ onready var drone_bar := $RightMenu/MarginRightContainer/InformationSection/Dron
 
 
 func _ready() -> void:
-	GlobalData.connect("send_update_gui", self, "_update_gui")
 	player_container.get_node("Stealth").texture = stealth_on_texture_path
 	player_container.get_node("Bomber").texture = bomber_on_texture_path
 	player_container.get_node("Interceptor").texture = interceptor_on_texture_path
+	GlobalData.connect("send_update_gui_time", self, "_update_gui_time")
 
-#func _process(delta: float) -> void:
-#	time_field.text = "%02d : %02d" % [GlobalData.get_level_time()["minu"], GlobalData.get_level_time()["sec"]]
 
-func _update_gui() -> void:
+func _update_gui_time() -> void:
 	time_field.text = "%02d : %02d" % [GlobalData.get_level_time()["minu"], GlobalData.get_level_time()["sec"]]
 
-func set_usable_ship_order(ship_order: Dictionary) -> void:
-	for ship in ship_order.keys():
-		match ship:
-			"Interceptor":
-				player_container.move_child(player_container.get_node("Interceptor"), ship_order[ship])
-			"Bomber":
-				player_container.move_child(player_container.get_node("Bomber"), ship_order[ship])
-			"Stealth":
-				player_container.move_child(player_container.get_node("Stealth"), ship_order[ship])
+
+func set_usable_ship_order(ship_order: Array) -> void:
+	for i in range(ship_order.size()):
+		match ship_order[i]:
+			"interceptor":
+				player_container.move_child(player_container.get_node("Interceptor"), i)
+			"bomber":
+				player_container.move_child(player_container.get_node("Bomber"), i)
+			"stealth":
+				player_container.move_child(player_container.get_node("Stealth"), i)
 
 
-func change_usable_ship() -> void:
-	pass
+func change_usable_ship(ship: String) -> void:
+	if "Interceptor" in ship:
+		player_container.get_node("Interceptor").texture = interceptor_off_texture_path
+	elif "Stealth" in ship:
+		player_container.get_node("Stealth").texture = stealth_off_texture_path
+	elif "Bomber" in ship:
+		player_container.get_node("Bomber").texture = bomber_off_texture_path

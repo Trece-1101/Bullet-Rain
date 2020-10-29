@@ -1,10 +1,25 @@
 extends Node
-signal send_update_gui
+signal send_update_gui_time
 
 var level_time := {"minu": 0, "sec": 0} setget ,get_level_time
 var level_timer: Timer
 var start_time := 0.0
 var current_time := 0.0
+
+var player_ships := {
+	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
+	"bomber": preload("res://game/player/PlayerBomber.tscn"),
+	"stealth": preload("res://game/player/PlayerStealth.tscn")
+}
+
+onready var ship_order := [
+	player_ships.interceptor, 
+	player_ships.stealth,
+	player_ships.bomber, "interceptor", "stealth", "bomber"] setget ,get_ship_order
+
+
+func get_ship_order() -> Array:
+	return ship_order
 
 func get_level_time() -> Dictionary:
 	return level_time
@@ -26,6 +41,7 @@ func _process(delta: float) -> void:
 func update_gui() -> void:
 	pass
 
+
 func _process_time() -> void:
 	if get_tree().paused:
 		return
@@ -35,4 +51,4 @@ func _process_time() -> void:
 		level_time.minu += 1
 		level_time.sec = 0
 	
-	emit_signal("send_update_gui")
+	emit_signal("send_update_gui_time")
