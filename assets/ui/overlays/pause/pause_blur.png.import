@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_bullet.png-78baabb9661fa9a0edc416d2560effd4.stex"
+path="res://.import/pause_blur.png-e06633b7ff1b06255c8c7bc96338eb61.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bullets/player_bullet.png"
-dest_files=[ "res://.import/player_bullet.png-78baabb9661fa9a0edc416d2560effd4.stex" ]
+source_file="res://assets/ui/overlays/pause/pause_blur.png"
+dest_files=[ "res://.import/pause_blur.png-e06633b7ff1b06255c8c7bc96338eb61.stex" ]
 
 [params]
 

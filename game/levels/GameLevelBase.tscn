@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -9,9 +9,35 @@
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=7]
 [ext_resource path="res://assets/backgrounds/green/green_center.png" type="Texture" id=8]
 [ext_resource path="res://game/levels/border/EnemyActivator.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/ui/overlays/Pause.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/backgrounds/extras/decor_1.png" type="Texture" id=12]
-[ext_resource path="res://assets/backgrounds/extras/galaxy.png" type="Texture" id=13]
+[ext_resource path="res://assets/backgrounds/extras/planets.png" type="Texture" id=12]
+[ext_resource path="res://assets/backgrounds/extras/asteroids.png" type="Texture" id=14]
+
+[sub_resource type="CanvasItemMaterial" id=11]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 2
+emission_box_extents = Vector3( 220, 100, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.3
+angular_velocity = 80.0
+angular_velocity_random = 0.5
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.6
+scale_random = 0.5
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -27,7 +53,31 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 220, 100, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.3
+angular_velocity = 80.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.5
+scale = 0.6
+scale_random = 0.5
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 2
 emission_box_extents = Vector3( 250, 100, 1 )
 flag_disable_z = true
@@ -41,7 +91,7 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 2
 emission_box_extents = Vector3( 460, 100, 1 )
 flag_disable_z = true
@@ -55,40 +105,55 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0.0123457, 0.290123, 0.635802, 1 )
-colors = PoolColorArray( 0.251908, 0.251908, 0.251908, 1, 0.604938, 0.604938, 0.604938, 1, 0.470658, 0.470658, 0.470658, 1, 1, 1, 1, 1 )
+[sub_resource type="CanvasItemMaterial" id=14]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="ParticlesMaterial" id=15]
+emission_shape = 2
+emission_box_extents = Vector3( 300, 50, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 140.0
+initial_velocity_random = 0.2
+angular_velocity = 1.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.5
+scale_random = 0.5
+anim_offset = 1.0
+anim_offset_random = 1.0
 
-[sub_resource type="Curve" id=6]
-min_value = -0.1
-max_value = 0.1
-_data = [ Vector2( 0.0378378, -0.0336572 ), 0.0, 0.0, 0, 0, Vector2( 0.302703, 0.0156776 ), 0.0, 0.0, 0, 0, Vector2( 0.659459, -0.0354754 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0174958 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="CanvasItemMaterial" id=13]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 2
 emission_box_extents = Vector3( 440, 100, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
-gravity = Vector3( 0, 1, 0 )
-initial_velocity = 100.0
-initial_velocity_random = 0.1
-angular_velocity = 1.0
-angular_velocity_random = 0.1
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 250.0
+initial_velocity_random = 0.3
+angular_velocity = 80.0
+angular_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-angle = 180.0
-angle_random = 1.0
-scale_random = 1.0
-color_ramp = SubResource( 5 )
-hue_variation_random = 0.08
-hue_variation_curve = SubResource( 7 )
+scale = 0.6
+scale_random = 0.5
+anim_offset = 1.0
+anim_offset_random = 1.0
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 1 )
@@ -103,6 +168,16 @@ time_to_start_waves = 4.0
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2
 
+[node name="DecorRight" type="Particles2D" parent="HUD"]
+material = SubResource( 11 )
+position = Vector2( 1670, -100 )
+amount = 3
+lifetime = 6.5
+preprocess = 6.0
+visibility_rect = Rect2( -250, -100, 500, 200 )
+process_material = SubResource( 12 )
+texture = ExtResource( 14 )
+
 [node name="StarRight" type="Particles2D" parent="HUD"]
 position = Vector2( 1670, -100 )
 amount = 75
@@ -110,6 +185,16 @@ lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
 process_material = SubResource( 1 )
+
+[node name="DecorLeft" type="Particles2D" parent="HUD"]
+material = SubResource( 2 )
+position = Vector2( 250, -100 )
+amount = 3
+lifetime = 6.5
+preprocess = 6.0
+visibility_rect = Rect2( -250, -100, 500, 200 )
+process_material = SubResource( 3 )
+texture = ExtResource( 14 )
 
 [node name="StarLeft" type="Particles2D" parent="HUD"]
 position = Vector2( 250, -100 )
@@ -119,11 +204,14 @@ amount = 75
 lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
 
 [node name="ScreenShading" type="Sprite" parent="HUD"]
 texture = ExtResource( 7 )
 centered = false
+
+[node name="Pause" parent="HUD" instance=ExtResource( 10 )]
+visible = false
 
 [node name="GUI" parent="HUD" instance=ExtResource( 4 )]
 
@@ -151,28 +239,26 @@ amount = 150
 lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -460, -100, 920, 200 )
-process_material = SubResource( 3 )
+process_material = SubResource( 5 )
 
-[node name="Galaxys" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-modulate = Color( 1, 1, 1, 0.588235 )
+[node name="PlanetsCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+material = SubResource( 14 )
 position = Vector2( 960, -100 )
-amount = 4
+amount = 2
 lifetime = 12.0
 preprocess = 6.0
-visibility_rect = Rect2( -460, -100, 920, 200 )
-process_material = SubResource( 8 )
-texture = ExtResource( 13 )
-
-[node name="ParallaxDecor" type="ParallaxBackground" parent="BackGrounds"]
-layer = -2
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="BackGrounds/ParallaxDecor"]
-motion_mirroring = Vector2( 0, 8000 )
-
-[node name="Decor" type="Sprite" parent="BackGrounds/ParallaxDecor/ParallaxLayer"]
-modulate = Color( 1, 1, 1, 0.784314 )
-position = Vector2( 960, -2920 )
+process_material = SubResource( 15 )
 texture = ExtResource( 12 )
+
+[node name="DecorCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+modulate = Color( 1, 1, 1, 0.588235 )
+material = SubResource( 13 )
+position = Vector2( 960, -100 )
+lifetime = 6.5
+preprocess = 6.0
+visibility_rect = Rect2( -460, -100, 920, 200 )
+process_material = SubResource( 10 )
+texture = ExtResource( 14 )
 
 [node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]
 layer = 1
