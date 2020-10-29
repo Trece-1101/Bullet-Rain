@@ -35,7 +35,7 @@ func _ready() -> void:
 	level_timer.start()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func update_gui() -> void:

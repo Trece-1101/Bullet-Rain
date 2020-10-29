@@ -2,7 +2,8 @@ class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
 signal get_new_player
 signal wait_new_player(time)
-signal update_gui_ships(ship_order)
+#signal update_gui_ships(ship_order)
+#signal update_gui_level_name(level_name)
 
 #### Constantes
 const overlay_game_over := preload("res://game/ui/overlays/GameOver.tscn")
@@ -15,6 +16,7 @@ export var send_waves := true
 export var send_player_ship := true
 export var time_to_start_waves := 3.0
 export var time_to_spawn_player := 2.5
+export var level_name := "NombreNivel"
 export(String, "dummy", "level_one", "level_two", "level_three") var music = "dummy"
 
 #TODO: quitar esto
@@ -44,9 +46,12 @@ func set_ship_order(value: Array) -> void:
 #### Metodos
 func _ready() -> void:
 	add_to_group("level")
-	connect("update_gui_ships", $HUD/GUI, "set_usable_ship_order")
+#	connect("update_gui_ships", $HUD/GUI, "set_usable_ship_order")
+#	connect("update_gui_ships", $HUD/GUI, "set_usable_ship_order")
 	set_ship_order(GlobalData.get_ship_order().slice(0, 2)) 
-	emit_signal("update_gui_ships", GlobalData.get_ship_order().slice(3, 5))
+	$HUD/GUI.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))
+	$HUD/GUI.set_level_name(level_name)
+#	emit_signal("update_gui_ships", GlobalData.get_ship_order().slice(3, 5))
 	if send_player_ship:
 		create_player_timer()
 		player_timer.start()
