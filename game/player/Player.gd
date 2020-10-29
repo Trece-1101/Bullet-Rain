@@ -27,7 +27,7 @@ export(
 	"Nivel 4") var rate_level = 0 setget set_rate_level, get_rate_level
 export var bullet_speed := -700
 export var bullet_speed_alt := -700
-var hitpoints := 3
+var hitpoints := 3 setget ,get_hitpoints
 export(Color, RGBA) var color_trail: Color
 var is_in_god_mode := false setget set_is_in_god_mode
 export var god := false
@@ -116,6 +116,9 @@ func get_can_move() -> bool:
 
 func set_is_in_god_mode(value: bool) -> void:
 	is_in_god_mode = value
+
+func get_hitpoints() -> int:
+	return hitpoints
 
 
 #### Metodos
@@ -280,10 +283,12 @@ func take_damage() -> void:
 		if hitpoints == 0:
 			die()
 		else:
+			GlobalData.substract_hitpoints(hitpoints)
 			animation_play.queue("damage")
 
 func die() -> void:
 	if not is_in_god_mode:
+		GlobalData.substract_hitpoints(0)
 		change_state(States.DEAD)
 		emit_signal("destroy")
 		animation_play.stop()

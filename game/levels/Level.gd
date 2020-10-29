@@ -30,13 +30,6 @@ onready var hud_layer := $HUD
 onready var player_timer: Timer
 
 #### Variables
-#var player_ships := {
-#	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
-#	"bomber": preload("res://game/player/PlayerBomber.tscn"),
-#	"stealth": preload("res://game/player/PlayerStealth.tscn")
-#}
-#var ship_order := [player_ships.interceptor, player_ships.bomber, player_ships.stealth]
-#var ship_order := [player_ships.stealth, player_ships.interceptor, player_ships.bomber]
 var ship_order := [] setget set_ship_order
 var current_ship_index := 0
 
@@ -46,12 +39,10 @@ func set_ship_order(value: Array) -> void:
 #### Metodos
 func _ready() -> void:
 	add_to_group("level")
-#	connect("update_gui_ships", $HUD/GUI, "set_usable_ship_order")
-#	connect("update_gui_ships", $HUD/GUI, "set_usable_ship_order")
 	set_ship_order(GlobalData.get_ship_order().slice(0, 2)) 
 	$HUD/GUI.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))
 	$HUD/GUI.set_level_name(level_name)
-#	emit_signal("update_gui_ships", GlobalData.get_ship_order().slice(3, 5))
+
 	if send_player_ship:
 		create_player_timer()
 		player_timer.start()
@@ -94,6 +85,8 @@ func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
 	new_player.connect("destroy", self, "player_destroyed")
 	$HUD/GUI.change_usable_ship(new_player.name)
+	$HUD/GUI.change_hitpoints(new_player.get_hitpoints())
+
 	#TODO: SACAR ESTO
 	new_player.set_damage_level(player_dmg_level)
 	new_player.set_rate_level(player_rate_level)

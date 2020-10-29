@@ -1,5 +1,9 @@
 extends Node
-signal send_update_gui_time
+signal send_update_gui_time(minu, sec)
+signal send_update_gui_points(points)
+signal send_update_gui_hitpoints(hitpoints)
+
+var points := 0
 
 var level_time := {"minu": 0, "sec": 0} setget ,get_level_time
 var level_timer: Timer
@@ -41,6 +45,12 @@ func _process(_delta: float) -> void:
 func update_gui() -> void:
 	pass
 
+func add_points(value: int) -> void:
+	points += value
+	emit_signal("send_update_gui_points", points)
+
+func substract_hitpoints(value: int) -> void:
+	emit_signal("send_update_gui_hitpoints", value)
 
 func _process_time() -> void:
 	if get_tree().paused:
@@ -51,4 +61,4 @@ func _process_time() -> void:
 		level_time.minu += 1
 		level_time.sec = 0
 	
-	emit_signal("send_update_gui_time")
+	emit_signal("send_update_gui_time", level_time.minu, level_time.sec)

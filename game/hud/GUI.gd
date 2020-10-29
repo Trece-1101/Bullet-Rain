@@ -24,14 +24,23 @@ func _ready() -> void:
 	player_container.get_node("Bomber").texture = bomber_on_texture_path
 	player_container.get_node("Interceptor").texture = interceptor_on_texture_path
 	GlobalData.connect("send_update_gui_time", self, "_update_gui_time")
+	GlobalData.connect("send_update_gui_points", self, "_update_gui_points")
+	GlobalData.connect("send_update_gui_hitpoints", self, "change_hitpoints")
 
 
-func _update_gui_time() -> void:
-	time_field.text = "%02d : %02d" % [GlobalData.get_level_time()["minu"], GlobalData.get_level_time()["sec"]]
+func _update_gui_time(minu: int, sec: int) -> void:
+	time_field.text = "%02d : %02d" % [minu, sec]
+#	time_field.text = "%02d : %02d" % [GlobalData.get_level_time()["minu"], GlobalData.get_level_time()["sec"]]
 
+func _update_gui_points(value: int) -> void:
+	points_field.text = "{v}".format({"v": value})
+
+func change_hitpoints(value: int) -> void:
+	hitpoints_texture.texture.current_frame = value
 
 func set_level_name(value: String) -> void:
 	level_field.text = value
+
 
 func set_usable_ship_order(ship_order: Array) -> void:
 	for i in range(ship_order.size()):
@@ -43,7 +52,6 @@ func set_usable_ship_order(ship_order: Array) -> void:
 			"stealth":
 				player_container.move_child(player_container.get_node("Stealth"), i)
 
-
 func change_usable_ship(ship: String) -> void:
 	if "Interceptor" in ship:
 		player_container.get_node("Interceptor").texture = interceptor_off_texture_path
@@ -52,7 +60,4 @@ func change_usable_ship(ship: String) -> void:
 	elif "Bomber" in ship:
 		player_container.get_node("Bomber").texture = bomber_off_texture_path
 
-
-func change_hitpoints(value: int) -> void:
-	hitpoints_texture.texture.current_frame = value
 
