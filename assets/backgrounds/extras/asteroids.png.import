@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg_green.png-cead709b0180351306121e87ff7c7863.stex"
+path="res://.import/asteroids.png-62a5fa6b61fcb9a4739980d06ab3d466.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/bg_green.png"
-dest_files=[ "res://.import/bg_green.png-cead709b0180351306121e87ff7c7863.stex" ]
+source_file="res://assets/backgrounds/extras/asteroids.png"
+dest_files=[ "res://.import/asteroids.png-62a5fa6b61fcb9a4739980d06ab3d466.stex" ]
 
 [params]
 
