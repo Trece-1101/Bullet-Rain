@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player/player_bomber.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
 
 [node name="PlayerBomber" instance=ExtResource( 1 )]
 speed = 670.0
@@ -17,6 +18,28 @@ texture = ExtResource( 2 )
 
 [node name="GunTimer" parent="." index="7"]
 wait_time = 0.16
+
+[node name="MissilesPositions" type="Node2D" parent="." index="9"]
+
+[node name="ShootPosition" type="Position2D" parent="MissilesPositions" index="0"]
+position = Vector2( -61.4721, -73.0538 )
+script = ExtResource( 3 )
+
+[node name="ShootPosition2" type="Position2D" parent="MissilesPositions" index="1"]
+position = Vector2( -32.0724, -73.0538 )
+script = ExtResource( 3 )
+
+[node name="ShootPosition3" type="Position2D" parent="MissilesPositions" index="2"]
+position = Vector2( -0.8909, -73.0538 )
+script = ExtResource( 3 )
+
+[node name="ShootPosition4" type="Position2D" parent="MissilesPositions" index="3"]
+position = Vector2( 28.5088, -73.0538 )
+script = ExtResource( 3 )
+
+[node name="ShootPosition5" type="Position2D" parent="MissilesPositions" index="4"]
+position = Vector2( 62.363, -73.0538 )
+script = ExtResource( 3 )
 
 [node name="Left" parent="ShootPositions" index="0"]
 position = Vector2( -17, 2 )

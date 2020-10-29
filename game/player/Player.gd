@@ -151,6 +151,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			add_child(new_drone)
 	
 	if event.is_action_pressed("ui_ultimate") and can_ultimatear:
+		can_ultimatear = false
 		get_node("Ultimate").use_ultimate()
 
 

@@ -10,7 +10,7 @@ export var angle_separation := 0.0 setget set_angle_separation
 var bullet_container: Node
 var parent: Object
 var bullet: PackedScene
-#var can_shoot := true setget set_can_shoot, get_can_shoot
+
 
 #### Variables Onready
 onready var bullet_type := -1

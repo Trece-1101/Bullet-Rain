@@ -34,6 +34,8 @@ func create(
 		bullet_angle := 0.0
 	) -> void:
 	creater = bullet_creater
+	if creater is EnemyBase:
+		add_to_group("bullet_enemy")
 	position = bullet_pos
 	rotation = bullet_dir
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
@@ -42,7 +44,6 @@ func create(
 
 
 func _ready() -> void:
-	add_to_group("bullet_enemy")
 	match type:
 		-1:
 			bullet_sprite.modulate = bullet_color_alt
@@ -57,7 +58,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta
 	if creater is EnemyBase:
-		bullet_sprite.rotation += 2 * PI * delta / 4
+		#TODO: verificar que delta / 4 quede igual que delta * 0.25
+		bullet_sprite.rotation += 2 * PI * delta * 0.25
 
 
 func _on_body_entered(body: Node) -> void:
