@@ -210,8 +210,8 @@ _global_script_classes=[ {
 "path": "res://game/player/UltimateStealth.gd"
 } ]
 _global_script_class_icons={
-"Bomb": "res://assets/bullets/enemy_bullet_temp.png",
-"Bullet": "res://assets/bullets/enemy_bullet_temp.png",
+"Bomb": "res://assets/bullets/enemy_bullet.png",
+"Bullet": "res://assets/bullets/enemy_bullet.png",
 "BulletContainer": "res://assets/bullets/bullets_container_img.png",
 "ChangeSceneButton": "",
 "Drone": "",

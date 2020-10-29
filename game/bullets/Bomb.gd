@@ -1,4 +1,4 @@
-class_name Bomb,  "res://assets/bullets/enemy_bullet_temp.png"
+class_name Bomb, "res://assets/bullets/enemy_bullet.png"
 extends Area2D
 
 #### Constantes

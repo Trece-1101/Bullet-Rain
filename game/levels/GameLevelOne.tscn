@@ -12,10 +12,4 @@ music = "level_one"
 [node name="StarCenter" parent="BackGrounds/StarCenterLayer" index="0"]
 modulate = Color( 1, 1, 1, 0.588235 )
 
-[node name="Galaxys" parent="BackGrounds/StarCenterLayer" index="1"]
-modulate = Color( 1, 1, 1, 0.607843 )
-
-[node name="Decor" parent="BackGrounds/ParallaxDecor/ParallaxLayer" index="0"]
-modulate = Color( 1, 1, 1, 0.843137 )
-
 [node name="WavesLevelOne" parent="." index="4" instance=ExtResource( 2 )]

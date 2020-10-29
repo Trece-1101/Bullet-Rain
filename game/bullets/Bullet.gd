@@ -1,4 +1,4 @@
-class_name Bullet, "res://assets/bullets/enemy_bullet_temp.png"
+class_name Bullet, "res://assets/bullets/enemy_bullet.png"
 extends Area2D
 
 #### Variables Export
