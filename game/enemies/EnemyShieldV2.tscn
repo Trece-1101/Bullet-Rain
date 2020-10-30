@@ -1,0 +1,121 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://assets/enemies/extras/shieldv2/11.png" type="Texture" id=1]
+[ext_resource path="res://assets/enemies/extras/shieldv2/12.png" type="Texture" id=2]
+[ext_resource path="res://assets/enemies/extras/shieldv2/13.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/extras/shieldv2/04.png" type="Texture" id=4]
+[ext_resource path="res://assets/enemies/extras/shieldv2/05.png" type="Texture" id=5]
+[ext_resource path="res://assets/enemies/extras/shieldv2/07.png" type="Texture" id=6]
+[ext_resource path="res://assets/enemies/extras/shieldv2/06.png" type="Texture" id=7]
+[ext_resource path="res://assets/enemies/extras/shieldv2/08.png" type="Texture" id=8]
+[ext_resource path="res://assets/enemies/extras/shieldv2/09.png" type="Texture" id=9]
+[ext_resource path="res://assets/enemies/extras/shieldv2/10.png" type="Texture" id=10]
+[ext_resource path="res://assets/enemies/extras/shieldv2/14.png" type="Texture" id=11]
+[ext_resource path="res://game/enemies/EnemyShield.gd" type="Script" id=12]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_13.png" type="Texture" id=13]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_09.png" type="Texture" id=14]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_03.png" type="Texture" id=15]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_05.png" type="Texture" id=16]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_04.png" type="Texture" id=17]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_06.png" type="Texture" id=18]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_14.png" type="Texture" id=19]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_15.png" type="Texture" id=20]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_12.png" type="Texture" id=21]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_18.png" type="Texture" id=22]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_08.png" type="Texture" id=23]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_02.png" type="Texture" id=24]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_17.png" type="Texture" id=25]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_10.png" type="Texture" id=26]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_11.png" type="Texture" id=27]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_16.png" type="Texture" id=28]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_01.png" type="Texture" id=29]
+[ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_07.png" type="Texture" id=30]
+
+[sub_resource type="Animation" id=1]
+resource_name = "activated"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 1.2 ), Vector2( 2.5, 1.4 ), Vector2( 3, 1.6 ), Vector2( 2.5, 1.4 ), Vector2( 2.5, 1.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "v2" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 18 ), ExtResource( 29 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 24 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 27 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 30 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 13 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 28 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 18 ), ExtResource( 26 ), ExtResource( 18 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 100.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "v2",
+"speed": 24.0
+} ]
+
+[node name="EnemyShield" type="Area2D"]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource( 12 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -6.06097 )
+polygon = PoolVector2Array( -304.183, -138.147, -1, -16, 302.997, -147.671, 298.235, -55.602, 255.375, 11.0688, 161, 64, 44, 91, -45, 93, -178, 55, -257.355, 1.54442, -304.183, -74.6508 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "activated"
+anims/activated = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2.85203, 1.54081 )
+frames = SubResource( 2 )
+animation = "v2"
+frame = 8
+playing = true
+flip_v = true
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
