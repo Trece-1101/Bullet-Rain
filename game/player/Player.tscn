@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
+[ext_resource path="res://assets/sounds/sfx/player/shoot/08shoot.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://game/bullets/BulletPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/sfx/player/shoot/09shoot.wav" type="AudioStream" id=4]
@@ -14,7 +15,9 @@
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=13]
 [ext_resource path="res://assets/animations/playerrespawning.tres" type="Animation" id=14]
 [ext_resource path="res://game/player/Shield.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/sounds/sfx/player/drones/drone-ready.wav" type="AudioStream" id=16]
 [ext_resource path="res://assets/sounds/sfx/player/respawn/respawn01.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/sfx/player/drones/drone-notready.wav" type="AudioStream" id=18]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.31058, 0, 0, Vector2( 1, 1 ), 0.701913, 0.0, 0, 0 ]
@@ -526,7 +529,7 @@ script = ExtResource( 13 )
 [node name="Shield" parent="." instance=ExtResource( 15 )]
 
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 7
+frame = 3
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
@@ -555,10 +558,16 @@ volume_db = -10.0
 bus = "Player"
 
 [node name="ShootDroneSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -18.0
 
 [node name="UltDroneActivated" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -28.0
 
 [node name="UltDroneDisabled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -22.0
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="DroneGunTimer" to="." method="_on_DroneGunTimer_timeout"]
 

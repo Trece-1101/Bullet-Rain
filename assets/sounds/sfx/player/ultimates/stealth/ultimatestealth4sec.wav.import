@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ultimatestealth4sec.wav-1fae67e6906d0a8e3594b22aa1eed976.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/player/ultimates/stealth/ultimatestealth4sec.wav"
+dest_files=[ "res://.import/ultimatestealth4sec.wav-1fae67e6906d0a8e3594b22aa1eed976.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

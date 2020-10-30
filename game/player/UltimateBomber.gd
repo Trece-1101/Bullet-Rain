@@ -20,8 +20,8 @@ func _ready() -> void:
 	add_child(gun_timer)
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 	create_sfx(
-		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
-		0.0)
+		"res://assets/sounds/sfx/player/ultimates/bomber/ultimatebomber03.wav",
+		-15)
 
 
 func use_ultimate() -> void:

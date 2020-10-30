@@ -6,8 +6,8 @@ onready var animation := preload("res://game/player/invulnerability.tscn")
 func _ready() -> void:
 	._ready()
 	create_sfx(
-		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
-		0.0)
+		"res://assets/sounds/sfx/player/ultimates/stealth/ultimatestealth4sec.wav",
+		-10)
 
 func use_ultimate() -> void:
 	parent.set_is_in_god_mode(true)
