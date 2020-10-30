@@ -8,7 +8,7 @@ onready var move_sound := $Move
 
 func _on_button_down() -> void:
 	$Selection.play()
-	
+
 
 func _on_button_up() -> void:
 	yield(get_tree().create_timer(0.2), "timeout")

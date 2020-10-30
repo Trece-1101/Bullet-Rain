@@ -8,15 +8,13 @@
 [node name="GameLevelThree" instance=ExtResource( 1 )]
 debuggeable = true
 send_waves = true
+level_name = "3"
 music = "level_three"
 player_dmg_level = 2
 player_rate_level = 1
 
 [node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
 texture = ExtResource( 3 )
-
-[node name="StarCenter" parent="BackGrounds/StarCenterLayer" index="0"]
-self_modulate = Color( 1, 1, 1, 0.588235 )
 
 [node name="PlanetsCenter" parent="BackGrounds/StarCenterLayer" index="1"]
 self_modulate = Color( 1, 1, 1, 0.588235 )

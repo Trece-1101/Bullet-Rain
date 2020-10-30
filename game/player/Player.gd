@@ -2,6 +2,8 @@ class_name Player, "res://assets/player/extras/player_editor_icon.png"
 extends KinematicBody2D
 #### Señales
 signal destroy
+signal use_ultimate
+signal use_drone
 
 #### Enumerables
 enum States { INIT, IDLE, RESPAWNING, ALIVE, MOVING, SHOOTING, GOD, DEAD }
@@ -27,7 +29,7 @@ export(
 	"Nivel 4") var rate_level = 0 setget set_rate_level, get_rate_level
 export var bullet_speed := -700
 export var bullet_speed_alt := -700
-var hitpoints := 3
+var hitpoints := 3 setget ,get_hitpoints
 export(Color, RGBA) var color_trail: Color
 var is_in_god_mode := false setget set_is_in_god_mode
 export var god := false
@@ -52,9 +54,9 @@ var bullet_damage := 0.0
 var shooting_rate := 0.0
 var drone := preload("res://game/player/Drone.tscn")
 var has_drones := false
-var allow_drones := true
+var allow_drones := false setget set_allow_drones
 var drone_can_shoot := false
-var can_ultimatear := true 
+var can_ultimatear := false  setget set_can_ultimatear
 
 
 #### Variables Onready
@@ -117,6 +119,14 @@ func get_can_move() -> bool:
 func set_is_in_god_mode(value: bool) -> void:
 	is_in_god_mode = value
 
+func get_hitpoints() -> int:
+	return hitpoints
+
+func set_allow_drones(value: bool) -> void:
+	allow_drones = value
+
+func set_can_ultimatear(value: bool) -> void:
+	can_ultimatear = value
 
 #### Metodos
 func _ready() -> void:
@@ -140,19 +150,30 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_drone") and not has_drones:
-		has_drones = true
-		drone_can_shoot = true
-		$DroneGunTimer.start()
-		for pos in $DronesPositions.get_children():
-			var new_drone := drone.instance()
-			new_drone.position = pos.position
-			new_drone.connect("end_drone", self, "stop_drone_shooting")
-			add_child(new_drone)
+	if event.is_action_pressed("ui_drone"):
+		if not has_drones and allow_drones:
+			has_drones = true
+			drone_can_shoot = true
+			allow_drones = false
+			$UltDroneActivated.play()
+			emit_signal("use_drone")
+			$DroneGunTimer.start()
+			for pos in $DronesPositions.get_children():
+				var new_drone := drone.instance()
+				new_drone.position = pos.position
+				new_drone.connect("end_drone", self, "stop_drone_shooting")
+				add_child(new_drone)
+		else:
+			$UltDroneDisabled.play()
 	
-	if event.is_action_pressed("ui_ultimate") and can_ultimatear:
-		can_ultimatear = false
-		get_node("Ultimate").use_ultimate()
+	if event.is_action_pressed("ui_ultimate"):
+		if can_ultimatear:
+			$UltDroneActivated.play()
+			emit_signal("use_ultimate")
+			can_ultimatear = false
+			get_node("Ultimate").use_ultimate()
+		else:
+			$UltDroneDisabled.play()
 
 
 func get_direction() -> Vector2:
@@ -248,6 +269,7 @@ func shoot() -> void:
 
 func shoot_drone() -> void:
 	drone_can_shoot = false
+	$ShootDroneSFX.play()
 	$DronesPositions/DroneLeft/ShootPosition.shoot_bullet(
 		bullet_speed_using + movement_bonus,
 		0.0,
@@ -280,10 +302,12 @@ func take_damage() -> void:
 		if hitpoints == 0:
 			die()
 		else:
+			GlobalData.substract_hitpoints(hitpoints)
 			animation_play.queue("damage")
 
 func die() -> void:
 	if not is_in_god_mode:
+		GlobalData.substract_hitpoints(0)
 		change_state(States.DEAD)
 		emit_signal("destroy")
 		animation_play.stop()
@@ -330,6 +354,12 @@ func change_state(new_state) -> void:
 			can_shoot = false
 			gun_timer.stop()
 			$DamageCollider.set_deferred("disabled", true)
+			if has_drones:
+				drone_can_shoot = false
+				$DroneGunTimer.stop()
+				for child in get_children():
+					if child is Drone:
+						child.queue_free()
 			state_text = "DEAD"
 	state = new_state
 

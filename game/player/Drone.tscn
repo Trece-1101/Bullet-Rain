@@ -349,6 +349,18 @@ tracks/3/keys = {
 "method": "queue_free"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("SpawnSFX:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Drone" type="Area2D"]
 collision_layer = 0
@@ -364,6 +376,7 @@ texture = ExtResource( 1 )
 modulate = Color( 0.894118, 0.00784314, 0.00784314, 1 )
 position = Vector2( 0, -1.88775 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Shield" type="Area2D" parent="."]
 position = Vector2( 0.315002, -3.57928 )
@@ -397,4 +410,7 @@ anims/player_respawning = SubResource( 6 )
 autoplay = "respawn"
 anims/init = SubResource( 7 )
 anims/respawn = SubResource( 8 )
+
+[node name="SpawnSFX" type="AudioStreamPlayer" parent="."]
+bus = "Player"
 [connection signal="area_entered" from="Shield" to="Shield" method="_on_area_entered"]

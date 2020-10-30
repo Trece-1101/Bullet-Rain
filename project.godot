@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/waves/EnemyWave.gd"
 }, {
+"base": "Control",
+"class": "GUI",
+"language": "GDScript",
+"path": "res://game/hud/GUI.gd"
+}, {
 "base": "Node",
 "class": "Level",
 "language": "GDScript",
@@ -229,6 +234,7 @@ _global_script_class_icons={
 "EnemyRotator": "",
 "EnemyShooter": "",
 "EnemyWave": "res://assets/enemies/extras/sea_waves_2.png",
+"GUI": "",
 "Level": "res://assets/backgrounds/level_2.png",
 "LevelWaves": "res://assets/enemies/extras/sea-waves.png",
 "Menu": "",
@@ -261,6 +267,7 @@ config/icon="res://assets/player/extras/shoot.png"
 [autoload]
 
 GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
+GlobalData="*res://game/autoloads/GlobalData.gd"
 
 [debug]
 
