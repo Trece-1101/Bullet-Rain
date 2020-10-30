@@ -60,7 +60,6 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 			damage,
 			bullet_angle + angle_correction + (cone_range - separation * i)
 		)
-
 		bullet_container.add_child(new_bullet)
 	
 	if debug:

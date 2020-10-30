@@ -94,7 +94,7 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "v2",
-"speed": 24.0
+"speed": 60.0
 } ]
 
 [node name="EnemyShield" type="Area2D"]
@@ -114,8 +114,7 @@ anims/activated = SubResource( 1 )
 scale = Vector2( 2.85203, 1.54081 )
 frames = SubResource( 2 )
 animation = "v2"
-frame = 8
-playing = true
+frame = 9
 flip_v = true
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

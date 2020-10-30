@@ -10,4 +10,5 @@ func _ready() -> void:
 func use_ultimate() -> void:
 	get_node("UltSFX").play()
 	get_tree().call_group("bullet_enemy", "destroy")
+	get_tree().call_group("bomb", "destroy")
 	get_tree().call_group("enemy_shooter", "disabled_shooting")

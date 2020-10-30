@@ -2,7 +2,8 @@ class_name Bomb, "res://assets/bullets/enemy_bullet.png"
 extends Area2D
 
 #### Constantes
-const bullet := preload("res://game/bullets/BulletEnemy.tscn")
+#const bullet := preload("res://game/bullets/BulletEnemy.tscn")
+var bullet: PackedScene
 
 #### Variables export
 export(Color, RGBA) var bomb_color := Color.purple
@@ -19,6 +20,8 @@ var angle := 0.0
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("bomb")
+	bullet = load("res://game/bullets/BulletEnemy.tscn")
 	randomize()
 	var rand := int(rand_range(0, 2))
 	if rand >= 1:
@@ -51,6 +54,7 @@ func explote() -> void:
 			1,
 			angle
 		)
+		new_bullet.add_to_group("bullet_enemy")
 		bullet_container.add_child(new_bullet)
 		angle += 15.0
 	

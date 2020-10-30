@@ -34,7 +34,7 @@ func create(
 		bullet_angle := 0.0
 	) -> void:
 	creater = bullet_creater
-	if creater is EnemyBase:
+	if creater is EnemyBase or creater is EnemyPart:
 		add_to_group("bullet_enemy")
 	position = bullet_pos
 	rotation = bullet_dir

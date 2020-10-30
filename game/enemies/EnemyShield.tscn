@@ -113,7 +113,5 @@ anims/activated = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2.93487, 1.53487 )
 frames = SubResource( 2 )
-frame = 35
-playing = true
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
