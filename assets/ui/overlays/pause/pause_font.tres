@@ -25,7 +25,7 @@ expand_margin_bottom = 13.0
 shadow_color = Color( 1, 1, 1, 0.6 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 40
+size = 50
 font_data = ExtResource( 1 )
 
 [resource]

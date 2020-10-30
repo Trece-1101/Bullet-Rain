@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://game/enemies/EnemyShield.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_12.png" type="Texture" id=2]
@@ -19,6 +19,17 @@
 [ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_01.png" type="Texture" id=17]
 [ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_05.png" type="Texture" id=18]
 [ext_resource path="res://assets/enemies/extras/shield/enenemy_shield_09.png" type="Texture" id=19]
+[ext_resource path="res://assets/enemies/extras/shieldv2/11.png" type="Texture" id=20]
+[ext_resource path="res://assets/enemies/extras/shieldv2/12.png" type="Texture" id=21]
+[ext_resource path="res://assets/enemies/extras/shieldv2/13.png" type="Texture" id=22]
+[ext_resource path="res://assets/enemies/extras/shieldv2/04.png" type="Texture" id=23]
+[ext_resource path="res://assets/enemies/extras/shieldv2/05.png" type="Texture" id=24]
+[ext_resource path="res://assets/enemies/extras/shieldv2/07.png" type="Texture" id=25]
+[ext_resource path="res://assets/enemies/extras/shieldv2/06.png" type="Texture" id=26]
+[ext_resource path="res://assets/enemies/extras/shieldv2/08.png" type="Texture" id=27]
+[ext_resource path="res://assets/enemies/extras/shieldv2/09.png" type="Texture" id=28]
+[ext_resource path="res://assets/enemies/extras/shieldv2/10.png" type="Texture" id=29]
+[ext_resource path="res://assets/enemies/extras/shieldv2/14.png" type="Texture" id=30]
 
 [sub_resource type="Animation" id=1]
 resource_name = "activated"
@@ -48,6 +59,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 3, 1.6 ), Vector2( 3.1, 1.7 ), Vector2( 3, 1.6 ), Vector2( 2.9, 1.5 ), Vector2( 3, 1.6 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "default" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -55,6 +90,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 100.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "v2",
+"speed": 24.0
 } ]
 
 [node name="EnemyShield" type="Area2D"]
@@ -71,9 +111,9 @@ autoplay = "activated"
 anims/activated = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 3, 1.6 )
+scale = Vector2( 2.93487, 1.53487 )
 frames = SubResource( 2 )
-frame = 34
+frame = 35
 playing = true
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
