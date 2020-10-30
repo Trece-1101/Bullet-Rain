@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ultimatebomber03.wav-f1e6b9d3cd9bc244254572c546a13c06.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/player/ultimates/bomber/ultimatebomber03.wav"
+dest_files=[ "res://.import/ultimatebomber03.wav-f1e6b9d3cd9bc244254572c546a13c06.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
