@@ -527,6 +527,7 @@ script = ExtResource( 13 )
 
 [node name="PlayerShield" parent="Shield" index="2"]
 frame = 7
+playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -552,6 +553,12 @@ bus = "Player"
 stream = ExtResource( 17 )
 volume_db = -10.0
 bus = "Player"
+
+[node name="ShootDroneSFX" type="AudioStreamPlayer" parent="."]
+
+[node name="UltDroneActivated" type="AudioStreamPlayer" parent="."]
+
+[node name="UltDroneDisabled" type="AudioStreamPlayer" parent="."]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="DroneGunTimer" to="." method="_on_DroneGunTimer_timeout"]
 

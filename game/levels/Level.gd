@@ -1,9 +1,9 @@
 class_name Level, "res://assets/backgrounds/level_2.png"
 extends Node
+
+#### Señales
 signal get_new_player
 signal wait_new_player(time)
-#signal update_gui_ships(ship_order)
-#signal update_gui_level_name(level_name)
 
 #### Constantes
 const overlay_game_over := preload("res://game/ui/overlays/GameOver.tscn")
@@ -22,16 +22,22 @@ export(String, "dummy", "level_one", "level_two", "level_three") var music = "du
 #TODO: quitar esto
 export var player_dmg_level := 0
 export var player_rate_level := 0
+#
 
 #### Variables Onready
 onready var parallax_bg := $BackGrounds/ParallaxBackground
 onready var parallax_border := $BackGrounds/ParallaxBorder
 onready var hud_layer := $HUD
+onready var gui := $HUD/GUI
+onready var ult_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/UltimateContainer/UltimateProgress
+onready var drone_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/DroneContainer/DroneProgress
 onready var player_timer: Timer
 
 #### Variables
 var ship_order := [] setget set_ship_order
 var current_ship_index := 0
+var player_can_ultimatear := false
+var player_can_dronear := false
 
 func set_ship_order(value: Array) -> void:
 	ship_order = value
@@ -40,9 +46,11 @@ func set_ship_order(value: Array) -> void:
 func _ready() -> void:
 	add_to_group("level")
 	set_ship_order(GlobalData.get_ship_order().slice(0, 2)) 
-	$HUD/GUI.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))
-	$HUD/GUI.set_level_name(level_name)
-
+	gui.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))
+	gui.set_level_name(level_name)
+	ult_bar.connect("full_value", self, "_on_UltimateProgress_full_value")
+	drone_bar.connect("full_value", self, "_on_DroneProgress_full_value")
+	
 	if send_player_ship:
 		create_player_timer()
 		player_timer.start()
@@ -84,8 +92,12 @@ func _on_player_timer_timeout() -> void:
 func create_player() -> void:
 	var new_player:Player = ship_order[current_ship_index].instance()
 	new_player.connect("destroy", self, "player_destroyed")
-	$HUD/GUI.change_usable_ship(new_player.name)
-	$HUD/GUI.change_hitpoints(new_player.get_hitpoints())
+	new_player.connect("use_ultimate", self, "_reset_ultimate_cooldown")
+	new_player.connect("use_drone", self, "_reset_drone_cooldown")
+	new_player.set_allow_drones(player_can_dronear)
+	new_player.set_can_ultimatear(player_can_ultimatear)
+	gui.change_usable_ship(new_player.name)
+	gui.change_hitpoints(new_player.get_hitpoints())
 
 	#TODO: SACAR ESTO
 	new_player.set_damage_level(player_dmg_level)
@@ -109,8 +121,31 @@ func _on_send_waves_timer_timeout() -> void:
 			child.set_send_waves(send_waves)
 			child.start_waves()
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
+func _on_UltimateProgress_full_value() -> void:
+	if get_player() != null:
+		player_can_ultimatear = true
+		get_player().set_can_ultimatear(true)
+
+func _on_DroneProgress_full_value() -> void:
+	if get_player() != null:
+		player_can_dronear = true
+		get_player().set_allow_drones(true)
+
+func _reset_ultimate_cooldown() -> void:
+	player_can_ultimatear = false
+	gui.reset_ultimate_cooldown()
+
+func _reset_drone_cooldown() -> void:
+	player_can_dronear = false
+	gui.reset_drone_cooldown()
+
+func get_player() -> Player:
+	for child in get_children():
+		if child is Player:
+			return child
+	
+	return null

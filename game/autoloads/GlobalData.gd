@@ -2,8 +2,11 @@ extends Node
 signal send_update_gui_time(minu, sec)
 signal send_update_gui_points(points)
 signal send_update_gui_hitpoints(hitpoints)
+signal send_update_gui_drone_and_ultimate(a_second)
 
 var points := 0
+var ultimate_cooldown := 8 setget ,get_ultimate_cooldown
+var drone_cooldown := 5 setget ,get_drone_cooldown
 
 var level_time := {"minu": 0, "sec": 0} setget ,get_level_time
 var level_timer: Timer
@@ -28,6 +31,13 @@ func get_ship_order() -> Array:
 func get_level_time() -> Dictionary:
 	return level_time
 
+func get_ultimate_cooldown() -> int:
+	return ultimate_cooldown
+
+func get_drone_cooldown() -> int:
+	return drone_cooldown
+
+
 func _ready() -> void:
 	level_timer = Timer.new()
 	level_timer.wait_time = 1.0
@@ -48,6 +58,7 @@ func update_gui() -> void:
 func add_points(value: int) -> void:
 	points += value
 	emit_signal("send_update_gui_points", points)
+	emit_signal("send_update_gui_drone_and_ultimate", 1)
 
 func substract_hitpoints(value: int) -> void:
 	emit_signal("send_update_gui_hitpoints", value)
@@ -62,3 +73,4 @@ func _process_time() -> void:
 		level_time.sec = 0
 	
 	emit_signal("send_update_gui_time", level_time.minu, level_time.sec)
+	emit_signal("send_update_gui_drone_and_ultimate", 1)

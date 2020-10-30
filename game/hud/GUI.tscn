@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/ui/hud/gui_laterals.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_2.png" type="Texture" id=3]
+[ext_resource path="res://game/hud/ProgressBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_5.png" type="Texture" id=10]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_1.png" type="Texture" id=11]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_0.png" type="Texture" id=12]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_3.png" type="Texture" id=13]
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_4.png" type="Texture" id=14]
-[ext_resource path="res://assets/ui/hud/extras/gui_bar_marco_short.png" type="Texture" id=15]
-[ext_resource path="res://assets/ui/hud/extras/gui_bar_process.png" type="Texture" id=16]
 [ext_resource path="res://game/hud/GUI.gd" type="Script" id=17]
 
 [sub_resource type="DynamicFont" id=1]
@@ -36,6 +35,34 @@ frame_4/texture = ExtResource( 14 )
 frame_4/delay_sec = 1.0
 frame_5/texture = ExtResource( 10 )
 frame_5/delay_sec = 1.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.309804, 0.870588, 0.886275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.180392, 0.219608, 0.25098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.309804, 0.870588, 0.886275, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.180392, 0.219608, 0.25098, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -219,7 +246,7 @@ __meta__ = {
 
 [node name="MarginRightContainer" type="MarginContainer" parent="RightMenu"]
 margin_right = 470.0
-margin_bottom = 153.0
+margin_bottom = 221.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 10
 custom_constants/margin_left = 20
@@ -229,7 +256,7 @@ custom_constants/margin_bottom = 5
 margin_left = 20.0
 margin_top = 10.0
 margin_right = 450.0
-margin_bottom = 148.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 
 [node name="PlayerContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
@@ -286,59 +313,47 @@ margin_right = 430.0
 margin_bottom = 60.0
 custom_constants/separation = 10
 
-[node name="UltimateContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+[node name="UltimateContainer" type="VBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
 margin_top = 64.0
 margin_right = 430.0
-margin_bottom = 92.0
+margin_bottom = 126.0
+size_flags_vertical = 3
 alignment = 1
 
 [node name="UltimateLabel" type="Label" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer"]
-margin_right = 166.0
+margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Ultimate"
 
-[node name="UltimateProgress" type="TextureProgress" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer"]
-margin_left = 170.0
-margin_right = 430.0
-margin_bottom = 28.0
-size_flags_horizontal = 3
-value = 50.0
-texture_under = ExtResource( 15 )
-texture_progress = ExtResource( 16 )
-nine_patch_stretch = true
+[node name="UltimateProgress" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer" instance=ExtResource( 4 )]
+margin_bottom = 62.0
+rect_min_size = Vector2( 0, 30 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 
 [node name="HSeparator3" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
-margin_top = 96.0
+margin_top = 130.0
 margin_right = 430.0
-margin_bottom = 106.0
+margin_bottom = 140.0
 custom_constants/separation = 10
 
-[node name="DroneContainer" type="HBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
-margin_top = 110.0
+[node name="DroneContainer" type="VBoxContainer" parent="RightMenu/MarginRightContainer/InformationSection"]
+margin_top = 144.0
 margin_right = 430.0
-margin_bottom = 138.0
+margin_bottom = 206.0
 alignment = 1
 
 [node name="DroneLabel" type="Label" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer"]
-margin_right = 91.0
+margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Dron"
 
-[node name="DroneProgress" type="TextureProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer"]
-margin_left = 95.0
-margin_right = 430.0
-margin_bottom = 28.0
-size_flags_horizontal = 3
-value = 50.0
-rounded = true
-texture_under = ExtResource( 15 )
-texture_progress = ExtResource( 16 )
-nine_patch_stretch = true
-stretch_margin_left = 10
-stretch_margin_top = 10
-stretch_margin_right = 10
-stretch_margin_bottom = 10
+[node name="DroneProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer" instance=ExtResource( 4 )]
+margin_bottom = 62.0
+rect_min_size = Vector2( 0, 30 )
+custom_styles/fg = SubResource( 5 )
+custom_styles/bg = SubResource( 6 )

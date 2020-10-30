@@ -6,6 +6,7 @@ var missile_damage := 5.0
 var gun_timer: Timer
 var bullet_container: Node
 
+
 var total_damage := 0.0
 
 
@@ -18,6 +19,9 @@ func _ready() -> void:
 	gun_timer.connect("timeout", self, "shoot_missile")
 	add_child(gun_timer)
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
+	create_sfx(
+		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
+		0.0)
 
 
 func use_ultimate() -> void:
@@ -26,6 +30,7 @@ func use_ultimate() -> void:
 
 
 func shoot_missile() -> void:
+	get_node("UltSFX").play()
 	for pos in parent.get_node("MissilesPositions").get_children():
 		var new_missile = missile.instance()
 		new_missile.create(
