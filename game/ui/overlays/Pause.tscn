@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/sounds/sfx/ui/pause/pause01.wav" type="AudioStream" id=1]
 [ext_resource path="res://assets/ui/overlays/pause/pause_font.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/ui/overlays/pause/pause_blur.png" type="Texture" id=4]
 [ext_resource path="res://assets/ui/overlays/pause/pause_menu.png" type="Texture" id=5]
 [ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/ui/buttons/ContinueButton.gd" type="Script" id=7]
 
 [node name="Pause" type="Control"]
 pause_mode = 2
@@ -90,12 +91,15 @@ margin_top = 212.0
 margin_right = 460.0
 margin_bottom = 312.0
 text = "Continuar     "
+align = 1
+script = ExtResource( 7 )
 
 [node name="Button2" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 322.0
 margin_right = 460.0
 margin_bottom = 422.0
 text = "Menu Principal     "
+go_to_scene = "res://game/ui/menus/Menu.tscn"
 
 [node name="Button3" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 432.0

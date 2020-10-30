@@ -9,5 +9,4 @@ func _ready() -> void:
 	add_to_group("change_scene_button")
 
 func change_menu(menu: String) -> void:
-# warning-ignore:return_value_discarded
 	get_tree().change_scene(menu)

@@ -1,7 +1,7 @@
 class_name UltimateStealth
 extends Ultimate
 
-onready var animation := preload("res://game/player/invulnerability.tscn")
+onready var animation := load("res://game/player/AnimInvulnerable.tscn")
 
 func _ready() -> void:
 	._ready()
@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func use_ultimate() -> void:
 	parent.set_is_in_god_mode(true)
-	var new_anim := animation.instance()
+	var new_anim:AnimInvulnerable = animation.instance()
 	parent.add_child(new_anim)
 	get_node("UltSFX").play()
 	ult_timer.start()

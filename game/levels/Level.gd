@@ -126,13 +126,13 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func _on_UltimateProgress_full_value() -> void:
+	player_can_ultimatear = true
 	if get_player() != null:
-		player_can_ultimatear = true
 		get_player().set_can_ultimatear(true)
 
 func _on_DroneProgress_full_value() -> void:
+	player_can_dronear = true
 	if get_player() != null:
-		player_can_dronear = true
 		get_player().set_allow_drones(true)
 
 func _reset_ultimate_cooldown() -> void:
