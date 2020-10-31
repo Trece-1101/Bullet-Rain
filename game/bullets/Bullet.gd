@@ -47,10 +47,13 @@ func _ready() -> void:
 	match type:
 		-1:
 			bullet_sprite.modulate = bullet_color_alt
+			$BulletDestroyParticles.modulate = bullet_color_alt
 		1:
 			bullet_sprite.modulate = bullet_color_one
+			$BulletDestroyParticles.modulate = bullet_color_one
 		0:
 			bullet_sprite.modulate = bullet_color_indestructible
+			$BulletDestroyParticles.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")
 

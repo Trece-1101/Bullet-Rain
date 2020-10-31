@@ -196,7 +196,7 @@ modulate = Color( 1, 1, 1, 0.983038 )
 self_modulate = Color( 5.2, 3.49, 1, 1 )
 frames = SubResource( 1 )
 animation = "shield"
-frame = 8
+frame = 4
 playing = true
 script = ExtResource( 1 )
 

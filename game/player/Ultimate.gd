@@ -6,6 +6,8 @@ var ult_timer: Timer
 var parent: KinematicBody2D
 var shoot_sfx: AudioStreamPlayer
 
+onready var animation: PackedScene
+
 func _ready() -> void:
 	parent = get_parent()
 	ult_timer = Timer.new()

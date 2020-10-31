@@ -106,6 +106,8 @@ func _on_body_entered(body: Node) -> void:
 	body.die()
 	if not is_boss:
 		die()
+	else:
+		body.bypass_god_mode()
 
 func take_damage(damage: float) -> void:
 	hitpoints -= damage

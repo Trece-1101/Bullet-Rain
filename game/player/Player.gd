@@ -307,13 +307,16 @@ func take_damage() -> void:
 
 func die() -> void:
 	if not is_in_god_mode:
-		GlobalData.substract_hitpoints(0)
-		change_state(States.DEAD)
-		emit_signal("destroy")
-		animation_play.stop()
-		animation_play.clear_queue()
-		explosion.play("explosion")
-		animation_play.play("destroy")
+		bypass_god_mode()
+
+func bypass_god_mode() -> void:
+	GlobalData.substract_hitpoints(0)
+	change_state(States.DEAD)
+	emit_signal("destroy")
+	animation_play.stop()
+	animation_play.clear_queue()
+	explosion.play("explosion")
+	animation_play.play("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

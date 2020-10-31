@@ -7,275 +7,8 @@
 [ext_resource path="res://game/player/extras/PlayerShield.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/sfx/player/drones/01drones.wav" type="AudioStream" id=6]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=6]
 radius = 16.1236
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 0.01
-
-[sub_resource type="Animation" id=3]
-length = 4.0
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [ true ],
-"method": "set_process"
-}, {
-"args": [ false ],
-"method": "set_process"
-}, {
-"args": [  ],
-"method": "restart_size"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerShield:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 3.8, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.05, 0.05 ), Vector2( 0.6, 0.6 ), Vector2( 0.6, 0.6 ), Vector2( 0.05, 0.05 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerShield:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PlayerShield:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BulletSponge:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerShield:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerShield:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BulletSponge:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PlayerShield:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.05, 0.05 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-length = 2.0
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [ true ],
-"method": "set_process"
-}, {
-"args": [ false ],
-"method": "set_process"
-}, {
-"args": [  ],
-"method": "restart_size"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerShield:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3, 1.8, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.05, 0.05 ), Vector2( 1.8, 1.8 ), Vector2( 1.8, 1.8 ), Vector2( 0.05, 0.05 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerShield:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PlayerShield:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BulletSponge:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-
-[sub_resource type="Animation" id=6]
-length = 2.2
-tracks/0/type = "method"
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"values": [ {
-"args": [ true ],
-"method": "set_process"
-}, {
-"args": [ false ],
-"method": "set_process"
-}, {
-"args": [  ],
-"method": "restart_size"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerShield:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4, 2.1, 2.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.05, 0.05 ), Vector2( 2.4, 2.4 ), Vector2( 2.4, 2.4 ), Vector2( 0.05, 0.05 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("PlayerShield:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 2.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("PlayerShield:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BulletSponge:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 2.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -363,6 +96,275 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="CircleShape2D" id=1]
+radius = 0.01
+
+[sub_resource type="Animation" id=2]
+resource_name = "drone_respawning"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_process"
+}, {
+"args": [ false ],
+"method": "set_process"
+}, {
+"args": [  ],
+"method": "restart_size"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerShield:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 3.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 0.05, 0.05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerShield:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerShield:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BulletSponge:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerShield:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerShield:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BulletSponge:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerShield:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "player_damage"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_process"
+}, {
+"args": [ false ],
+"method": "set_process"
+}, {
+"args": [  ],
+"method": "restart_size"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerShield:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 2.8, 2.8 ), Vector2( 2.8, 2.8 ), Vector2( 0.05, 0.05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerShield:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerShield:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BulletSponge:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_process"
+}, {
+"args": [ false ],
+"method": "set_process"
+}, {
+"args": [  ],
+"method": "restart_size"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerShield:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 2.1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 3.8, 3.8 ), Vector2( 3.8, 3.8 ), Vector2( 0.05, 0.05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerShield:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("PlayerShield:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BulletSponge:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="Drone" type="Area2D"]
 collision_layer = 0
 collision_mask = 16
@@ -378,35 +380,8 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.894118, 0.00784314, 0.00784314, 1 )
 position = Vector2( 0, -1.80432 )
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 disabled = true
-
-[node name="Shield" type="Area2D" parent="."]
-position = Vector2( 0.315002, -3.57928 )
-collision_layer = 0
-collision_mask = 16
-script = ExtResource( 3 )
-grow_rate = 180.0
-
-[node name="BulletSponge" type="CollisionShape2D" parent="Shield"]
-position = Vector2( 0, 5.66321 )
-shape = SubResource( 2 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shield"]
-stream = ExtResource( 4 )
-volume_db = -18.0
-bus = "Player"
-
-[node name="PlayerShield" parent="Shield" instance=ExtResource( 5 )]
-scale = Vector2( 0.05, 0.05 )
-frame = 14
-playing = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
-anims/drone_respawning = SubResource( 3 )
-anims/init = SubResource( 4 )
-anims/player_damage = SubResource( 5 )
-anims/player_respawning = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "respawn"
@@ -417,4 +392,30 @@ anims/respawn = SubResource( 8 )
 stream = ExtResource( 6 )
 volume_db = -20.0
 bus = "Player"
+
+[node name="Shield" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 3 )
+grow_rate = 250.0
+
+[node name="BulletSponge" type="CollisionShape2D" parent="Shield"]
+position = Vector2( 0, 5.66321 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shield"]
+stream = ExtResource( 4 )
+volume_db = -18.0
+bus = "Player"
+
+[node name="PlayerShield" parent="Shield" instance=ExtResource( 5 )]
+scale = Vector2( 0.05, 0.05 )
+frame = 9
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
+anims/drone_respawning = SubResource( 2 )
+anims/init = SubResource( 3 )
+anims/player_damage = SubResource( 4 )
+anims/player_respawning = SubResource( 5 )
 [connection signal="area_entered" from="Shield" to="Shield" method="_on_area_entered"]
