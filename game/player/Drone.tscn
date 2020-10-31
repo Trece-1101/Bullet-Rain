@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://assets/player/extras/temp_drone.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/player_drones.png" type="Texture" id=1]
 [ext_resource path="res://game/player/Drone.gd" type="Script" id=2]
 [ext_resource path="res://game/player/Shield.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/sfx/player/shield/shield01.wav" type="AudioStream" id=4]
@@ -289,7 +289,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.4, 0.4 ) ]
+"values": [ Vector2( 0.02, 0.02 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -305,7 +305,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 4, 4.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.4, 0.4 ), Vector2( 0.4, 0.4 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape2D:disabled")
@@ -372,10 +372,12 @@ script = ExtResource( 2 )
 position = Vector2( 0, -5.95276 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 1 )
+hframes = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.894118, 0.00784314, 0.00784314, 1 )
-position = Vector2( 0, -1.88775 )
+position = Vector2( 0, -1.80432 )
 shape = SubResource( 1 )
 disabled = true
 
@@ -389,7 +391,6 @@ grow_rate = 180.0
 [node name="BulletSponge" type="CollisionShape2D" parent="Shield"]
 position = Vector2( 0, 5.66321 )
 shape = SubResource( 2 )
-disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shield"]
 stream = ExtResource( 4 )
@@ -397,9 +398,9 @@ volume_db = -18.0
 bus = "Player"
 
 [node name="PlayerShield" parent="Shield" instance=ExtResource( 5 )]
-visible = false
 scale = Vector2( 0.05, 0.05 )
-frame = 17
+frame = 14
+playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
 anims/drone_respawning = SubResource( 3 )

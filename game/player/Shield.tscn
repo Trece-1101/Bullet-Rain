@@ -282,7 +282,6 @@ grow_rate = 600.0
 [node name="BulletSponge" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5.66321 )
 shape = SubResource( 1 )
-disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -290,9 +289,10 @@ volume_db = -18.0
 bus = "Player"
 
 [node name="PlayerShield" parent="." instance=ExtResource( 3 )]
-visible = false
 scale = Vector2( 0.05, 0.05 )
-frame = 17
+animation = "shieldV2"
+frame = 10
+playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drone_respawning = SubResource( 2 )
