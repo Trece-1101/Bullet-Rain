@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/autoloads/GlobalMusic.gd" type="Script" id=1]
-[ext_resource path="res://assets/sounds/music/level01/mainmusic-looop-no-intro.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/sounds/music/level01/boss.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/levelmusic/bossmusic01.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sounds/music/levelmusic/mainmusic01.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/music/mainmenu/mainmenumusic.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/music/levelmusic/bossmusic02.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sounds/music/levelmusic/mainmusic02.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/music/levelmusic/bossmusic03.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/music/levelmusic/mainmusic03-no-intro.ogg" type="AudioStream" id=8]
 
 [node name="GlobalMusic" type="Node"]
 script = ExtResource( 1 )
@@ -20,30 +24,31 @@ bus = "Music"
 bus = "Music"
 
 [node name="LevelOne" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 6 )
 bus = "Music"
 
 [node name="LevelTwo" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 3 )
 bus = "Music"
 
 [node name="LevelThree" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
+stream = ExtResource( 8 )
+volume_db = -10.0
 bus = "Music"
 
 [node name="LevelOneBoss" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = 2.0
+stream = ExtResource( 2 )
+volume_db = -20.0
 bus = "Music"
 
 [node name="LevelTwoBoss" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = 2.0
+stream = ExtResource( 5 )
+volume_db = -3.0
 bus = "Music"
 
 [node name="LevelThreeBoss" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = 2.0
+stream = ExtResource( 7 )
+volume_db = -8.0
 bus = "Music"
 
 [node name="TweenFadeIn" type="Tween" parent="."]

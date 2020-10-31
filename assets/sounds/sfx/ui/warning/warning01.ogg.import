@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/warning01.ogg-aaed8192d52cbb94c8df8173e2b249cc.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/ui/warning/warning01.ogg"
+dest_files=[ "res://.import/warning01.ogg-aaed8192d52cbb94c8df8173e2b249cc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

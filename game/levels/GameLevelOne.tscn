@@ -14,3 +14,4 @@ music = "level_one"
 modulate = Color( 1, 1, 1, 0.588235 )
 
 [node name="WavesLevelOne" parent="." index="4" instance=ExtResource( 2 )]
+start_from_wave = 21
