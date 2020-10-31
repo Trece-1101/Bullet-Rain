@@ -21,3 +21,4 @@ texture = ExtResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="WavesLevelTwo" parent="." index="4" instance=ExtResource( 2 )]
+start_from_wave = 35
