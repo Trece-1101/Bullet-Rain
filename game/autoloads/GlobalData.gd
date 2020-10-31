@@ -22,7 +22,19 @@ var player_ships := {
 onready var ship_order := [
 	player_ships.interceptor, 
 	player_ships.stealth,
-	player_ships.bomber, "interceptor", "stealth", "bomber"] setget ,get_ship_order
+	player_ships.bomber, "interceptor", "stealth", "bomber"] setget set_ship_order,get_ship_order
+
+func set_ship_order(values: Array) -> void:
+	for i in range(values.size()):
+		if "Interceptor" in values[i]:
+			ship_order[i] = player_ships.interceptor
+			ship_order[i + 3] = "interceptor"
+		elif "Bomber" in values[i]:
+			ship_order[i] = player_ships.bomber
+			ship_order[i + 3] = "bomber"
+		elif "Stealth" in values[i]:
+			ship_order[i] = player_ships.stealth
+			ship_order[i + 3] = "stealth"
 
 
 func get_ship_order() -> Array:
