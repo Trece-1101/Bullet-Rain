@@ -14,14 +14,14 @@
 [ext_resource path="res://assets/backgrounds/extras/planets.png" type="Texture" id=12]
 [ext_resource path="res://assets/backgrounds/extras/asteroids.png" type="Texture" id=14]
 
-[sub_resource type="CanvasItemMaterial" id=11]
+[sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 4
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
 emission_box_extents = Vector3( 220, 100, 1 )
 flag_disable_z = true
@@ -39,7 +39,7 @@ scale_random = 0.5
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 250, 100, 1 )
 flag_disable_z = true
@@ -53,14 +53,14 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=4]
 light_mode = 1
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 4
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 2
 emission_box_extents = Vector3( 220, 100, 1 )
 flag_disable_z = true
@@ -77,7 +77,7 @@ scale_random = 0.5
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 2
 emission_box_extents = Vector3( 250, 100, 1 )
 flag_disable_z = true
@@ -91,7 +91,7 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 460, 100, 1 )
 flag_disable_z = true
@@ -105,14 +105,14 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=14]
+[sub_resource type="CanvasItemMaterial" id=8]
 light_mode = 1
 particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 2
 emission_box_extents = Vector3( 300, 50, 1 )
 flag_disable_z = true
@@ -130,14 +130,14 @@ scale_random = 0.5
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=13]
+[sub_resource type="CanvasItemMaterial" id=10]
 light_mode = 1
 particles_animation = true
 particles_anim_h_frames = 4
 particles_anim_v_frames = 4
 particles_anim_loop = false
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=11]
 emission_shape = 2
 emission_box_extents = Vector3( 440, 100, 1 )
 flag_disable_z = true
@@ -169,13 +169,13 @@ time_to_start_waves = 4.0
 layer = 2
 
 [node name="DecorRight" type="Particles2D" parent="HUD"]
-material = SubResource( 11 )
+material = SubResource( 1 )
 position = Vector2( 1670, -100 )
 amount = 3
 lifetime = 6.5
 preprocess = 6.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
-process_material = SubResource( 12 )
+process_material = SubResource( 2 )
 texture = ExtResource( 14 )
 
 [node name="StarRight" type="Particles2D" parent="HUD"]
@@ -184,16 +184,16 @@ amount = 75
 lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 
 [node name="DecorLeft" type="Particles2D" parent="HUD"]
-material = SubResource( 2 )
+material = SubResource( 4 )
 position = Vector2( 250, -100 )
 amount = 3
 lifetime = 6.5
 preprocess = 6.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
-process_material = SubResource( 3 )
+process_material = SubResource( 5 )
 texture = ExtResource( 14 )
 
 [node name="StarLeft" type="Particles2D" parent="HUD"]
@@ -204,16 +204,16 @@ amount = 75
 lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -250, -100, 500, 200 )
-process_material = SubResource( 4 )
+process_material = SubResource( 6 )
 
 [node name="ScreenShading" type="Sprite" parent="HUD"]
 texture = ExtResource( 7 )
 centered = false
 
+[node name="GUI" parent="HUD" instance=ExtResource( 4 )]
+
 [node name="Pause" parent="HUD" instance=ExtResource( 10 )]
 visible = false
-
-[node name="GUI" parent="HUD" instance=ExtResource( 4 )]
 
 [node name="BackGrounds" type="Node" parent="."]
 
@@ -239,25 +239,25 @@ amount = 150
 lifetime = 2.0
 preprocess = 10.0
 visibility_rect = Rect2( -460, -100, 920, 200 )
-process_material = SubResource( 5 )
+process_material = SubResource( 7 )
 
 [node name="PlanetsCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-material = SubResource( 14 )
+material = SubResource( 8 )
 position = Vector2( 960, -100 )
 amount = 2
 lifetime = 12.0
 preprocess = 6.0
-process_material = SubResource( 15 )
+process_material = SubResource( 9 )
 texture = ExtResource( 12 )
 
 [node name="DecorCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
 modulate = Color( 1, 1, 1, 0.588235 )
-material = SubResource( 13 )
+material = SubResource( 10 )
 position = Vector2( 960, -100 )
 lifetime = 6.5
 preprocess = 6.0
 visibility_rect = Rect2( -460, -100, 920, 200 )
-process_material = SubResource( 10 )
+process_material = SubResource( 11 )
 texture = ExtResource( 14 )
 
 [node name="ParallaxBorder" type="ParallaxBackground" parent="BackGrounds"]

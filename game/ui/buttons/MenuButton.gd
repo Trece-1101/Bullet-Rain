@@ -1,3 +1,4 @@
+class_name MainButton
 extends Button
 
 export var is_quitter := false
@@ -15,6 +16,8 @@ func _on_button_up() -> void:
 	if is_quitter:
 		get_tree().quit()
 	else:
+		if get_tree().paused:
+			get_tree().paused = false
 		get_tree().change_scene(go_to_scene)
 
 
