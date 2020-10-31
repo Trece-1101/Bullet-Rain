@@ -529,7 +529,7 @@ script = ExtResource( 13 )
 [node name="Shield" parent="." instance=ExtResource( 15 )]
 
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 0
+frame = 10
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]

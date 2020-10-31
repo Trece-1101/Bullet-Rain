@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/bullets/Bullet.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/bullets/Recurso 54.png" type="Texture" id=2]
+[ext_resource path="res://assets/bullets/BulletV2.png" type="Texture" id=2]
 [ext_resource path="res://game/bullets/Missile.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -16,8 +16,10 @@ collision_mask = 20
 script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2( 0.419731, 1.20181 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="BulletDestroyParticles" parent="." index="4"]
+scale = Vector2( 1.8, 1.8 )
