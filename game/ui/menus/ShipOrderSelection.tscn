@@ -1,0 +1,259 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/ui/hud/icons/player_blue_off.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/hud/icons/player_blue_on.png" type="Texture" id=2]
+[ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/ui/hud/icons/player_yellow_off.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/hud/icons/player_yellow_on.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/hud/icons/player_red_on.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/hud/icons/player_red_off.png" type="Texture" id=7]
+[ext_resource path="res://game/ui/menus/ShipOrderSelection.gd" type="Script" id=8]
+[ext_resource path="res://assets/ui/hud/icons/condensacion.png" type="Texture" id=9]
+
+[node name="ShipOrderSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.5874
+margin_bottom = -1.5874
+theme = ExtResource( 3 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+default_texture = ExtResource( 9 )
+
+[node name="Continue" type="Button" parent="."]
+margin_left = 1568.01
+margin_top = 972.587
+margin_right = 1863.01
+margin_bottom = 1014.59
+disabled = true
+text = "Continuar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="."]
+margin_left = 801.973
+margin_top = 781.079
+margin_right = 1096.97
+margin_bottom = 823.079
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrderOneContainer" type="VBoxContainer" parent="."]
+margin_left = 389.161
+margin_top = 355.0
+margin_right = 636.161
+margin_bottom = 619.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderOneContainer"]
+margin_right = 247.0
+margin_bottom = 49.0
+text = "Orden 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImgContainer" type="HBoxContainer" parent="OrderOneContainer"]
+margin_top = 53.0
+margin_right = 247.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShipSelected" type="NinePatchRect" parent="OrderOneContainer/ImgContainer"]
+margin_right = 150.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 9 )
+
+[node name="ShipIconContainer" type="VBoxContainer" parent="OrderOneContainer/ImgContainer"]
+margin_left = 154.0
+margin_right = 247.0
+margin_bottom = 211.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StealthIcon" type="TextureButton" parent="OrderOneContainer/ImgContainer/ShipIconContainer"]
+margin_right = 93.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_disabled = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterceptorIcon" type="TextureButton" parent="OrderOneContainer/ImgContainer/ShipIconContainer"]
+margin_top = 68.0
+margin_right = 93.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BomberIcon" type="TextureButton" parent="OrderOneContainer/ImgContainer/ShipIconContainer"]
+margin_top = 136.0
+margin_right = 93.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrderTwoContainer" type="VBoxContainer" parent="."]
+margin_left = 861.694
+margin_top = 355.0
+margin_right = 1108.69
+margin_bottom = 619.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderTwoContainer"]
+margin_right = 247.0
+margin_bottom = 49.0
+text = "Orden 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImgContainer" type="HBoxContainer" parent="OrderTwoContainer"]
+margin_top = 53.0
+margin_right = 247.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShipSelected" type="NinePatchRect" parent="OrderTwoContainer/ImgContainer"]
+margin_right = 150.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 9 )
+
+[node name="ShipIconContainer" type="VBoxContainer" parent="OrderTwoContainer/ImgContainer"]
+margin_left = 154.0
+margin_right = 247.0
+margin_bottom = 211.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StealthIcon" type="TextureButton" parent="OrderTwoContainer/ImgContainer/ShipIconContainer"]
+margin_right = 93.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_disabled = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterceptorIcon" type="TextureButton" parent="OrderTwoContainer/ImgContainer/ShipIconContainer"]
+margin_top = 68.0
+margin_right = 93.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BomberIcon" type="TextureButton" parent="OrderTwoContainer/ImgContainer/ShipIconContainer"]
+margin_top = 136.0
+margin_right = 93.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrderThreeContainer" type="VBoxContainer" parent="."]
+margin_left = 1326.22
+margin_top = 355.0
+margin_right = 1573.22
+margin_bottom = 619.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="OrderThreeContainer"]
+margin_right = 247.0
+margin_bottom = 49.0
+text = "Orden 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ImgContainer" type="HBoxContainer" parent="OrderThreeContainer"]
+margin_top = 53.0
+margin_right = 247.0
+margin_bottom = 264.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ShipSelected" type="NinePatchRect" parent="OrderThreeContainer/ImgContainer"]
+margin_right = 150.0
+margin_bottom = 211.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 9 )
+
+[node name="ShipIconContainer" type="VBoxContainer" parent="OrderThreeContainer/ImgContainer"]
+margin_left = 154.0
+margin_right = 247.0
+margin_bottom = 211.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StealthIcon" type="TextureButton" parent="OrderThreeContainer/ImgContainer/ShipIconContainer"]
+margin_right = 93.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_disabled = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InterceptorIcon" type="TextureButton" parent="OrderThreeContainer/ImgContainer/ShipIconContainer"]
+margin_top = 68.0
+margin_right = 93.0
+margin_bottom = 132.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_disabled = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BomberIcon" type="TextureButton" parent="OrderThreeContainer/ImgContainer/ShipIconContainer"]
+margin_top = 136.0
+margin_right = 93.0
+margin_bottom = 200.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]
