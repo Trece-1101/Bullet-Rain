@@ -34,7 +34,6 @@ position = Vector2( 12, 2 )
 position = Vector2( 0, -16 )
 
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 10
-playing = true
+frame = 7
 
 [editable path="Shield"]
