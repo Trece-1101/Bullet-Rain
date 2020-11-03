@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "AnimatedSprite",
+"class": "AnimBlank",
+"language": "GDScript",
+"path": "res://game/player/AnimBlank.gd"
+}, {
+"base": "AnimatedSprite",
 "class": "AnimInvulnerable",
 "language": "GDScript",
 "path": "res://game/player/AnimInvulnerable.gd"
@@ -225,6 +230,7 @@ _global_script_classes=[ {
 "path": "res://game/player/UltimateStealth.gd"
 } ]
 _global_script_class_icons={
+"AnimBlank": "",
 "AnimInvulnerable": "",
 "Bomb": "res://assets/bullets/enemy_bullet.png",
 "Bullet": "res://assets/bullets/enemy_bullet.png",
