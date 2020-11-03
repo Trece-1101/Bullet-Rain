@@ -1,0 +1,657 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/ui/menus/Credits.gd" type="Script" id=1]
+[ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/sounds/music/credits/creditos_01_Blessings From Below.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/ui/logo/temp_logo.jpg" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "credits"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 7, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -551.223, 392.652 ), Vector2( 868.365, 392.652 ), Vector2( 868.365, 392.652 ), Vector2( 868.365, -223.26 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Control/Label:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7, 8, 10, 12.2, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -639.967, 587.586 ), Vector2( 777.633, 587.586 ), Vector2( 777.633, 587.586 ), Vector2( 777.633, 515.504 ), Vector2( 777.633, 515.504 ), Vector2( -202.348, -11.3251 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Control/Label2:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 7, 8, 10, 12.2, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -406.101, 587.586 ), Vector2( 1011.5, 587.586 ), Vector2( 1011.5, 587.586 ), Vector2( 1011.5, 515.504 ), Vector2( 1011.5, 515.504 ), Vector2( 2136.02, 1050.04 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Control/Label:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 110.868 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Control/Label2:rect_rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -120.37 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Control/PlayTest:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5194, 31.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 3018.89 ), Vector2( 510, 3018.89 ), Vector2( 510, 2340.07 ), Vector2( 510, 2340.07 ), Vector2( 510, 1946.4 ), Vector2( 510, 1946.4 ), Vector2( 510, 1603.7 ), Vector2( 510, 1603.7 ), Vector2( 510, 1220.68 ), Vector2( 510, 1220.68 ), Vector2( 510, 852.785 ), Vector2( 510, 852.785 ), Vector2( 510, 494.967 ), Vector2( 510, 494.967 ), Vector2( -643.999, 149.899 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Control/PlayTest:rect_rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5194, 31.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -168.989 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Control/DesignN:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 1140 ), Vector2( 770, 1140 ), Vector2( 770, 461.177 ), Vector2( 770, 461.177 ), Vector2( 2560.59, 810.406 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Control/DesignN:rect_rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, -158.174 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Control/Doc:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5, 30.5194, 31.3, 33.6722, 34.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 3388.89 ), Vector2( 510, 3388.89 ), Vector2( 510, 2710.07 ), Vector2( 510, 2710.07 ), Vector2( 510, 2316.4 ), Vector2( 510, 2316.4 ), Vector2( 510, 1973.7 ), Vector2( 510, 1973.7 ), Vector2( 510, 1590.68 ), Vector2( 510, 1590.68 ), Vector2( 510, 1222.78 ), Vector2( 510, 1222.78 ), Vector2( 510, 864.967 ), Vector2( 510, 864.967 ), Vector2( 510, 864.967 ), Vector2( 510, 418.075 ), Vector2( 510, 418.075 ), Vector2( -614, 142.075 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Control/Doc:rect_rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5, 30.5194, 31.3, 33.6722, 34.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -170.833 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Control/Script:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 2648.89 ), Vector2( 510, 2648.89 ), Vector2( 510, 1970.07 ), Vector2( 510, 1970.07 ), Vector2( 510, 1576.4 ), Vector2( 510, 1576.4 ), Vector2( 510, 1233.7 ), Vector2( 510, 1233.7 ), Vector2( 510, 850.682 ), Vector2( 510, 850.682 ), Vector2( 510, 482.785 ), Vector2( 510, 482.785 ), Vector2( -739.842, 79.6101 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Control/Script:rect_rotation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 161.823 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Control/ProgN:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 1598.89 ), Vector2( 770, 1598.89 ), Vector2( 770, 920.072 ), Vector2( 770, 920.072 ), Vector2( 770, 526.396 ), Vector2( 770.006, 526.397 ), Vector2( 2363.75, 615.291 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Control/ProgN:rect_rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, -0.000668526, -175.25 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Control/MusicN:rect_position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 2338.89 ), Vector2( 770, 2338.89 ), Vector2( 770, 1660.07 ), Vector2( 770, 1660.07 ), Vector2( 770, 1266.4 ), Vector2( 770, 1266.4 ), Vector2( 770, 923.698 ), Vector2( 770, 923.698 ), Vector2( 770, 540.682 ), Vector2( 770, 540.682 ), Vector2( 2609.49, 545.721 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Control/MusicN:rect_rotation")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 165.188 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Control/Art:rect_position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 1908.89 ), Vector2( 510, 1908.89 ), Vector2( 510, 1230.07 ), Vector2( 510, 1230.07 ), Vector2( 510, 836.396 ), Vector2( 510, 836.396 ), Vector2( 510, 493.698 ), Vector2( 510, 493.698 ), Vector2( -679.365, 201.396 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Control/Art:rect_rotation")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -145.372 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Control/Prog:rect_position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 1538.89 ), Vector2( 510, 1538.89 ), Vector2( 510, 860.072 ), Vector2( 510, 860.072 ), Vector2( 510, 466.396 ), Vector2( 509.996, 466.395 ), Vector2( -486.888, 218.762 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Control/Prog:rect_rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.000601514, 157.683 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Control/Design:rect_position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 1080 ), Vector2( 510, 1080 ), Vector2( 510, 401.177 ), Vector2( 510, 401.177 ), Vector2( -296.4, 147.193 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Control/Design:rect_rotation")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 161.572 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Control/ArtN:rect_position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 1968.89 ), Vector2( 770, 1968.89 ), Vector2( 770, 1290.07 ), Vector2( 770, 1290.07 ), Vector2( 770, 896.396 ), Vector2( 770, 896.396 ), Vector2( 770, 553.698 ), Vector2( 770, 553.698 ), Vector2( 2080.32, 735.126 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Control/ArtN:rect_rotation")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 22 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -104.186 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Control/ScriptN:rect_position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 2708.89 ), Vector2( 770, 2708.89 ), Vector2( 770, 2030.07 ), Vector2( 770, 2030.07 ), Vector2( 770, 1636.4 ), Vector2( 770, 1636.4 ), Vector2( 770, 1293.7 ), Vector2( 770, 1293.7 ), Vector2( 770, 910.682 ), Vector2( 770, 910.682 ), Vector2( 770, 542.785 ), Vector2( 770, 542.785 ), Vector2( 2024.88, 724.214 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Control/ScriptN:rect_rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -97.7458 ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Control/Music:rect_position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 2278.89 ), Vector2( 510, 2278.89 ), Vector2( 510, 1600.07 ), Vector2( 510, 1600.07 ), Vector2( 510, 1206.4 ), Vector2( 510, 1206.4 ), Vector2( 510, 863.698 ), Vector2( 510, 863.698 ), Vector2( 510, 480.682 ), Vector2( 510, 480.682 ), Vector2( -432.421, 168.221 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Control/Music:rect_rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 176.466 ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Control/DocN:rect_position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5, 30.5194, 31.3, 33.6722, 34.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 3448.89 ), Vector2( 770, 3448.89 ), Vector2( 770, 2770.07 ), Vector2( 770, 2770.07 ), Vector2( 770, 2376.4 ), Vector2( 770, 2376.4 ), Vector2( 770, 2033.7 ), Vector2( 770, 2033.7 ), Vector2( 770, 1650.68 ), Vector2( 770, 1650.68 ), Vector2( 770, 1282.78 ), Vector2( 770, 1282.78 ), Vector2( 770, 924.967 ), Vector2( 770, 924.967 ), Vector2( 770, 924.967 ), Vector2( 770, 478.075 ), Vector2( 770, 478.075 ), Vector2( 2322, 786.075 ) ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Control/DocN:rect_rotation")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5, 30.5194, 31.3, 33.6722, 34.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -126.942 ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Control/PlayTestN:rect_position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5194, 31.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 770, 3078.89 ), Vector2( 770, 3078.89 ), Vector2( 770, 2400.07 ), Vector2( 770, 2400.07 ), Vector2( 770, 2006.4 ), Vector2( 770, 2006.4 ), Vector2( 770, 1663.7 ), Vector2( 770, 1663.7 ), Vector2( 770, 1280.68 ), Vector2( 770, 1280.68 ), Vector2( 770, 912.785 ), Vector2( 770, 912.785 ), Vector2( 770, 554.967 ), Vector2( 770, 554.967 ), Vector2( 2121.99, 837.81 ) ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Control/PlayTestN:rect_rotation")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 12.2, 12.7, 15.2, 15.8555, 18.3, 18.8, 21.5, 21.9, 24.5, 24.9, 27.6, 27.9, 30.5194, 31.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -106.718 ]
+}
+
+[node name="Credits" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 538.617 ],
+"_edit_vertical_guides_": [ 959.622, 507.583, 1440.6 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 868.365
+margin_top = -223.26
+margin_right = 1060.36
+margin_bottom = -31.2599
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "credits"
+anims/credits = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -202.348
+margin_top = -11.3251
+margin_right = 9.6519
+margin_bottom = 37.6769
+rect_rotation = 110.868
+text = "Bullet"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 2136.02
+margin_top = 1050.04
+margin_right = 2273.02
+margin_bottom = 1099.04
+rect_rotation = -120.37
+text = "Rain"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Design" type="Label" parent="Control"]
+margin_left = -296.4
+margin_top = 147.193
+margin_right = -84.4016
+margin_bottom = 196.194
+rect_rotation = 161.572
+text = "Diseño"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DesignN" type="Label" parent="Control"]
+margin_left = 2560.59
+margin_top = 810.406
+margin_right = 3238.62
+margin_bottom = 963.413
+rect_rotation = -158.174
+text = "Bazzi, Omar
+Krijanovsky, Nicolas
+Sanchez, Fernando"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prog" type="Label" parent="Control"]
+margin_left = -486.888
+margin_top = 218.762
+margin_right = -14.8268
+margin_bottom = 267.78
+rect_rotation = 157.683
+text = "Programacion"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgN" type="Label" parent="Control"]
+margin_left = 2363.75
+margin_top = 615.291
+margin_right = 2738.75
+margin_bottom = 664.293
+rect_rotation = -175.25
+text = "Bazzi, Omar"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Art" type="Label" parent="Control"]
+margin_left = -679.365
+margin_top = 201.396
+margin_right = -58.3649
+margin_bottom = 250.396
+rect_rotation = -145.372
+text = "Arte y Animaciones"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArtN" type="Label" parent="Control"]
+margin_left = 2080.32
+margin_top = 735.126
+margin_right = 2680.32
+margin_bottom = 784.126
+rect_rotation = -104.186
+text = "Sanchez, Fernando"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music" type="Label" parent="Control"]
+margin_left = -432.421
+margin_top = 168.221
+margin_right = 188.579
+margin_bottom = 217.226
+rect_rotation = 176.466
+text = "Musica y SFX"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicN" type="Label" parent="Control"]
+margin_left = 2609.49
+margin_top = 545.721
+margin_right = 3287.49
+margin_bottom = 594.725
+rect_rotation = 165.188
+text = "Krijanovsky, Nicolas"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Script" type="Label" parent="Control"]
+margin_left = -739.842
+margin_top = 79.6101
+margin_right = -118.842
+margin_bottom = 128.613
+rect_rotation = 161.823
+text = "Guion"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScriptN" type="Label" parent="Control"]
+margin_left = 2024.88
+margin_top = 724.214
+margin_right = 2702.88
+margin_bottom = 773.219
+rect_rotation = -97.7458
+text = "Bazzi, Omar"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayTest" type="Label" parent="Control"]
+margin_left = -643.999
+margin_top = 149.899
+margin_right = -22.9988
+margin_bottom = 198.909
+rect_rotation = -168.989
+text = "PlayTesting"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayTestN" type="Label" parent="Control"]
+margin_left = 2121.99
+margin_top = 837.81
+margin_right = 2799.99
+margin_bottom = 886.817
+rect_rotation = -106.718
+text = "Bazzi, Omar"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Doc" type="Label" parent="Control"]
+margin_left = -614.0
+margin_top = 142.075
+margin_right = -126.0
+margin_bottom = 191.082
+rect_rotation = -170.833
+text = "Documentacion"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DocN" type="Label" parent="Control"]
+margin_left = 2322.0
+margin_top = 786.075
+margin_right = 3000.0
+margin_bottom = 939.075
+rect_rotation = -126.942
+text = "Bazzi, Omar
+Krijanovsky, Nicolas
+Sanchez, Fernando"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
