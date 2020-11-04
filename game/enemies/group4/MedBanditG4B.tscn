@@ -37,10 +37,10 @@ scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
 [node name="MedBanditG4B" instance=ExtResource( 1 )]
-hitpoints = 70.0
-bullet_speed = 340
+hitpoints = 100.0
+bullet_speed = 320
 shooting_rate = 0.9
-indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2"), NodePath("ShootPositions/ShootPosition3") ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -61,6 +61,10 @@ position = Vector2( -23, 19 )
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
 position = Vector2( 23, 19 )
+script = ExtResource( 2 )
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( -0.0259781, -25.2166 )
 script = ExtResource( 2 )
 
 [node name="Motor" parent="." index="12"]

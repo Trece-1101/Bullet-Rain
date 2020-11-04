@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/enemies/g4/G4 - XS.png" type="Texture" id=1]
 [ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 32.7613
@@ -33,9 +34,9 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="SmallBanditG4A" instance=ExtResource( 2 )]
-hitpoints = 25.0
-bullet_speed = 340
-shooting_rate = 1.6
+hitpoints = 40.0
+bullet_speed = 320
+shooting_rate = 1.4
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
@@ -44,8 +45,15 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( -8.0181, 15.5907 )
 bullet_quantity = 2
-angle_separation = 10.0
+angle_separation = 20.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( 7.79536, 15.5907 )
+script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 20.0
 
 [node name="Motor" parent="." index="11"]
 process_material = SubResource( 6 )

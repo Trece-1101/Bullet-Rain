@@ -32,9 +32,9 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="SmallBanditG4B" instance=ExtResource( 2 )]
-hitpoints = 28.0
-bullet_speed = 420
-shooting_rate = 1.8
+hitpoints = 45.0
+shooting_rate = 1.6
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition") ]
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
@@ -44,10 +44,12 @@ position = Vector2( 0, 3.70812 )
 shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( -0.166847, 21.858 )
 bullet_quantity = 3
 angle_separation = 30.0
 
 [node name="Motor" parent="." index="11"]
+emitting = false
 process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]

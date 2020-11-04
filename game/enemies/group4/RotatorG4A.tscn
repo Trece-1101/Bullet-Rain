@@ -34,7 +34,7 @@ color_ramp = SubResource( 3 )
 
 [node name="RotatorG4A" instance=ExtResource( 1 )]
 hitpoints = 150.0
-bullet_speed = 180
+bullet_speed = 200
 shooting_rate = 0.5
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition4") ]
 rotation_speed = 130.0
@@ -46,32 +46,32 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
-bullet_quantity = 3
-angle_separation = 30.0
+bullet_quantity = 4
+angle_separation = 40.0
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
 script = ExtResource( 3 )
 bullet_angle = 72.0
-bullet_quantity = 3
-angle_separation = 30.0
+bullet_quantity = 4
+angle_separation = 40.0
 
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
 script = ExtResource( 3 )
 bullet_angle = 144.0
-bullet_quantity = 3
-angle_separation = 30.0
+bullet_quantity = 4
+angle_separation = 40.0
 
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 script = ExtResource( 3 )
 bullet_angle = 216.0
-bullet_quantity = 3
-angle_separation = 30.0
+bullet_quantity = 4
+angle_separation = 40.0
 
 [node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
 script = ExtResource( 3 )
 bullet_angle = 288.0
-bullet_quantity = 3
-angle_separation = 30.0
+bullet_quantity = 4
+angle_separation = 40.0
 
 [node name="Motor" parent="." index="11"]
 process_material = SubResource( 6 )

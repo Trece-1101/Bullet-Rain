@@ -37,9 +37,9 @@ scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
 [node name="MedBanditG4A" instance=ExtResource( 1 )]
-hitpoints = 55.0
-bullet_speed = 370
-shooting_rate = 1.3
+hitpoints = 80.0
+bullet_speed = 350
+shooting_rate = 1.2
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
@@ -57,14 +57,14 @@ shape = SubResource( 2 )
 
 [node name="ShootPosition" parent="ShootPositions" index="0"]
 position = Vector2( -23, 19 )
-bullet_quantity = 2
-angle_separation = 20.0
+bullet_quantity = 3
+angle_separation = 25.0
 
 [node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
 position = Vector2( 23, 19 )
 script = ExtResource( 2 )
-bullet_quantity = 2
-angle_separation = 20.0
+bullet_quantity = 3
+angle_separation = 25.0
 
 [node name="Motor" parent="." index="12"]
 process_material = SubResource( 7 )
