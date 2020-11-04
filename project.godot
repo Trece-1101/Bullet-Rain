@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/ui/menus/Menu.gd"
 }, {
+"base": "EnemyBandit",
+"class": "MidBossBandit",
+"language": "GDScript",
+"path": "res://game/enemies/group2/MidBossBanditG2.gd"
+}, {
 "base": "Bullet",
 "class": "Missile",
 "language": "GDScript",
@@ -256,6 +261,7 @@ _global_script_class_icons={
 "LevelWaves": "res://assets/enemies/extras/sea-waves.png",
 "MainButton": "",
 "Menu": "",
+"MidBossBandit": "",
 "Missile": "",
 "OverlayWarning": "",
 "PathEndIn": "",
