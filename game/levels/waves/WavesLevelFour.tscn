@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
+
+[node name="WavesLevelFour" type="Node"]
+script = ExtResource( 1 )
+big_boss_music_transition = "level_four_to_boss"
