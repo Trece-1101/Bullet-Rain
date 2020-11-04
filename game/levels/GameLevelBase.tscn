@@ -165,6 +165,9 @@ debug_panel = ExtResource( 2 )
 send_waves = false
 time_to_start_waves = 4.0
 
+[node name="Overlays" type="CanvasLayer" parent="."]
+layer = 4
+
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = 2
 

@@ -44,7 +44,7 @@ func spawn_wave() -> void:
 		get_children()[current_wave].create_paths()
 	else:
 		var new_warning := overlay_warning.instance()
-		get_parent().add_child(new_warning)
+		get_parent().overlay_layer.add_child(new_warning)
 		GlobalMusic.music_transition(big_boss_music_transition)
 		yield(get_tree().create_timer(time_for_spawn_boss),"timeout")
 		var new_boss := big_boss.instance()

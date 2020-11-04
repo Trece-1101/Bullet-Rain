@@ -29,6 +29,7 @@ onready var parallax_bg := $BackGrounds/ParallaxBackground
 onready var parallax_border := $BackGrounds/ParallaxBorder
 onready var hud_layer := $HUD
 onready var gui := $HUD/GUI
+onready var overlay_layer := $Overlays
 onready var ult_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/UltimateContainer/UltimateProgress
 onready var drone_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/DroneContainer/DroneProgress
 onready var player_timer: Timer
@@ -79,7 +80,7 @@ func player_destroyed() -> void:
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
 		var new_game_over := overlay_game_over.instance()
-		add_child(new_game_over)
+		overlay_layer.add_child(new_game_over)
 		#get_tree().reload_current_scene()
 		#aca se termina todo
 	else:
