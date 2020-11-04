@@ -5,8 +5,8 @@ signal send_update_gui_hitpoints(hitpoints)
 signal send_update_gui_drone_and_ultimate(a_second)
 
 var points := 0
-var ultimate_cooldown := 8 setget ,get_ultimate_cooldown
-var drone_cooldown := 5 setget ,get_drone_cooldown
+var ultimate_cooldown := 240 setget ,get_ultimate_cooldown
+var drone_cooldown := 180 setget ,get_drone_cooldown
 
 var level_time := {"minu": 0, "sec": 0} setget ,get_level_time
 var level_timer: Timer
