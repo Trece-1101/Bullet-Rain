@@ -38,6 +38,11 @@ stream = ExtResource( 8 )
 volume_db = -10.0
 bus = "Music"
 
+[node name="LevelFour" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+bus = "Music"
+
 [node name="LevelOneBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -20.0
@@ -49,6 +54,11 @@ volume_db = -3.0
 bus = "Music"
 
 [node name="LevelThreeBoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -8.0
+bus = "Music"
+
+[node name="LevelFourBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -8.0
 bus = "Music"

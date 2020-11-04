@@ -17,7 +17,7 @@ export var send_player_ship := true
 export var time_to_start_waves := 3.0
 export var time_to_spawn_player := 2.5
 export var level_name := "NombreNivel"
-export(String, "dummy", "level_one", "level_two", "level_three") var music = "dummy"
+export(String, "dummy", "level_one", "level_two", "level_three", "level_four") var music = "dummy"
 
 #TODO: quitar esto
 export var player_dmg_level := 0
@@ -80,7 +80,9 @@ func player_destroyed() -> void:
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
 		var new_game_over := overlay_game_over.instance()
+		yield(get_tree().create_timer(1.0),"timeout")
 		overlay_layer.add_child(new_game_over)
+		print("over")
 		#get_tree().reload_current_scene()
 		#aca se termina todo
 	else:

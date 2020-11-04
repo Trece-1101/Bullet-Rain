@@ -7,7 +7,7 @@
 
 [node name="GameLevelThree" instance=ExtResource( 1 )]
 debuggeable = true
-send_waves = true
+send_player_ship = false
 level_name = "3"
 music = "level_three"
 player_dmg_level = 2
