@@ -80,7 +80,9 @@ func player_destroyed() -> void:
 	current_ship_index += 1
 	if current_ship_index >= ship_order.size():
 		var new_game_over := overlay_game_over.instance()
+		yield(get_tree().create_timer(1.0),"timeout")
 		overlay_layer.add_child(new_game_over)
+		print("over")
 		#get_tree().reload_current_scene()
 		#aca se termina todo
 	else:
