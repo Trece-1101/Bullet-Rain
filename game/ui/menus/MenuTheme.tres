@@ -1,36 +1,63 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/themes/opt_button_style.tres" type="StyleBox" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
-content_margin_left = 40.0
-content_margin_right = 40.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 0.478431, 0.227451, 0.509804, 1 )
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-expand_margin_left = 20.0
-expand_margin_right = 20.0
-expand_margin_top = 13.0
-expand_margin_bottom = 13.0
-shadow_color = Color( 1, 1, 1, 0.6 )
+[sub_resource type="StyleBoxFlat" id=14]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 0.588235 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 40
 use_filter = true
 extra_spacing_bottom = 20
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.0588235, 0.113725, 0.211765, 1 )
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
 
 [resource]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
@@ -39,11 +66,29 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 40
 Button/fonts/font = SubResource( 1 )
-Button/styles/disabled = null
-Button/styles/focus = SubResource( 2 )
-Button/styles/hover = SubResource( 4 )
-Button/styles/normal = ExtResource( 3 )
-Button/styles/pressed = null
+Button/styles/disabled = SubResource( 14 )
+Button/styles/focus = SubResource( 15 )
+Button/styles/hover = SubResource( 16 )
+Button/styles/normal = SubResource( 17 )
+Button/styles/pressed = SubResource( 18 )
+CheckBox/colors/font_color = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+CheckBox/colors/font_color_hover = Color( 0.341176, 0.713726, 0.760784, 1 )
+CheckBox/colors/font_color_hover_pressed = Color( 1, 1, 1, 1 )
+CheckBox/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+CheckBox/constants/check_vadjust = 0
+CheckBox/constants/hseparation = 6
+CheckBox/fonts/font = null
+CheckBox/icons/checked = null
+CheckBox/icons/radio_checked = null
+CheckBox/icons/radio_unchecked = null
+CheckBox/icons/unchecked = null
+CheckBox/styles/disabled = SubResource( 7 )
+CheckBox/styles/focus = SubResource( 8 )
+CheckBox/styles/hover = SubResource( 9 )
+CheckBox/styles/hover_pressed = SubResource( 10 )
+CheckBox/styles/normal = SubResource( 11 )
+CheckBox/styles/pressed = SubResource( 12 )
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -51,5 +96,38 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 4
 Label/constants/shadow_offset_y = 3
-Label/fonts/font = SubResource( 3 )
+Label/fonts/font = SubResource( 4 )
 Label/styles/normal = null
+OptionButton/colors/font_color = Color( 1, 1, 1, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_hover = Color( 0.341176, 0.713726, 0.760784, 1 )
+OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+OptionButton/constants/arrow_margin = 10
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = SubResource( 6 )
+OptionButton/icons/arrow = null
+OptionButton/styles/disabled = ExtResource( 2 )
+OptionButton/styles/focus = ExtResource( 2 )
+OptionButton/styles/hover = ExtResource( 2 )
+OptionButton/styles/normal = ExtResource( 2 )
+OptionButton/styles/pressed = ExtResource( 2 )
+PopupDialog/styles/panel = null
+PopupMenu/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.7, 0.7, 0.7, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 4
+PopupMenu/fonts/font = SubResource( 5 )
+PopupMenu/icons/checked = null
+PopupMenu/icons/radio_checked = null
+PopupMenu/icons/radio_unchecked = null
+PopupMenu/icons/submenu = null
+PopupMenu/icons/unchecked = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource( 13 )
+PopupMenu/styles/panel_disabled = null
+PopupMenu/styles/separator = null
+SpinBox/icons/updown = null
