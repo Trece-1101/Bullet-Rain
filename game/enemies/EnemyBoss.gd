@@ -1,6 +1,9 @@
 class_name EnemyBoss
 extends EnemyBase
 
+#### Señales
+signal destroy()
+
 #### Enumerables
 enum States {IDLE, HIGH_LIFE, HALF_LIFE, LOW_LIFE, DEAD }
 
@@ -189,6 +192,6 @@ func _on_WaitTimer_timeout() -> void:
 	can_shoot = true
 	get_node_or_null("EnemyShield").queue_free()
 
-
 func die() -> void:
+	emit_signal("destroy")
 	change_state(States.DEAD)

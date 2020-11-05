@@ -428,6 +428,7 @@ __meta__ = {
 }
 
 [node name="BtnNewGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+go_to_scene = "res://game/ui/menus/ShipOrderSelection.tscn"
 
 [node name="BtnLoadGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 104.0
@@ -439,6 +440,7 @@ go_to_scene = "res://game/levels/GameLevelTwo.tscn"
 margin_top = 208.0
 margin_bottom = 308.0
 text = "Options        "
+go_to_scene = "res://game/ui/menus/OptionsMenu.tscn"
 
 [node name="BtnLeaderboard" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 312.0
@@ -449,6 +451,7 @@ text = "Leaderboard  "
 margin_top = 416.0
 margin_bottom = 516.0
 text = "Credits         "
+go_to_scene = "res://game/ui/menus/Credits.tscn"
 
 [node name="BtnExitGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 520.0

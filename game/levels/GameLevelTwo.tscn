@@ -10,6 +10,7 @@ debuggeable = true
 send_waves = true
 time_to_spawn_player = 3.0
 level_name = "2"
+next_level = "res://game/levels/GameLevelThree.tscn"
 music = "level_two"
 player_dmg_level = 1
 player_rate_level = 1
