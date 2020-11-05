@@ -9,5 +9,5 @@ func _ready() -> void:
 	GlobalMusic.play_music("credits")
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and can_escape:
+	if event.is_action_pressed("ui_ultimate") and can_escape:
 		get_tree().change_scene("res://game/ui/menus/Menu.tscn")

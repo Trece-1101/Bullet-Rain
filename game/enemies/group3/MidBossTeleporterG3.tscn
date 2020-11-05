@@ -73,13 +73,13 @@ angle_separation = 40.0
 [node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
 position = Vector2( -139.491, 115.464 )
 script = ExtResource( 3 )
-bullet_quantity = 6
+bullet_quantity = 5
 angle_separation = 60.0
 
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 position = Vector2( 138.156, 115.464 )
 script = ExtResource( 3 )
-bullet_quantity = 6
+bullet_quantity = 5
 angle_separation = 60.0
 
 [node name="ExplosionFire" parent="." index="9"]
