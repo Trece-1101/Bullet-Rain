@@ -1,11 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://game/ui/menus/Credits.gd" type="Script" id=1]
 [ext_resource path="res://assets/themes/test_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/ui/logo/temp_logo.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/ui/credits/credits_03.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/credits/333Games - Logo Redondo.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/credits/credits_07.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/credits/credits_02.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/credits/credits_05.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/credits/credits_06.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/credits/border_shadow.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/credits/credits_04.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/credits/credits_01.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/credits/credits_08.png" type="Texture" id=12]
+[ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=14]
+[ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=15]
 
-[sub_resource type="Animation" id=1]
-resource_name = "credits"
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
 length = 120.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureRect:rect_position")
@@ -442,6 +461,56 @@ tracks/35/keys = {
 } ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+size = 26
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.478431, 0.227451, 0.509804, 1 )
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+expand_margin_top = 13.0
+expand_margin_bottom = 13.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 13 )
+
+[sub_resource type="Theme" id=6]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 40
+Button/fonts/font = SubResource( 4 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = ExtResource( 15 )
+Button/styles/normal = ExtResource( 14 )
+Button/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/fonts/font = SubResource( 3 )
+Label/styles/normal = null
+
 [node name="Credits" type="Node"]
 script = ExtResource( 1 )
 __meta__ = {
@@ -457,19 +526,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Background" type="AnimatedSprite" parent="."]
+position = Vector2( 960, 540 )
+frames = SubResource( 1 )
+frame = 4
+speed_scale = 0.01
+playing = true
+
+[node name="Bordes" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -551.223
 margin_top = 392.652
 margin_right = -359.22
 margin_bottom = 584.652
 texture = ExtResource( 4 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "credits"
-anims/credits = SubResource( 1 )
+anims/credits = SubResource( 2 )
 
 [node name="Return" type="Label" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -492,7 +577,7 @@ __meta__ = {
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-theme = ExtResource( 2 )
+theme = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
