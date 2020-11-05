@@ -1,0 +1,55 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 26
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.478431, 0.227451, 0.509804, 1 )
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+expand_margin_top = 13.0
+expand_margin_bottom = 13.0
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 40
+Button/fonts/font = SubResource( 4 )
+Button/styles/disabled = null
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = ExtResource( 3 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/fonts/font = SubResource( 3 )
+Label/styles/normal = null

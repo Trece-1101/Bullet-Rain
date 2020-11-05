@@ -34,48 +34,48 @@ func _physics_process(_delta: float) -> void:
 func check_cuadrant() -> void:
 	match cuadrant:
 		1: 
-			limits.left = 560.0
+			limits.left = 570.0
 			limits.right = 960.0
 			limits.up = 140.0
 			limits.down = 600.0
 		2:
-			limits.left = 560.0
+			limits.left = 570.0
 			limits.right = 960.0
 			limits.up = 370.0
 			limits.down = 600.0
 		3:
-			limits.left = 560.0
+			limits.left = 570.0
 			limits.right = 960.0
 			limits.up = 140.0
 			limits.down = 600.0
 		4:
 			limits.left = 960.0
-			limits.right = 1360.0
+			limits.right = 1350.0
 			limits.up = 140.0
 			limits.down = 370.0
 		5:
-			limits.left = 560.0
-			limits.right = 1360.0
+			limits.left = 570.0
+			limits.right = 1350.0
 			limits.up = 140.0
 			limits.down = 370.0
 		8:
 			limits.left = 960.0
-			limits.right = 1360.0
+			limits.right = 1350.0
 			limits.up = 140.0
 			limits.down = 370.0
 		10:
-			limits.left = 560.0
-			limits.right = 1360.0
+			limits.left = 570.0
+			limits.right = 1350.0
 			limits.up = 370.0
 			limits.down = 600.0
 		12:
 			limits.left = 960.0
-			limits.right = 1360.0
+			limits.right = 1350.0
 			limits.up = 140.0
 			limits.down = 600.0
 		_:
-			limits.left = 560.0
-			limits.right = 1360.0
+			limits.left = 570.0
+			limits.right = 1350.0
 			limits.up = 140.0
 			limits.down = 600.0
 

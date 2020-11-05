@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/levels/waves/WavesLevelTwo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/backgrounds/red/red_center.png" type="Texture" id=3]
+[ext_resource path="res://assets/backgrounds/red/red_laterals.png" type="Texture" id=4]
+
+[node name="GameLevelTwo" instance=ExtResource( 1 )]
+send_waves = true
+time_to_spawn_player = 3.0
+level_name = "2"
+next_level = "res://game/levels/GameLevelThree.tscn"
+music = "level_two"
+player_dmg_level = 2
+player_rate_level = 1
+
+[node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
+texture = ExtResource( 3 )
+
+[node name="BgLats" parent="BackGrounds/ParallaxBorder/ParallaxLayer" index="0"]
+texture = ExtResource( 4 )
+
+[node name="WavesLevelTwo" parent="." index="4" instance=ExtResource( 2 )]

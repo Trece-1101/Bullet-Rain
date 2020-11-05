@@ -34,6 +34,7 @@ script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 visible = true
+rotation = 0.0
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions" index="0"]
 script = ExtResource( 3 )

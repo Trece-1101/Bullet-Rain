@@ -9,10 +9,20 @@ onready var musics := {
 	"main_menu": $Menu,
 	"credits": $Credits,
 	"level_one": $LevelOne,
-	"level_one_boos": $LevelOneBoss
+	"level_one_boss": $LevelOneBoss,
+	"level_two": $LevelTwo,
+	"level_three": $LevelThree,
+	"level_two_boss": $LevelTwoBoss,
+	"level_three_boss": $LevelThreeBoss,
+	"level_four": $LevelFour,
+	"level_four_boss": $LevelFourBoss
 }
 
-onready var transitions := {"level_one_to_boss": [$LevelOne, $LevelOneBoss]} setget ,get_transitions
+onready var transitions := {
+	"level_one_to_boss": [$LevelOne, $LevelOneBoss],
+	"level_two_to_boss": [$LevelTwo, $LevelTwoBoss],
+	"level_three_to_boss": [$LevelThree, $LevelThreeBoss],
+	"level_four_to_boss": [$LevelFour, $LevelFourBoss]} setget ,get_transitions
 
 onready var tween_fade_in := $TweenFadeIn
 onready var tween_fade_out := $TweenFadeOut
@@ -20,7 +30,11 @@ onready var tween_fade_out := $TweenFadeOut
 func get_transitions() -> Dictionary:
 	return transitions
 
-func play_music(music: Object) -> void:
+func play_music(music: String) -> void:
+	stop_all_music()
+	musics[music].play()
+
+func play_music_obj(music: Object) -> void:
 	stop_all_music()
 	music.play()
 

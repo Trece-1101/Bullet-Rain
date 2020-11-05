@@ -4,11 +4,17 @@ extends Node
 #### Señales
 signal send_next_wave()
 
+export var send := true setget ,get_send
+
 #### Variables
 var total_paths := 0
 
+func get_send() -> bool:
+	return send
+
 #### Metodos
 func create_paths() -> void:
+	print(name)
 	for path in get_children():
 		path.connect("full_path_dead", self, "_on_full_path_dead")
 		total_paths += 1

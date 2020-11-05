@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=2]
+[gd_resource type="Theme" load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=2]
@@ -6,6 +6,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
+use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -24,6 +25,13 @@ expand_margin_top = 13.0
 expand_margin_bottom = 13.0
 shadow_color = Color( 1, 1, 1, 0.6 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
 [resource]
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
@@ -38,10 +46,10 @@ Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = null
 Label/colors/font_color = Color( 1, 1, 1, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 Label/constants/line_spacing = 3
-Label/constants/shadow_as_outline = 0
+Label/constants/shadow_as_outline = 3
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = null
+Label/fonts/font = SubResource( 3 )
 Label/styles/normal = null

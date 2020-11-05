@@ -1,0 +1,114 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sounds/sfx/ui/pause/pause01.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/ui/overlays/pause/pause_font.tres" type="Theme" id=2]
+[ext_resource path="res://game/ui/overlays/Pause.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/overlays/pause/pause_blur.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/overlays/pause/pause_menu.png" type="Texture" id=5]
+[ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/ui/buttons/ContinueButton.gd" type="Script" id=7]
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -300.0
+margin_top = -400.0
+margin_right = 300.0
+margin_bottom = 400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 70.0
+margin_top = 70.0
+margin_right = -70.0
+margin_bottom = -70.0
+custom_constants/separation = 10
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/TextureRect/VBoxContainer"]
+margin_top = 113.0
+margin_right = 460.0
+margin_bottom = 174.0
+theme = ExtResource( 2 )
+text = "Pausa"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator3" type="HSeparator" parent="Control/TextureRect/VBoxContainer"]
+margin_top = 184.0
+margin_right = 460.0
+margin_bottom = 188.0
+
+[node name="HSeparator" type="HSeparator" parent="Control/TextureRect/VBoxContainer"]
+margin_top = 198.0
+margin_right = 460.0
+margin_bottom = 202.0
+
+[node name="Button" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 212.0
+margin_right = 460.0
+margin_bottom = 312.0
+text = "Continuar     "
+align = 1
+script = ExtResource( 7 )
+
+[node name="Button2" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 322.0
+margin_right = 460.0
+margin_bottom = 422.0
+text = "Menu Principal     "
+go_to_scene = "res://game/ui/menus/Menu.tscn"
+
+[node name="Button3" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 432.0
+margin_right = 460.0
+margin_bottom = 532.0
+text = "Salir del juego     "
+is_quitter = true
+
+[node name="HSeparator2" type="HSeparator" parent="Control/TextureRect/VBoxContainer"]
+margin_top = 542.0
+margin_right = 460.0
+margin_bottom = 546.0

@@ -1,12 +1,15 @@
 class_name EnemyBoss
 extends EnemyBase
 
+#### Señales
+signal destroy()
+
 #### Enumerables
 enum States {IDLE, HIGH_LIFE, HALF_LIFE, LOW_LIFE, DEAD }
 
 #### Variables Export
 export var bullet: PackedScene
-export var bullet_speed := 400
+export var bullet_speed := 400.0
 export var test_shoot := false
 export var start_position := Vector2.ZERO
 export var minion_spawn_delay := 1.5
@@ -18,14 +21,13 @@ export var life_thresholds := {"half_life": 0.5, "low_life": 0.25}
 #### Variables
 var bullet_rot_correction := 0.0
 var is_shooting := false
-var is_boss := true setget ,get_is_boss
 var original_speed := 0.0
 var can_shoot := false setget set_can_shoot, get_can_shoot
 var current_shoot_positions_shooting: Node2D
 var life_status := {"half_life": false, "low_life": false}
 var original_hitpoints: float
 var is_aimer = true
-var shield := preload("res://game/enemies/EnemyShield.tscn").instance()
+var shield := preload("res://game/enemies/EnemyShield.tscn")
 var state = States.HIGH_LIFE
 
 #### Variables Onready
@@ -46,8 +48,8 @@ func set_can_shoot(value: bool) -> void:
 func get_can_shoot() -> bool:
 	return can_shoot
 
-func get_is_boss() -> bool:
-	return is_boss
+#func get_is_boss() -> bool:
+#	return is_boss
 
 func get_bullet() -> PackedScene:
 		return bullet
@@ -76,6 +78,7 @@ func _process(_delta: float) -> void:
 	
 	if is_aimer and not player == null and is_alive:
 		check_aim_to_player()
+	
 	if can_shoot and self.allow_shoot:
 		manage_shooting()
 
@@ -96,6 +99,7 @@ func change_state(new_state) -> void:
 			can_shoot = false
 			gun_timer.stop()
 			wait_timer.stop()
+			is_alive = false
 			animation_player.play("ultra_destroy")
 	state = new_state
 
@@ -116,7 +120,7 @@ func execute_half_life_behavior() -> void:
 func execute_low_life_behavior() -> void:
 	pass
 
-func add_shoot_positions_to_container(key: String, shoot_positions: ShootPosition) -> void:
+func add_shoot_positions_to_container(key: int, shoot_positions: Node2D) -> void:
 	shoot_positions_container[key] = shoot_positions
 
 
@@ -137,8 +141,9 @@ func shoot(shoot_positions: Node2D) -> void:
 		)
 
 
-func switch_shootin_state(value: bool) -> void:
+func switch_shootin_state(value: bool, wait := 0.0) -> void:
 	if value:
+		yield(get_tree().create_timer(wait),"timeout")
 		can_shoot = true
 	else:
 		can_shoot = false
@@ -166,9 +171,12 @@ func spawn_minions() -> void:
 		get_parent().add_child(new_minion)
 
 
-func spawn_shield() -> void:
-	shield.position = $ShieldPosition.position
-	add_child(shield)
+func spawn_shield(size := 1.0) -> void:
+	var new_shield := shield.instance()
+	new_shield.position = $ShieldPosition.position
+	new_shield.scale = Vector2(size, size)
+	new_shield.name = "EnemyShield"
+	add_child(new_shield)
 
 
 func disabled_collider() -> void:
@@ -182,13 +190,8 @@ func _on_GunTimer_timeout() -> void:
 
 func _on_WaitTimer_timeout() -> void:
 	can_shoot = true
-	shield.queue_free()
-
+	get_node_or_null("EnemyShield").queue_free()
 
 func die() -> void:
+	emit_signal("destroy")
 	change_state(States.DEAD)
-#	is_aimer = false
-#	can_shoot = false
-#	gun_timer.stop()
-#	wait_timer.stop()
-#	animation_player.play("ultra_destroy")

@@ -8,8 +8,8 @@ var leader: EnemyBase
 var rot_center := Vector2.ZERO
 
 
-func create(leader_e:EnemyBase, speed_e: float, angle_to_l:float, distance_to_l: int) -> void:
-	leader = leader_e
+func create(speed_e: float, angle_to_l:float, distance_to_l: int) -> void:
+	leader = get_parent()
 	self.speed = speed_e
 	angle = angle_to_l
 	distance = distance_to_l

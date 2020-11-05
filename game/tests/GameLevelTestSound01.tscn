@@ -1,14 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/backgrounds/bg_green.png" type="Texture" id=1]
-[ext_resource path="res://assets/ui/hud/hud_sides.png" type="Texture" id=2]
+[ext_resource path="res://assets/backgrounds/blue/blue_center.png" type="Texture" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/backgrounds/blue/blue_laterals.png" type="Texture" id=6]
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=7]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=8]
-[ext_resource path="res://assets/backgrounds/bg_green_Laterals.png" type="Texture" id=9]
-
+[ext_resource path="res://assets/ui/hud/gui_laterals.png" type="Texture" id=9]
 
 [node name="GameLevelBase" type="Node"]
 script = ExtResource( 7 )
@@ -27,7 +26,7 @@ texture = ExtResource( 8 )
 centered = false
 
 [node name="hud_sides" type="Sprite" parent="HUD"]
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
 centered = false
 
 [node name="BackGrounds" type="Node" parent="."]
@@ -40,6 +39,7 @@ motion_mirroring = Vector2( 0, 2310 )
 
 [node name="BgGreen" type="Sprite" parent="BackGrounds/ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
+position = Vector2( 500, 0 )
 texture = ExtResource( 1 )
 centered = false
 
@@ -51,7 +51,7 @@ motion_mirroring = Vector2( 0, 2310 )
 
 [node name="bg_green_Laterals" type="Sprite" parent="BackGrounds/ParallaxBorder/ParallaxLayer"]
 modulate = Color( 0.490196, 0.490196, 0.490196, 1 )
-texture = ExtResource( 9 )
+texture = ExtResource( 6 )
 centered = false
 
 [node name="BulletsContainer" type="Node" parent="."]
@@ -59,10 +59,6 @@ centered = false
 [node name="BordersContainer" type="Node" parent="."]
 
 [node name="StaticBorder" parent="BordersContainer" instance=ExtResource( 4 )]
-
-[node name="HudSides" type="Sprite" parent="BordersContainer"]
-texture = ExtResource( 2 )
-centered = false
 
 [node name="PlayerInterceptor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 954, 902 )

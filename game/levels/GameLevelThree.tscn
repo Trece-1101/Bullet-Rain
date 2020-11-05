@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/levels/waves/WavesLevelThree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/backgrounds/blue/blue_center.png" type="Texture" id=3]
+[ext_resource path="res://assets/backgrounds/blue/blue_laterals.png" type="Texture" id=4]
+
+[node name="GameLevelThree" instance=ExtResource( 1 )]
+send_waves = true
+time_to_spawn_player = 3.0
+level_name = "3"
+next_level = "res://game/levels/GameLevelFour.tscn"
+music = "level_three"
+player_dmg_level = 3
+player_rate_level = 2
+
+[node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
+texture = ExtResource( 3 )
+
+[node name="PlanetsCenter" parent="BackGrounds/StarCenterLayer" index="1"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+
+[node name="DecorCenter" parent="BackGrounds/StarCenterLayer" index="2"]
+modulate = Color( 1, 1, 1, 1 )
+self_modulate = Color( 1, 1, 1, 0.588235 )
+
+[node name="BgLats" parent="BackGrounds/ParallaxBorder/ParallaxLayer" index="0"]
+texture = ExtResource( 4 )
+
+[node name="WavesLevelThree" parent="." index="4" instance=ExtResource( 2 )]

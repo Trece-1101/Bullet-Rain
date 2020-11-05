@@ -31,14 +31,7 @@ color_ramp = SubResource( 2 )
 [node name="EnemyOrbital" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sparkle" parent="ExplosionFire2" index="5"]
-emitting = true
-
-[node name="Sparkle2" parent="ExplosionFire2" index="6"]
-emitting = true
-
 [node name="Motor" parent="." index="7"]
 process_material = SubResource( 5 )
-[connection signal="animation_finished" from="ExplosionFire2/ExplosionPlayer" to="." method="_on_ExplosionPlayer_animation_finished"]
 
 [editable path="ExplosionFire2"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=1]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern28.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern29.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern30.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern25.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern27.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/enemies/paths/patterns/Pattern26.tscn" type="PackedScene" id=7]
+
+[node name="Wave33" type="Node"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 540.852 ],
+"_edit_vertical_guides_": [ 959.523 ]
+}
+
+[node name="Pattern25" parent="." instance=ExtResource( 5 )]
+speed = 200.0
+
+[node name="Pattern26" parent="." instance=ExtResource( 7 )]
+speed = 200.0
+
+[node name="Pattern27" parent="." instance=ExtResource( 6 )]
+speed = 200.0
+
+[node name="Pattern28" parent="." instance=ExtResource( 2 )]
+speed = 200.0
+
+[node name="Pattern29" parent="." instance=ExtResource( 3 )]
+speed = 200.0
+
+[node name="Pattern30" parent="." instance=ExtResource( 4 )]
+speed = 200.0

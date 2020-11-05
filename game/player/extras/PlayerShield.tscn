@@ -1,0 +1,57 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://assets/player/extras/shield/player_escudo14.png" type="Texture" id=1]
+[ext_resource path="res://assets/player/extras/shield/player_escudo9.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/extras/shield/player_escudo1.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/extras/shield/player_escudo6.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/extras/shield/player_escudo5.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/extras/shield/player_escudo13.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/extras/shield/player_escudo2.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/extras/shield/player_escudo4.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/extras/shield/player_escudo16.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/extras/shield/player_escudo17.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/extras/shield/player_escudo18.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/extras/shield/player_escudo11.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/extras/shield/player_escudo15.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/extras/shield/player_escudo8.png" type="Texture" id=14]
+[ext_resource path="res://assets/player/extras/shield/player_escudo3.png" type="Texture" id=15]
+[ext_resource path="res://assets/player/extras/shield/player_escudo10.png" type="Texture" id=16]
+[ext_resource path="res://assets/player/extras/shield/player_escudo7.png" type="Texture" id=17]
+[ext_resource path="res://assets/player/extras/shield/player_escudo12.png" type="Texture" id=18]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_01.png" type="Texture" id=19]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_19.png" type="Texture" id=20]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_10.png" type="Texture" id=21]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_02.png" type="Texture" id=22]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_13.png" type="Texture" id=23]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_15.png" type="Texture" id=24]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_12.png" type="Texture" id=25]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_09.png" type="Texture" id=26]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_17.png" type="Texture" id=27]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_14.png" type="Texture" id=28]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_04.png" type="Texture" id=29]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_11.png" type="Texture" id=30]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_20.png" type="Texture" id=31]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_18.png" type="Texture" id=32]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_07.png" type="Texture" id=33]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_05.png" type="Texture" id=34]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_08.png" type="Texture" id=35]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_06.png" type="Texture" id=36]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_16.png" type="Texture" id=37]
+[ext_resource path="res://assets/player/extras/shieldV2/player_shield_v2_03.png" type="Texture" id=38]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 22 ), ExtResource( 38 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 35 ), ExtResource( 26 ), ExtResource( 21 ), ExtResource( 30 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 28 ), ExtResource( 24 ), ExtResource( 37 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 20 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "shieldV2",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 7 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 2 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "shield",
+"speed": 42.0
+} ]
+
+[node name="PlayerShield" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "shieldV2"

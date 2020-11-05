@@ -1,0 +1,222 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://game/player/AnimInvulnerable.gd" type="Script" id=1]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0001.png" type="Texture" id=2]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0003.png" type="Texture" id=3]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0004.png" type="Texture" id=4]
+[ext_resource path="res://assets/player/extras/invulnerability/glowing_circle.png" type="Texture" id=5]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0006.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0007.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0009.png" type="Texture" id=8]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0008.png" type="Texture" id=9]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0010.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0011.png" type="Texture" id=11]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0002.png" type="Texture" id=12]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0005.png" type="Texture" id=13]
+[ext_resource path="res://assets/player/extras/invulnerability/animation/d_0012.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 12 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "shield",
+"speed": 24.0
+} ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0.0216216, 0.0227273 ), 0.0, 4.48485, 0, 0, Vector2( 0.491892, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -4.09242, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 100.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -120.0
+radial_accel_random = 0.3
+scale = 0.6
+scale_curve = SubResource( 3 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "init"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "shield" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "power"
+length = 4.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "default", "shield", "default" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Particles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.01, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Particles2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 3.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Particles2D:speed_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.7, 2.0, 2.0, 0.7 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.35, 0.64, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.942815 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.0862745 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.402487 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.176471 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.3, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 155.455
+
+[node name="AnimInvulnerable" type="AnimatedSprite"]
+modulate = Color( 1, 1, 1, 0.983038 )
+self_modulate = Color( 5.2, 3.49, 1, 1 )
+frames = SubResource( 1 )
+animation = "shield"
+frame = 4
+playing = true
+script = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+self_modulate = Color( 9.25, 3.47, 1, 1 )
+scale = Vector2( 0.5, 0.5 )
+amount = 12
+speed_scale = 2.0
+process_material = SubResource( 4 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "power"
+anims/init = SubResource( 5 )
+anims/power = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]

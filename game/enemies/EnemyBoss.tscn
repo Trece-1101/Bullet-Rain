@@ -156,19 +156,19 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="EnemyBoss" instance=ExtResource( 1 )]
+z_index = 41
 script = ExtResource( 2 )
 hitpoints = 1000.0
 bullet = ExtResource( 4 )
-bullet_speed = 380
-
-[node name="Sprite" parent="." index="0"]
-rotation = -0.0482751
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/ultra_destroy = SubResource( 1 )
 
 [node name="ExplosionFire" parent="." index="3"]
 scale = Vector2( 2.5, 2.5 )
+
+[node name="ExplosionFire2" parent="." index="4"]
+scale = Vector2( 0.25, 0.25 )
 
 [node name="ExplosionSFX" parent="." index="6"]
 stream = ExtResource( 5 )

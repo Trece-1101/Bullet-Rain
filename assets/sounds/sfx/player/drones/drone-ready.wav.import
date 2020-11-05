@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drone-ready.wav-16557b0053e514f623bf9b6f3a23f1cf.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/player/drones/drone-ready.wav"
+dest_files=[ "res://.import/drone-ready.wav-16557b0053e514f623bf9b6f3a23f1cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

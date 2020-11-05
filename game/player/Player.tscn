@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
-[ext_resource path="res://assets/player/player_stealth.png" type="Texture" id=1]
+[ext_resource path="res://assets/sounds/sfx/player/shoot/08shoot.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://game/bullets/BulletPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/sfx/player/shoot/09shoot.wav" type="AudioStream" id=4]
@@ -13,6 +13,11 @@
 [ext_resource path="res://assets/sounds/sfx/player/bulletchange/bulletchange08.wav" type="AudioStream" id=11]
 [ext_resource path="res://game/player/extras/Explosion.tscn" type="PackedScene" id=12]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=13]
+[ext_resource path="res://assets/animations/playerrespawning.tres" type="Animation" id=14]
+[ext_resource path="res://game/player/Shield.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/sounds/sfx/player/drones/drone-ready.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/sounds/sfx/player/respawn/respawn01.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sounds/sfx/player/drones/drone-notready.wav" type="AudioStream" id=18]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 1.31058, 0, 0, Vector2( 1, 1 ), 0.701913, 0.0, 0, 0 ]
@@ -76,6 +81,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=5]
+length = 2.0
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:modulate")
@@ -101,9 +107,49 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.662745, 0.0705882, 0.0705882, 0.882353 ), Color( 0.945098, 0.027451, 0.027451, 0.729412 ), Color( 0.94902, 0.254902, 0.141176, 0.482353 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 0.164706, 0.164706, 1 ), Color( 1, 1, 1, 0.545098 ), Color( 0.945098, 0.027451, 0.027451, 0.478431 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ), Color( 0.945098, 0.027451, 0.027451, 0.698039 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shield/AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_is_in_god_mode"
+}, {
+"args": [ false ],
+"method": "set_is_in_god_mode"
+} ]
+}
+tracks/4/type = "animation"
+tracks/4/path = NodePath("Shield/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "player_damage" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=6]
 length = 2.0
+step = 0.05
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
@@ -123,11 +169,14 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "die"
+}, {
 "args": [  ],
 "method": "disabled_collider"
 } ]
@@ -329,6 +378,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprite:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ) ]
+}
 
 [sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.457944 )
@@ -357,7 +418,6 @@ scale_curve = SubResource( 11 )
 color_ramp = SubResource( 9 )
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 960, 920 )
 z_index = 50
 z_as_relative = false
 collision_mask = 2
@@ -367,6 +427,10 @@ bullet_speed = -1200
 bullet_speed_alt = -850
 
 [node name="Combustion" parent="." instance=ExtResource( 6 )]
+
+[node name="DamageCollider" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 8.03625 )
+polygon = PoolVector2Array( -18.5991, 18.1073, 0.0550919, -29.273, 18.0104, 18.3057 )
 
 [node name="Explosion" parent="." instance=ExtResource( 12 )]
 
@@ -394,7 +458,6 @@ target_path = NodePath("..")
 self_modulate = Color( 1, 0.988235, 0.988235, 1 )
 material = ExtResource( 10 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 1 )
 hframes = 3
 frame = 1
 
@@ -403,12 +466,16 @@ anims/init = SubResource( 3 )
 anims/shoot = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "respawning"
 anims/damage = SubResource( 5 )
 anims/destroy = SubResource( 6 )
 anims/init = SubResource( 7 )
+anims/respawning = ExtResource( 14 )
 
 [node name="GunTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.1
+
+[node name="DroneGunTimer" type="Timer" parent="."]
 
 [node name="ShootPositions" type="Node2D" parent="."]
 position = Vector2( 0, -8 )
@@ -443,9 +510,26 @@ visibility_rect = Rect2( -15, -15, 30, 30 )
 process_material = SubResource( 12 )
 texture = ExtResource( 9 )
 
-[node name="DamageCollider" type="CollisionPolygon2D" parent="."]
-position = Vector2( 0, 8.03625 )
-polygon = PoolVector2Array( -18.5991, 18.1073, 0.0550919, -29.273, 18.0104, 18.3057 )
+[node name="DronesPositions" type="Node2D" parent="."]
+
+[node name="DroneLeft" type="Position2D" parent="DronesPositions"]
+position = Vector2( -62, -25 )
+
+[node name="ShootPosition" type="Position2D" parent="DronesPositions/DroneLeft"]
+position = Vector2( 0, -20.5 )
+script = ExtResource( 13 )
+
+[node name="DroneRight" type="Position2D" parent="DronesPositions"]
+position = Vector2( 62, -25 )
+
+[node name="ShootPosition" type="Position2D" parent="DronesPositions/DroneRight"]
+position = Vector2( 0, -20 )
+script = ExtResource( 13 )
+
+[node name="Shield" parent="." instance=ExtResource( 15 )]
+
+[node name="PlayerShield" parent="Shield" index="2"]
+frame = 12
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -454,16 +538,39 @@ bus = "Player"
 
 [node name="HitpointSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0
+volume_db = -18.0
 bus = "Player"
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -5.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="BulletChangeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -15.0
+bus = "Player"
+
+[node name="Respawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
 volume_db = -10.0
 bus = "Player"
+
+[node name="ShootDroneSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -18.0
+bus = "Player"
+
+[node name="UltDroneActivated" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -28.0
+bus = "Player"
+
+[node name="UltDroneDisabled" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -22.0
+bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
+[connection signal="timeout" from="DroneGunTimer" to="." method="_on_DroneGunTimer_timeout"]
+
+[editable path="Shield"]

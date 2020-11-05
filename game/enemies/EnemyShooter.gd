@@ -2,7 +2,7 @@ class_name EnemyShooter
 extends EnemyPather
 
 #### Variables Export
-export var is_boss := false setget ,get_is_boss
+#export var is_boss := false setget ,get_is_boss
 export var bullet: PackedScene
 export var bullet_speed := 400
 export var shooting_rate := 1.0
@@ -32,14 +32,13 @@ func set_can_shoot(value: bool) -> void:
 func get_can_shoot() -> bool:
 	return can_shoot
 
-func get_is_boss() -> bool:
-	return is_boss
 
 func get_bullet() -> PackedScene:
 	return bullet
 
 #### Metodos
 func _ready() -> void:
+	add_to_group("enemy_shooter")
 	#ToDo: borrar esto en el build definitivo
 	if test_shoot:
 		can_shoot = true
@@ -102,3 +101,9 @@ func disabled_collider() -> void:
 	.disabled_collider()
 	self.can_shoot = false
 	gun_timer.stop()
+
+func disabled_shooting() -> void:
+	if not is_boss:
+		can_shoot = false
+		allow_shoot = false
+		gun_timer.stop()

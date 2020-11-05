@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBandit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/g4/G4 - XXL.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=3]
+[ext_resource path="res://game/enemies/group4/OrbitalG4B.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/enemies/group4/OrbitalG4A.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 37.5809
+height = 45.7196
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="BigBanditG4Minionated2" instance=ExtResource( 1 )]
+hitpoints = 280.0
+bullet_speed = 280
+shooting_rate = 0.9
+indestructible_bullets = [ NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition4"), NodePath("ShootPositions/ShootPosition5") ]
+has_orbitals = true
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, 17.9085 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="DamageCollider2" type="CollisionPolygon2D" parent="." index="2" groups=[
+"damage_collider",
+]]
+polygon = PoolVector2Array( -61.3464, 18.7288, -104.281, -51.425, -80.1476, -34.3075, -65.5556, -41.3229, -34.4073, -53.9506, -26.2695, -33.7462, -0.172241, -58.4404, 27.6087, -35.9912, 33.5016, -54.2312, 63.8081, -34.5881, 81.2063, -35.7106, 105.62, -53.9506, 90.7472, -26.1696, 62.405, 17.3258, 45.8487, -19.1542, -40.5809, -19.9961 )
+
+[node name="ShootPosition" parent="ShootPositions" index="0"]
+position = Vector2( -60, 26 )
+bullet_quantity = 2
+angle_separation = 30.0
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions" index="1"]
+position = Vector2( 60, 26 )
+script = ExtResource( 3 )
+bullet_quantity = 2
+angle_separation = 30.0
+
+[node name="ShootPosition3" type="Position2D" parent="ShootPositions" index="2"]
+position = Vector2( -22.6274, 19.4454 )
+script = ExtResource( 3 )
+bullet_quantity = 5
+angle_separation = 60.0
+
+[node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
+position = Vector2( 24.0416, 19.4454 )
+script = ExtResource( 3 )
+bullet_quantity = 5
+angle_separation = 60.0
+
+[node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
+position = Vector2( 0.444767, 33.1316 )
+script = ExtResource( 3 )
+bullet_quantity = 5
+angle_separation = 60.0
+
+[node name="Motor" parent="." index="12"]
+emitting = false
+process_material = SubResource( 6 )
+
+[node name="OrbitalG4A" parent="." index="15" instance=ExtResource( 5 )]
+speed = 10.0
+distance = 160
+
+[node name="OrbitalG4A2" parent="." index="16" instance=ExtResource( 5 )]
+speed = 10.0
+angle = 30.0
+distance = 160
+
+[node name="OrbitalG4A3" parent="." index="17" instance=ExtResource( 5 )]
+speed = 10.0
+angle = 60.0
+distance = 160
+
+[node name="OrbitalG4A4" parent="." index="18" instance=ExtResource( 5 )]
+speed = 10.0
+angle = 90.0
+distance = 160
+
+[node name="OrbitalG4B" parent="." index="19" instance=ExtResource( 4 )]
+speed = 10.0
+angle = 120.0
+distance = 160
+
+[node name="OrbitalG4B2" parent="." index="20" instance=ExtResource( 4 )]
+speed = 10.0
+angle = 150.0
+distance = 160
+
+[node name="OrbitalG4B3" parent="." index="21" instance=ExtResource( 4 )]
+speed = 10.0
+angle = 180.0
+distance = 160
+
+[node name="OrbitalG4B4" parent="." index="22" instance=ExtResource( 4 )]
+speed = 10.0
+angle = -60.0
+distance = 160
+
+[node name="OrbitalG4B5" parent="." index="23" instance=ExtResource( 4 )]
+speed = 10.0
+angle = -30.0
+distance = 160
+
+[editable path="ExplosionFire2"]

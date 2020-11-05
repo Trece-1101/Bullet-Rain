@@ -1,4 +1,4 @@
-class_name Bullet, "res://assets/bullets/enemy_bullet_temp.png"
+class_name Bullet, "res://assets/bullets/enemy_bullet.png"
 extends Area2D
 
 #### Variables Export
@@ -34,6 +34,8 @@ func create(
 		bullet_angle := 0.0
 	) -> void:
 	creater = bullet_creater
+	if creater is EnemyBase or creater is EnemyPart:
+		add_to_group("bullet_enemy")
 	position = bullet_pos
 	rotation = bullet_dir
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
@@ -45,21 +47,22 @@ func _ready() -> void:
 	match type:
 		-1:
 			bullet_sprite.modulate = bullet_color_alt
+			$BulletDestroyParticles.modulate = bullet_color_alt
 		1:
 			bullet_sprite.modulate = bullet_color_one
+			$BulletDestroyParticles.modulate = bullet_color_one
 		0:
 			bullet_sprite.modulate = bullet_color_indestructible
+			$BulletDestroyParticles.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")
-		
-#	if type == 1:
-#	else:
 
 
 func _process(delta: float) -> void:
 	position += velocity * delta
 	if creater is EnemyBase:
-		bullet_sprite.rotation += 2 * PI * delta / 4
+		#TODO: verificar que delta / 4 quede igual que delta * 0.25
+		bullet_sprite.rotation += 2 * PI * delta * 0.25
 
 
 func _on_body_entered(body: Node) -> void:
@@ -79,13 +82,14 @@ func _on_area_entered(area: Area2D) -> void:
 			other_bullet.destroy()
 			destroy()
 	else:
-		queue_free()
+		destroy()
 
 
 func destroy() -> void:
 	$CollisionShape2D.set_deferred("disabled", true)
 	velocity = Vector2.ZERO
 	$AnimationPlayer.play("impact")
-	
+
+
 func destroy_sfx() -> void:
 	destroy_sound.play()
