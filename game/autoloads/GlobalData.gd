@@ -13,6 +13,8 @@ var level_timer: Timer
 var start_time := 0.0
 var current_time := 0.0
 
+var level_to_load := "res://game/levels/GameLevelOne.tscn" setget set_level_to_load
+
 var player_ships := {
 	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
 	"bomber": preload("res://game/player/PlayerBomber.tscn"),
@@ -49,6 +51,11 @@ func get_ultimate_cooldown() -> int:
 func get_drone_cooldown() -> int:
 	return drone_cooldown
 
+func set_level_to_load(value: String) -> void:
+	level_to_load = value
+
+func get_level_to_load() -> String:
+	return level_to_load
 
 func _ready() -> void:
 	level_timer = Timer.new()

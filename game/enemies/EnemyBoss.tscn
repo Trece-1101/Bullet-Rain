@@ -160,7 +160,6 @@ z_index = 41
 script = ExtResource( 2 )
 hitpoints = 1000.0
 bullet = ExtResource( 4 )
-bullet_speed = 380
 
 [node name="AnimationPlayer" parent="." index="2"]
 anims/ultra_destroy = SubResource( 1 )

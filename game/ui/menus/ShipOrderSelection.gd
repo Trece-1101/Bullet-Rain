@@ -2,7 +2,7 @@ extends Control
 
 
 export var default_texture: Texture
-export var level_to_load := "res://game/levels/GameLevelOne.tscn" setget set_level_to_load
+
 
 var ship_selected_imgages := []
 var ship_containers := []
@@ -11,10 +11,8 @@ var ships_order := []
 
 onready var order_containers := [$OrderOneContainer, $OrderTwoContainer, $OrderThreeContainer]
 
-func set_level_to_load(value: String) -> void:
-	level_to_load = value
-
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for container in order_containers:
 		ship_containers.append(container.get_node("ImgContainer").get_node("ShipIconContainer"))
 		ship_selected_imgages.append(container.get_node("ImgContainer").get_node("ShipSelected"))
@@ -61,7 +59,7 @@ func _on_Reset_pressed() -> void:
 
 func _on_Continue_pressed() -> void:
 	GlobalData.set_ship_order(order_ships())
-	get_tree().change_scene(level_to_load)
+	get_tree().change_scene(GlobalData.get_level_to_load())
 
 func order_ships() -> Array:
 	var ordered_list := ["", "", ""]

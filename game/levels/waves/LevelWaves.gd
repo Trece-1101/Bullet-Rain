@@ -4,7 +4,6 @@ extends Node
 #### Constantes
 const overlay_warning := preload("res://game/ui/overlays/Warning.tscn")
 
-
 #### Variables export
 export var big_boss: PackedScene
 export var time_for_spawn_boss := 4.0
@@ -49,8 +48,8 @@ func spawn_wave() -> void:
 		GlobalMusic.music_transition(big_boss_music_transition)
 		yield(get_tree().create_timer(time_for_spawn_boss),"timeout")
 		var new_boss := big_boss.instance()
+		new_boss.connect("destroy", get_parent(), "_next_level")
 		add_child(new_boss)
-
 
 func set_send_waves(value: bool) -> void:
 	send_waves = value
