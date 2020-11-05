@@ -11,41 +11,41 @@
 [ext_resource path="res://game/ui/menus/OptionsMenu.gd" type="Script" id=9]
 [ext_resource path="res://assets/sounds/sfx/enemies/shoot/03enemyshoot.wav" type="AudioStream" id=10]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 use_filter = true
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://assets/fonts/ethnocentric rg.ttf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 use_filter = true
-font_data = SubResource( 2 )
+font_data = SubResource( 3 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=5]
 font_path = "res://assets/fonts/ethnocentric rg.ttf"
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 110
 outline_size = 4
 outline_color = Color( 0.131149, 0.716458, 0.746094, 1 )
 use_filter = true
 extra_spacing_char = 3
-font_data = SubResource( 4 )
+font_data = SubResource( 5 )
 
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 6 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 1 )
+Button/fonts/font = SubResource( 2 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = ExtResource( 1 )
@@ -58,17 +58,17 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = SubResource( 3 )
+Label/fonts/font = SubResource( 4 )
 Label/styles/normal = null
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 5 )
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 6 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 1 )
+Button/fonts/font = SubResource( 2 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = ExtResource( 1 )
@@ -243,7 +243,7 @@ margin_left = -7.7713
 margin_top = -25.0026
 margin_right = 69.2287
 margin_bottom = 47.9974
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -263,7 +263,7 @@ margin_left = 155.079
 margin_top = -25.0026
 margin_right = 232.079
 margin_bottom = 47.9974
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -274,7 +274,7 @@ margin_left = -7.7713
 margin_top = 75.1105
 margin_right = 69.2287
 margin_bottom = 148.11
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -294,7 +294,7 @@ margin_left = 155.079
 margin_top = 75.1105
 margin_right = 232.079
 margin_bottom = 148.11
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -305,7 +305,7 @@ margin_left = -7.7713
 margin_top = 174.891
 margin_right = 69.2287
 margin_bottom = 247.891
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "+"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -325,7 +325,7 @@ margin_left = 155.079
 margin_top = 174.891
 margin_right = 232.079
 margin_bottom = 247.891
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 1 )
 text = "-"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -337,7 +337,7 @@ margin_left = 1705.74
 margin_top = 1042.51
 margin_right = 1915.74
 margin_bottom = 1070.51
-theme = SubResource( 6 )
+theme = SubResource( 7 )
 text = "Version: 0.2.0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -350,7 +350,7 @@ margin_left = 113.0
 margin_top = 82.4801
 margin_right = 1197.0
 margin_bottom = 216.48
-theme = SubResource( 7 )
+theme = SubResource( 8 )
 custom_colors/font_outline_modulate = Color( 0.231373, 0.913725, 1, 1 )
 text = "Bullet Rain"
 __meta__ = {

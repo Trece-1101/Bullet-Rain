@@ -8,18 +8,18 @@ size = 26
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=14]
+[sub_resource type="StyleBoxFlat" id=2]
 
-[sub_resource type="StyleBoxFlat" id=15]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=16]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.588235 )
 
-[sub_resource type="StyleBoxFlat" id=17]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="StyleBoxFlat" id=18]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 0 )
 
 [sub_resource type="StyleBoxFlat" id=7]
@@ -40,21 +40,21 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=13]
 size = 40
 use_filter = true
 extra_spacing_bottom = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=14]
 size = 30
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=15]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=16]
 bg_color = Color( 0.0588235, 0.113725, 0.211765, 1 )
 border_color = Color( 1, 1, 1, 1 )
 border_blend = true
@@ -66,11 +66,11 @@ Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 40
 Button/fonts/font = SubResource( 1 )
-Button/styles/disabled = SubResource( 14 )
-Button/styles/focus = SubResource( 15 )
-Button/styles/hover = SubResource( 16 )
-Button/styles/normal = SubResource( 17 )
-Button/styles/pressed = SubResource( 18 )
+Button/styles/disabled = SubResource( 2 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = SubResource( 4 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 6 )
 CheckBox/colors/font_color = Color( 1, 1, 1, 1 )
 CheckBox/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 CheckBox/colors/font_color_hover = Color( 0.341176, 0.713726, 0.760784, 1 )
@@ -96,7 +96,7 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 4
 Label/constants/shadow_offset_y = 3
-Label/fonts/font = SubResource( 4 )
+Label/fonts/font = SubResource( 13 )
 Label/styles/normal = null
 OptionButton/colors/font_color = Color( 1, 1, 1, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
@@ -104,7 +104,7 @@ OptionButton/colors/font_color_hover = Color( 0.341176, 0.713726, 0.760784, 1 )
 OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 OptionButton/constants/arrow_margin = 10
 OptionButton/constants/hseparation = 2
-OptionButton/fonts/font = SubResource( 6 )
+OptionButton/fonts/font = SubResource( 14 )
 OptionButton/icons/arrow = null
 OptionButton/styles/disabled = ExtResource( 2 )
 OptionButton/styles/focus = ExtResource( 2 )
@@ -118,7 +118,7 @@ PopupMenu/colors/font_color_disabled = Color( 0.4, 0.4, 0.4, 0.8 )
 PopupMenu/colors/font_color_hover = Color( 0.88, 0.88, 0.88, 1 )
 PopupMenu/constants/hseparation = 4
 PopupMenu/constants/vseparation = 4
-PopupMenu/fonts/font = SubResource( 5 )
+PopupMenu/fonts/font = SubResource( 15 )
 PopupMenu/icons/checked = null
 PopupMenu/icons/radio_checked = null
 PopupMenu/icons/radio_unchecked = null
@@ -127,7 +127,7 @@ PopupMenu/icons/unchecked = null
 PopupMenu/styles/hover = null
 PopupMenu/styles/labeled_separator_left = null
 PopupMenu/styles/labeled_separator_right = null
-PopupMenu/styles/panel = SubResource( 13 )
+PopupMenu/styles/panel = SubResource( 16 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
 SpinBox/icons/updown = null
