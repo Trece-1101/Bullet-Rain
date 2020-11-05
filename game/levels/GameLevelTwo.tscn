@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/backgrounds/red/red_laterals.png" type="Texture" id=4]
 
 [node name="GameLevelTwo" instance=ExtResource( 1 )]
-debuggeable = true
 send_waves = true
 time_to_spawn_player = 3.0
 level_name = "2"

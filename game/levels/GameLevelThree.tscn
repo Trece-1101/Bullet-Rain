@@ -7,6 +7,7 @@
 
 [node name="GameLevelThree" instance=ExtResource( 1 )]
 send_waves = true
+time_to_spawn_player = 3.0
 level_name = "3"
 next_level = "res://game/levels/GameLevelFour.tscn"
 music = "level_three"

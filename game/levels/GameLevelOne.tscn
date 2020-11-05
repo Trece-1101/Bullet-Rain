@@ -4,7 +4,6 @@
 [ext_resource path="res://game/levels/waves/WavesLevelOne.tscn" type="PackedScene" id=2]
 
 [node name="GameLevelOne" instance=ExtResource( 1 )]
-debuggeable = true
 send_waves = true
 time_to_spawn_player = 3.0
 level_name = "1"
