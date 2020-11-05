@@ -2,7 +2,7 @@ class_name MainButton
 extends Button
 
 export var is_quitter := false
-export var go_to_scene := "res://game/levels/GameLevelOne.tscn"
+export var go_to_scene := "res://game/ui/menus/Menu.tscn"
 
 onready var selection_sound := $Selection
 onready var move_sound := $Move
