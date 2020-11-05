@@ -1,0 +1,289 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/overlays/pause/pause_menu.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/menu_options/options.png" type="Texture" id=5]
+[ext_resource path="res://game/ui/buttons/MenuButton.gd" type="Script" id=6]
+[ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://game/ui/menus/MenuTheme.tres" type="Theme" id=8]
+[ext_resource path="res://game/hud/ProgressBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/ui/menu/menu.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/menu/menu_select.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 284, 73 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 11 )
+region_rect = Rect2( 0, 0, 284, 73 )
+modulate_color = Color( 0.537255, 0.537255, 0.537255, 1 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 284, 73 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 284, 73 )
+modulate_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 284, 73 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_filter = true
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/ethnocentric rg.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+use_filter = true
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://assets/fonts/ethnocentric rg.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 110
+outline_size = 4
+outline_color = Color( 0.131149, 0.716458, 0.746094, 1 )
+use_filter = true
+extra_spacing_char = 3
+font_data = SubResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 3 )
+Label/styles/normal = null
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 5 )
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = null
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = null
+Label/styles/normal = null
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.19995
+margin_right = 3.19995
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.592157, 0.592157, 0.592157, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureShading" type="TextureRect" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = 960.0
+margin_top = 540.0
+margin_right = 1000.0
+margin_bottom = 580.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -500.0
+margin_top = -400.0
+margin_right = 500.0
+margin_bottom = 400.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -308.0
+margin_top = -310.0
+margin_right = 342.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 500, 0 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+custom_constants/separation = 30
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opciones" type="Label" parent="Control/VBoxContainer"]
+margin_top = 18.0
+margin_right = 676.0
+margin_bottom = 87.0
+text = "Opciones"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+margin_top = 117.0
+margin_right = 676.0
+margin_bottom = 121.0
+
+[node name="HBoxPantalla" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 151.0
+margin_right = 676.0
+margin_bottom = 220.0
+
+[node name="Resolucion" type="Label" parent="Control/VBoxContainer/HBoxPantalla"]
+margin_right = 387.0
+margin_bottom = 69.0
+text = "Resolucion: "
+
+[node name="Holder Resolcion" type="Label" parent="Control/VBoxContainer/HBoxPantalla"]
+margin_left = 391.0
+margin_right = 676.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+text = "Hodler"
+
+[node name="HBoxSonido" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 250.0
+margin_right = 676.0
+margin_bottom = 319.0
+alignment = 1
+
+[node name="Sonidos" type="Label" parent="Control/VBoxContainer/HBoxSonido"]
+margin_right = 296.0
+margin_bottom = 69.0
+text = "Sonidos:  "
+
+[node name="ProgressBar" parent="Control/VBoxContainer/HBoxSonido" instance=ExtResource( 9 )]
+margin_left = 300.0
+margin_top = 0.0
+margin_right = 676.0
+margin_bottom = 40.0
+
+[node name="HBoxMusica" type="HBoxContainer" parent="Control/VBoxContainer"]
+margin_top = 349.0
+margin_right = 676.0
+margin_bottom = 418.0
+alignment = 1
+
+[node name="Musicas" type="Label" parent="Control/VBoxContainer/HBoxMusica"]
+margin_right = 293.0
+margin_bottom = 69.0
+text = "Musicas: "
+
+[node name="ProgressBar" parent="Control/VBoxContainer/HBoxMusica" instance=ExtResource( 9 )]
+margin_left = 297.0
+margin_top = 0.0
+margin_right = 676.0
+margin_bottom = 40.0
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+margin_top = 448.0
+margin_right = 676.0
+margin_bottom = 452.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnMenuPrincipal" type="Button" parent="Control/VBoxContainer"]
+margin_left = 86.0
+margin_top = 482.0
+margin_right = 587.0
+margin_bottom = 602.0
+rect_min_size = Vector2( 500, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+text = "Menu Princial      "
+align = 2
+script = ExtResource( 6 )
+
+[node name="Version" type="Label" parent="."]
+visible = false
+margin_left = 1705.74
+margin_top = 1042.51
+margin_right = 1915.74
+margin_bottom = 1070.51
+theme = SubResource( 6 )
+text = "Version: 0.2.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 113.0
+margin_top = 82.4801
+margin_right = 1197.0
+margin_bottom = 216.48
+theme = SubResource( 7 )
+custom_colors/font_outline_modulate = Color( 0.231373, 0.913725, 1, 1 )
+text = "Bullet Rain"
+__meta__ = {
+"_edit_use_anchors_": false
+}
