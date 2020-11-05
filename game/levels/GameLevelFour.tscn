@@ -8,7 +8,6 @@ send_waves = true
 level_name = "4"
 music = "level_four"
 player_dmg_level = 3
-player_rate_level = 2
+player_rate_level = 3
 
 [node name="WavesLevelFour" parent="." index="5" instance=ExtResource( 2 )]
-start_from_wave = 28

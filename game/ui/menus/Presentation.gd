@@ -1,9 +1,8 @@
 extends Control
 
-export var next_scene := ""
+export var next_scene := "res://game/ui/menus/Menu.tscn"
 
 func change_scene() -> void:
-# warning-ignore:return_value_discarded
 	get_tree().change_scene(next_scene)
 
 

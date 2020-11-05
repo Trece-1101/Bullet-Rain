@@ -4,12 +4,12 @@
 [ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=2]
 [ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=3]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 26
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 40.0
 content_margin_right = 40.0
 content_margin_top = 5.0
@@ -38,9 +38,9 @@ Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 40
-Button/fonts/font = SubResource( 4 )
+Button/fonts/font = SubResource( 1 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 5 )
+Button/styles/focus = SubResource( 2 )
 Button/styles/hover = ExtResource( 3 )
 Button/styles/normal = ExtResource( 2 )
 Button/styles/pressed = null

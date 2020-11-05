@@ -460,13 +460,37 @@ tracks/35/keys = {
 "method": "set_can_scape"
 } ]
 }
+tracks/36/type = "value"
+tracks/36/path = NodePath("Background:frame")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0, 12.2, 15.2, 18.3, 21.5, 24.2, 27.3, 30.2, 33.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 0 ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Background:playing")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0, 34 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 26
 use_filter = true
 font_data = ExtResource( 13 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 40.0
 content_margin_right = 40.0
 content_margin_top = 5.0
@@ -482,7 +506,7 @@ expand_margin_top = 13.0
 expand_margin_bottom = 13.0
 shadow_color = Color( 1, 1, 1, 0.6 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -495,9 +519,9 @@ Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 40
-Button/fonts/font = SubResource( 4 )
+Button/fonts/font = SubResource( 3 )
 Button/styles/disabled = null
-Button/styles/focus = SubResource( 5 )
+Button/styles/focus = SubResource( 4 )
 Button/styles/hover = ExtResource( 15 )
 Button/styles/normal = ExtResource( 14 )
 Button/styles/pressed = null
@@ -508,7 +532,7 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
-Label/fonts/font = SubResource( 3 )
+Label/fonts/font = SubResource( 5 )
 Label/styles/normal = null
 
 [node name="Credits" type="Node"]
@@ -529,9 +553,7 @@ __meta__ = {
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 960, 540 )
 frames = SubResource( 1 )
-frame = 4
 speed_scale = 0.01
-playing = true
 
 [node name="Bordes" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -542,10 +564,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -551.223
-margin_top = 392.652
-margin_right = -359.22
-margin_bottom = 584.652
+self_modulate = Color( 1, 1, 1, 0.374302 )
+margin_left = 88.6
+margin_top = 54.0
+margin_right = 280.604
+margin_bottom = 246.0
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -583,10 +606,11 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control"]
-margin_left = -639.967
-margin_top = 587.586
-margin_right = -427.967
-margin_bottom = 636.588
+margin_left = -202.348
+margin_top = -11.3251
+margin_right = 9.65205
+margin_bottom = 37.677
+rect_rotation = 110.868
 text = "Bullet"
 align = 1
 valign = 1
@@ -595,10 +619,11 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Control"]
-margin_left = -406.101
-margin_top = 587.586
-margin_right = -269.101
-margin_bottom = 636.586
+margin_left = 2136.02
+margin_top = 1050.04
+margin_right = 2273.02
+margin_bottom = 1099.04
+rect_rotation = -120.37
 text = "Rain"
 align = 1
 valign = 1
@@ -607,10 +632,11 @@ __meta__ = {
 }
 
 [node name="Design" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 1080.0
-margin_right = 721.998
-margin_bottom = 1129.0
+margin_left = -296.4
+margin_top = 147.193
+margin_right = -84.4021
+margin_bottom = 196.193
+rect_rotation = 161.572
 text = "Diseño"
 valign = 1
 __meta__ = {
@@ -618,10 +644,11 @@ __meta__ = {
 }
 
 [node name="DesignN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 1140.0
-margin_right = 1448.03
-margin_bottom = 1293.01
+margin_left = 2560.59
+margin_top = 810.406
+margin_right = 3238.62
+margin_bottom = 963.416
+rect_rotation = -158.174
 text = "Bazzi, Omar
 Krijanovsky, Nicolas
 Sanchez, Fernando"
@@ -631,10 +658,11 @@ __meta__ = {
 }
 
 [node name="Prog" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 1538.89
-margin_right = 982.065
-margin_bottom = 1587.91
+margin_left = -486.888
+margin_top = 218.762
+margin_right = -14.8229
+margin_bottom = 267.782
+rect_rotation = 157.683
 text = "Programacion"
 valign = 1
 __meta__ = {
@@ -642,10 +670,11 @@ __meta__ = {
 }
 
 [node name="ProgN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 1598.89
-margin_right = 1145.0
-margin_bottom = 1647.89
+margin_left = 2363.75
+margin_top = 615.291
+margin_right = 2738.75
+margin_bottom = 664.291
+rect_rotation = -175.25
 text = "Bazzi, Omar"
 valign = 1
 __meta__ = {
@@ -653,10 +682,11 @@ __meta__ = {
 }
 
 [node name="Art" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 1908.89
-margin_right = 1131.0
-margin_bottom = 1957.89
+margin_left = -679.365
+margin_top = 201.396
+margin_right = -58.365
+margin_bottom = 250.396
+rect_rotation = -145.372
 text = "Arte y Animaciones"
 valign = 1
 __meta__ = {
@@ -664,10 +694,11 @@ __meta__ = {
 }
 
 [node name="ArtN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 1968.89
-margin_right = 1370.0
-margin_bottom = 2017.89
+margin_left = 2080.32
+margin_top = 735.126
+margin_right = 2680.32
+margin_bottom = 784.126
+rect_rotation = -104.186
 text = "Sanchez, Fernando"
 valign = 1
 __meta__ = {
@@ -675,10 +706,11 @@ __meta__ = {
 }
 
 [node name="Music" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 2278.89
-margin_right = 1131.0
-margin_bottom = 2327.9
+margin_left = -432.421
+margin_top = 168.221
+margin_right = 188.579
+margin_bottom = 217.231
+rect_rotation = 176.466
 text = "Musica y SFX"
 valign = 1
 __meta__ = {
@@ -686,10 +718,11 @@ __meta__ = {
 }
 
 [node name="MusicN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 2338.89
-margin_right = 1448.0
-margin_bottom = 2387.89
+margin_left = 2609.49
+margin_top = 545.721
+margin_right = 3287.49
+margin_bottom = 594.721
+rect_rotation = 165.188
 text = "Krijanovsky, Nicolas"
 valign = 1
 __meta__ = {
@@ -697,10 +730,11 @@ __meta__ = {
 }
 
 [node name="Script" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 2648.89
-margin_right = 1131.0
-margin_bottom = 2697.89
+margin_left = -739.842
+margin_top = 79.6101
+margin_right = -118.842
+margin_bottom = 128.61
+rect_rotation = 161.823
 text = "Guion"
 valign = 1
 __meta__ = {
@@ -708,10 +742,11 @@ __meta__ = {
 }
 
 [node name="ScriptN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 2708.89
-margin_right = 1448.0
-margin_bottom = 2757.9
+margin_left = 2024.88
+margin_top = 724.214
+margin_right = 2702.88
+margin_bottom = 773.224
+rect_rotation = -97.7458
 text = "Bazzi, Omar"
 valign = 1
 __meta__ = {
@@ -719,10 +754,11 @@ __meta__ = {
 }
 
 [node name="PlayTest" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 3018.89
-margin_right = 1131.0
-margin_bottom = 3067.9
+margin_left = -643.999
+margin_top = 149.899
+margin_right = -22.999
+margin_bottom = 198.909
+rect_rotation = -168.989
 text = "PlayTesting"
 valign = 1
 __meta__ = {
@@ -730,10 +766,11 @@ __meta__ = {
 }
 
 [node name="PlayTestN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 3078.89
-margin_right = 1448.0
-margin_bottom = 3127.9
+margin_left = 2121.99
+margin_top = 837.81
+margin_right = 2799.99
+margin_bottom = 886.82
+rect_rotation = -106.718
 text = "Bazzi, Omar"
 valign = 1
 __meta__ = {
@@ -741,10 +778,11 @@ __meta__ = {
 }
 
 [node name="Doc" type="Label" parent="Control"]
-margin_left = 510.0
-margin_top = 3388.89
-margin_right = 998.0
-margin_bottom = 3437.9
+margin_left = -614.0
+margin_top = 142.075
+margin_right = -126.0
+margin_bottom = 191.085
+rect_rotation = -170.833
 text = "Documentacion"
 valign = 1
 __meta__ = {
@@ -752,10 +790,11 @@ __meta__ = {
 }
 
 [node name="DocN" type="Label" parent="Control"]
-margin_left = 770.0
-margin_top = 3448.89
-margin_right = 1448.0
-margin_bottom = 3601.89
+margin_left = 2322.0
+margin_top = 786.075
+margin_right = 3000.0
+margin_bottom = 939.075
+rect_rotation = -126.942
 text = "Bazzi, Omar
 Krijanovsky, Nicolas
 Sanchez, Fernando"

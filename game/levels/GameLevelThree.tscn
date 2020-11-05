@@ -10,7 +10,7 @@ send_waves = true
 level_name = "3"
 next_level = "res://game/levels/GameLevelFour.tscn"
 music = "level_three"
-player_dmg_level = 2
+player_dmg_level = 3
 player_rate_level = 2
 
 [node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
@@ -27,4 +27,3 @@ self_modulate = Color( 1, 1, 1, 0.588235 )
 texture = ExtResource( 4 )
 
 [node name="WavesLevelThree" parent="." index="4" instance=ExtResource( 2 )]
-start_from_wave = 50

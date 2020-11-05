@@ -46,6 +46,7 @@ func set_ship_order(value: Array) -> void:
 
 #### Metodos
 func _ready() -> void:
+	GlobalData.reset_level_time()
 	add_to_group("level")
 	set_ship_order(GlobalData.get_ship_order().slice(0, 2)) 
 	gui.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))

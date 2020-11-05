@@ -93,3 +93,7 @@ func _process_time() -> void:
 	
 	emit_signal("send_update_gui_time", level_time.minu, level_time.sec)
 	emit_signal("send_update_gui_drone_and_ultimate", 1)
+
+func reset_level_time() -> void:
+	level_time.minu = 0
+	level_time.sec = 0
