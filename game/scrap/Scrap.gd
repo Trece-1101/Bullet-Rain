@@ -20,6 +20,7 @@ func create(_pos: Vector2, _reward: int) -> void:
 	reward = _reward
 
 func _on_body_entered(body: Node) -> void:
+	$ConsumeSFX.play()
 	set_physics_process(false)
 	$PlayerDetector.set_deferred("disabled", true)
 	GlobalData.add_scrap(reward)
