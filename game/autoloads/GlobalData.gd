@@ -1,10 +1,13 @@
 extends Node
 signal send_update_gui_time(minu, sec)
 signal send_update_gui_points(points)
+signal send_update_gui_scrap(scrap)
 signal send_update_gui_hitpoints(hitpoints)
 signal send_update_gui_drone_and_ultimate(a_second)
 
 var points := 0
+var scrap := 0
+
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
 
@@ -78,6 +81,10 @@ func add_points(value: int) -> void:
 	points += value
 	emit_signal("send_update_gui_points", points)
 	emit_signal("send_update_gui_drone_and_ultimate", 1)
+
+func add_scrap(value: int) -> void:
+	scrap += value
+	emit_signal("send_update_gui_scrap", scrap)
 
 func substract_hitpoints(value: int) -> void:
 	emit_signal("send_update_gui_hitpoints", value)

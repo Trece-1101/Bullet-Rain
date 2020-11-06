@@ -194,7 +194,7 @@ margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
-text = "0000000000"
+text = "0"
 align = 1
 autowrap = true
 
@@ -225,7 +225,7 @@ margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
-text = "0000000000"
+text = "0"
 align = 1
 autowrap = true
 __meta__ = {
