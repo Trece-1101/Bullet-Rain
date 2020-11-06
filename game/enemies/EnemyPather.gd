@@ -10,7 +10,6 @@ const scrap: PackedScene = preload("res://game/scrap/Scrap.tscn")
 #### Variables exports
 export var is_aimer := false setget set_is_aimer
 export var scrap_chance := 0.0
-export(Color, RGBA) var scrap_color := Color.white
 
 #### Variables
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
@@ -84,7 +83,7 @@ func die() -> void:
 func _scrap_roulette() -> void:
 	randomize()
 	var rand := randf()
-	if rand <= scrap_chance:		
+	if rand <= scrap_chance:
 		call_deferred("_add_scrap")
 
 func _add_scrap() -> void:

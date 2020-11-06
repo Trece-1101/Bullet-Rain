@@ -58,6 +58,7 @@ color_ramp = SubResource( 3 )
 
 [node name="EnemyFree" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+scrap_chance = 0.2
 cuadrant = 15
 
 [node name="AnimationPlayer" parent="." index="2"]

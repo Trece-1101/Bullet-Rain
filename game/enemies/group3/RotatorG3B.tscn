@@ -34,6 +34,7 @@ color_ramp = SubResource( 3 )
 
 [node name="RotatorG3B" instance=ExtResource( 1 )]
 hitpoints = 110.0
+scrap_chance = 0.25
 bullet_speed = 120
 shooting_rate = 0.4
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition3"), NodePath("ShootPositions/ShootPosition5") ]

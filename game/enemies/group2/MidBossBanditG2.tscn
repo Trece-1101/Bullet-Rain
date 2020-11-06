@@ -39,6 +39,7 @@ color_ramp = SubResource( 3 )
 script = ExtResource( 4 )
 hitpoints = 2800.0
 is_boss = true
+scrap_chance = 0.0
 bullet_speed = 220
 shooting_rate = 1.4
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition5"), NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition4") ]
