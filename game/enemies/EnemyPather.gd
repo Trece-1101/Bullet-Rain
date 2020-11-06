@@ -1,17 +1,23 @@
 class_name EnemyPather
 extends EnemyBase
+
 #### Señales
 signal enemy_destroyed()
 
-export var is_aimer := false setget set_is_aimer
+#### Constantes
+const scrap: PackedScene = preload("res://game/scrap/Scrap.tscn")
 
+#### Variables exports
+export var is_aimer := false setget set_is_aimer
+export var scrap_chance := 0.0
+
+#### Variables
 var end_of_path := 1.0 setget set_end_of_path, get_end_of_path
 var is_stopper := false setget set_is_stopper
 var path: Path2D setget set_path
 var follow: PathFollow2D
 
-
-
+#### Setters y Getters
 func set_path(value: Path2D) -> void:
 	path = value
 
@@ -28,6 +34,7 @@ func set_is_stopper(value: bool) -> void:
 	is_stopper = value
 
 
+#### Metodos
 func _ready() -> void:
 	if path != null:
 		follow = PathFollow2D.new()
@@ -70,5 +77,16 @@ func die() -> void:
 	can_take_damage = false
 	emit_signal("enemy_destroyed")
 	animation_player.play("destroy")
+	if scrap_chance != 0.0:
+		_scrap_roulette()
 
+func _scrap_roulette() -> void:
+	randomize()
+	var rand := randf()
+	if rand <= scrap_chance:
+		call_deferred("_add_scrap")
 
+func _add_scrap() -> void:
+	var new_scrap:Scrap = scrap.instance()
+	new_scrap.create(global_position, int(scrap_reward * 2.0))
+	get_top_level().add_child(new_scrap)

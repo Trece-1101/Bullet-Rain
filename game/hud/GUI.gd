@@ -26,6 +26,7 @@ func _ready() -> void:
 	player_container.get_node("Interceptor").texture = interceptor_on_texture_path
 	GlobalData.connect("send_update_gui_time", self, "_update_gui_time")
 	GlobalData.connect("send_update_gui_points", self, "_update_gui_points")
+	GlobalData.connect("send_update_gui_scrap", self, "_update_gui_scrap")
 	GlobalData.connect("send_update_gui_hitpoints", self, "change_hitpoints")
 	GlobalData.connect("send_update_gui_drone_and_ultimate", self, "update_drone_ultimate")
 	ultimate_bar.set_maximus_decimus_meridius(GlobalData.ultimate_cooldown)
@@ -37,6 +38,9 @@ func _update_gui_time(minu: int, sec: int) -> void:
 
 func _update_gui_points(value: int) -> void:
 	points_field.text = "{v}".format({"v": value})
+
+func _update_gui_scrap(value: int) -> void:
+	scrap_field.text = "{v}".format({"v": value})
 
 func update_drone_ultimate(value: int) -> void:
 	ultimate_bar.update_value(value)

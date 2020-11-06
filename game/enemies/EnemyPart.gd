@@ -22,6 +22,8 @@ var shield := preload("res://game/enemies/EnemyShield.tscn")
 var original_hitpoints := 0.0
 var half_life := false
 var is_alive := true setget ,get_is_alive
+var reward_points := 0.0
+var scrap_reward := 0.0
 
 
 #### Variables onready
@@ -53,6 +55,8 @@ func get_is_alive() -> bool:
 
 #### Metodos
 func _ready() -> void:
+	reward_points = hitpoints * 1.5
+	scrap_reward = hitpoints * 0.5
 	original_hitpoints = hitpoints
 	explosion_limits = $Sprite.texture.get_size() * 0.4
 	if indestructible_bullets.size() > 0:
@@ -84,6 +88,8 @@ func take_damage(damage: float) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
 		can_take_damage = false
+		GlobalData.add_points(int(reward_points))
+		GlobalData.add_scrap(int(scrap_reward))
 		die()
 	else:
 		randomize()
