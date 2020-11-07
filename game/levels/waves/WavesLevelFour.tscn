@@ -731,7 +731,6 @@ visible = false
 position = Vector2( 84.7571, -209.915 )
 enemies = [ ExtResource( 31 ), ExtResource( 32 ) ]
 enemy_number = 2
-speed = 160.0
 are_aimers = true
 
 [node name="Pattern20" parent="Wave5" instance=ExtResource( 24 )]
@@ -748,7 +747,10 @@ script = ExtResource( 2 )
 [node name="Pattern19" parent="Wave10" instance=ExtResource( 45 )]
 visible = false
 position = Vector2( 226.757, -95.8811 )
-speed = 160.0
+enemies = [ ExtResource( 32 ) ]
+enemy_number = 4
+spawn_enemy_rate = 1.5
+are_aimers = true
 
 [node name="Pattern20" parent="Wave10" instance=ExtResource( 24 )]
 visible = false
@@ -782,7 +784,6 @@ script = ExtResource( 2 )
 [node name="Pattern26" parent="Wave8" instance=ExtResource( 65 )]
 visible = false
 enemies = [ ExtResource( 39 ) ]
-speed = 50.0
 
 [node name="Wave12" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -857,12 +858,10 @@ script = ExtResource( 2 )
 [node name="Pattern28" parent="Wave14" instance=ExtResource( 50 )]
 visible = false
 enemies = [ ExtResource( 34 ) ]
-speed = 50.0
 
 [node name="Pattern29" parent="Wave14" instance=ExtResource( 57 )]
 visible = false
 enemies = [ ExtResource( 34 ) ]
-speed = 50.0
 
 [node name="Pattern30" parent="Wave14" instance=ExtResource( 61 )]
 visible = false

@@ -30,10 +30,30 @@ func _ready() -> void:
 	add_to_group("waves_level")
 	yield(owner, "ready")
 
-
 func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
+		#TODO: Quitar esto
+		if true:
+			var total_enemies := 0
+			var total_total_enemies := {}
+			for wave in get_children():
+				for path in wave.get_children():
+					if path.enemies.size() == 0:
+						print(path.enemies)
+					var enemy = path.enemies[0]
+					var enemy_type = enemy._bundled.names[0]
+					if not "G1" in enemy_type:
+						print(wave.name)
+					#print(enemy._bundled.names[0])
+					if enemy_type in total_total_enemies.keys():
+						total_total_enemies[enemy_type] += (1 * path.get_enemy_number())
+					else:
+						total_total_enemies[enemy_type] = (1 * path.get_enemy_number())
+					total_enemies += path.get_enemy_number()
+			print(total_enemies)
+			print(total_total_enemies)
+		##
 		get_children()[current_wave].create_paths()
 		for child in get_children():
 			child.connect("send_next_wave", self, "spawn_wave")

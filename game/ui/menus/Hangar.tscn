@@ -1,0 +1,266 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/seleccion/select_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/seleccion/select_borde.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/seleccion/select_marco.png" type="Texture" id=4]
+[ext_resource path="res://game/ui/menus/MenuTheme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/ui/hud/icons/player_yellow_on.png" type="Texture" id=6]
+[ext_resource path="res://game/ui/menus/Hangar.gd" type="Script" id=7]
+[ext_resource path="res://assets/ui/hud/icons/player_blue_on.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/hud/icons/player_red_on.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_3.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_4.png" type="Texture" id=13]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_5.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/hud/extras/hp_bar_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="AnimatedTexture" id=3]
+flags = 4
+frames = 6
+pause = true
+fps = 6.0
+frame_0/texture = ExtResource( 10 )
+frame_0/delay_sec = 1.0
+frame_1/texture = ExtResource( 11 )
+frame_1/delay_sec = 1.0
+frame_2/texture = ExtResource( 15 )
+frame_2/delay_sec = 1.0
+frame_3/texture = ExtResource( 12 )
+frame_3/delay_sec = 1.0
+frame_4/texture = ExtResource( 13 )
+frame_4/delay_sec = 1.0
+frame_5/texture = ExtResource( 14 )
+frame_5/delay_sec = 1.0
+
+[sub_resource type="AnimatedTexture" id=4]
+flags = 4
+frames = 6
+pause = true
+fps = 6.0
+frame_0/texture = ExtResource( 10 )
+frame_0/delay_sec = 1.0
+frame_1/texture = ExtResource( 11 )
+frame_1/delay_sec = 1.0
+frame_2/texture = ExtResource( 15 )
+frame_2/delay_sec = 1.0
+frame_3/texture = ExtResource( 12 )
+frame_3/delay_sec = 1.0
+frame_4/texture = ExtResource( 13 )
+frame_4/delay_sec = 1.0
+frame_5/texture = ExtResource( 14 )
+frame_5/delay_sec = 1.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 16 )
+
+[node name="Hangar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 959.331 ]
+}
+interceptor_texture = ExtResource( 6 )
+bomber_texture = ExtResource( 9 )
+stealth_texture = ExtResource( 8 )
+
+[node name="Fondo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Marco" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shading" type="TextureRect" parent="."]
+margin_left = -172.859
+margin_top = -44.506
+margin_right = 1747.14
+margin_bottom = 1035.5
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderContainer" type="TextureRect" parent="."]
+margin_left = 787.456
+margin_top = 559.167
+margin_right = 1138.46
+margin_bottom = 910.167
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="BorderContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipSprite" type="Sprite" parent="BorderContainer/MarginContainer"]
+position = Vector2( 173.225, 173.225 )
+scale = Vector2( 4.52125, 4.52125 )
+texture = ExtResource( 6 )
+
+[node name="Prev" type="Button" parent="."]
+margin_left = 645.956
+margin_top = 690.972
+margin_right = 681.956
+margin_bottom = 725.972
+rect_scale = Vector2( 3.16909, 3.16909 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="."]
+margin_left = 1168.99
+margin_top = 690.972
+margin_right = 1204.99
+margin_bottom = 725.972
+rect_scale = Vector2( 3.16909, 3.16909 )
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrapContainer" type="VBoxContainer" parent="."]
+margin_left = 796.556
+margin_top = 75.2138
+margin_right = 1124.56
+margin_bottom = 289.214
+size_flags_vertical = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScrapContainer"]
+margin_right = 328.0
+margin_bottom = 141.0
+text = "Chatarra
+Total"
+align = 1
+
+[node name="ScrapTotal" type="Label" parent="ScrapContainer"]
+margin_top = 145.0
+margin_right = 328.0
+margin_bottom = 214.0
+size_flags_vertical = 5
+text = "0"
+align = 1
+
+[node name="DmgLabel" type="Label" parent="."]
+margin_left = 470.866
+margin_top = 282.946
+margin_right = 632.866
+margin_bottom = 351.946
+text = "Daño"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DmgBuy" type="Button" parent="."]
+margin_left = 460.392
+margin_top = 335.255
+margin_right = 655.392
+margin_bottom = 367.255
+text = "Comprar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DmgLevel" type="TextureRect" parent="."]
+margin_left = 685.052
+margin_top = 299.275
+margin_right = 933.052
+margin_bottom = 347.275
+size_flags_horizontal = 3
+texture = SubResource( 3 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RateLabel" type="Label" parent="."]
+margin_left = 1221.05
+margin_top = 376.754
+margin_right = 1508.05
+margin_bottom = 445.754
+text = "Cadencia"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RateLevel" type="TextureRect" parent="."]
+margin_left = 943.522
+margin_top = 376.951
+margin_right = 1190.52
+margin_bottom = 424.951
+size_flags_horizontal = 3
+texture = SubResource( 4 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RateBuy" type="Button" parent="."]
+margin_left = 1273.8
+margin_top = 421.897
+margin_right = 1468.8
+margin_bottom = 453.897
+text = "Comprar"
+
+[node name="CostLabel" type="Label" parent="."]
+margin_left = 815.049
+margin_top = 452.052
+margin_right = 1102.05
+margin_bottom = 521.052
+custom_fonts/font = SubResource( 2 )
+text = "Costo
+Chatarra"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnBuyMsg" type="Label" parent="."]
+margin_left = 409.841
+margin_top = 452.0
+margin_right = 724.841
+margin_bottom = 545.0
+custom_fonts/font = SubResource( 2 )
+text = "No tiene suficiente Chatarra"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OnBuyTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+[connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="mouse_entered" from="DmgBuy" to="." method="_on_DmgBuy_mouse_entered"]
+[connection signal="mouse_exited" from="DmgBuy" to="." method="_on_DmgBuy_mouse_exited"]
+[connection signal="pressed" from="DmgBuy" to="." method="_on_DmgBuy_pressed"]
+[connection signal="mouse_entered" from="RateBuy" to="." method="_on_RateBuy_mouse_entered"]
+[connection signal="mouse_exited" from="RateBuy" to="." method="_on_RateBuy_mouse_exited"]
+[connection signal="pressed" from="RateBuy" to="." method="_on_RateBuy_pressed"]
+[connection signal="timeout" from="OnBuyTimer" to="." method="_on_OnBuyTimer_timeout"]

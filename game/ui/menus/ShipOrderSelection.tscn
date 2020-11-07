@@ -68,7 +68,9 @@ margin_bottom = -1.5874
 theme = ExtResource( 3 )
 script = ExtResource( 8 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_horizontal_guides_": [ 541.619 ],
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 961.29, 478.632, 1441.38 ]
 }
 default_texture = ExtResource( 13 )
 
@@ -98,9 +100,9 @@ __meta__ = {
 }
 
 [node name="Continue" type="Button" parent="."]
-margin_left = 805.0
+margin_left = 772.908
 margin_top = 895.0
-margin_right = 1118.0
+margin_right = 1085.91
 margin_bottom = 972.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
@@ -115,10 +117,10 @@ __meta__ = {
 }
 
 [node name="Reset" type="Button" parent="."]
-margin_left = 801.0
-margin_top = 770.0
-margin_right = 1096.0
-margin_bottom = 830.0
+margin_left = 782.123
+margin_top = 802.092
+margin_right = 1077.12
+margin_bottom = 862.092
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
@@ -130,21 +132,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Borde_Orden_1" type="TextureRect" parent="."]
-margin_left = 360.0
-margin_top = 330.0
-margin_right = 706.0
-margin_bottom = 671.0
+[node name="BorderOrder1" type="TextureRect" parent="."]
+margin_left = 295.817
+margin_top = 314.0
+margin_right = 646.817
+margin_bottom = 665.0
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OrderOneContainer" type="VBoxContainer" parent="."]
-margin_left = 400.0
-margin_top = 380.0
-margin_right = 658.0
-margin_bottom = 608.0
+margin_left = 335.817
+margin_top = 364.0
+margin_right = 603.817
+margin_bottom = 617.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -212,21 +214,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Borde_Orden_2" type="TextureRect" parent="."]
-margin_left = 830.0
-margin_top = 330.0
-margin_right = 1181.0
-margin_bottom = 681.0
+[node name="BorderOrden2" type="TextureRect" parent="."]
+margin_left = 788.47
+margin_top = 314.0
+margin_right = 1139.47
+margin_bottom = 665.0
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OrderTwoContainer" type="VBoxContainer" parent="."]
-margin_left = 870.0
-margin_top = 380.0
-margin_right = 1130.0
-margin_bottom = 619.0
+margin_left = 828.47
+margin_top = 364.0
+margin_right = 1096.47
+margin_bottom = 617.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -294,21 +296,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Borde_Orden_3" type="TextureRect" parent="."]
-margin_left = 1300.0
-margin_top = 330.0
-margin_right = 1681.0
-margin_bottom = 681.0
+[node name="BorderOrder3" type="TextureRect" parent="."]
+margin_left = 1267.91
+margin_top = 314.0
+margin_right = 1648.91
+margin_bottom = 665.0
 texture = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OrderThreeContainer" type="VBoxContainer" parent="."]
-margin_left = 1340.0
-margin_top = 380.0
-margin_right = 1600.0
-margin_bottom = 619.0
+margin_left = 1307.91
+margin_top = 364.0
+margin_right = 1575.91
+margin_bottom = 617.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
