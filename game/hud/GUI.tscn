@@ -11,14 +11,14 @@
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_4.png" type="Texture" id=14]
 [ext_resource path="res://game/hud/GUI.gd" type="Script" id=17]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 23
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="AnimatedTexture" id=2]
+[sub_resource type="AnimatedTexture" id=1]
 flags = 4
 frames = 6
 pause = true
@@ -120,7 +120,7 @@ margin_right = 213.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Nivel"
 align = 2
 
@@ -130,7 +130,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "ONE"
 align = 1
 autowrap = true
@@ -152,7 +152,7 @@ margin_right = 213.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Time"
 align = 2
 
@@ -162,7 +162,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "00:00"
 align = 1
 autowrap = true
@@ -183,7 +183,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Puntos"
 align = 1
 
@@ -193,7 +193,7 @@ margin_right = 430.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 autowrap = true
@@ -214,7 +214,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Chatarra  "
 align = 1
 
@@ -224,7 +224,7 @@ margin_right = 430.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 autowrap = true
@@ -296,7 +296,7 @@ alignment = 1
 margin_right = 54.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "HP "
 
 [node name="TextureRect" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/HPContainer"]
@@ -304,7 +304,7 @@ margin_left = 58.0
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
-texture = SubResource( 2 )
+texture = SubResource( 1 )
 stretch_mode = 5
 
 [node name="HSeparator2" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
@@ -324,7 +324,7 @@ alignment = 1
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Ultimate"
 
 [node name="UltimateProgress" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer" instance=ExtResource( 4 )]
@@ -349,7 +349,7 @@ alignment = 1
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Dron"
 
 [node name="DroneProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer" instance=ExtResource( 4 )]

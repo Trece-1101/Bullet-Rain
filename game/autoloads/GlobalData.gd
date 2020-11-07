@@ -1,12 +1,16 @@
 extends Node
+
+#### Señales
 signal send_update_gui_time(minu, sec)
 signal send_update_gui_points(points)
 signal send_update_gui_scrap(scrap)
 signal send_update_gui_hitpoints(hitpoints)
 signal send_update_gui_drone_and_ultimate(a_second)
 
+
+#### Variables
 var points := 0
-var scrap := 0
+var scrap := 6000 setget , get_scrap
 
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
@@ -22,13 +26,41 @@ var player_ships := {
 	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
 	"bomber": preload("res://game/player/PlayerBomber.tscn"),
 	"stealth": preload("res://game/player/PlayerStealth.tscn")
-}
+	}
 
+var ships_stats := {
+	"interceptor": {"dmg_level": 0, "rate_level": 1},
+	"bomber": {"dmg_level": 1, "rate_level": 3},
+	"stealth": {"dmg_level": 2, "rate_level": 2}
+	} setget ,get_ship_stats
+
+var stats_cost := {
+	"dmg": {
+		"interceptor": {
+			1: 1170, 2: 1463, 3: 2340, 4: 5616},
+		"bomber": {
+			1: 1080, 2: 1350, 3: 2160, 4: 5184},
+		"stealth": {
+			1: 900, 2: 1125, 3: 1800, 4: 4320}
+		},
+	"rate": {
+		"interceptor": {
+			1: 900, 2: 1125, 3: 1800, 4: 4320},
+		"bomber": {
+			1: 1080, 2: 1350, 3: 2160, 4: 5184},
+		"stealth": {
+			1: 1170, 2: 1463, 3: 2340, 4: 5616},
+		}
+	} setget ,get_stats_costs
+
+#### Variables Onready
 onready var ship_order := [
 	player_ships.interceptor, 
 	player_ships.stealth,
 	player_ships.bomber, "interceptor", "stealth", "bomber"] setget set_ship_order,get_ship_order
 
+
+#### Setter y Getters
 func set_ship_order(values: Array) -> void:
 	for i in range(values.size()):
 		if "Interceptor" in values[i]:
@@ -41,9 +73,14 @@ func set_ship_order(values: Array) -> void:
 			ship_order[i] = player_ships.stealth
 			ship_order[i + 3] = "stealth"
 
-
 func get_ship_order() -> Array:
 	return ship_order
+
+func get_ship_stats() -> Dictionary:
+	return ships_stats
+
+func get_stats_costs() -> Dictionary:
+	return stats_cost
 
 func get_level_time() -> Dictionary:
 	return level_time
@@ -60,6 +97,11 @@ func set_level_to_load(value: String) -> void:
 func get_level_to_load() -> String:
 	return level_to_load
 
+func get_scrap() -> int:
+	return scrap
+
+
+#### Metodos
 func _ready() -> void:
 	level_timer = Timer.new()
 	level_timer.wait_time = 1.0
@@ -85,6 +127,10 @@ func add_points(value: int) -> void:
 func add_scrap(value: int) -> void:
 	scrap += value
 	emit_signal("send_update_gui_scrap", scrap)
+
+func substract_scrap(value: int, ship: String, stat: String) -> void:
+	scrap -= value
+	ships_stats[ship][stat] += 1
 
 func substract_hitpoints(value: int) -> void:
 	emit_signal("send_update_gui_hitpoints", value)
