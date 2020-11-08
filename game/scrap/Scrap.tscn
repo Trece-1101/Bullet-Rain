@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scrap/spaceParts_071.png" type="Texture" id=1]
 [ext_resource path="res://assets/scrap/spaceParts_075.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/sfx/scrap/collect03.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/scrap/spaceParts_073.png" type="Texture" id=4]
 [ext_resource path="res://assets/scrap/spaceParts_057.png" type="Texture" id=5]
 [ext_resource path="res://assets/scrap/spaceParts_059.png" type="Texture" id=6]
@@ -11,6 +12,7 @@
 [ext_resource path="res://assets/scrap/spaceParts_065.png" type="Texture" id=10]
 [ext_resource path="res://assets/scrap/spaceParts_067.png" type="Texture" id=11]
 [ext_resource path="res://game/scrap/Scrap.gd" type="Script" id=12]
+[ext_resource path="res://assets/sounds/sfx/scrap/spawn04.ogg" type="AudioStream" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 102.635
@@ -362,9 +364,12 @@ anims/default = SubResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SpawnSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -5.0
 bus = "SFX"
 
 [node name="ConsumeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 bus = "SFX"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
