@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/collect03.wav-d774008c9c0261286b46b9a4ab49c548.sample"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/scrap/collect03.wav"
+dest_files=[ "res://.import/collect03.wav-d774008c9c0261286b46b9a4ab49c548.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
