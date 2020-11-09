@@ -164,6 +164,8 @@ __meta__ = {
 debug_panel = ExtResource( 2 )
 send_waves = false
 time_to_start_waves = 4.0
+level_name = "Base"
+music = "level_one"
 
 [node name="Overlays" type="CanvasLayer" parent="."]
 layer = 4

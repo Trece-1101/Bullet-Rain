@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/ui/hud/gui_laterals.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=2]
@@ -11,14 +11,14 @@
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_4.png" type="Texture" id=14]
 [ext_resource path="res://game/hud/GUI.gd" type="Script" id=17]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 23
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="AnimatedTexture" id=1]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 4
 frames = 6
 pause = true
@@ -63,6 +63,22 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id=7]
+resource_name = "small_shake_one"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -19.5998, -19.5997 ), Vector2( 19.5997, -30.2905 ), Vector2( -18.1979, 15.0667 ), Vector2( 0, 0 ) ]
+}
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -120,7 +136,7 @@ margin_right = 213.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Nivel"
 align = 2
 
@@ -130,7 +146,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "ONE"
 align = 1
 autowrap = true
@@ -152,7 +168,7 @@ margin_right = 213.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Time"
 align = 2
 
@@ -162,7 +178,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "00:00"
 align = 1
 autowrap = true
@@ -183,7 +199,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Puntos"
 align = 1
 
@@ -193,7 +209,7 @@ margin_right = 430.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 autowrap = true
@@ -214,7 +230,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Chatarra  "
 align = 1
 
@@ -224,7 +240,7 @@ margin_right = 430.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 autowrap = true
@@ -296,7 +312,7 @@ alignment = 1
 margin_right = 54.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "HP "
 
 [node name="TextureRect" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/HPContainer"]
@@ -304,7 +320,7 @@ margin_left = 58.0
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 stretch_mode = 5
 
 [node name="HSeparator2" type="HSeparator" parent="RightMenu/MarginRightContainer/InformationSection"]
@@ -324,7 +340,7 @@ alignment = 1
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Ultimate"
 
 [node name="UltimateProgress" parent="RightMenu/MarginRightContainer/InformationSection/UltimateContainer" instance=ExtResource( 4 )]
@@ -349,7 +365,7 @@ alignment = 1
 margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Dron"
 
 [node name="DroneProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer" instance=ExtResource( 4 )]
@@ -357,3 +373,6 @@ margin_bottom = 62.0
 rect_min_size = Vector2( 0, 30 )
 custom_styles/fg = SubResource( 5 )
 custom_styles/bg = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/small_shake_one = SubResource( 7 )

@@ -61,8 +61,13 @@ func _ready() -> void:
 	GlobalMusic.play_music(music)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
-	if debuggeable:
+	if debuggeable and OS.is_debug_build():
 		hud_layer.add_child(debug_panel.instance())
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 
 func _process(delta: float):
 	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
@@ -123,9 +128,7 @@ func _on_send_waves_timer_timeout() -> void:
 			child.set_send_waves(send_waves)
 			child.start_waves()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+
 
 func _on_UltimateProgress_full_value() -> void:
 	player_can_ultimatear = true
