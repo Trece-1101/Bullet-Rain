@@ -172,6 +172,7 @@ layer = 4
 layer = 2
 
 [node name="DecorRight" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 material = SubResource( 1 )
 position = Vector2( 1670, -100 )
 amount = 3
@@ -182,6 +183,7 @@ process_material = SubResource( 2 )
 texture = ExtResource( 14 )
 
 [node name="StarRight" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 position = Vector2( 1670, -100 )
 amount = 75
 lifetime = 2.0
@@ -190,6 +192,7 @@ visibility_rect = Rect2( -250, -100, 500, 200 )
 process_material = SubResource( 3 )
 
 [node name="DecorLeft" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 material = SubResource( 4 )
 position = Vector2( 250, -100 )
 amount = 3
@@ -200,6 +203,7 @@ process_material = SubResource( 5 )
 texture = ExtResource( 14 )
 
 [node name="StarLeft" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 position = Vector2( 250, -100 )
 z_index = 29
 z_as_relative = false
@@ -236,7 +240,7 @@ centered = false
 layer = -3
 
 [node name="StarCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-self_modulate = Color( 1, 1, 1, 0.588235 )
+self_modulate = Color( 1, 1, 1, 0.313726 )
 position = Vector2( 960, -100 )
 amount = 150
 lifetime = 2.0
@@ -245,6 +249,7 @@ visibility_rect = Rect2( -460, -100, 920, 200 )
 process_material = SubResource( 7 )
 
 [node name="PlanetsCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
 material = SubResource( 8 )
 position = Vector2( 960, -100 )
 amount = 2
@@ -254,7 +259,7 @@ process_material = SubResource( 9 )
 texture = ExtResource( 12 )
 
 [node name="DecorCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-modulate = Color( 1, 1, 1, 0.588235 )
+self_modulate = Color( 1, 1, 1, 0.470588 )
 material = SubResource( 10 )
 position = Vector2( 960, -100 )
 lifetime = 6.5

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/levels/waves/WavesLevelFour.tscn" type="PackedScene" id=2]
-[ext_resource path="res://game/tests/RotatorChatarreroTest.tscn" type="PackedScene" id=3]
 
 [node name="GameLevelFour" instance=ExtResource( 1 )]
 send_waves = true
@@ -13,6 +12,3 @@ player_dmg_level = 3
 player_rate_level = 3
 
 [node name="WavesLevelFour" parent="." index="5" instance=ExtResource( 2 )]
-
-[node name="RotatorChatarreroTest" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( 955.171, 315.853 )

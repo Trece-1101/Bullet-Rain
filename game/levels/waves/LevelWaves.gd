@@ -34,7 +34,7 @@ func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
 		#TODO: Quitar esto
-		if true:
+		if false:
 			var total_enemies := 0
 			var total_total_enemies := {}
 			for wave in get_children():
