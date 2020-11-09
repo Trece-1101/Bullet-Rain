@@ -101,7 +101,6 @@ func is_obsticle_ahead():
 	for ray in detectors.get_children():
 		if ray.is_colliding() and ray.get_collider() != null:
 			if not "Floaker" in ray.get_collider().name:
-				print(ray.get_collider().name)
 				return true
 	return false
 
