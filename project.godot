@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyBoss.gd"
 }, {
+"base": "EnemyBase",
+"class": "EnemyFloaker",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFloaker.gd"
+}, {
 "base": "EnemyBandit",
 "class": "EnemyFree",
 "language": "GDScript",
@@ -250,6 +255,7 @@ _global_script_class_icons={
 "EnemyBandit": "",
 "EnemyBase": "",
 "EnemyBoss": "",
+"EnemyFloaker": "",
 "EnemyFree": "",
 "EnemyFreeMover": "",
 "EnemyFreeTeleporter": "",
@@ -396,6 +402,7 @@ ui_ultimate={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="enemy_bullet"
+2d_physics/layer_6="enemy_floaker"
 
 [rendering]
 

@@ -38,7 +38,7 @@ func _ready() -> void:
 	if owner != null:
 		parent = owner
 		bullet = parent.get_bullet()
-	
+
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 
