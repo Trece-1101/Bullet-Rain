@@ -1,11 +1,15 @@
 class_name LaserBeam
 extends RayCast2D
 
+export var cast_time := 5.0
+export var cool_down := 3.0
 export var cast_speed := 7000.0
 export var max_length := 1400
 export var growth_time := 0.1
+export(String, "Right", "Left", "Up", "Down") var vector_cast
 
 var is_casting := false setget set_is_casting
+var casting_vector = Vector2.RIGHT
 
 onready var fill := $FillLine2D
 onready var tween := $Tween
@@ -17,13 +21,31 @@ onready var line_width: float = fill.width
 
 
 func _ready() -> void:
-	$FillLine2D.default_color = Color.purple
+	match vector_cast:
+		"Right":
+			casting_vector = Vector2.RIGHT
+		"Left":
+			casting_vector = Vector2.LEFT
+		"Up":
+			casting_vector = Vector2.UP
+			beam_particles.rotation_degrees = 90
+		"Down":
+			casting_vector = Vector2.DOWN
+			beam_particles.rotation_degrees = 90
+		_:
+			casting_vector = Vector2.RIGHT
+	
+	$CastTimer.wait_time = cast_time
+	$CoolDownTimer.wait_time = cool_down
+	casting_particles.modulate = Color.purple
+	beam_particles.modulate = Color.purple
+	collision_particles.modulate = Color.purple
 	set_physics_process(false)
 	fill.points[1] = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	cast_to = (cast_to + Vector2.RIGHT * cast_speed * delta).clamped(max_length)
+	cast_to = (cast_to + casting_vector * cast_speed * delta).clamped(max_length)
 	cast_beam()
 
 
@@ -31,10 +53,12 @@ func set_is_casting(cast: bool) -> void:
 	is_casting = cast
 
 	if is_casting:
+		$CastTimer.start()
 		cast_to = Vector2.ZERO
 		fill.points[1] = cast_to
 		appear()
 	else:
+		$CoolDownTimer.start()
 		collision_particles.emitting = false
 		disappear()
 
@@ -55,12 +79,14 @@ func cast_beam() -> void:
 			get_collision_normal().x, get_collision_normal().y, 0
 		)
 		collision_particles.position = cast_point
+		
 		if get_collider() is Player and get_collider() != null:
 			get_collider().die()
 
 	fill.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
+	
 
 
 func appear() -> void:
@@ -75,3 +101,11 @@ func disappear() -> void:
 		tween.stop_all()
 	tween.interpolate_property(fill, "width", fill.width, 0, growth_time)
 	tween.start()
+
+
+func _on_CoolDownTimer_timeout() -> void:
+	set_is_casting(true)
+
+
+func _on_CastTimer_timeout() -> void:
+	set_is_casting(false)

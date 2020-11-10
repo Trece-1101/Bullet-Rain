@@ -14,7 +14,7 @@ var hot_reload_cache = {}
 
 func _ready():
 	get_tree().set_meta("BT_SERVER", self)
-	if  not OS.is_debug_build():
+	if not OS.is_debug_build():
 		print("BT release build")
 		return
 	print("BT debug build")

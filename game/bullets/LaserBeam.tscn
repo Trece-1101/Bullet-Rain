@@ -16,7 +16,7 @@ _data = [ Vector2( 0.518072, 1 ), 0.0, -3.53434, 0, 0, Vector2( 1, 0 ), 0.0, 0.0
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=8]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 100.0
@@ -32,7 +32,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.503614, 0.957505 ), 0.0, 0
 [sub_resource type="CurveTexture" id=7]
 curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 2
 emission_box_extents = Vector3( 60, 20, 1 )
 flag_align_y = true
@@ -48,7 +48,7 @@ tangential_accel_random = 1.0
 scale = 0.3
 scale_curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=10]
 flag_disable_z = true
 spread = 50.0
 gravity = Vector3( 0, 0, 0 )
@@ -60,15 +60,17 @@ scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
 [node name="LaserBeam2D" type="RayCast2D"]
+z_index = 39
+z_as_relative = false
 enabled = true
 cast_to = Vector2( 0, 0 )
+collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="FillLine2D" type="Line2D" parent="."]
 modulate = Color( 1.5, 1.5, 1.5, 1 )
 points = PoolVector2Array( 0, 0, 100, 0 )
 width = 13.0
-default_color = Color( 0.301961, 0.65098, 1, 1 )
 texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
@@ -83,7 +85,7 @@ emitting = false
 lifetime = 0.3
 visibility_rect = Rect2( 0, -18.722, 29.6756, 38.4841 )
 local_coords = false
-process_material = SubResource( 5 )
+process_material = SubResource( 8 )
 texture = ExtResource( 2 )
 
 [node name="BeamParticles2D" type="Particles2D" parent="."]
@@ -95,7 +97,7 @@ randomness = 1.0
 visibility_rect = Rect2( -2500, -2500, 5000, 5000 )
 local_coords = false
 draw_order = 1
-process_material = SubResource( 8 )
+process_material = SubResource( 9 )
 texture = ExtResource( 2 )
 
 [node name="CollisionParticles2D" type="Particles2D" parent="."]
@@ -106,7 +108,15 @@ amount = 16
 lifetime = 0.3
 visibility_rect = Rect2( -2500, -2500, 5000, 5000 )
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 10 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="CastTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CoolDownTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="CastTimer" to="." method="_on_CastTimer_timeout"]
+[connection signal="timeout" from="CoolDownTimer" to="." method="_on_CoolDownTimer_timeout"]
