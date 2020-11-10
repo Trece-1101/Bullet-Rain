@@ -20,3 +20,7 @@ position = Vector2( 947.678, 903.23 )
 
 [node name="BossG4" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 927.041, 188.901 )
+z_index = 40
+z_as_relative = false
+collision_layer = 4
+collision_mask = 9

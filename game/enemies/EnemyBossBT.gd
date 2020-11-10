@@ -14,6 +14,7 @@ export var shoot_rate := 1.0
 export var is_aimer = true
 
 #### Variables
+var blackboard := {}
 var original_hitpoints: float
 var bullet_rot_correction := 0.0
 var is_shooting := false
@@ -21,6 +22,7 @@ var original_speed := 0.0
 var can_shoot := false setget set_can_shoot, get_can_shoot
 var current_shoot_positions_shooting: Node2D
 var shield := preload("res://game/enemies/EnemyShield.tscn")
+var state := "attack"
 
 #### Variables Onready
 onready var gun_timer := $GunTimer
@@ -129,12 +131,18 @@ func _on_WaitTimer_timeout() -> void:
 	pass # Replace with function body.
 
 #### Tareas
+func task_is_attacking(task) -> void:
+	if state == "attack":
+		task.succeed()
+	else:
+		task.failed()
+
 func task_say_my_life(task) -> void:
 	print("{hp} - {life}".format({"hp": hitpoints, "life": task.get_param(0)}))
 	task.succeed()
 
 func task_check_life(task) -> void:
-	if hitpoints < original_hitpoints * task.get_param(0):
+	if hitpoints >= original_hitpoints * task.get_param(0):
 		task.succeed()
 	else:
 		task.failed()
@@ -157,4 +165,5 @@ func task_toogle_shoot(task) -> void:
 	
 	task.succeed()
 
-
+func task_change_bullet_speed(task) -> void:
+	bullet_speed *= task.get_param(0)

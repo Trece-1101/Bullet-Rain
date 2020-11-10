@@ -47,36 +47,6 @@ start_position = Vector2( 960, 200 )
 [node name="BTREE" parent="." index="0"]
 tree = {
 "connection": [ {
-"from": "root",
-"from_port": 0,
-"to": "selector",
-"to_port": 0
-}, {
-"from": "selector",
-"from_port": 0,
-"to": "sequence",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 0,
-"to": "inverter",
-"to_port": 0
-}, {
-"from": "inverter",
-"from_port": 0,
-"to": "task",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 0,
-"to": "inverter2",
-"to_port": 0
-}, {
-"from": "inverter2",
-"from_port": 0,
-"to": "task3",
-"to_port": 0
-}, {
 "from": "selector",
 "from_port": 1,
 "to": "sequence2",
@@ -85,16 +55,6 @@ tree = {
 "from": "selector",
 "from_port": 2,
 "to": "sequence3",
-"to_port": 0
-}, {
-"from": "sequence3",
-"from_port": 0,
-"to": "inverter3",
-"to_port": 0
-}, {
-"from": "inverter3",
-"from_port": 0,
-"to": "task5",
 "to_port": 0
 }, {
 "from": "sequence",
@@ -107,266 +67,310 @@ tree = {
 "to": "task4",
 "to_port": 0
 }, {
+"from": "selector",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence4",
+"from_port": 0,
+"to": "task8",
+"to_port": 0
+}, {
+"from": "sequence4",
+"from_port": 1,
+"to": "selector",
+"to_port": 0
+}, {
+"from": "selector2",
+"from_port": 0,
+"to": "sequence4",
+"to_port": 0
+}, {
+"from": "root",
+"from_port": 0,
+"to": "selector2",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "task",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 0,
+"to": "task3",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "task5",
+"to_port": 0
+}, {
 "from": "sequence3",
 "from_port": 1,
 "to": "task6",
 "to_port": 0
 }, {
-"from": "sequence2",
-"from_port": 2,
-"to": "task8",
+"from": "sequence5",
+"from_port": 0,
+"to": "task7",
 "to_port": 0
 }, {
-"from": "sequence3",
-"from_port": 2,
+"from": "sequence5",
+"from_port": 1,
 "to": "task9",
+"to_port": 0
+}, {
+"from": "selector",
+"from_port": 3,
+"to": "sequence5",
 "to_port": 0
 } ],
 "nodes": [ {
 "child": [ {
 "child": [ {
 "child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_attacking",
+"offset": Vector2( -140, -180 ),
+"params": [  ],
+"size": Vector2( 322, 84.9999 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+}, {
+"child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
+"offset": Vector2( 600, 60 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
 },
 "name": "task",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, -380 ),
-"size": Vector2( 126, 55 )
-},
-"name": "inverter",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
 },
 "name": "task2",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 136 )
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
+"offset": Vector2( 740, 420 ),
 "params": [ [ 0.6, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.6 ]
 },
 "name": "task3",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55.0001 )
-},
-"name": "inverter2",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1040, 280 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "false" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
 },
 "name": "task4",
 "type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1040, 420 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "false" ]
-},
-"name": "task8",
-"type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
 },
 "name": "sequence2",
 "type": 2
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
+"offset": Vector2( 740, 640 ),
 "params": [ [ 0.3, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.3 ]
 },
 "name": "task5",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, 560 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter3",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1060, 700 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
 },
 "name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
 "type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1060, 880 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
 },
 "name": "task9",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
 },
-"name": "sequence3",
+"name": "sequence5",
 "type": 2
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 180, 0 ),
-"size": Vector2( 126, 136 )
+"count": 4,
+"offset": Vector2( -140, 140 ),
+"size": Vector2( 126.001, 163 )
 },
 "name": "selector",
 "type": 3
 } ],
 "data": {
-"offset": Vector2( 0, 0 ),
-"size": Vector2( 83.0001, 59.9999 )
+"count": 2,
+"offset": Vector2( -440, -180 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence4",
+"type": 2
+} ],
+"data": {
+"count": 1,
+"offset": Vector2( -800, -180 ),
+"size": Vector2( 134, 82 )
+},
+"name": "selector2",
+"type": 3
+} ],
+"data": {
+"offset": Vector2( -1100, -140 ),
+"size": Vector2( 83.0006, 60.0031 )
 },
 "name": "root",
 "type": 0
 }, {
-"child": [ {
-"child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( 940, -380 ),
-"size": Vector2( 126, 55 )
-},
-"name": "inverter",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
-},
-"name": "task2",
-"type": 1
-} ],
-"data": {
-"count": 3,
-"offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 136 )
-},
-"name": "sequence",
-"type": 2
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
+"offset": Vector2( 740, 420 ),
 "params": [ [ 0.6, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.6 ]
 },
 "name": "task3",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55.0001 )
-},
-"name": "inverter2",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1040, 280 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "false" ]
+"fn": "task_check_life",
+"offset": Vector2( 740, 640 ),
+"params": [ [ 0.3, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.3 ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
 },
 "name": "task4",
 "type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1040, 420 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "false" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
 },
-"name": "task8",
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 640 ),
+"params": [ [ 0.3, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.3 ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
+},
+"name": "task6",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
 },
-"name": "sequence2",
+"name": "sequence3",
 "type": 2
 }, {
 "child": [ {
@@ -374,220 +378,225 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
+"offset": Vector2( 600, 60 ),
+"params": [ [ 0.75, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.75 ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 420 ),
+"params": [ [ 0.6, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.6 ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 640 ),
 "params": [ [ 0.3, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.3 ]
 },
 "name": "task5",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, 560 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter3",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1060, 700 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
 },
 "name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
 "type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1060, 880 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
 },
 "name": "task9",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
 },
-"name": "sequence3",
+"name": "sequence5",
 "type": 2
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 180, 0 ),
-"size": Vector2( 126, 136 )
+"count": 4,
+"offset": Vector2( -140, 140 ),
+"size": Vector2( 126.001, 163 )
 },
 "name": "selector",
 "type": 3
 }, {
+"child": [  ],
+"data": {
+"fn": "task_is_attacking",
+"offset": Vector2( -140, -180 ),
+"params": [  ],
+"size": Vector2( 322, 84.9999 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+}, {
 "child": [ {
 "child": [  ],
 "data": {
-"fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
+"fn": "task_is_attacking",
+"offset": Vector2( -140, -180 ),
+"params": [  ],
+"size": Vector2( 322, 84.9999 ),
+"values": [  ]
 },
-"name": "task",
+"name": "task8",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, -380 ),
-"size": Vector2( 126, 55 )
-},
-"name": "inverter",
-"type": 14
 }, {
 "child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
+"offset": Vector2( 600, 60 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
 },
 "name": "task",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, -380 ),
-"size": Vector2( 126, 55 )
-},
-"name": "inverter",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
 },
 "name": "task2",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 136 )
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
+"offset": Vector2( 740, 420 ),
 "params": [ [ 0.6, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.6 ]
 },
 "name": "task3",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55.0001 )
-},
-"name": "inverter2",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1040, 280 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "false" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
 },
 "name": "task4",
 "type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1040, 420 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "false" ]
-},
-"name": "task8",
-"type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
 },
 "name": "sequence2",
 "type": 2
 }, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55.0001 )
-},
-"name": "inverter2",
-"type": 14
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( 940, 560 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter3",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
+"offset": Vector2( 740, 640 ),
 "params": [ [ 0.3, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.3 ]
@@ -595,82 +604,91 @@ tree = {
 "name": "task5",
 "type": 1
 }, {
-"child": [ {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-} ],
-"data": {
-"offset": Vector2( 940, 560 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter3",
-"type": 14
-}, {
-"child": [  ],
-"data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1060, 700 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
 },
 "name": "task6",
 "type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
+"type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1060, 880 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
 },
 "name": "task9",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
 },
-"name": "sequence3",
+"name": "sequence5",
+"type": 2
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( -140, 140 ),
+"size": Vector2( 126.001, 163 )
+},
+"name": "selector",
+"type": 3
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -440, -180 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence4",
 "type": 2
 }, {
+"child": [ {
+"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1040, 280 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "false" ]
+"fn": "task_is_attacking",
+"offset": Vector2( -140, -180 ),
+"params": [  ],
+"size": Vector2( 322, 84.9999 ),
+"values": [  ]
 },
-"name": "task4",
+"name": "task8",
 "type": 1
 }, {
-"child": [  ],
-"data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1060, 700 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
-},
-"name": "task6",
-"type": 1
-}, {
+"child": [ {
+"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
+"offset": Vector2( 600, 60 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -680,190 +698,444 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 420 ),
+"params": [ [ 0.6, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.6 ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 640 ),
+"params": [ [ 0.3, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.3 ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
+},
+"name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
+},
+"name": "task9",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence5",
+"type": 2
+} ],
+"data": {
+"count": 4,
+"offset": Vector2( -140, 140 ),
+"size": Vector2( 126.001, 163 )
+},
+"name": "selector",
+"type": 3
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( -440, -180 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence4",
+"type": 2
+} ],
+"data": {
+"count": 1,
+"offset": Vector2( -800, -180 ),
+"size": Vector2( 134, 82 )
+},
+"name": "selector2",
+"type": 3
+}, {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 600, 60 ),
+"params": [ [ 0.75, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.75 ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
 },
 "name": "task2",
 "type": 1
 }, {
+"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1040, 420 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "false" ]
+"fn": "task_check_life",
+"offset": Vector2( 740, 420 ),
+"params": [ [ 0.6, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.6 ]
 },
-"name": "task8",
+"name": "task3",
 "type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1060, 880 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
+},
+"name": "task4",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
 },
 "name": "task9",
 "type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence5",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 600, 60 ),
+"params": [ [ 0.75, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.75 ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
+},
+"name": "task2",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
+},
+"name": "sequence",
+"type": 2
 } ],
 "root": {
 "child": [ {
 "child": [ {
 "child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_attacking",
+"offset": Vector2( -140, -180 ),
+"params": [  ],
+"size": Vector2( 322, 84.9999 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+}, {
+"child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -380 ),
+"offset": Vector2( 600, 60 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
 },
 "name": "task",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, -380 ),
-"size": Vector2( 126, 55 )
-},
-"name": "inverter",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 920, 60 ),
+"params": [ [ "high", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "high" ]
 },
 "name": "task2",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 136 )
+"count": 2,
+"offset": Vector2( 200, 40 ),
+"size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1040, 140 ),
+"offset": Vector2( 740, 420 ),
 "params": [ [ 0.6, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.6 ]
 },
 "name": "task3",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55.0001 )
-},
-"name": "inverter2",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1040, 280 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "false" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 420 ),
+"params": [ [ "mid", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "mid" ]
 },
 "name": "task4",
 "type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1040, 420 ),
-"params": [ [ "false", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "false" ]
-},
-"name": "task8",
-"type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 400 ),
+"size": Vector2( 146, 109 )
 },
 "name": "sequence2",
 "type": 2
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, 560 ),
+"offset": Vector2( 740, 640 ),
 "params": [ [ 0.3, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.3 ]
 },
 "name": "task5",
 "type": 1
-} ],
-"data": {
-"offset": Vector2( 940, 560 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter3",
-"type": 14
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1060, 700 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 640 ),
+"params": [ [ "low", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "low" ]
 },
 "name": "task6",
+"type": 1
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 200, 600 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 740, 820 ),
+"params": [ [ 0.1, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.1 ]
+},
+"name": "task7",
 "type": 1
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toogle_shoot",
-"offset": Vector2( 1060, 880 ),
-"params": [ [ "true", 1 ] ],
-"size": Vector2( 328, 109 ),
-"values": [ "true" ]
+"fn": "task_say_my_life",
+"offset": Vector2( 1080, 820 ),
+"params": [ [ "critic", 1 ] ],
+"size": Vector2( 318, 109 ),
+"values": [ "critic" ]
 },
 "name": "task9",
 "type": 1
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 136 )
+"count": 2,
+"offset": Vector2( 200, 800 ),
+"size": Vector2( 146, 109 )
 },
-"name": "sequence3",
+"name": "sequence5",
 "type": 2
 } ],
 "data": {
-"count": 3,
-"offset": Vector2( 180, 0 ),
-"size": Vector2( 126, 136 )
+"count": 4,
+"offset": Vector2( -140, 140 ),
+"size": Vector2( 126.001, 163 )
 },
 "name": "selector",
 "type": 3
 } ],
 "data": {
-"offset": Vector2( 0, 0 ),
-"size": Vector2( 83.0001, 59.9999 )
+"count": 2,
+"offset": Vector2( -440, -180 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence4",
+"type": 2
+} ],
+"data": {
+"count": 1,
+"offset": Vector2( -800, -180 ),
+"size": Vector2( 134, 82 )
+},
+"name": "selector2",
+"type": 3
+} ],
+"data": {
+"offset": Vector2( -1100, -140 ),
+"size": Vector2( 83.0006, 60.0031 )
 },
 "name": "root",
 "type": 0
