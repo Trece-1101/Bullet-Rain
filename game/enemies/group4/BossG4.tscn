@@ -1,29 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBossBT.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/g4/G4 - FinalBoss.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/group4/BossG4.gd" type="Script" id=3]
+[ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=4]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 43.4512
 height = 212.906
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 85.6871
 height = 163.892
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=7]
 resource_local_to_scene = true
@@ -34,12 +35,13 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
 
 [node name="BossG4" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 hitpoints = 1000.0
+bullet_speed = 350.0
 start_position = Vector2( 960, 200 )
 
 [node name="BTREE" parent="." index="0"]
@@ -109,6 +111,16 @@ tree = {
 "from_port": 1,
 "to": "task6",
 "to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 2,
+"to": "task8",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 2,
+"to": "task9",
+"to_port": 0
 } ],
 "nodes": [ {
 "child": [ {
@@ -118,7 +130,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
+"offset": Vector2( 1080, -380 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -127,7 +139,7 @@ tree = {
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 940, -240 ),
+"offset": Vector2( 940, -380 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -136,7 +148,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_toggle_aim",
-"offset": Vector2( 1080, -100 ),
+"offset": Vector2( 1080, -240 ),
 "params": [ [ "true", 1 ] ],
 "size": Vector2( 317, 109 ),
 "values": [ "true" ]
@@ -145,9 +157,9 @@ tree = {
 "type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 109 )
+"size": Vector2( 138, 136 )
 },
 "name": "sequence",
 "type": 2
@@ -167,7 +179,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55 )
+"size": Vector2( 134, 55.0001 )
 },
 "name": "inverter2",
 "type": 14
@@ -182,11 +194,22 @@ tree = {
 },
 "name": "task4",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1040, 420 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "false" ]
+},
+"name": "task8",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence2",
 "type": 2
@@ -221,11 +244,22 @@ tree = {
 },
 "name": "task6",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1060, 880 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "true" ]
+},
+"name": "task9",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence3",
 "type": 2
@@ -240,7 +274,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 60 )
+"size": Vector2( 83.0001, 59.9999 )
 },
 "name": "root",
 "type": 0
@@ -251,7 +285,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
+"offset": Vector2( 1080, -380 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -260,7 +294,7 @@ tree = {
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 940, -240 ),
+"offset": Vector2( 940, -380 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -269,7 +303,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_toggle_aim",
-"offset": Vector2( 1080, -100 ),
+"offset": Vector2( 1080, -240 ),
 "params": [ [ "true", 1 ] ],
 "size": Vector2( 317, 109 ),
 "values": [ "true" ]
@@ -278,9 +312,9 @@ tree = {
 "type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 109 )
+"size": Vector2( 138, 136 )
 },
 "name": "sequence",
 "type": 2
@@ -300,7 +334,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55 )
+"size": Vector2( 134, 55.0001 )
 },
 "name": "inverter2",
 "type": 14
@@ -315,11 +349,22 @@ tree = {
 },
 "name": "task4",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1040, 420 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "false" ]
+},
+"name": "task8",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence2",
 "type": 2
@@ -354,11 +399,22 @@ tree = {
 },
 "name": "task6",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1060, 880 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "true" ]
+},
+"name": "task9",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence3",
 "type": 2
@@ -375,7 +431,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
+"offset": Vector2( 1080, -380 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -384,29 +440,18 @@ tree = {
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 940, -240 ),
+"offset": Vector2( 940, -380 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
 "type": 14
 }, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-}, {
 "child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
+"offset": Vector2( 1080, -380 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -415,7 +460,7 @@ tree = {
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 940, -240 ),
+"offset": Vector2( 940, -380 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -424,7 +469,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_toggle_aim",
-"offset": Vector2( 1080, -100 ),
+"offset": Vector2( 1080, -240 ),
 "params": [ [ "true", 1 ] ],
 "size": Vector2( 317, 109 ),
 "values": [ "true" ]
@@ -433,9 +478,9 @@ tree = {
 "type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 109 )
+"size": Vector2( 138, 136 )
 },
 "name": "sequence",
 "type": 2
@@ -455,7 +500,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55 )
+"size": Vector2( 134, 55.0001 )
 },
 "name": "inverter2",
 "type": 14
@@ -470,11 +515,22 @@ tree = {
 },
 "name": "task4",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1040, 420 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "false" ]
+},
+"name": "task8",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence2",
 "type": 2
@@ -504,7 +560,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55 )
+"size": Vector2( 134, 55.0001 )
 },
 "name": "inverter2",
 "type": 14
@@ -569,25 +625,25 @@ tree = {
 },
 "name": "task6",
 "type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
 }, {
 "child": [  ],
 "data": {
-"fn": "task_toggle_aim",
-"offset": Vector2( 1080, -100 ),
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1060, 880 ),
 "params": [ [ "true", 1 ] ],
-"size": Vector2( 317, 109 ),
+"size": Vector2( 328, 109 ),
 "values": [ "true" ]
 },
-"name": "task2",
+"name": "task9",
 "type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 600, 500 ),
+"size": Vector2( 146, 136 )
+},
+"name": "sequence3",
+"type": 2
 }, {
 "child": [  ],
 "data": {
@@ -609,6 +665,50 @@ tree = {
 "values": [ "true" ]
 },
 "name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_check_life",
+"offset": Vector2( 1080, -380 ),
+"params": [ [ 0.75, 0 ] ],
+"size": Vector2( 308, 109 ),
+"values": [ 0.75 ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 1080, -240 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1040, 420 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "false" ]
+},
+"name": "task8",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1060, 880 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "true" ]
+},
+"name": "task9",
 "type": 1
 } ],
 "root": {
@@ -619,7 +719,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_check_life",
-"offset": Vector2( 1080, -240 ),
+"offset": Vector2( 1080, -380 ),
 "params": [ [ 0.75, 0 ] ],
 "size": Vector2( 308, 109 ),
 "values": [ 0.75 ]
@@ -628,7 +728,7 @@ tree = {
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 940, -240 ),
+"offset": Vector2( 940, -380 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -637,7 +737,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_toggle_aim",
-"offset": Vector2( 1080, -100 ),
+"offset": Vector2( 1080, -240 ),
 "params": [ [ "true", 1 ] ],
 "size": Vector2( 317, 109 ),
 "values": [ "true" ]
@@ -646,9 +746,9 @@ tree = {
 "type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, -240 ),
-"size": Vector2( 138, 109 )
+"size": Vector2( 138, 136 )
 },
 "name": "sequence",
 "type": 2
@@ -668,7 +768,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 900, 140 ),
-"size": Vector2( 134, 55 )
+"size": Vector2( 134, 55.0001 )
 },
 "name": "inverter2",
 "type": 14
@@ -683,11 +783,22 @@ tree = {
 },
 "name": "task4",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1040, 420 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "false" ]
+},
+"name": "task8",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 120 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence2",
 "type": 2
@@ -722,11 +833,22 @@ tree = {
 },
 "name": "task6",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toogle_shoot",
+"offset": Vector2( 1060, 880 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 328, 109 ),
+"values": [ "true" ]
+},
+"name": "task9",
+"type": 1
 } ],
 "data": {
-"count": 2,
+"count": 3,
 "offset": Vector2( 600, 500 ),
-"size": Vector2( 146, 109 )
+"size": Vector2( 146, 136 )
 },
 "name": "sequence3",
 "type": 2
@@ -741,7 +863,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 60 )
+"size": Vector2( 83.0001, 59.9999 )
 },
 "name": "root",
 "type": 0
@@ -758,14 +880,18 @@ texture = ExtResource( 2 )
 ]]
 position = Vector2( -2.97305, -10.7029 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="DamageCollider" parent="." index="3"]
 position = Vector2( 0, -12.4867 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="ShootPosition" parent="ShootPositions1" index="0"]
 position = Vector2( -60.3213, 90.4818 )
+
+[node name="ShootPosition2" type="Position2D" parent="ShootPositions1" index="1"]
+position = Vector2( 49.1369, 91.9742 )
+script = ExtResource( 4 )
 
 [node name="ShootPosition" parent="ShootPositions2" index="0"]
 position = Vector2( 50.7969, 90.4818 )

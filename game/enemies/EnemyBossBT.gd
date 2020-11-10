@@ -100,7 +100,6 @@ func check_aim_to_center() -> float:
 	var rot_look = rot - 1.57
 	var my_rotation = rad2deg(rot_look)
 	bullet_rot_correction = rad2deg(rot) - 90.0
-	rotation_degrees = my_rotation
 	return my_rotation
 
 func look_at_center() -> void:
@@ -108,13 +107,12 @@ func look_at_center() -> void:
 		self,
 		"rotation_degrees",
 		rotation_degrees,
-		0,
-		2.0,
+		check_aim_to_center(),
+		1.0,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
 	tween.start()
-
 
 func die() -> void:
 	is_aimer = false
@@ -150,6 +148,13 @@ func task_toggle_aim(task) -> void:
 	
 	task.succeed()
 
-
+func task_toogle_shoot(task) -> void:
+	if task.get_param(0) == "true":
+		can_shoot = true
+	else:
+		can_shoot = false
+		gun_timer.stop()
+	
+	task.succeed()
 
 
