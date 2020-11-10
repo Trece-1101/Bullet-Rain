@@ -14,7 +14,6 @@ export var shoot_rate := 1.0
 export var is_aimer = true
 
 #### Variables
-var blackboard := {}
 var original_hitpoints: float
 var bullet_rot_correction := 0.0
 var is_shooting := false
@@ -25,6 +24,7 @@ var shield := preload("res://game/enemies/EnemyShield.tscn")
 var state := "attack"
 
 #### Variables Onready
+onready var bt := $BTREE
 onready var gun_timer := $GunTimer
 onready var wait_timer := $WaitTimer
 onready var shoot_sfx := $ShootSFX
@@ -34,6 +34,17 @@ onready var shoot_positions_container := {
 	2: $ShootPositions2
 	}
 
+#### Blackboard
+var blackboard := {
+	"tresholds": {
+		0: ["high_life", 0.85],
+		1: ["mid_life", 0.6],
+		2: ["low_life", 0.3], 
+		3: ["critic_life", 0.15],
+		4: ["dead_life", 0.0]
+	},
+	"current_treshold": 0
+}
 
 #### Setters y Getters
 func set_can_shoot(value: bool) -> void:
@@ -117,6 +128,7 @@ func look_at_center() -> void:
 	tween.start()
 
 func die() -> void:
+	bt.enable = false
 	is_aimer = false
 	can_shoot = false
 	gun_timer.stop()
@@ -138,11 +150,13 @@ func task_is_attacking(task) -> void:
 		task.failed()
 
 func task_say_my_life(task) -> void:
-	print("{hp} - {life}".format({"hp": hitpoints, "life": task.get_param(0)}))
+	print("{hp} - {life}".format({"hp": hitpoints, "life": blackboard.tresholds[blackboard.current_treshold][0]}))
 	task.succeed()
 
-func task_check_life(task) -> void:
-	if hitpoints >= original_hitpoints * task.get_param(0):
+func task_is_below_threshold(task) -> void:
+	if hitpoints < original_hitpoints * blackboard.tresholds[blackboard.current_treshold][1]:
+		if blackboard.current_treshold < blackboard.tresholds.size() - 1:
+			blackboard.current_treshold += 1
 		task.succeed()
 	else:
 		task.failed()

@@ -47,49 +47,9 @@ start_position = Vector2( 960, 200 )
 [node name="BTREE" parent="." index="0"]
 tree = {
 "connection": [ {
-"from": "selector",
-"from_port": 1,
-"to": "sequence2",
-"to_port": 0
-}, {
-"from": "selector",
-"from_port": 2,
-"to": "sequence3",
-"to_port": 0
-}, {
-"from": "sequence",
-"from_port": 1,
-"to": "task2",
-"to_port": 0
-}, {
-"from": "sequence2",
-"from_port": 1,
-"to": "task4",
-"to_port": 0
-}, {
-"from": "selector",
-"from_port": 0,
-"to": "sequence",
-"to_port": 0
-}, {
-"from": "sequence4",
-"from_port": 0,
-"to": "task8",
-"to_port": 0
-}, {
-"from": "sequence4",
-"from_port": 1,
-"to": "selector",
-"to_port": 0
-}, {
-"from": "selector2",
-"from_port": 0,
-"to": "sequence4",
-"to_port": 0
-}, {
 "from": "root",
 "from_port": 0,
-"to": "selector2",
+"to": "sequence",
 "to_port": 0
 }, {
 "from": "sequence",
@@ -97,60 +57,21 @@ tree = {
 "to": "task",
 "to_port": 0
 }, {
-"from": "sequence2",
-"from_port": 0,
-"to": "task3",
-"to_port": 0
-}, {
-"from": "sequence3",
-"from_port": 0,
-"to": "task5",
-"to_port": 0
-}, {
-"from": "sequence3",
+"from": "sequence",
 "from_port": 1,
-"to": "task6",
-"to_port": 0
-}, {
-"from": "sequence5",
-"from_port": 0,
-"to": "task7",
-"to_port": 0
-}, {
-"from": "sequence5",
-"from_port": 1,
-"to": "task9",
-"to_port": 0
-}, {
-"from": "selector",
-"from_port": 3,
-"to": "sequence5",
+"to": "task2",
 "to_port": 0
 } ],
 "nodes": [ {
 "child": [ {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_is_attacking",
-"offset": Vector2( -140, -180 ),
+"fn": "task_is_below_threshold",
+"offset": Vector2( -450, -165 ),
 "params": [  ],
-"size": Vector2( 322, 84.9999 ),
+"size": Vector2( 371, 85 ),
 "values": [  ]
-},
-"name": "task8",
-"type": 1
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
 },
 "name": "task",
 "type": 1
@@ -158,841 +79,92 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
+"offset": Vector2( -30, -165 ),
+"params": [  ],
+"size": Vector2( 318, 85 ),
+"values": [  ]
 },
 "name": "task2",
 "type": 1
 } ],
 "data": {
 "count": 2,
-"offset": Vector2( 200, 40 ),
+"offset": Vector2( -750, -165 ),
 "size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
 } ],
 "data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( -140, 140 ),
-"size": Vector2( 126.001, 163 )
-},
-"name": "selector",
-"type": 3
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -440, -180 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence4",
-"type": 2
-} ],
-"data": {
-"count": 1,
-"offset": Vector2( -800, -180 ),
-"size": Vector2( 134, 82 )
-},
-"name": "selector2",
-"type": 3
-} ],
-"data": {
-"offset": Vector2( -1100, -140 ),
-"size": Vector2( 83.0006, 60.0031 )
+"offset": Vector2( -1050, -150 ),
+"size": Vector2( 83.0006, 60.0032 )
 },
 "name": "root",
 "type": 0
 }, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-}, {
 "child": [ {
 "child": [  ],
 "data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
-},
-"name": "task2",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 40 ),
-"size": Vector2( 138, 109 )
-},
-"name": "sequence",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( -140, 140 ),
-"size": Vector2( 126.001, 163 )
-},
-"name": "selector",
-"type": 3
-}, {
-"child": [  ],
-"data": {
-"fn": "task_is_attacking",
-"offset": Vector2( -140, -180 ),
+"fn": "task_is_below_threshold",
+"offset": Vector2( -450, -165 ),
 "params": [  ],
-"size": Vector2( 322, 84.9999 ),
+"size": Vector2( 371, 85 ),
 "values": [  ]
 },
-"name": "task8",
+"name": "task",
 "type": 1
 }, {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_is_attacking",
-"offset": Vector2( -140, -180 ),
+"fn": "task_say_my_life",
+"offset": Vector2( -30, -165 ),
 "params": [  ],
-"size": Vector2( 322, 84.9999 ),
+"size": Vector2( 318, 85 ),
 "values": [  ]
 },
-"name": "task8",
-"type": 1
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
-},
 "name": "task2",
 "type": 1
 } ],
 "data": {
 "count": 2,
-"offset": Vector2( 200, 40 ),
+"offset": Vector2( -750, -165 ),
 "size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
 }, {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( -140, 140 ),
-"size": Vector2( 126.001, 163 )
-},
-"name": "selector",
-"type": 3
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -440, -180 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence4",
-"type": 2
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_is_attacking",
-"offset": Vector2( -140, -180 ),
+"fn": "task_is_below_threshold",
+"offset": Vector2( -450, -165 ),
 "params": [  ],
-"size": Vector2( 322, 84.9999 ),
+"size": Vector2( 371, 85 ),
 "values": [  ]
 },
-"name": "task8",
-"type": 1
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
 "name": "task",
 "type": 1
 }, {
 "child": [  ],
 "data": {
 "fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
+"offset": Vector2( -30, -165 ),
+"params": [  ],
+"size": Vector2( 318, 85 ),
+"values": [  ]
 },
 "name": "task2",
 "type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 40 ),
-"size": Vector2( 138, 109 )
-},
-"name": "sequence",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( -140, 140 ),
-"size": Vector2( 126.001, 163 )
-},
-"name": "selector",
-"type": 3
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -440, -180 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence4",
-"type": 2
-} ],
-"data": {
-"count": 1,
-"offset": Vector2( -800, -180 ),
-"size": Vector2( 134, 82 )
-},
-"name": "selector2",
-"type": 3
-}, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
-},
-"name": "task2",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-}, {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
-},
-"name": "task",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
-},
-"name": "task2",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 40 ),
-"size": Vector2( 138, 109 )
-},
-"name": "sequence",
-"type": 2
 } ],
 "root": {
 "child": [ {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
-"fn": "task_is_attacking",
-"offset": Vector2( -140, -180 ),
+"fn": "task_is_below_threshold",
+"offset": Vector2( -450, -165 ),
 "params": [  ],
-"size": Vector2( 322, 84.9999 ),
+"size": Vector2( 371, 85 ),
 "values": [  ]
-},
-"name": "task8",
-"type": 1
-}, {
-"child": [ {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 600, 60 ),
-"params": [ [ 0.75, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.75 ]
 },
 "name": "task",
 "type": 1
@@ -1000,142 +172,25 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_say_my_life",
-"offset": Vector2( 920, 60 ),
-"params": [ [ "high", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "high" ]
+"offset": Vector2( -30, -165 ),
+"params": [  ],
+"size": Vector2( 318, 85 ),
+"values": [  ]
 },
 "name": "task2",
 "type": 1
 } ],
 "data": {
 "count": 2,
-"offset": Vector2( 200, 40 ),
+"offset": Vector2( -750, -165 ),
 "size": Vector2( 138, 109 )
 },
 "name": "sequence",
 "type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 420 ),
-"params": [ [ 0.6, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.6 ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 420 ),
-"params": [ [ "mid", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "mid" ]
-},
-"name": "task4",
-"type": 1
 } ],
 "data": {
-"count": 2,
-"offset": Vector2( 200, 400 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence2",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 640 ),
-"params": [ [ 0.3, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.3 ]
-},
-"name": "task5",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 640 ),
-"params": [ [ "low", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "low" ]
-},
-"name": "task6",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 600 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence3",
-"type": 2
-}, {
-"child": [ {
-"child": [  ],
-"data": {
-"fn": "task_check_life",
-"offset": Vector2( 740, 820 ),
-"params": [ [ 0.1, 0 ] ],
-"size": Vector2( 308, 109 ),
-"values": [ 0.1 ]
-},
-"name": "task7",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_say_my_life",
-"offset": Vector2( 1080, 820 ),
-"params": [ [ "critic", 1 ] ],
-"size": Vector2( 318, 109 ),
-"values": [ "critic" ]
-},
-"name": "task9",
-"type": 1
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( 200, 800 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence5",
-"type": 2
-} ],
-"data": {
-"count": 4,
-"offset": Vector2( -140, 140 ),
-"size": Vector2( 126.001, 163 )
-},
-"name": "selector",
-"type": 3
-} ],
-"data": {
-"count": 2,
-"offset": Vector2( -440, -180 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence4",
-"type": 2
-} ],
-"data": {
-"count": 1,
-"offset": Vector2( -800, -180 ),
-"size": Vector2( 134, 82 )
-},
-"name": "selector2",
-"type": 3
-} ],
-"data": {
-"offset": Vector2( -1100, -140 ),
-"size": Vector2( 83.0006, 60.0031 )
+"offset": Vector2( -1050, -150 ),
+"size": Vector2( 83.0006, 60.0032 )
 },
 "name": "root",
 "type": 0
