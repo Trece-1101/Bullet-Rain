@@ -66,6 +66,20 @@ func set_is_casting(cast: bool) -> void:
 	beam_particles.emitting = is_casting
 	casting_particles.emitting = is_casting
 
+func toogle_beam(value: int) -> void:
+	is_casting = value
+
+	if is_casting:
+		cast_to = Vector2.ZERO
+		fill.points[1] = cast_to
+		appear()
+	else:
+		collision_particles.emitting = false
+		disappear()
+
+	set_physics_process(is_casting)
+	beam_particles.emitting = is_casting
+	casting_particles.emitting = is_casting
 
 func cast_beam() -> void:
 	var cast_point := cast_to

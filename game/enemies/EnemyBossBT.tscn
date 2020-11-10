@@ -184,25 +184,33 @@ script = ExtResource( 6 )
 [node name="ShootPosition" type="Position2D" parent="ShootPositions2" index="0"]
 script = ExtResource( 6 )
 
-[node name="ExplosionFire" parent="." index="6"]
+[node name="Lasers" type="Node2D" parent="." index="6"]
+
+[node name="ExplosionFire" parent="." index="7"]
 scale = Vector2( 3, 3 )
 
-[node name="ExplosionFire2" parent="." index="7"]
+[node name="ExplosionFire2" parent="." index="8"]
 scale = Vector2( 0.3, 0.3 )
 
-[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="10"]
+[node name="BombPositions" type="Node2D" parent="." index="9"]
 
-[node name="Motor" parent="." index="11"]
+[node name="Position2D" type="Position2D" parent="BombPositions" index="0"]
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="12"]
+
+[node name="Motor" parent="." index="13"]
 process_material = SubResource( 6 )
 
-[node name="ShieldPosition" type="Position2D" parent="." index="13"]
+[node name="ShieldPosition" type="Position2D" parent="." index="15"]
 
-[node name="GunTimer" type="Timer" parent="." index="14"]
+[node name="GunTimer" type="Timer" parent="." index="16"]
 one_shot = true
 
-[node name="WaitTimer" type="Timer" parent="." index="15"]
+[node name="WaitTimer" type="Timer" parent="." index="17"]
 
-[node name="Tween" type="Tween" parent="." index="16"]
+[node name="BombTimer" type="Timer" parent="." index="18"]
+
+[node name="RotationTween" type="Tween" parent="." index="19"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 

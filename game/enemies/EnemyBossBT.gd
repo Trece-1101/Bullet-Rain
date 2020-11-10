@@ -28,7 +28,7 @@ onready var bt := $BTREE
 onready var gun_timer := $GunTimer
 onready var wait_timer := $WaitTimer
 onready var shoot_sfx := $ShootSFX
-onready var tween := $Tween
+onready var rotation_tween := $RotationTween
 onready var shoot_positions_container := {
 	1: $ShootPositions1,
 	2: $ShootPositions2
@@ -116,7 +116,7 @@ func check_aim_to_center() -> float:
 	return my_rotation
 
 func look_at_center() -> void:
-	tween.interpolate_property(
+	rotation_tween.interpolate_property(
 		self,
 		"rotation_degrees",
 		rotation_degrees,
@@ -125,7 +125,7 @@ func look_at_center() -> void:
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
-	tween.start()
+	rotation_tween.start()
 
 func die() -> void:
 	bt.enable = false
