@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/sounds/sfx/player/shoot/08shoot.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -417,6 +417,9 @@ scale = 1.5
 scale_curve = SubResource( 11 )
 color_ramp = SubResource( 9 )
 
+[sub_resource type="CircleShape2D" id=13]
+radius = 0.01
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 50
 z_as_relative = false
@@ -528,8 +531,14 @@ script = ExtResource( 13 )
 
 [node name="Shield" parent="." instance=ExtResource( 15 )]
 
+[node name="BulletSponge" parent="Shield" index="0"]
+shape = SubResource( 13 )
+disabled = false
+
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 12
+visible = true
+frame = 1
+playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

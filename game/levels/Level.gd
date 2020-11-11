@@ -105,7 +105,6 @@ func create_player() -> void:
 	new_player.set_can_ultimatear(player_can_ultimatear)
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
-
 	#TODO: SACAR ESTO
 	new_player.set_damage_level(player_dmg_level)
 	new_player.set_rate_level(player_rate_level)

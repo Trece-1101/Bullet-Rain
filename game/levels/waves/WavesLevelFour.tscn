@@ -65,8 +65,6 @@
 [ext_resource path="res://game/enemies/paths/patterns/Pattern45.tscn" type="PackedScene" id=64]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern26.tscn" type="PackedScene" id=65]
 
-
-
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 830.501, 189.694, 0, 0, 0, 0, 829.66, 320.874 )

@@ -10,11 +10,31 @@ var amplitude := 0.0
 
 #### Metodos
 func _ready() -> void:
+	add_movements()
+	add_shoot_positions()
+	manage_move_stages(1)
+
+func _physics_process(delta: float) -> void:
+	time += delta
+	speed = cos(time * freq) * amplitude
+	vertical_speed -= speed_decay
+	if global_position.y <= 150.0 or global_position.y >= 350.0:
+		go_backward()
+		
+	position += Vector2(speed, vertical_speed) * delta
+
+
+func add_shoot_positions() -> void:
+	add_shoot_positions_to_container(3, $ShootPositions3, bullet_speed * 0.6, shoot_rate * 1.2)
+	add_shoot_positions_to_container(4, $ShootPositions4, bullet_speed * 0.9, shoot_rate * 0.9)
+	add_shoot_positions_to_container(5, $ShootPositions5, bullet_speed * 0.7, shoot_rate * 0.6)
+
+func add_movements() -> void:
 	#5 ultimo antes de morir
 	blackboard.movement_type[1] = {
 		"speed": 0.0,
 		"freq": 1.0,
-		"amplitude": 250.0,
+		"amplitude": 240.0,
 		"speed_decay": 0.00
 	}
 	blackboard.movement_type[2] = {
@@ -25,8 +45,8 @@ func _ready() -> void:
 	}
 	blackboard.movement_type[3] = {
 		"speed": 0.0,
-		"freq": 1.0,
-		"amplitude": 280.0,
+		"freq": 2.0,
+		"amplitude": 260.0,
 		"speed_decay": 0.00
 	}
 	blackboard.movement_type[4] = {
@@ -41,19 +61,6 @@ func _ready() -> void:
 		"amplitude": 100.0,
 		"speed_decay": 0.00
 	}
-	
-	manage_move_stages(1)
-	add_shoot_positions_to_container(3, $ShootPositions3)
-
-
-func _physics_process(delta: float) -> void:
-	time += delta
-	speed = cos(time * freq) * amplitude
-	vertical_speed -= speed_decay
-	if global_position.y <= 150.0 or global_position.y >= 350.0:
-		go_backward()
-
-	position += Vector2(speed, vertical_speed) * delta
 
 func go_backward() -> void:
 	original_speed *= -1
@@ -61,6 +68,7 @@ func go_backward() -> void:
 	speed_decay *= -1
 
 func spawn_minions(critic: bool, type: int) -> void:
+	yield(get_tree().create_timer(minions_spawn_delay), "timeout")
 	if critic:
 		for pos in minions_positions.get_children():
 			var new_minion:EnemyBase = critic_minions[type].instance()
@@ -82,5 +90,4 @@ func manage_move_stages(move_stage: int) -> void:
 	freq = blackboard.movement_type[move_stage].freq
 	amplitude = blackboard.movement_type[move_stage].amplitude
 	time = 0.0
-	print("move_stage: ", move_stage)
 

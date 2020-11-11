@@ -274,6 +274,8 @@ tracks/4/keys = {
 }
 
 [node name="Shield" type="Area2D"]
+z_index = 45
+z_as_relative = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource( 1 )
@@ -292,7 +294,7 @@ bus = "Player"
 [node name="PlayerShield" parent="." instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.05, 0.05 )
-frame = 12
+frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/drone_respawning = SubResource( 2 )

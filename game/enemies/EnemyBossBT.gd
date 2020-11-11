@@ -14,7 +14,8 @@ export var defense_position := Vector2.ZERO
 export var defense_time := 5.0
 export var shoot_rate := 1.0
 export var bomb_shoot_rate := 1.0
-export var is_aimer = true
+export var is_aimer := true
+export var minions_spawn_delay := 2.0
 export(Array, PackedScene) var normal_minions
 export(Array, PackedScene) var critic_minions
 
@@ -49,8 +50,8 @@ onready var blackboard := {
 	},
 	"current_treshold": 0,
 	"shoot_positions_container": {
-		1: $ShootPositions1,
-		2: $ShootPositions2
+		1: [$ShootPositions1, bullet_speed, shoot_rate],
+		2: [$ShootPositions2, bullet_speed * 0.8, shoot_rate * 0.9], 
 	},
 	"current_shoot_stage": 1,
 	"defense_mode": {
@@ -84,7 +85,7 @@ func _ready() -> void:
 	bomb_timer.wait_time = bomb_shoot_rate
 	wait_timer.wait_time = blackboard.defense_mode.time
 	get_player()
-	current_shoot_positions_shooting = blackboard.shoot_positions_container[blackboard.current_shoot_stage]
+	current_shoot_positions_shooting = blackboard.shoot_positions_container[blackboard.current_shoot_stage][0]
 	if indestructible_bullets.size() > 0:
 		set_indestructible_bullet()
 
@@ -125,9 +126,13 @@ func set_indestructible_bullet() -> void:
 	for path in indestructible_bullets:
 		get_node(path).set_bullet_type(0)
 
-func add_shoot_positions_to_container(key: int, shoot_positions: Node2D) -> void:
-	blackboard.shoot_positions_container[key] = shoot_positions
-#	shoot_positions_container[key] = shoot_positions
+func add_shoot_positions_to_container(
+		key: int,
+		shoot_positions: Node2D,
+		b_speed:float = bullet_speed,
+		s_rate:float = shoot_rate) -> void:
+	blackboard.shoot_positions_container[key] = [shoot_positions, b_speed, s_rate]
+
 
 func check_aim_to_player() -> void:
 	var dir = player.global_position - global_position
@@ -226,7 +231,9 @@ func task_next_shoot_stage(task) -> void:
 	var shoot_stage:int = blackboard.current_shoot_stage
 	if shoot_stage > blackboard.shoot_positions_container.size():
 		shoot_stage = blackboard.shoot_positions_container.size()
-	current_shoot_positions_shooting = blackboard.shoot_positions_container[shoot_stage]
+	current_shoot_positions_shooting = blackboard.shoot_positions_container[shoot_stage][0]
+	bullet_speed = blackboard.shoot_positions_container[shoot_stage][1]
+	gun_timer.wait_time = blackboard.shoot_positions_container[shoot_stage][2]
 	task.succeed()
 
 func task_next_move_stage(task) -> void:
@@ -294,8 +301,16 @@ func task_set_shield(task) -> void:
 	task.succeed()
 
 func task_disabled_shield(task) -> void:
-	get_node_or_null("EnemyShield").queue_free()
+	if get_node_or_null("EnemyShield") != null:
+		get_node_or_null("EnemyShield").queue_free()
 	task.succeed()
+
+func task_disabled_shield_with_delay(task) -> void:
+	if get_node_or_null("EnemyShield") != null:
+		if not get_node_or_null("EnemyShield").is_deactivating:
+			get_node_or_null("EnemyShield").disable_with_delay()
+	task.succeed()
+
 
 func task_move_to_defense_position(task) -> void:
 	move_to_position(defense_position)
@@ -339,7 +354,14 @@ func task_enable_lasers(task) -> void:
 			laser.set_is_casting(true)
 	task.succeed()
 
-
+func task_player_to_close(task) -> void:
+	if player != null:
+		if abs($ShieldPosition.global_position.y - player.global_position.y) < 250.0:
+			task.succeed()
+		else:
+			task.failed()
+	else:
+		task.failed()
 
 
 
