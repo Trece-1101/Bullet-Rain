@@ -52,7 +52,7 @@ hitpoints = 1000.0
 bullet_speed = 350.0
 start_position = Vector2( 960, 200 )
 
-[node name="BTREE" parent="." index="0"]
+[node name="OffensiveBT" parent="." index="0"]
 tree = {
 "connection": [ {
 "from": "root",
@@ -67,16 +67,53 @@ tree = {
 }, {
 "from": "sequence",
 "from_port": 1,
-"to": "task2",
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 2,
+"to": "task3",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 3,
+"to": "task4",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 4,
+"to": "task5",
 "to_port": 0
 } ],
 "nodes": [ {
+"child": [  ],
+"data": {
+"fn": "task_next_shoot_stage",
+"offset": Vector2( 400, 200 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_move_stage",
+"offset": Vector2( 400, 300 ),
+"params": [  ],
+"size": Vector2( 371, 85.0002 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
 "child": [ {
 "child": [ {
 "child": [  ],
 "data": {
 "fn": "task_is_below_threshold",
-"offset": Vector2( -450, -165 ),
+"offset": Vector2( 400, -20 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
@@ -86,26 +123,59 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_say_my_life",
-"offset": Vector2( -30, -165 ),
+"fn": "task_toggle_aim",
+"offset": Vector2( 400, 80 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_shoot_stage",
+"offset": Vector2( 400, 200 ),
 "params": [  ],
-"size": Vector2( 318, 85 ),
+"size": Vector2( 371, 85.0001 ),
 "values": [  ]
 },
-"name": "task2",
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_move_stage",
+"offset": Vector2( 400, 300 ),
+"params": [  ],
+"size": Vector2( 371, 85.0002 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_defense_mode",
+"offset": Vector2( 400, 400 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task5",
 "type": 1
 } ],
 "data": {
-"count": 2,
-"offset": Vector2( -750, -165 ),
-"size": Vector2( 138, 109 )
+"count": 5,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 138, 190 )
 },
 "name": "sequence",
 "type": 2
 } ],
 "data": {
-"offset": Vector2( -1050, -150 ),
-"size": Vector2( 83.0006, 60.0032 )
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
 },
 "name": "root",
 "type": 0
@@ -114,7 +184,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_is_below_threshold",
-"offset": Vector2( -450, -165 ),
+"offset": Vector2( 400, -20 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
@@ -124,27 +194,71 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_say_my_life",
-"offset": Vector2( -30, -165 ),
+"fn": "task_toggle_aim",
+"offset": Vector2( 400, 80 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_shoot_stage",
+"offset": Vector2( 400, 200 ),
 "params": [  ],
-"size": Vector2( 318, 85 ),
+"size": Vector2( 371, 85.0001 ),
 "values": [  ]
 },
-"name": "task2",
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_move_stage",
+"offset": Vector2( 400, 300 ),
+"params": [  ],
+"size": Vector2( 371, 85.0002 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_defense_mode",
+"offset": Vector2( 400, 400 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task5",
 "type": 1
 } ],
 "data": {
-"count": 2,
-"offset": Vector2( -750, -165 ),
-"size": Vector2( 138, 109 )
+"count": 5,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 138, 190 )
 },
 "name": "sequence",
 "type": 2
 }, {
 "child": [  ],
 "data": {
+"fn": "task_set_defense_mode",
+"offset": Vector2( 400, 400 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [  ],
+"data": {
 "fn": "task_is_below_threshold",
-"offset": Vector2( -450, -165 ),
+"offset": Vector2( 400, -20 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
@@ -154,13 +268,13 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_say_my_life",
-"offset": Vector2( -30, -165 ),
-"params": [  ],
-"size": Vector2( 318, 85 ),
-"values": [  ]
+"fn": "task_toggle_aim",
+"offset": Vector2( 400, 80 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
 },
-"name": "task2",
+"name": "task6",
 "type": 1
 } ],
 "root": {
@@ -169,7 +283,7 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_is_below_threshold",
-"offset": Vector2( -450, -165 ),
+"offset": Vector2( 400, -20 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
@@ -179,36 +293,316 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_say_my_life",
-"offset": Vector2( -30, -165 ),
+"fn": "task_toggle_aim",
+"offset": Vector2( 400, 80 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_shoot_stage",
+"offset": Vector2( 400, 200 ),
 "params": [  ],
-"size": Vector2( 318, 85 ),
+"size": Vector2( 371, 85.0001 ),
 "values": [  ]
 },
-"name": "task2",
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_move_stage",
+"offset": Vector2( 400, 300 ),
+"params": [  ],
+"size": Vector2( 371, 85.0002 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_defense_mode",
+"offset": Vector2( 400, 400 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task5",
 "type": 1
 } ],
 "data": {
-"count": 2,
-"offset": Vector2( -750, -165 ),
-"size": Vector2( 138, 109 )
+"count": 5,
+"offset": Vector2( 200, 0 ),
+"size": Vector2( 138, 190 )
 },
 "name": "sequence",
 "type": 2
 } ],
 "data": {
-"offset": Vector2( -1050, -150 ),
-"size": Vector2( 83.0006, 60.0032 )
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
 },
 "name": "root",
 "type": 0
 }
 }
-_tree_id = "2199366381215533367"
+_tree_id = "21993663811983864992"
 
-[node name="Sprite" parent="." index="1"]
-rotation = -8.32238e-09
-texture = ExtResource( 2 )
+[node name="DefensiveBT" parent="." index="1"]
+tree = {
+"connection": [ {
+"from": "root",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "inverter",
+"from_port": 0,
+"to": "task3",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 0,
+"to": "inverter",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 1,
+"to": "task2",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 2,
+"to": "task",
+"to_port": 0
+} ],
+"nodes": [ {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 740, 0 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 126, 55 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_shield",
+"offset": Vector2( 620, 140 ),
+"params": [ [ 1.0, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.0 ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disable_shooting",
+"offset": Vector2( 620, 280 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 280, 0 ),
+"size": Vector2( 138, 136 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
+},
+"name": "root",
+"type": 0
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 740, 0 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 126, 55 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_shield",
+"offset": Vector2( 620, 140 ),
+"params": [ [ 1.0, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.0 ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disable_shooting",
+"offset": Vector2( 620, 280 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 280, 0 ),
+"size": Vector2( 138, 136 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 740, 0 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 740, 0 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 126, 55 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disable_shooting",
+"offset": Vector2( 620, 280 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_shield",
+"offset": Vector2( 620, 140 ),
+"params": [ [ 1.0, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.0 ]
+},
+"name": "task2",
+"type": 1
+} ],
+"root": {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 740, 0 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 126, 55 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_shield",
+"offset": Vector2( 620, 140 ),
+"params": [ [ 1.0, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.0 ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disable_shooting",
+"offset": Vector2( 620, 280 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 280, 0 ),
+"size": Vector2( 138, 136 )
+},
+"name": "sequence",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "21993663813073967540"
 
 [node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
 "damage_collider",
@@ -217,7 +611,11 @@ position = Vector2( -2.97305, -10.7029 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="DamageCollider" parent="." index="3"]
+[node name="Sprite" parent="." index="3"]
+rotation = -8.32238e-09
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="4"]
 position = Vector2( 0, -12.4867 )
 shape = SubResource( 2 )
 
@@ -231,8 +629,11 @@ script = ExtResource( 4 )
 [node name="ShootPosition" parent="ShootPositions2" index="0"]
 position = Vector2( 50.7969, 90.4818 )
 
-[node name="Motor" parent="." index="12"]
+[node name="Motor" parent="." index="15"]
 process_material = SubResource( 7 )
+
+[node name="ShieldPosition" parent="." index="17"]
+position = Vector2( 0, 228.046 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="18"]
 environment = SubResource( 8 )

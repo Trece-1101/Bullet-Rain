@@ -146,7 +146,7 @@ color_ramp = SubResource( 3 )
 script = ExtResource( 2 )
 bullet = ExtResource( 7 )
 
-[node name="BTREE" type="Node" parent="." index="0"]
+[node name="OffensiveBT" type="Node" parent="." index="0"]
 script = ExtResource( 3 )
 tree = {
 "connection": [  ],
@@ -169,48 +169,75 @@ tree = {
 "type": 0
 }
 }
-_tree_id = "494759158215533367"
+_tree_id = "4947591581983864992"
 
-[node name="AnimationPlayer" parent="." index="3"]
+[node name="DefensiveBT" type="Node" parent="." index="1"]
+script = ExtResource( 3 )
+tree = {
+"connection": [  ],
+"nodes": [ {
+"child": [  ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
+},
+"name": "root",
+"type": 0
+} ],
+"root": {
+"child": [  ],
+"data": {
+"offset": Vector2( 0, 0 ),
+"size": Vector2( 83, 60 )
+},
+"name": "root",
+"type": 0
+}
+}
+_tree_id = "4947591583073967540"
+
+[node name="AnimationPlayer" parent="." index="4"]
 anims/ultra_destroy = SubResource( 1 )
 
-[node name="ShootPositions1" type="Node2D" parent="." index="4"]
+[node name="ShootPositions1" type="Node2D" parent="." index="5"]
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions1" index="0"]
 script = ExtResource( 6 )
 
-[node name="ShootPositions2" type="Node2D" parent="." index="5"]
+[node name="ShootPositions2" type="Node2D" parent="." index="6"]
 
 [node name="ShootPosition" type="Position2D" parent="ShootPositions2" index="0"]
 script = ExtResource( 6 )
 
-[node name="Lasers" type="Node2D" parent="." index="6"]
+[node name="Lasers" type="Node2D" parent="." index="7"]
 
-[node name="ExplosionFire" parent="." index="7"]
+[node name="ExplosionFire" parent="." index="8"]
 scale = Vector2( 3, 3 )
 
-[node name="ExplosionFire2" parent="." index="8"]
+[node name="ExplosionFire2" parent="." index="9"]
 scale = Vector2( 0.3, 0.3 )
 
-[node name="BombPositions" type="Node2D" parent="." index="9"]
+[node name="BombPositions" type="Node2D" parent="." index="10"]
 
 [node name="Position2D" type="Position2D" parent="BombPositions" index="0"]
 
-[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="12"]
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="13"]
 
-[node name="Motor" parent="." index="13"]
+[node name="Motor" parent="." index="14"]
 process_material = SubResource( 6 )
 
-[node name="ShieldPosition" type="Position2D" parent="." index="15"]
+[node name="ShieldPosition" type="Position2D" parent="." index="16"]
 
-[node name="GunTimer" type="Timer" parent="." index="16"]
+[node name="GunTimer" type="Timer" parent="." index="17"]
 one_shot = true
 
-[node name="WaitTimer" type="Timer" parent="." index="17"]
+[node name="WaitTimer" type="Timer" parent="." index="18"]
+wait_time = 8.0
+one_shot = true
 
-[node name="BombTimer" type="Timer" parent="." index="18"]
+[node name="BombTimer" type="Timer" parent="." index="19"]
 
-[node name="RotationTween" type="Tween" parent="." index="19"]
+[node name="RotationTween" type="Tween" parent="." index="20"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 

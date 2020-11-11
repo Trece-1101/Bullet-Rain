@@ -24,18 +24,17 @@ var shield := preload("res://game/enemies/EnemyShield.tscn")
 var state := "attack"
 
 #### Variables Onready
-onready var bt := $BTREE
 onready var gun_timer := $GunTimer
 onready var wait_timer := $WaitTimer
 onready var shoot_sfx := $ShootSFX
 onready var rotation_tween := $RotationTween
-onready var shoot_positions_container := {
-	1: $ShootPositions1,
-	2: $ShootPositions2
-	}
+#onready var shoot_positions_container := {
+#	1: $ShootPositions1,
+#	2: $ShootPositions2
+#	}
 
 #### Blackboard
-var blackboard := {
+onready var blackboard := {
 	"tresholds": {
 		0: ["high_life", 0.85],
 		1: ["mid_life", 0.6],
@@ -43,7 +42,11 @@ var blackboard := {
 		3: ["critic_life", 0.15],
 		4: ["dead_life", 0.0]
 	},
-	"current_treshold": 0
+	"current_treshold": 0,
+	"shoot_positions_container": {
+		1: $ShootPositions1,
+		2: $ShootPositions2
+	}
 }
 
 #### Setters y Getters
@@ -58,6 +61,8 @@ func get_bullet() -> PackedScene:
 
 #### Metodos
 func _ready() -> void:
+	$DefensiveBT.enable = false
+	$OffensiveBT.enable = true
 	original_hitpoints = hitpoints
 	original_speed = self.speed
 	global_position = start_position
@@ -65,7 +70,7 @@ func _ready() -> void:
 	self.allow_shoot = true
 	gun_timer.wait_time = shoot_rate
 	get_player()
-	current_shoot_positions_shooting = shoot_positions_container[1]
+	current_shoot_positions_shooting = blackboard.shoot_positions_container[1]
 	if indestructible_bullets.size() > 0:
 		set_indestructible_bullet()
 
@@ -96,8 +101,8 @@ func set_indestructible_bullet() -> void:
 	for path in indestructible_bullets:
 		get_node(path).set_bullet_type(0)
 
-func add_shoot_positions_to_container(key: int, shoot_positions: Node2D) -> void:
-	shoot_positions_container[key] = shoot_positions
+#func add_shoot_positions_to_container(key: int, shoot_positions: Node2D) -> void:
+#	shoot_positions_container[key] = shoot_positions
 
 func check_aim_to_player() -> void:
 	var dir = player.global_position - global_position
@@ -128,7 +133,6 @@ func look_at_center() -> void:
 	rotation_tween.start()
 
 func die() -> void:
-	bt.enable = false
 	is_aimer = false
 	can_shoot = false
 	gun_timer.stop()
@@ -140,7 +144,7 @@ func _on_GunTimer_timeout() -> void:
 	can_shoot = true
 
 func _on_WaitTimer_timeout() -> void:
-	pass # Replace with function body.
+	set_offensive_mode()
 
 #### Tareas
 func task_is_attacking(task) -> void:
@@ -161,6 +165,24 @@ func task_is_below_threshold(task) -> void:
 	else:
 		task.failed()
 
+func task_next_shoot_stage(task) -> void:
+	task.succeed()
+
+func task_next_move_stage(task) -> void:
+	task.succeed()
+
+func task_set_defense_mode(task) -> void:
+	$OffensiveBT.enable = false
+	$DefensiveBT.enable = true
+	wait_timer.start()
+	print("CAMBIO A DEFENSA")
+	task.succeed()
+
+func set_offensive_mode() -> void:
+	$OffensiveBT.enable = false
+	$DefensiveBT.enable = true
+	print("CAMBIO A ATAQUE")
+
 func task_toggle_aim(task) -> void:
 	if task.get_param(0) == "true":
 		is_aimer = true
@@ -170,14 +192,29 @@ func task_toggle_aim(task) -> void:
 	
 	task.succeed()
 
-func task_toogle_shoot(task) -> void:
-	if task.get_param(0) == "true":
-		can_shoot = true
-	else:
-		can_shoot = false
-		gun_timer.stop()
-	
+func task_disable_shooting(task) -> void:
+	allow_shoot = false
+	gun_timer.stop()
 	task.succeed()
 
-func task_change_bullet_speed(task) -> void:
-	bullet_speed *= task.get_param(0)
+func task_has_shield(task) -> void:
+	for child in get_children():
+		if child is EnemyShield:
+			print("shield")
+			task.succeed()
+			return
+	print("no shield")
+	task.failed()
+
+func task_set_shield(task) -> void:
+	print("set shield")
+	var size = task.get_param(0)
+	var new_shield := shield.instance()
+	new_shield.position = $ShieldPosition.position
+	new_shield.scale = Vector2(size, size)
+	new_shield.name = "EnemyShield"
+	add_child(new_shield)
+	task.succeed()
+
+
+

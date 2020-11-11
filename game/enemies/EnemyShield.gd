@@ -1,3 +1,4 @@
+class_name EnemyShield
 extends Area2D
 
 
