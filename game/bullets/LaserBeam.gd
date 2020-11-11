@@ -66,6 +66,9 @@ func set_is_casting(cast: bool) -> void:
 	beam_particles.emitting = is_casting
 	casting_particles.emitting = is_casting
 
+func get_is_casting() -> bool:
+	return is_casting
+
 func toogle_beam(value: int) -> void:
 	is_casting = value
 

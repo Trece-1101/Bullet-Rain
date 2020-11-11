@@ -144,6 +144,7 @@ color_ramp = SubResource( 3 )
 
 [node name="EnemyBossBT" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+is_boss = true
 bullet = ExtResource( 7 )
 
 [node name="OffensiveBT" type="Node" parent="." index="0"]
@@ -242,8 +243,10 @@ one_shot = true
 
 [node name="Motor" parent="." index="21"]
 process_material = SubResource( 6 )
+[connection signal="tween_all_completed" from="MovementTween" to="." method="_on_MovementTween_tween_all_completed"]
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
+[connection signal="timeout" from="BombTimer" to="." method="_on_BombTimer_timeout"]
 
 [editable path="ExplosionFire"]
 

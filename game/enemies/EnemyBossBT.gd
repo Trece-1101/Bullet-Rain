@@ -26,19 +26,17 @@ var original_speed := 0.0
 var can_shoot := false setget set_can_shoot, get_can_shoot
 var current_shoot_positions_shooting: Node2D
 var shield := preload("res://game/enemies/EnemyShield.tscn")
-var state := "attack"
+var bomb := preload("res://game/bullets/Bomb.tscn")
 
 #### Variables Onready
 onready var gun_timer := $GunTimer
 onready var wait_timer := $WaitTimer
+onready var bomb_timer := $BombTimer
 onready var shoot_sfx := $ShootSFX
 onready var rotation_tween := $RotationTween
 onready var movement_tween := $MovementTween
 onready var minions_positions := $MinionsPositions
-#onready var shoot_positions_container := {
-#	1: $ShootPositions1,
-#	2: $ShootPositions2
-#	}
+
 
 #### Blackboard
 onready var blackboard := {
@@ -58,8 +56,9 @@ onready var blackboard := {
 	"defense_mode": {
 		"time": defense_time,
 		"time_over": false,
-	}
-	
+	},
+	"current_movement_stage": 1,
+	"movement_type": {1: {}}
 }
 
 #### Setters y Getters
@@ -82,6 +81,7 @@ func _ready() -> void:
 	can_shoot = true
 	self.allow_shoot = true
 	gun_timer.wait_time = shoot_rate
+	bomb_timer.wait_time = bomb_shoot_rate
 	wait_timer.wait_time = blackboard.defense_mode.time
 	get_player()
 	current_shoot_positions_shooting = blackboard.shoot_positions_container[blackboard.current_shoot_stage]
@@ -112,6 +112,15 @@ func shoot(shoot_positions: Node2D) -> void:
 			bullet_rot_correction
 		)
 
+func shoot_bomb() -> void:
+	shoot_sfx.play()
+	for pos in $BombPositions.get_children():
+		var new_bomb := bomb.instance()
+		new_bomb.global_position = pos.global_position
+		get_parent().add_child(new_bomb)
+	
+	bomb_timer.start()
+
 func set_indestructible_bullet() -> void:
 	for path in indestructible_bullets:
 		get_node(path).set_bullet_type(0)
@@ -129,7 +138,8 @@ func check_aim_to_player() -> void:
 	rotation_degrees = my_rotation
 
 func check_aim_to_center() -> float:
-	var dir = Vector2(960.0, 920.0) - global_position
+#	var dir = Vector2(960.0, 920.0) - global_position
+	var dir = Vector2.DOWN
 	var rot = dir.angle()
 	var rot_look = rot - 1.57
 	var my_rotation = rad2deg(rot_look)
@@ -160,21 +170,34 @@ func move_to_position(new_pos: Vector2) -> void:
 	)
 	movement_tween.start()
 
+func _on_MovementTween_tween_all_completed() -> void:
+	if $OffensiveBT.enable:
+		set_physics_process(true)
+
+# warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func spawn_minions(critic: bool, type: int) -> void:
 #	print("es critico: {c} y del tipo {t}".format({"c": critic, "t": type}))
 	pass
 
+# warning-ignore:unused_argument
+func manage_move_stages(move_stage: int) -> void:
+	pass
 
 func die() -> void:
+	set_physics_process(false)
+	for laser in $Lasers.get_children():
+		laser.queue_free()
 	$OffensiveBT.enable = false
 	$DefensiveBT.enable = false
 	is_aimer = false
 	can_shoot = false
 	gun_timer.stop()
 	wait_timer.stop()
+	bomb_timer.stop()
 	is_alive = false
 	animation_player.play("ultra_destroy")
+	emit_signal("destroy")
 
 func _on_GunTimer_timeout() -> void:
 	can_shoot = true
@@ -182,13 +205,10 @@ func _on_GunTimer_timeout() -> void:
 func _on_WaitTimer_timeout() -> void:
 	blackboard.defense_mode.time_over = true
 
-#### Tareas
-func task_is_attacking(task) -> void:
-	if state == "attack":
-		task.succeed()
-	else:
-		task.failed()
+func _on_BombTimer_timeout() -> void:
+	shoot_bomb()
 
+#### Tareas
 func task_say_my_life(task) -> void:
 	print("{hp} - {life}".format({"hp": hitpoints, "life": blackboard.tresholds[blackboard.current_treshold][0]}))
 	task.succeed()
@@ -210,20 +230,24 @@ func task_next_shoot_stage(task) -> void:
 	task.succeed()
 
 func task_next_move_stage(task) -> void:
+	blackboard.current_movement_stage += 1
+	var move_stage:int = blackboard.current_movement_stage
+	if move_stage > blackboard.movement_type.size():
+		move_stage = blackboard.movement_type.size()
+	manage_move_stages(move_stage)
 	task.succeed()
 
 func task_set_defense_mode(task) -> void:
+	set_physics_process(false)
 	$OffensiveBT.enable = false
 	$DefensiveBT.enable = true
 	wait_timer.start()
-	print("CAMBIO A DEFENSA")
 	task.succeed()
 
 func task_set_offensive_mode(task) -> void:
 	$DefensiveBT.enable = false
 	$OffensiveBT.enable = true
 	blackboard.defense_mode.time_over = false
-	print("CAMBIO A ATAQUE")
 	task.succeed()
 
 func task_toggle_aim(task) -> void:
@@ -243,6 +267,14 @@ func task_disable_shooting(task) -> void:
 func task_enable_shooting(task) -> void:
 	allow_shoot = true
 	can_shoot = true
+	task.succeed()
+
+func task_enable_shoot_bomb(task) -> void:
+	bomb_timer.start()
+	task.succeed()
+
+func task_disabled_shoot_bomb(task) -> void:
+	bomb_timer.stop()
 	task.succeed()
 
 func task_has_shield(task) -> void:
@@ -269,8 +301,18 @@ func task_move_to_defense_position(task) -> void:
 	move_to_position(defense_position)
 	task.succeed()
 
+func task_move_to_start_position(task) -> void:
+	move_to_position(start_position)
+	task.succeed()
+
 func task_is_critic(task) -> void:
 	if blackboard.tresholds[blackboard.current_treshold][0] in ["dead_life", "critic_life"]:
+		task.succeed()
+	else:
+		task.failed()
+
+func task_is_dead_critic(task) -> void:
+	if blackboard.tresholds[blackboard.current_treshold][0] in ["dead_life"]:
 		task.succeed()
 	else:
 		task.failed()
@@ -285,13 +327,21 @@ func task_spawn_minion(task) -> void:
 	var critic = task.get_param(0)
 	var type = task.get_param(1)
 	if critic:
-		print("normal")
 		spawn_minions(false, type)
 	else:
-		print("critico")
 		spawn_minions(true, type)
 	
 	task.succeed()
+
+func task_enable_lasers(task) -> void:
+	for laser in $Lasers.get_children():
+		if not laser.get_is_casting():
+			laser.set_is_casting(true)
+	task.succeed()
+
+
+
+
 
 
 

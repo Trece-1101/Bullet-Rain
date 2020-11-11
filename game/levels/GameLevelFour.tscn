@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/levels/waves/WavesLevelFour.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/enemies/group4/BossG4.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/player/PlayerInterceptor.tscn" type="PackedScene" id=4]
 
 [node name="GameLevelFour" instance=ExtResource( 1 )]
-send_player_ship = false
 time_to_spawn_player = 3.0
 level_name = "4"
 music = "level_four"
@@ -21,5 +19,4 @@ z_index = 40
 z_as_relative = false
 collision_layer = 4
 collision_mask = 9
-
-[node name="PlayerInterceptor" parent="." index="7" instance=ExtResource( 4 )]
+is_boss = false
