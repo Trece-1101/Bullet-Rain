@@ -221,23 +221,27 @@ scale = Vector2( 0.3, 0.3 )
 
 [node name="Position2D" type="Position2D" parent="BombPositions" index="0"]
 
-[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="13"]
+[node name="MinionsPositions" type="Node2D" parent="." index="11"]
 
-[node name="Motor" parent="." index="14"]
-process_material = SubResource( 6 )
+[node name="ShieldPosition" type="Position2D" parent="." index="12"]
 
-[node name="ShieldPosition" type="Position2D" parent="." index="16"]
+[node name="ShootSFX" type="AudioStreamPlayer" parent="." index="15"]
 
-[node name="GunTimer" type="Timer" parent="." index="17"]
+[node name="RotationTween" type="Tween" parent="." index="16"]
+
+[node name="MovementTween" type="Tween" parent="." index="17"]
+
+[node name="GunTimer" type="Timer" parent="." index="18"]
 one_shot = true
 
-[node name="WaitTimer" type="Timer" parent="." index="18"]
+[node name="WaitTimer" type="Timer" parent="." index="19"]
 wait_time = 8.0
 one_shot = true
 
-[node name="BombTimer" type="Timer" parent="." index="19"]
+[node name="BombTimer" type="Timer" parent="." index="20"]
 
-[node name="RotationTween" type="Tween" parent="." index="20"]
+[node name="Motor" parent="." index="21"]
+process_material = SubResource( 6 )
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_WaitTimer_timeout"]
 

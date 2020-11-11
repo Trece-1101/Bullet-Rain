@@ -1,32 +1,35 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBossBT.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/g4/G4 - FinalBoss.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/group4/BossG4.gd" type="Script" id=3]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=4]
+[ext_resource path="res://game/enemies/group4/RotatorG4B.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/enemies/group4/RotatorG4C.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/enemies/group4/RotatorG4A.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/enemies/group4/EnemyBeamerG4F.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/enemies/group4/EnemyBeamerG4E.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/enemies/group4/EnemyBeamerG4D2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/enemies/group4/EnemyBeamerG4D1.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 43.4512
-height = 212.906
-
-[sub_resource type="CapsuleShape2D" id=2]
 radius = 85.6871
 height = 163.892
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -35,10 +38,10 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="Environment" id=8]
+[sub_resource type="Environment" id=7]
 background_mode = 4
 glow_enabled = true
 glow_levels/4 = true
@@ -51,6 +54,10 @@ script = ExtResource( 3 )
 hitpoints = 1000.0
 bullet_speed = 350.0
 start_position = Vector2( 960, 200 )
+defense_position = Vector2( 960, 0 )
+defense_time = 13.0
+normal_minions = [ ExtResource( 9 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 10 ) ]
+critic_minions = [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="OffensiveBT" parent="." index="0"]
 tree = {
@@ -86,28 +93,6 @@ tree = {
 "to_port": 0
 } ],
 "nodes": [ {
-"child": [  ],
-"data": {
-"fn": "task_next_shoot_stage",
-"offset": Vector2( 400, 200 ),
-"params": [  ],
-"size": Vector2( 371, 85.0001 ),
-"values": [  ]
-},
-"name": "task3",
-"type": 1
-}, {
-"child": [  ],
-"data": {
-"fn": "task_next_move_stage",
-"offset": Vector2( 400, 300 ),
-"params": [  ],
-"size": Vector2( 371, 85.0002 ),
-"values": [  ]
-},
-"name": "task4",
-"type": 1
-}, {
 "child": [ {
 "child": [ {
 "child": [  ],
@@ -179,6 +164,28 @@ tree = {
 },
 "name": "root",
 "type": 0
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_shoot_stage",
+"offset": Vector2( 400, 200 ),
+"params": [  ],
+"size": Vector2( 371, 85.0001 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_next_move_stage",
+"offset": Vector2( 400, 300 ),
+"params": [  ],
+"size": Vector2( 371, 85.0002 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
 }, {
 "child": [ {
 "child": [  ],
@@ -356,11 +363,6 @@ _tree_id = "21993663811983864992"
 [node name="DefensiveBT" parent="." index="1"]
 tree = {
 "connection": [ {
-"from": "root",
-"from_port": 0,
-"to": "sequence",
-"to_port": 0
-}, {
 "from": "inverter",
 "from_port": 0,
 "to": "task3",
@@ -380,24 +382,130 @@ tree = {
 "from_port": 2,
 "to": "task",
 "to_port": 0
+}, {
+"from": "sequence",
+"from_port": 3,
+"to": "task4",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 4,
+"to": "task5",
+"to_port": 0
+}, {
+"from": "root",
+"from_port": 0,
+"to": "selector",
+"to_port": 0
+}, {
+"from": "selector",
+"from_port": 0,
+"to": "sequence",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 0,
+"to": "task7",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 1,
+"to": "task9",
+"to_port": 0
+}, {
+"from": "selector",
+"from_port": 1,
+"to": "sequence3",
+"to_port": 0
+}, {
+"from": "random_selector",
+"from_port": 0,
+"to": "task10",
+"to_port": 0
+}, {
+"from": "random_selector",
+"from_port": 1,
+"to": "task11",
+"to_port": 0
+}, {
+"from": "random_selector",
+"from_port": 2,
+"to": "task12",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 6,
+"to": "random_selector",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 1,
+"to": "random_selector2",
+"to_port": 0
+}, {
+"from": "random_selector2",
+"from_port": 0,
+"to": "task13",
+"to_port": 0
+}, {
+"from": "random_selector2",
+"from_port": 1,
+"to": "task14",
+"to_port": 0
+}, {
+"from": "random_selector2",
+"from_port": 2,
+"to": "task15",
+"to_port": 0
+}, {
+"from": "sequence2",
+"from_port": 0,
+"to": "task6",
+"to_port": 0
+}, {
+"from": "sequence",
+"from_port": 5,
+"to": "inverter2",
+"to_port": 0
+}, {
+"from": "inverter2",
+"from_port": 0,
+"to": "sequence2",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 2,
+"to": "task16",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 4,
+"to": "task8",
+"to_port": 0
+}, {
+"from": "sequence3",
+"from_port": 3,
+"to": "task17",
+"to_port": 0
 } ],
 "nodes": [ {
 "child": [ {
 "child": [ {
 "child": [ {
+"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_has_shield",
-"offset": Vector2( 740, 0 ),
+"offset": Vector2( 1080, 0 ),
 "params": [  ],
-"size": Vector2( 371, 85 ),
+"size": Vector2( 370.999, 85 ),
 "values": [  ]
 },
 "name": "task3",
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 600, 0 ),
+"offset": Vector2( 915, 0 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -406,10 +514,10 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_set_shield",
-"offset": Vector2( 620, 140 ),
-"params": [ [ 1.0, 0 ] ],
+"offset": Vector2( 915, 105 ),
+"params": [ [ 1.2, 0 ] ],
 "size": Vector2( 310, 109 ),
-"values": [ 1.0 ]
+"values": [ 1.2 ]
 },
 "name": "task2",
 "type": 1
@@ -417,44 +525,324 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_disable_shooting",
-"offset": Vector2( 620, 280 ),
+"offset": Vector2( 915, 225 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
 },
 "name": "task",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_move_to_defense_position",
+"offset": Vector2( 915, 330 ),
+"params": [  ],
+"size": Vector2( 418, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 915, 435 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
 } ],
 "data": {
 "count": 3,
-"offset": Vector2( 280, 0 ),
-"size": Vector2( 138, 136 )
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
 },
-"name": "sequence",
+"name": "random_selector2",
+"type": 12
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
 "type": 2
 } ],
 "data": {
+"offset": Vector2( 920, 620 ),
+"size": Vector2( 134, 55 )
+},
+"name": "inverter2",
+"type": 14
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 915, 1200 ),
+"size": Vector2( 185, 136 )
+},
+"name": "random_selector",
+"type": 12
+} ],
+"data": {
+"count": 7,
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 138, 244 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_defense_time_over",
+"offset": Vector2( 900, 1665 ),
+"params": [  ],
+"size": Vector2( 385, 85.0002 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disabled_shield",
+"offset": Vector2( 900, 1785 ),
+"params": [  ],
+"size": Vector2( 348, 85.0002 ),
+"values": [  ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 900, 1920 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task16",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_enable_shooting",
+"offset": Vector2( 900, 2060 ),
+"params": [  ],
+"size": Vector2( 354, 85 ),
+"values": [  ]
+},
+"name": "task17",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_offensive_mode",
+"offset": Vector2( 900, 2180 ),
+"params": [  ],
+"size": Vector2( 374, 85 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+} ],
+"data": {
+"count": 5,
+"offset": Vector2( 600, 1665 ),
+"size": Vector2( 146, 190 )
+},
+"name": "sequence3",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 210, 0 ),
+"size": Vector2( 126, 109 )
+},
+"name": "selector",
+"type": 3
+} ],
+"data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 60 )
+"size": Vector2( 83, 59.9971 )
 },
 "name": "root",
 "type": 0
 }, {
 "child": [ {
-"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_has_shield",
-"offset": Vector2( 740, 0 ),
+"offset": Vector2( 1080, 0 ),
 "params": [  ],
-"size": Vector2( 371, 85 ),
+"size": Vector2( 370.999, 85 ),
 "values": [  ]
 },
 "name": "task3",
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 600, 0 ),
+"offset": Vector2( 915, 0 ),
+"size": Vector2( 126, 55 )
+},
+"name": "inverter",
+"type": 14
+}, {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 1080, 0 ),
+"params": [  ],
+"size": Vector2( 370.999, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_shield",
+"offset": Vector2( 915, 105 ),
+"params": [ [ 1.2, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.2 ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disable_shooting",
+"offset": Vector2( 915, 225 ),
+"params": [  ],
+"size": Vector2( 371, 85 ),
+"values": [  ]
+},
+"name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_move_to_defense_position",
+"offset": Vector2( 915, 330 ),
+"params": [  ],
+"size": Vector2( 418, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 915, 435 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_has_shield",
+"offset": Vector2( 1080, 0 ),
+"params": [  ],
+"size": Vector2( 370.999, 85 ),
+"values": [  ]
+},
+"name": "task3",
+"type": 1
+} ],
+"data": {
+"offset": Vector2( 915, 0 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -463,10 +851,10 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_set_shield",
-"offset": Vector2( 620, 140 ),
-"params": [ [ 1.0, 0 ] ],
+"offset": Vector2( 915, 105 ),
+"params": [ [ 1.2, 0 ] ],
 "size": Vector2( 310, 109 ),
-"values": [ 1.0 ]
+"values": [ 1.2 ]
 },
 "name": "task2",
 "type": 1
@@ -474,47 +862,172 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_disable_shooting",
-"offset": Vector2( 620, 280 ),
+"offset": Vector2( 915, 225 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
 },
 "name": "task",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_move_to_defense_position",
+"offset": Vector2( 915, 330 ),
+"params": [  ],
+"size": Vector2( 418, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 915, 435 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
 "type": 1
 } ],
 "data": {
 "count": 3,
-"offset": Vector2( 280, 0 ),
-"size": Vector2( 138, 136 )
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
 },
-"name": "sequence",
-"type": 2
-}, {
-"child": [  ],
+"name": "random_selector2",
+"type": 12
+} ],
 "data": {
-"fn": "task_has_shield",
-"offset": Vector2( 740, 0 ),
-"params": [  ],
-"size": Vector2( 371, 85 ),
-"values": [  ]
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
 },
-"name": "task3",
-"type": 1
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 920, 620 ),
+"size": Vector2( 134, 55 )
+},
+"name": "inverter2",
+"type": 14
 }, {
 "child": [ {
 "child": [  ],
 "data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 915, 1200 ),
+"size": Vector2( 185, 136 )
+},
+"name": "random_selector",
+"type": 12
+} ],
+"data": {
+"count": 7,
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 138, 244 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
 "fn": "task_has_shield",
-"offset": Vector2( 740, 0 ),
+"offset": Vector2( 1080, 0 ),
 "params": [  ],
-"size": Vector2( 371, 85 ),
+"size": Vector2( 370.999, 85 ),
 "values": [  ]
 },
 "name": "task3",
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 600, 0 ),
+"offset": Vector2( 915, 0 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -522,8 +1035,19 @@ tree = {
 }, {
 "child": [  ],
 "data": {
+"fn": "task_set_shield",
+"offset": Vector2( 915, 105 ),
+"params": [ [ 1.2, 0 ] ],
+"size": Vector2( 310, 109 ),
+"values": [ 1.2 ]
+},
+"name": "task2",
+"type": 1
+}, {
+"child": [  ],
+"data": {
 "fn": "task_disable_shooting",
-"offset": Vector2( 620, 280 ),
+"offset": Vector2( 915, 225 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
@@ -533,32 +1057,648 @@ tree = {
 }, {
 "child": [  ],
 "data": {
-"fn": "task_set_shield",
-"offset": Vector2( 620, 140 ),
-"params": [ [ 1.0, 0 ] ],
-"size": Vector2( 310, 109 ),
-"values": [ 1.0 ]
+"fn": "task_move_to_defense_position",
+"offset": Vector2( 915, 330 ),
+"params": [  ],
+"size": Vector2( 418, 85 ),
+"values": [  ]
 },
-"name": "task2",
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 915, 435 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
+},
+"name": "random_selector2",
+"type": 12
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 920, 620 ),
+"size": Vector2( 134, 55 )
+},
+"name": "inverter2",
+"type": 14
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 915, 1200 ),
+"size": Vector2( 185, 136 )
+},
+"name": "random_selector",
+"type": 12
+} ],
+"data": {
+"count": 7,
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 138, 244 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_defense_time_over",
+"offset": Vector2( 900, 1665 ),
+"params": [  ],
+"size": Vector2( 385, 85.0002 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disabled_shield",
+"offset": Vector2( 900, 1785 ),
+"params": [  ],
+"size": Vector2( 348, 85.0002 ),
+"values": [  ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 900, 1920 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task16",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_enable_shooting",
+"offset": Vector2( 900, 2060 ),
+"params": [  ],
+"size": Vector2( 354, 85 ),
+"values": [  ]
+},
+"name": "task17",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_offensive_mode",
+"offset": Vector2( 900, 2180 ),
+"params": [  ],
+"size": Vector2( 374, 85 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+} ],
+"data": {
+"count": 5,
+"offset": Vector2( 600, 1665 ),
+"size": Vector2( 146, 190 )
+},
+"name": "sequence3",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 210, 0 ),
+"size": Vector2( 126, 109 )
+},
+"name": "selector",
+"type": 3
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disabled_shield",
+"offset": Vector2( 900, 1785 ),
+"params": [  ],
+"size": Vector2( 348, 85.0002 ),
+"values": [  ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_is_defense_time_over",
+"offset": Vector2( 900, 1665 ),
+"params": [  ],
+"size": Vector2( 385, 85.0002 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_defense_time_over",
+"offset": Vector2( 900, 1665 ),
+"params": [  ],
+"size": Vector2( 385, 85.0002 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disabled_shield",
+"offset": Vector2( 900, 1785 ),
+"params": [  ],
+"size": Vector2( 348, 85.0002 ),
+"values": [  ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 900, 1920 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task16",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_enable_shooting",
+"offset": Vector2( 900, 2060 ),
+"params": [  ],
+"size": Vector2( 354, 85 ),
+"values": [  ]
+},
+"name": "task17",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_offensive_mode",
+"offset": Vector2( 900, 2180 ),
+"params": [  ],
+"size": Vector2( 374, 85 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+} ],
+"data": {
+"count": 5,
+"offset": Vector2( 600, 1665 ),
+"size": Vector2( 146, 190 )
+},
+"name": "sequence3",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 915, 1200 ),
+"size": Vector2( 185, 136 )
+},
+"name": "random_selector",
+"type": 12
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
+},
+"name": "random_selector2",
+"type": 12
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+} ],
+"data": {
+"offset": Vector2( 920, 620 ),
+"size": Vector2( 134, 55 )
+},
+"name": "inverter2",
+"type": 14
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
+},
+"name": "random_selector2",
+"type": 12
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
+"type": 2
+}, {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
+},
+"name": "random_selector2",
+"type": 12
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 900, 1920 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task16",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_enable_shooting",
+"offset": Vector2( 900, 2060 ),
+"params": [  ],
+"size": Vector2( 354, 85 ),
+"values": [  ]
+},
+"name": "task17",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_offensive_mode",
+"offset": Vector2( 900, 2180 ),
+"params": [  ],
+"size": Vector2( 374, 85 ),
+"values": [  ]
+},
+"name": "task8",
 "type": 1
 } ],
 "root": {
 "child": [ {
 "child": [ {
 "child": [ {
+"child": [ {
 "child": [  ],
 "data": {
 "fn": "task_has_shield",
-"offset": Vector2( 740, 0 ),
+"offset": Vector2( 1080, 0 ),
 "params": [  ],
-"size": Vector2( 371, 85 ),
+"size": Vector2( 370.999, 85 ),
 "values": [  ]
 },
 "name": "task3",
 "type": 1
 } ],
 "data": {
-"offset": Vector2( 600, 0 ),
+"offset": Vector2( 915, 0 ),
 "size": Vector2( 126, 55 )
 },
 "name": "inverter",
@@ -567,10 +1707,10 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_set_shield",
-"offset": Vector2( 620, 140 ),
-"params": [ [ 1.0, 0 ] ],
+"offset": Vector2( 915, 105 ),
+"params": [ [ 1.2, 0 ] ],
 "size": Vector2( 310, 109 ),
-"values": [ 1.0 ]
+"values": [ 1.2 ]
 },
 "name": "task2",
 "type": 1
@@ -578,25 +1718,231 @@ tree = {
 "child": [  ],
 "data": {
 "fn": "task_disable_shooting",
-"offset": Vector2( 620, 280 ),
+"offset": Vector2( 915, 225 ),
 "params": [  ],
 "size": Vector2( 371, 85 ),
 "values": [  ]
 },
 "name": "task",
 "type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_move_to_defense_position",
+"offset": Vector2( 915, 330 ),
+"params": [  ],
+"size": Vector2( 418, 85 ),
+"values": [  ]
+},
+"name": "task4",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 915, 435 ),
+"params": [ [ "false", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "false" ]
+},
+"name": "task5",
+"type": 1
+}, {
+"child": [ {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_critic",
+"offset": Vector2( 1480, 620 ),
+"params": [  ],
+"size": Vector2( 385, 85 ),
+"values": [  ]
+},
+"name": "task6",
+"type": 1
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 740 ),
+"params": [ [ 0, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 0 ]
+},
+"name": "task13",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 900 ),
+"params": [ [ 0, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 1 ]
+},
+"name": "task14",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 2080, 1060 ),
+"params": [ [ 0, 0 ], [ 2, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 0, 2 ]
+},
+"name": "task15",
+"type": 1
 } ],
 "data": {
 "count": 3,
-"offset": Vector2( 280, 0 ),
-"size": Vector2( 138, 136 )
+"offset": Vector2( 1480, 800 ),
+"size": Vector2( 193, 136 )
 },
-"name": "sequence",
+"name": "random_selector2",
+"type": 12
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 1080, 620 ),
+"size": Vector2( 146, 109 )
+},
+"name": "sequence2",
 "type": 2
 } ],
 "data": {
+"offset": Vector2( 920, 620 ),
+"size": Vector2( 134, 55 )
+},
+"name": "inverter2",
+"type": 14
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1200 ),
+"params": [ [ 1, 0 ], [ 0, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 0 ]
+},
+"name": "task10",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1335 ),
+"params": [ [ 1, 0 ], [ 1, 0 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ 1, 1 ]
+},
+"name": "task11",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_spawn_minion",
+"offset": Vector2( 1515, 1485 ),
+"params": [ [ "1", 1 ], [ "2", 1 ] ],
+"size": Vector2( 340, 139 ),
+"values": [ "1", "2" ]
+},
+"name": "task12",
+"type": 1
+} ],
+"data": {
+"count": 3,
+"offset": Vector2( 915, 1200 ),
+"size": Vector2( 185, 136 )
+},
+"name": "random_selector",
+"type": 12
+} ],
+"data": {
+"count": 7,
+"offset": Vector2( 600, 0 ),
+"size": Vector2( 138, 244 )
+},
+"name": "sequence",
+"type": 2
+}, {
+"child": [ {
+"child": [  ],
+"data": {
+"fn": "task_is_defense_time_over",
+"offset": Vector2( 900, 1665 ),
+"params": [  ],
+"size": Vector2( 385, 85.0002 ),
+"values": [  ]
+},
+"name": "task7",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_disabled_shield",
+"offset": Vector2( 900, 1785 ),
+"params": [  ],
+"size": Vector2( 348, 85.0002 ),
+"values": [  ]
+},
+"name": "task9",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_toggle_aim",
+"offset": Vector2( 900, 1920 ),
+"params": [ [ "true", 1 ] ],
+"size": Vector2( 317, 109 ),
+"values": [ "true" ]
+},
+"name": "task16",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_enable_shooting",
+"offset": Vector2( 900, 2060 ),
+"params": [  ],
+"size": Vector2( 354, 85 ),
+"values": [  ]
+},
+"name": "task17",
+"type": 1
+}, {
+"child": [  ],
+"data": {
+"fn": "task_set_offensive_mode",
+"offset": Vector2( 900, 2180 ),
+"params": [  ],
+"size": Vector2( 374, 85 ),
+"values": [  ]
+},
+"name": "task8",
+"type": 1
+} ],
+"data": {
+"count": 5,
+"offset": Vector2( 600, 1665 ),
+"size": Vector2( 146, 190 )
+},
+"name": "sequence3",
+"type": 2
+} ],
+"data": {
+"count": 2,
+"offset": Vector2( 210, 0 ),
+"size": Vector2( 126, 109 )
+},
+"name": "selector",
+"type": 3
+} ],
+"data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 60 )
+"size": Vector2( 83, 59.9971 )
 },
 "name": "root",
 "type": 0
@@ -604,20 +1950,23 @@ tree = {
 }
 _tree_id = "21993663813073967540"
 
-[node name="DamageCollider2" type="CollisionShape2D" parent="." index="2" groups=[
-"damage_collider",
-]]
-position = Vector2( -2.97305, -10.7029 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="Sprite" parent="." index="3"]
+[node name="Sprite" parent="." index="2"]
 rotation = -8.32238e-09
 texture = ExtResource( 2 )
 
-[node name="DamageCollider" parent="." index="4"]
+[node name="DamageCollider" parent="." index="3"]
 position = Vector2( 0, -12.4867 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
+
+[node name="DamageCollider2" type="CollisionPolygon2D" parent="." index="4" groups=[
+"damage_collider",
+]]
+polygon = PoolVector2Array( -85.546, -90.1273, -78.9389, -157.142, -136.987, -122.219, -218.16, -133.545, -269.602, -130.714, -314.436, -106.645, -372.484, -59.9233, -323.85, -31.1433, -264.41, -9.42601, -258.747, 39.1835, -223.352, 64.6681, -203.059, 89.2088, -188.238, 178.63, -128.021, 177.461, -84.6023, 27.3851 )
+
+[node name="DamageCollider3" type="CollisionPolygon2D" parent="." index="5" groups=[
+"damage_collider",
+]]
+polygon = PoolVector2Array( 87.5333, -98.631, 70.2898, -159.281, 152.94, -122.415, 215.968, -134.902, 267.698, -131.334, 315.861, -107.55, 371.754, -59.9818, 331.321, -34.4138, 276.023, -13.6027, 267.104, 41.6954, 226.671, 61.9119, 196.346, 91.6421, 183.264, 179.049, 120.831, 177.265, 87.5333, 25.6411 )
 
 [node name="ShootPosition" parent="ShootPositions1" index="0"]
 position = Vector2( -60.3213, 90.4818 )
@@ -627,16 +1976,26 @@ position = Vector2( 49.1369, 91.9742 )
 script = ExtResource( 4 )
 
 [node name="ShootPosition" parent="ShootPositions2" index="0"]
-position = Vector2( 50.7969, 90.4818 )
+position = Vector2( -2.59678, 126.522 )
 
-[node name="Motor" parent="." index="15"]
-process_material = SubResource( 7 )
+[node name="Position2D" type="Position2D" parent="MinionsPositions" index="0"]
+position = Vector2( 820, 350 )
 
-[node name="ShieldPosition" parent="." index="17"]
+[node name="Position2D2" type="Position2D" parent="MinionsPositions" index="1"]
+position = Vector2( 1100, 350 )
+
+[node name="ShieldPosition" parent="." index="14"]
 position = Vector2( 0, 228.046 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="18"]
-environment = SubResource( 8 )
+[node name="WaitTimer" parent="." index="21"]
+wait_time = 1.0
+
+[node name="Motor" parent="." index="23"]
+position = Vector2( 4.07763e-11, -204.336 )
+process_material = SubResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="24"]
+environment = SubResource( 7 )
 
 [editable path="ExplosionFire"]
 
