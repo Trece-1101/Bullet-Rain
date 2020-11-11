@@ -43,9 +43,9 @@ onready var minions_positions := $MinionsPositions
 onready var blackboard := {
 	"tresholds": {
 		0: ["high_life", 0.85],
-		1: ["mid_life", 0.6],
-		2: ["low_life", 0.3], 
-		3: ["critic_life", 0.15],
+		1: ["mid_life", 0.65],
+		2: ["low_life", 0.35], 
+		3: ["critic_life", 0.20],
 		4: ["dead_life", 0.0]
 	},
 	"current_treshold": 0,
