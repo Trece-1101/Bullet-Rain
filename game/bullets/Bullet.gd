@@ -52,7 +52,7 @@ func _ready() -> void:
 			set_color(bullet_sprite, 1.8, 0.2, 0.1)
 			$BulletDestroyParticles.modulate = bullet_color_one
 		0:
-			set_color(bullet_sprite, 1.2, 0.7, 2.2)
+			set_color(bullet_sprite, 1.2, 0.7, 2.0)
 			$BulletDestroyParticles.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")

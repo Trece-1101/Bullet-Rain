@@ -14,3 +14,4 @@ player_rate_level = 3
 
 [node name="WavesLevelFour" parent="." index="5" instance=ExtResource( 2 )]
 big_boss = ExtResource( 3 )
+start_from_wave = 42
