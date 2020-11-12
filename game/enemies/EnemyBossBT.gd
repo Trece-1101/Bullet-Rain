@@ -214,10 +214,6 @@ func _on_BombTimer_timeout() -> void:
 	shoot_bomb()
 
 #### Tareas
-func task_say_my_life(task) -> void:
-	print("{hp} - {life}".format({"hp": hitpoints, "life": blackboard.tresholds[blackboard.current_treshold][0]}))
-	task.succeed()
-
 func task_is_below_threshold(task) -> void:
 	if hitpoints < original_hitpoints * blackboard.tresholds[blackboard.current_treshold][1]:
 		if blackboard.current_treshold < blackboard.tresholds.size() - 1:

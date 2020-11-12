@@ -127,16 +127,6 @@ tree = {
 "to": "task7",
 "to_port": 0
 }, {
-"from": "sequence4",
-"from_port": 0,
-"to": "inverter2",
-"to_port": 0
-}, {
-"from": "inverter2",
-"from_port": 0,
-"to": "task10",
-"to_port": 0
-}, {
 "from": "selector2",
 "from_port": 1,
 "to": "task8",
@@ -298,7 +288,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 59.9958 )
+"size": Vector2( 83, 59.9973 )
 },
 "name": "root",
 "type": 0
@@ -803,31 +793,6 @@ tree = {
 "name": "task7",
 "type": 1
 }, {
-"data": {
-"offset": Vector2( 1040, 1220 ),
-"size": Vector2( 134, 55 )
-},
-"name": "inverter2",
-"type": 14
-}, {
-"data": {
-"fn": "task_has_shield",
-"offset": Vector2( 1180, 1220 ),
-"params": [  ],
-"size": Vector2( 358, 85 ),
-"values": [  ]
-},
-"name": "task10",
-"type": 1
-}, {
-"data": {
-"count": 2,
-"offset": Vector2( 820, 1340 ),
-"size": Vector2( 146, 109 )
-},
-"name": "sequence4",
-"type": 2
-}, {
 "child": [  ],
 "data": {
 "fn": "task_disabled_shield_with_delay",
@@ -995,7 +960,7 @@ tree = {
 } ],
 "data": {
 "offset": Vector2( 0, 0 ),
-"size": Vector2( 83, 59.9958 )
+"size": Vector2( 83, 59.9973 )
 },
 "name": "root",
 "type": 0

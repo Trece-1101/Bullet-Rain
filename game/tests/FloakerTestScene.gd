@@ -30,7 +30,7 @@ func _on_Timer_timeout() -> void:
 func spawn_floaker() -> void:
 	for pos in $FloakerSpawner.get_children():
 		var new_floaker: EnemyFloaker = enemy_floaker.instance()
-#		new_floaker.is_debugging = true
+		new_floaker.is_debugging = true
 		new_floaker.global_position = pos.global_position
 		floaker_container.add_child(new_floaker)
 		floakers.push_back(new_floaker)

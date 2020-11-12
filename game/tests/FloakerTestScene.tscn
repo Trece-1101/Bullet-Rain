@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/tests/FloakerTestScene.gd" type="Script" id=1]
 [ext_resource path="res://game/levels/border/FloakerDestroyer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/levels/border/StaticBorder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/enemies/group1/BigBanditG1A.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=5]
 
 [node name="FloakerTestScene" type="Node2D"]
@@ -54,22 +53,6 @@ position = Vector2( 977.854, -31.8532 )
 
 [node name="Down" parent="FloakerDestroyer" index="3"]
 position = Vector2( 977.854, 1233.05 )
-
-[node name="BigBanditG1A" parent="." instance=ExtResource( 4 )]
-position = Vector2( 970.139, 808.869 )
-is_debugging = true
-
-[node name="BigBanditG1A4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 975.179, 506.488 )
-is_debugging = true
-
-[node name="BigBanditG1A2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 564.445, 670.278 )
-is_debugging = true
-
-[node name="BigBanditG1A3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1370.79, 657.679 )
-is_debugging = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="FloakerDestroyer"]
