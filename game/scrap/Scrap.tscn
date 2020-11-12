@@ -365,11 +365,12 @@ anims/default = SubResource( 2 )
 
 [node name="SpawnSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
-volume_db = -5.0
+volume_db = -12.0
 bus = "SFX"
 
 [node name="ConsumeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -12.0
 bus = "SFX"
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

@@ -42,7 +42,6 @@ color_ramp = SubResource( 4 )
 script = ExtResource( 3 )
 hitpoints = 2800.0
 is_boss = true
-bullet_speed = 220
 start_position = Vector2( 960, 40 )
 minion_spawn_delay = 1.0
 minions_positions = [ Vector2( 960, 550 ), Vector2( 660, 480 ), Vector2( 1260, 480 ) ]
@@ -68,6 +67,9 @@ shape = SubResource( 2 )
 position = Vector2( 198, -5.886 )
 rotation = -0.434587
 shape = SubResource( 2 )
+
+[node name="ShootSFX" parent="." index="9"]
+volume_db = -15.0
 
 [node name="Motor" parent="." index="10"]
 position = Vector2( 3.35173e-11, -172.411 )

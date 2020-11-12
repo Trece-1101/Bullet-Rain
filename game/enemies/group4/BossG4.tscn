@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://game/enemies/EnemyBossBT.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/enemies/g4/G4 - FinalBoss.png" type="Texture" id=2]
 [ext_resource path="res://game/enemies/group4/BossG4.gd" type="Script" id=3]
 [ext_resource path="res://game/enemies/ShootPosition.gd" type="Script" id=4]
 [ext_resource path="res://game/enemies/group4/RotatorG4B.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sounds/sfx/enemies/shoot/11enemyshoot.wav" type="AudioStream" id=6]
 [ext_resource path="res://game/enemies/group4/RotatorG4A.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/enemies/group4/EnemyBeamerG4F.tscn" type="PackedScene" id=8]
 [ext_resource path="res://game/enemies/group4/EnemyBeamerG4E.tscn" type="PackedScene" id=9]
@@ -3290,6 +3291,11 @@ position = Vector2( 1100, 350 )
 
 [node name="ShieldPosition" parent="." index="17"]
 position = Vector2( 0, 228.046 )
+
+[node name="ShootSFX" parent="." index="20"]
+stream = ExtResource( 6 )
+volume_db = -12.0
+bus = "Enemy"
 
 [node name="WaitTimer" parent="." index="24"]
 wait_time = 1.0

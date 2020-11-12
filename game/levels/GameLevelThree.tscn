@@ -21,7 +21,6 @@ texture = ExtResource( 3 )
 self_modulate = Color( 1, 1, 1, 0.588235 )
 
 [node name="DecorCenter" parent="BackGrounds/StarCenterLayer" index="2"]
-modulate = Color( 1, 1, 1, 1 )
 self_modulate = Color( 1, 1, 1, 0.588235 )
 
 [node name="BgLats" parent="BackGrounds/ParallaxBorder/ParallaxLayer" index="0"]

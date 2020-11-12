@@ -537,7 +537,7 @@ disabled = false
 
 [node name="PlayerShield" parent="Shield" index="2"]
 visible = true
-frame = 1
+frame = 11
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
@@ -572,12 +572,12 @@ bus = "Player"
 
 [node name="UltDroneActivated" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
-volume_db = -28.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="UltDroneDisabled" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -22.0
+volume_db = -15.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="DroneGunTimer" to="." method="_on_DroneGunTimer_timeout"]

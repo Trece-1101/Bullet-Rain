@@ -10,8 +10,10 @@ var selected_ships := []
 var ships_order := []
 
 onready var order_containers := [$OrderOneContainer, $OrderTwoContainer, $OrderThreeContainer]
+onready var order_selectionm_music := $OrderSelectionMusic
 
 func _ready() -> void:
+	order_selectionm_music.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for container in order_containers:
 		ship_containers.append(container.get_node("ImgContainer").get_node("ShipIconContainer"))
