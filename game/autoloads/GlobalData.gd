@@ -10,7 +10,7 @@ signal send_update_gui_drone_and_ultimate(a_second)
 
 #### Variables
 var points := 0
-var scrap := 6000 setget , get_scrap
+var scrap := 0 setget , get_scrap
 
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
@@ -29,9 +29,9 @@ var player_ships := {
 	}
 
 var ships_stats := {
-	"interceptor": {"dmg_level": 0, "rate_level": 1},
-	"bomber": {"dmg_level": 1, "rate_level": 3},
-	"stealth": {"dmg_level": 2, "rate_level": 2}
+	"interceptor": {"dmg_level": 0, "rate_level": 0},
+	"bomber": {"dmg_level": 0, "rate_level": 0},
+	"stealth": {"dmg_level": 0, "rate_level": 0}
 	} setget ,get_ship_stats
 
 var stats_cost := {
@@ -39,7 +39,7 @@ var stats_cost := {
 		"interceptor": {
 			1: 1170, 2: 1463, 3: 2340, 4: 5616},
 		"bomber": {
-			1: 1080, 2: 1350, 3: 2160, 4: 5184},
+			1: 1050, 2: 1300, 3: 2017, 4: 5000},
 		"stealth": {
 			1: 900, 2: 1125, 3: 1800, 4: 4320}
 		},
@@ -47,7 +47,7 @@ var stats_cost := {
 		"interceptor": {
 			1: 900, 2: 1125, 3: 1800, 4: 4320},
 		"bomber": {
-			1: 1080, 2: 1350, 3: 2160, 4: 5184},
+			1: 1050, 2: 1300, 3: 2017, 4: 5000},
 		"stealth": {
 			1: 1170, 2: 1463, 3: 2340, 4: 5616},
 		}
@@ -150,3 +150,16 @@ func _process_time() -> void:
 func reset_level_time() -> void:
 	level_time.minu = 0
 	level_time.sec = 0
+
+func reset_player_data() -> void:
+	points = 0
+	scrap = 0
+	level_time.minu = 0
+	level_time.sec = 0
+	start_time = 0.0
+	current_time = 0.0
+	for ship in ships_stats.keys():
+		ship.dmg_level = 0
+		ship.interceptor.rate_level = 0
+
+

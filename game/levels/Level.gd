@@ -108,8 +108,9 @@ func create_player() -> void:
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
 	#TODO: SACAR ESTO
-	new_player.set_damage_level(player_dmg_level)
-	new_player.set_rate_level(player_rate_level)
+	if false and OS.is_debug_build():
+		new_player.set_damage_level(player_dmg_level)
+		new_player.set_rate_level(player_rate_level)
 	#
 	add_child(new_player)
 	emit_signal("get_new_player")

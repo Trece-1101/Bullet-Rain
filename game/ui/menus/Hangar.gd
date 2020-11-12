@@ -28,7 +28,6 @@ onready var next_ship := $Next
 func _ready() -> void:
 	_set_scrap_label()
 	stats_costs = GlobalData.get_stats_costs()
-#	print(stats_costs)
 	buy_msg.visible = false
 	cost_label.visible = false
 	textures = [interceptor_texture, bomber_texture, stealth_texture]
@@ -47,11 +46,8 @@ func _set_ship_stats() -> void:
 			_set_level_textures(s)
 
 func _set_level_textures(s: String) -> void:
-#	var dmg_level: int = ships_stats[s]["dmg_level"]
-#	var rate_level: int = ships_stats[s]["rate_level"]
 	current_ship_stats.dmg = ships_stats[s]["dmg_level"]
 	current_ship_stats.rate = ships_stats[s]["rate_level"]
-#	print("{dmg} - {rate}".format({"dmg": dmg_level, "rate": rate_level}))
 	dmg_texture.texture.current_frame = current_ship_stats.dmg + 1
 	rate_texture.texture.current_frame = current_ship_stats.rate + 1
 	if current_ship_stats.dmg == 4:

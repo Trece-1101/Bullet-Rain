@@ -34,7 +34,7 @@ func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
 		#TODO: Quitar esto
-		if false and OS.is_debug_build():
+		if true and OS.is_debug_build():
 			var total_enemies := 0
 			var total_total_enemies := {}
 			for wave in get_children():
@@ -43,8 +43,8 @@ func start_waves() -> void:
 						print(path.enemies)
 					var enemy = path.enemies[0]
 					var enemy_type = enemy._bundled.names[0]
-					if not "G1" in enemy_type:
-						print(wave.name)
+					if not "G4" in enemy_type:
+						print("no es de este grupo", wave.name)
 					#print(enemy._bundled.names[0])
 					if enemy_type in total_total_enemies.keys():
 						total_total_enemies[enemy_type] += (1 * path.get_enemy_number())
