@@ -34,12 +34,14 @@ onready var overlay_layer := $Overlays
 onready var ult_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/UltimateContainer/UltimateProgress
 onready var drone_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/DroneContainer/DroneProgress
 onready var player_timer: Timer
+onready var floaker_container := $FlockerContainer
 
 #### Variables
 var ship_order := [] setget set_ship_order
 var current_ship_index := 0
 var player_can_ultimatear := false
 var player_can_dronear := false
+var flockers := []
 
 func set_ship_order(value: Array) -> void:
 	ship_order = value
@@ -112,7 +114,6 @@ func create_player() -> void:
 	add_child(new_player)
 	emit_signal("get_new_player")
 
-
 func create_timer() -> void:
 	var send_waves_timer := Timer.new()
 	send_waves_timer.one_shot = true
@@ -126,8 +127,6 @@ func _on_send_waves_timer_timeout() -> void:
 		if child.is_in_group("waves_level"):
 			child.set_send_waves(send_waves)
 			child.start_waves()
-
-
 
 func _on_UltimateProgress_full_value() -> void:
 	player_can_ultimatear = true

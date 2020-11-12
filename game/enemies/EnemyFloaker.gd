@@ -107,8 +107,13 @@ func is_obsticle_ahead():
 func eliminate() -> void:
 	floakers.erase(self)
 	for floaker in floakers:
-		if floaker != self:
+		if floaker != self and floaker != null:
 			floaker.set_floakers(floakers)
-	
-	print(floakers)
+			
 	queue_free()
+
+func die() -> void:
+	set_process(false)
+	is_alive = false
+	can_take_damage = false
+	animation_player.play("destroy")

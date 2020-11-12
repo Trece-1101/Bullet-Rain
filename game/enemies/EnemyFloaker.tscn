@@ -7,20 +7,20 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.6733
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=6]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=6]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -29,13 +29,14 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 400.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="EnemyFloaker" instance=ExtResource( 1 )]
 collision_layer = 36
 collision_mask = 13
 script = ExtResource( 3 )
+hitpoints = 10.0
 move_speed = 200.0
 velocity = Vector2( 300, 300 )
 accel = Vector2( 60, 60 )
@@ -53,7 +54,7 @@ position = Vector2( 0, -4.24264 )
 shape = SubResource( 1 )
 
 [node name="Motor" parent="." index="7"]
-process_material = SubResource( 8 )
+process_material = SubResource( 6 )
 
 [node name="ObsticleSensors" type="Node2D" parent="." index="9"]
 modulate = Color( 0, 0, 0, 1 )
