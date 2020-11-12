@@ -170,11 +170,15 @@ scale = Vector2( 2.5, 2.5 )
 [node name="ExplosionFire2" parent="." index="4"]
 scale = Vector2( 0.25, 0.25 )
 
+[node name="HitSFX" parent="." index="5"]
+volume_db = -15.0
+
 [node name="ExplosionSFX" parent="." index="6"]
 stream = ExtResource( 5 )
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource( 7 )
+volume_db = -15.0
 bus = "Enemy"
 
 [node name="Motor" parent="." index="8"]
