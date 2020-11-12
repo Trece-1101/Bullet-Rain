@@ -1,0 +1,134 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/enemies/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemies/orbitals/G1 - Orbital.png" type="Texture" id=2]
+[ext_resource path="res://game/enemies/EnemyFloaker.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 22.6733
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.995516 )
+colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+flag_disable_z = true
+direction = Vector3( 0, 100, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="EnemyFloaker" instance=ExtResource( 1 )]
+collision_layer = 36
+collision_mask = 13
+script = ExtResource( 3 )
+hitpoints = 10.0
+move_speed = 200.0
+velocity = Vector2( 300, 300 )
+accel = Vector2( 60, 60 )
+steer_force = 8.0
+alignment_force = 0.2
+cohesion_force = 0.8
+seperation_force = 0.5
+avoidance_force = 100.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="DamageCollider" parent="." index="1"]
+position = Vector2( 0, -4.24264 )
+shape = SubResource( 1 )
+
+[node name="Motor" parent="." index="7"]
+process_material = SubResource( 6 )
+
+[node name="ObsticleSensors" type="Node2D" parent="." index="9"]
+modulate = Color( 0, 0, 0, 1 )
+
+[node name="RayCast2D" type="RayCast2D" parent="ObsticleSensors" index="0"]
+rotation = 0.261799
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="ObsticleSensors" index="1"]
+rotation = -0.261799
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="ObsticleSensors" index="2"]
+rotation = 0.523599
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="ObsticleSensors" index="3"]
+rotation = -0.523599
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D5" type="RayCast2D" parent="ObsticleSensors" index="4"]
+rotation = 0.785398
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D6" type="RayCast2D" parent="ObsticleSensors" index="5"]
+rotation = -0.785398
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D7" type="RayCast2D" parent="ObsticleSensors" index="6"]
+rotation = 1.0472
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RayCast2D8" type="RayCast2D" parent="ObsticleSensors" index="7"]
+rotation = -1.0472
+enabled = true
+cast_to = Vector2( 0, 150 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="ObsticleDetectors" type="Node2D" parent="." index="10"]
+
+[node name="LeftRay" type="RayCast2D" parent="ObsticleDetectors" index="0"]
+position = Vector2( 20, 0 )
+enabled = true
+cast_to = Vector2( 0, 180 )
+collision_mask = 7
+collide_with_areas = true
+
+[node name="RightRay" type="RayCast2D" parent="ObsticleDetectors" index="1"]
+position = Vector2( -20, 0 )
+enabled = true
+cast_to = Vector2( 0, 180 )
+collision_mask = 7
+collide_with_areas = true
+
+[editable path="ExplosionFire2"]

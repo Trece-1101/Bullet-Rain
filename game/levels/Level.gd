@@ -34,12 +34,14 @@ onready var overlay_layer := $Overlays
 onready var ult_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/UltimateContainer/UltimateProgress
 onready var drone_bar := $HUD/GUI/RightMenu/MarginRightContainer/InformationSection/DroneContainer/DroneProgress
 onready var player_timer: Timer
+onready var floaker_container := $FlockerContainer
 
 #### Variables
 var ship_order := [] setget set_ship_order
 var current_ship_index := 0
 var player_can_ultimatear := false
 var player_can_dronear := false
+var flockers := []
 
 func set_ship_order(value: Array) -> void:
 	ship_order = value
@@ -61,8 +63,13 @@ func _ready() -> void:
 	GlobalMusic.play_music(music)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
-	if debuggeable:
+	if debuggeable and OS.is_debug_build():
 		hud_layer.add_child(debug_panel.instance())
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 
 func _process(delta: float):
 	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
@@ -100,14 +107,12 @@ func create_player() -> void:
 	new_player.set_can_ultimatear(player_can_ultimatear)
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
-
 	#TODO: SACAR ESTO
 	new_player.set_damage_level(player_dmg_level)
 	new_player.set_rate_level(player_rate_level)
 	#
 	add_child(new_player)
 	emit_signal("get_new_player")
-
 
 func create_timer() -> void:
 	var send_waves_timer := Timer.new()
@@ -122,10 +127,6 @@ func _on_send_waves_timer_timeout() -> void:
 		if child.is_in_group("waves_level"):
 			child.set_send_waves(send_waves)
 			child.start_waves()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
 
 func _on_UltimateProgress_full_value() -> void:
 	player_can_ultimatear = true

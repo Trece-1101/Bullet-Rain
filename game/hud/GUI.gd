@@ -1,7 +1,7 @@
 class_name GUI
 extends Control
 
-
+#### Constantes
 const interceptor_on_texture_path:Texture = preload("res://assets/ui/hud/icons/player_yellow_on.png")
 const bomber_on_texture_path:Texture = preload("res://assets/ui/hud/icons/player_red_on.png")
 const stealth_on_texture_path:Texture = preload("res://assets/ui/hud/icons/player_blue_on.png")
@@ -9,6 +9,7 @@ const interceptor_off_texture_path:Texture = preload("res://assets/ui/hud/icons/
 const bomber_off_texture_path:Texture = preload("res://assets/ui/hud/icons/player_red_off.png")
 const stealth_off_texture_path:Texture = preload("res://assets/ui/hud/icons/player_blue_off.png")
 
+#### Variables onready
 onready var level_field := $LeftMenu/MarginLeftContainer/InformationSection/LevelContainer/NumLevelLabel
 onready var time_field := $LeftMenu/MarginLeftContainer/InformationSection/TimeContainer/NumTimeLabel
 onready var points_field := $LeftMenu/MarginLeftContainer/InformationSection/PointsContainer/NumPointsLabel
@@ -19,6 +20,7 @@ onready var hitpoints_texture := $RightMenu/MarginRightContainer/InformationSect
 onready var ultimate_bar := $RightMenu/MarginRightContainer/InformationSection/UltimateContainer/UltimateProgress
 onready var drone_bar := $RightMenu/MarginRightContainer/InformationSection/DroneContainer/DroneProgress
 
+onready var animation := $AnimationPlayer
 
 func _ready() -> void:
 	player_container.get_node("Stealth").texture = stealth_on_texture_path
@@ -75,3 +77,7 @@ func reset_drone_cooldown() -> void:
 
 func reset_ultimate_cooldown() -> void:
 	ultimate_bar.reset()
+
+func shake() -> void:
+	animation.play("small_shake_one")
+

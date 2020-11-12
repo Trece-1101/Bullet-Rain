@@ -6,6 +6,7 @@ extends Area2D
 export var hitpoints := 50.0
 export var speed := 0.0 setget set_speed
 export var is_boss := false setget ,get_is_boss
+export var is_debugging := false
 
 #### Variables
 var can_take_damage := true
@@ -59,8 +60,10 @@ func _ready() -> void:
 	reward_points = hitpoints * 1.5
 	scrap_reward = hitpoints * 0.5
 	set_explosion_vars()
-	get_top_level().connect("get_new_player", self, "player_respawn")
-	get_top_level().connect("wait_new_player", self, "wait")
+	## TODO: modificar esto
+	if not is_debugging:
+		get_top_level().connect("get_new_player", self, "player_respawn")
+		get_top_level().connect("wait_new_player", self, "wait")
 
 # warning-ignore:unused_argument
 func wait(time_to_wait: float) -> void:
@@ -124,15 +127,12 @@ func take_damage(damage: float) -> void:
 		mini_explosion_vfx.get_node("ExplosionPlayer").play("explosion")
 		hit_sfx.play()
 
-
 func die() -> void:
 	pass
-
 
 func play_explosion_sfx() -> void:
 	explosion_sfx.play()
 	explosion_vfx.play("explosion")
-
 
 func disabled_collider() -> void:
 	self.allow_shoot = false

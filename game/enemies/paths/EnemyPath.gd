@@ -13,7 +13,6 @@ export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
 export var is_stopper := false
 export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
-#export var make_invisible := false setget set_make_invisible
 export var debug := false
 
 
