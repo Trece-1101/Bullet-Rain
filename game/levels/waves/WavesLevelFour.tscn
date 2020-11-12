@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://game/levels/waves/LevelWaves.gd" type="Script" id=1]
 [ext_resource path="res://game/enemies/waves/EnemyWave.gd" type="Script" id=2]
@@ -60,7 +60,6 @@
 [ext_resource path="res://game/enemies/paths/patterns/Pattern51.tscn" type="PackedScene" id=59]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern25.tscn" type="PackedScene" id=60]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern30.tscn" type="PackedScene" id=61]
-[ext_resource path="res://game/enemies/group4/EnemyBeamerG4B2.tscn" type="PackedScene" id=62]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern45.tscn" type="PackedScene" id=64]
 [ext_resource path="res://game/enemies/paths/patterns/Pattern26.tscn" type="PackedScene" id=65]
 
@@ -132,7 +131,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 540.852 ],
 "_edit_vertical_guides_": [ 959.523 ]
 }
-beamer = [ ExtResource( 62 ) ]
 
 [node name="Pattern1" parent="Wave1" instance=ExtResource( 18 )]
 visible = false

@@ -14,8 +14,9 @@ collision_layer = 8
 collision_mask = 20
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 0.180392, 0.101961, 0.278431, 1 )
 rotation = -1.5708
-scale = Vector2( 1.2, 1 )
+scale = Vector2( 1.2, 0.9 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -25,3 +26,6 @@ shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" parent="." index="3"]
 scale = Vector2( 0.496031, 0.968502 )
+
+[node name="BulletDestroyParticles" parent="." index="4"]
+scale = Vector2( 1.8, 1.8 )
