@@ -433,11 +433,6 @@ ui_ultimate={
 2d_physics/layer_5="enemy_bullet"
 2d_physics/layer_6="enemy_floaker"
 
-[network]
-
-limits/websocket_server/max_in_buffer_kb=4096
-limits/websocket_server/max_out_buffer_kb=4096
-
 [rendering]
 
 environment/default_environment="res://assets/enviroments/2d_environment.tres"

@@ -8,7 +8,6 @@ send_waves = true
 time_to_spawn_player = 3.0
 level_name = "1"
 next_level = "res://game/levels/GameLevelTwo.tscn"
-music = "level_one"
 
 [node name="StarCenter" parent="BackGrounds/StarCenterLayer" index="0"]
 modulate = Color( 1, 1, 1, 0.588235 )
