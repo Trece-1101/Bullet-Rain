@@ -490,3 +490,4 @@ autoplay = "init"
 anims/init = SubResource( 9 )
 anims/playMenu = SubResource( 10 )
 [connection signal="animation_finished" from="Video" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimationMenu" to="." method="_on_AnimationMenu_animation_finished"]
