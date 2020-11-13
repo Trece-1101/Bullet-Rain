@@ -23,8 +23,9 @@ func _ready() -> void:
 
 
 func use_ultimate() -> void:
-	ult_timer.start()
-	gun_timer.start()
+	if get_parent() != null and get_parent().get_is_alive():
+		ult_timer.start()
+		gun_timer.start()
 
 
 func shoot_missile() -> void:

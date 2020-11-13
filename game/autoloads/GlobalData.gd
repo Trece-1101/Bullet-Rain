@@ -12,7 +12,8 @@ signal send_update_gui_drone_and_ultimate(a_second)
 var points := 0 setget ,get_points
 var scrap := 0 setget ,get_scrap
 
-var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
+#TODO: cooldowns
+var ultimate_cooldown := 10 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
 var original_ultimate_cooldown
 var original_drone_cooldwon

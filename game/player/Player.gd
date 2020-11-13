@@ -202,6 +202,9 @@ func get_direction() -> Vector2:
 # warning-ignore:standalone_ternary
 		change_state(States.MOVING) if direction.length() > 0 else change_state(States.IDLE)
 	
+	if not is_alive:
+		direction = Vector2.ZERO
+	
 	return direction
 
 
@@ -318,14 +321,15 @@ func die() -> void:
 		bypass_god_mode()
 
 func bypass_god_mode() -> void:
+	$Shield.queue_free()
 	GlobalData.substract_hitpoints(0)
 	is_alive = false
 	change_state(States.DEAD)
-	emit_signal("destroy")
 	animation_play.stop()
 	animation_play.clear_queue()
 	explosion.play("explosion")
 	animation_play.play("destroy")
+	emit_signal("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

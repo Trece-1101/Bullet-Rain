@@ -16,7 +16,7 @@ onready var player_destroyer := $PlayerDestroyer/CollisionShape2D
 
 #### Metodos
 func _process(_delta: float) -> void:
-	if not player == null and is_alive:
+	if player != null and is_alive:
 		check_aim_to_player()
 
 
