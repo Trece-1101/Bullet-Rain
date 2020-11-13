@@ -1,20 +1,22 @@
 class_name EnemyFreeTeleporter
 extends EnemyFree
 
-onready var animation_teleport := $AnimationTeleport
+#### Variables Onready
 onready var animation_teletransportation := $AnimationTeletrasportation
-onready var sprite_teleport_ring := $SpriteTeleportRing
+onready var teleport_ring := $TeleportRing
 
+
+#### Metodos
 func _ready() -> void:
-	sprite_teleport_ring.set_as_toplevel(true)
+	teleport_ring.set_as_toplevel(true)
 
 func die() -> void:
-	animation_teleport.play("init")
+	teleport_ring.queue_free()
 	.die()
 
 func make_your_move(new_position: Vector2) -> void:
-	sprite_teleport_ring.global_position = new_position
-	animation_teleport.play("spawn_ring")
+	teleport_ring.global_position = new_position
+	$TeleportRing/AnimationPlayer.play("warp")
 	yield(get_tree().create_timer(0.4), "timeout")
 	global_position = new_position
 	animation_teletransportation.play("teleport")

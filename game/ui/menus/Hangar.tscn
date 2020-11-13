@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/seleccion/select_background.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/ui/hud/extras/hp_bar_2.png" type="Texture" id=15]
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://assets/sounds/music/hangar/hangarmusic01.ogg" type="AudioStream" id=17]
+[ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=18]
 
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
@@ -261,6 +262,14 @@ one_shot = true
 stream = ExtResource( 17 )
 autoplay = true
 bus = "Music"
+
+[node name="Button" parent="." instance=ExtResource( 18 )]
+margin_left = 718.064
+margin_top = 926.535
+margin_right = 1118.06
+margin_bottom = 1026.53
+text = "Continuar      "
+go_to_scene = "res://game/ui/menus/ShipOrderSelection.tscn"
 [connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
 [connection signal="mouse_entered" from="DmgBuy" to="." method="_on_DmgBuy_mouse_entered"]

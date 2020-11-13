@@ -1,17 +1,19 @@
 extends Control
 
-
+#### Variables export
 export var default_texture: Texture
 
-
+#### Variables
 var ship_selected_imgages := []
 var ship_containers := []
 var selected_ships := []
 var ships_order := []
 
+#### Variables Onready
 onready var order_containers := [$OrderOneContainer, $OrderTwoContainer, $OrderThreeContainer]
 onready var order_selectionm_music := $OrderSelectionMusic
 
+#### Metodos
 func _ready() -> void:
 	order_selectionm_music.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -59,10 +61,6 @@ func _on_Reset_pressed() -> void:
 		box.texture = default_texture
 
 
-func _on_Continue_pressed() -> void:
-	GlobalData.set_ship_order(order_ships())
-	get_tree().change_scene(GlobalData.get_level_to_load())
-
 func order_ships() -> Array:
 	var ordered_list := ["", "", ""]
 	for i in range(ordered_list.size()):
@@ -75,3 +73,7 @@ func order_ships() -> Array:
 	
 	return ordered_list
 
+
+func _on_Continue_pressed() -> void:
+	GlobalData.set_ship_order(order_ships())
+	get_tree().change_scene(GlobalData.get_level_to_load())

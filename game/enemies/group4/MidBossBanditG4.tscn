@@ -47,7 +47,7 @@ script = ExtResource( 2 )
 hitpoints = 3500.0
 is_boss = true
 scrap_chance = 0.0
-bullet_speed = 200
+bullet_speed = 220
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition") ]
 has_orbitals = true
 orbital_enemy = ExtResource( 4 )
@@ -109,13 +109,13 @@ angle_separation = 30.0
 [node name="ShootPosition4" type="Position2D" parent="ShootPositions" index="3"]
 position = Vector2( -174.614, 44.4473 )
 script = ExtResource( 5 )
-bullet_quantity = 4
+bullet_quantity = 3
 angle_separation = 90.0
 
 [node name="ShootPosition5" type="Position2D" parent="ShootPositions" index="4"]
 position = Vector2( 174.614, 44.4473 )
 script = ExtResource( 5 )
-bullet_quantity = 4
+bullet_quantity = 3
 angle_separation = 90.0
 
 [node name="Motor" parent="." index="15"]

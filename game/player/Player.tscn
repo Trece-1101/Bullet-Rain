@@ -537,7 +537,7 @@ disabled = false
 
 [node name="PlayerShield" parent="Shield" index="2"]
 visible = true
-frame = 11
+frame = 17
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]

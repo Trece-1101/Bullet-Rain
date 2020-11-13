@@ -25,7 +25,8 @@ var send_waves := true
 
 #### Metodos
 func _ready() -> void:
-	if start_from_wave > 0:
+	#TODO: agregar and OS.is_debug_build()
+	if start_from_wave > 0 and OS.is_debug_build():
 		current_wave = start_from_wave
 	add_to_group("waves_level")
 	yield(owner, "ready")
@@ -43,8 +44,8 @@ func start_waves() -> void:
 						print(path.enemies)
 					var enemy = path.enemies[0]
 					var enemy_type = enemy._bundled.names[0]
-					if not "G1" in enemy_type:
-						print(wave.name)
+					if not "G4" in enemy_type:
+						print("no es de este grupo", wave.name)
 					#print(enemy._bundled.names[0])
 					if enemy_type in total_total_enemies.keys():
 						total_total_enemies[enemy_type] += (1 * path.get_enemy_number())
