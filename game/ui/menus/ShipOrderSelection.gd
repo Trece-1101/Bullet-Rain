@@ -11,11 +11,10 @@ var ships_order := []
 
 #### Variables Onready
 onready var order_containers := [$OrderOneContainer, $OrderTwoContainer, $OrderThreeContainer]
-onready var order_selectionm_music := $OrderSelectionMusic
 
 #### Metodos
 func _ready() -> void:
-	order_selectionm_music.play()
+	GlobalMusic.play_music_obj(GlobalMusic.musics.hangar)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	for container in order_containers:
 		ship_containers.append(container.get_node("ImgContainer").get_node("ShipIconContainer"))

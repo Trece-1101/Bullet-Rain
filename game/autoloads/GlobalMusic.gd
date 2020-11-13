@@ -7,6 +7,8 @@ var fader_out_original_volume := 0.0
 onready var musics := {
 	"presentation": $Presentation,
 	"main_menu": $Menu,
+	"hangar": $Hangar,
+	"ship_selection": $ShipSelection,
 	"credits": $Credits,
 	"level_one": $LevelOne,
 	"level_one_boss": $LevelOneBoss,

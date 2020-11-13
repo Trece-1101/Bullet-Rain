@@ -26,6 +26,8 @@ onready var prev_ship := $Prev
 onready var next_ship := $Next
 
 func _ready() -> void:
+	GlobalMusic.play_music_obj(GlobalMusic.musics.ship_selection)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_set_scrap_label()
 	stats_costs = GlobalData.get_stats_costs()
 	buy_msg.visible = false

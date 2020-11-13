@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://game/autoloads/GlobalMusic.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/music/levelmusic/bossmusic01.ogg" type="AudioStream" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/sounds/music/credits/creditos_01_Blessings From Below.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/music/levelmusic/mainmusic04.ogg" type="AudioStream" id=10]
 [ext_resource path="res://assets/sounds/music/levelmusic/bossmusic04.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/music/hangar/hangarmusic01.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sounds/music/selectionmenu/selectionmenu01.ogg" type="AudioStream" id=13]
 
 [node name="GlobalMusic" type="Node"]
 script = ExtResource( 1 )
@@ -18,6 +20,14 @@ script = ExtResource( 1 )
 [node name="Menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = 5.0
+bus = "Music"
+
+[node name="Hangar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+bus = "Music"
+
+[node name="ShipSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
 bus = "Music"
 
 [node name="Presentation" type="AudioStreamPlayer" parent="."]

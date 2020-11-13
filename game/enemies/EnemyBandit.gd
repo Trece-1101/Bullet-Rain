@@ -61,6 +61,7 @@ func check_aim_to_center() -> float:
 	return my_rotation
 
 func wait(time_to_wait: float) -> void:
+	player = null
 	allow_shoot = false
 	if is_aimer:
 		aim = false
