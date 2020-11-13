@@ -7,10 +7,10 @@
 [ext_resource path="res://game/player/extras/PlayerShield.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/sfx/player/drones/01drones.wav" type="AudioStream" id=6]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=1]
 radius = 16.1236
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.02, 0.02 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 length = 4.2
 step = 0.05
 tracks/0/type = "value"
@@ -96,11 +96,10 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=4]
 radius = 0.01
 
-[sub_resource type="Animation" id=2]
-resource_name = "drone_respawning"
+[sub_resource type="Animation" id=5]
 length = 4.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -171,7 +170,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerShield:visible")
@@ -222,8 +221,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.05, 0.05 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "player_damage"
+[sub_resource type="Animation" id=7]
 length = 2.0
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -294,7 +292,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 length = 2.2
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -380,13 +378,13 @@ frame = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 0.894118, 0.00784314, 0.00784314, 1 )
 position = Vector2( 0, -1.80432 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "respawn"
-anims/init = SubResource( 7 )
-anims/respawn = SubResource( 8 )
+anims/init = SubResource( 2 )
+anims/respawn = SubResource( 3 )
 
 [node name="SpawnSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -401,7 +399,7 @@ grow_rate = 250.0
 
 [node name="BulletSponge" type="CollisionShape2D" parent="Shield"]
 position = Vector2( 0, 5.66321 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Shield"]
 stream = ExtResource( 4 )
@@ -410,12 +408,12 @@ bus = "Player"
 
 [node name="PlayerShield" parent="Shield" instance=ExtResource( 5 )]
 scale = Vector2( 0.05, 0.05 )
-frame = 9
+frame = 10
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
-anims/drone_respawning = SubResource( 2 )
-anims/init = SubResource( 3 )
-anims/player_damage = SubResource( 4 )
-anims/player_respawning = SubResource( 5 )
+anims/drone_respawning = SubResource( 5 )
+anims/init = SubResource( 6 )
+anims/player_damage = SubResource( 7 )
+anims/player_respawning = SubResource( 8 )
 [connection signal="area_entered" from="Shield" to="Shield" method="_on_area_entered"]

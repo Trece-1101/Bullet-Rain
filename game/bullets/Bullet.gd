@@ -65,7 +65,6 @@ func set_color(node: Node2D, red: float, green: float, blue: float) -> void:
 func _process(delta: float) -> void:
 	position += velocity * delta
 	if creater is EnemyBase:
-		#TODO: verificar que delta / 4 quede igual que delta * 0.25
 		bullet_sprite.rotation += 2 * PI * delta * 0.25
 
 

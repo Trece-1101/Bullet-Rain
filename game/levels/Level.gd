@@ -20,10 +20,6 @@ export var level_name := "NombreNivel"
 export var next_level := "res://game/levels/GameLevelOne.tscn"
 export(String, "dummy", "level_one", "level_two", "level_three", "level_four") var music = "dummy"
 
-#TODO: quitar esto
-#export var player_dmg_level := 0
-#export var player_rate_level := 0
-#
 
 #### Variables Onready
 onready var parallax_bg := $BackGrounds/ParallaxBackground
@@ -107,11 +103,6 @@ func create_player() -> void:
 	new_player.set_can_ultimatear(player_can_ultimatear)
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
-	#TODO: SACAR ESTO
-#	if false and OS.is_debug_build():
-#		new_player.set_damage_level(player_dmg_level)
-#		new_player.set_rate_level(player_rate_level)
-	#
 	add_child(new_player)
 	emit_signal("get_new_player")
 

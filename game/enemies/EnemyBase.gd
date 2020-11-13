@@ -60,10 +60,8 @@ func _ready() -> void:
 	reward_points = hitpoints * 1.5
 	scrap_reward = hitpoints * 0.5
 	set_explosion_vars()
-	## TODO: modificar esto
-	if not is_debugging:
-		get_top_level().connect("get_new_player", self, "player_respawn")
-		get_top_level().connect("wait_new_player", self, "wait")
+	get_top_level().connect("get_new_player", self, "player_respawn")
+	get_top_level().connect("wait_new_player", self, "wait")
 
 # warning-ignore:unused_argument
 func wait(time_to_wait: float) -> void:

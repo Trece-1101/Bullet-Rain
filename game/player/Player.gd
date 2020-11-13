@@ -57,6 +57,7 @@ var has_drones := false
 var allow_drones := false setget set_allow_drones
 var drone_can_shoot := false
 var can_ultimatear := false  setget set_can_ultimatear
+var is_alive := true setget ,get_is_alive
 
 
 #### Variables Onready
@@ -128,9 +129,13 @@ func set_allow_drones(value: bool) -> void:
 func set_can_ultimatear(value: bool) -> void:
 	can_ultimatear = value
 
+func get_is_alive() -> bool:
+	return is_alive
+
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
+	is_alive = true
 	global_position = Vector2(960.0, 920.0)
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
@@ -314,6 +319,7 @@ func die() -> void:
 
 func bypass_god_mode() -> void:
 	GlobalData.substract_hitpoints(0)
+	is_alive = false
 	change_state(States.DEAD)
 	emit_signal("destroy")
 	animation_play.stop()

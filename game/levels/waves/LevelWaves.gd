@@ -25,7 +25,6 @@ var send_waves := true
 
 #### Metodos
 func _ready() -> void:
-	#TODO: agregar and OS.is_debug_build()
 	if start_from_wave > 0 and OS.is_debug_build():
 		current_wave = start_from_wave
 	add_to_group("waves_level")
@@ -34,30 +33,30 @@ func _ready() -> void:
 func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
-		#TODO: Quitar esto
-		if false and OS.is_debug_build():
-			var total_enemies := 0
-			var total_total_enemies := {}
-			for wave in get_children():
-				for path in wave.get_children():
-					if path.enemies.size() == 0:
-						print(path.enemies)
-					var enemy = path.enemies[0]
-					var enemy_type = enemy._bundled.names[0]
-					if not "G4" in enemy_type:
-						print("no es de este grupo", wave.name)
-					#print(enemy._bundled.names[0])
-					if enemy_type in total_total_enemies.keys():
-						total_total_enemies[enemy_type] += (1 * path.get_enemy_number())
-					else:
-						total_total_enemies[enemy_type] = (1 * path.get_enemy_number())
-					total_enemies += path.get_enemy_number()
-			print(total_enemies)
-			print(total_total_enemies)
-		##
 		get_children()[current_wave].create_paths()
 		for child in get_children():
 			child.connect("send_next_wave", self, "spawn_wave")
+
+func _reveal_wave() -> void:
+	if false and OS.is_debug_build():
+		var total_enemies := 0
+		var total_total_enemies := {}
+		for wave in get_children():
+			for path in wave.get_children():
+				if path.enemies.size() == 0:
+					print(path.enemies)
+				var enemy = path.enemies[0]
+				var enemy_type = enemy._bundled.names[0]
+				if not "G4" in enemy_type:
+					print("no es de este grupo", wave.name)
+				if enemy_type in total_total_enemies.keys():
+					total_total_enemies[enemy_type] += (1 * path.get_enemy_number())
+				else:
+					total_total_enemies[enemy_type] = (1 * path.get_enemy_number())
+				total_enemies += path.get_enemy_number()
+		print(total_enemies)
+		print(total_total_enemies)
+
 
 func spawn_wave() -> void:
 	current_wave += 1
