@@ -15,6 +15,7 @@ func _ready() -> void:
 	GlobalMusic.play_music_obj(GlobalMusic.musics.main_menu)
 	GlobalData.set_level_to_load(level_one)
 	GlobalData.reset_player_data()
+	print(GlobalData.get_ship_stats())
 
 
 func _on_AnimatedSprite_animation_finished():

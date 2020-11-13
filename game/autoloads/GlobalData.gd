@@ -9,18 +9,21 @@ signal send_update_gui_drone_and_ultimate(a_second)
 
 
 #### Variables
-var points := 0
-var scrap := 0 setget , get_scrap
+var points := 49628 setget ,get_points
+var scrap := 7000 setget ,get_scrap
 
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
+var original_ultimate_cooldown
+var original_drone_cooldwon
 
 var level_time := {"minu": 0, "sec": 0} setget ,get_level_time
 var level_timer: Timer
 var start_time := 0.0
 var current_time := 0.0
 
-var level_to_load := "res://game/levels/GameLevelOne.tscn" setget set_level_to_load
+#TODO: devolver a One
+var level_to_load := "res://game/levels/GameLevelFour.tscn" setget set_level_to_load
 
 var player_ships := {
 	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
@@ -29,9 +32,9 @@ var player_ships := {
 	}
 
 var ships_stats := {
-	"interceptor": {"dmg_level": 0, "rate_level": 0},
-	"bomber": {"dmg_level": 0, "rate_level": 0},
-	"stealth": {"dmg_level": 0, "rate_level": 0}
+	"interceptor": {"dmg_level": 3, "rate_level": 2},
+	"bomber": {"dmg_level": 2, "rate_level": 0},
+	"stealth": {"dmg_level": 2, "rate_level": 2}
 	} setget ,get_ship_stats
 
 var stats_cost := {
@@ -55,7 +58,7 @@ var stats_cost := {
 
 #### Variables Onready
 onready var ship_order := [
-	player_ships.interceptor, 
+	player_ships.interceptor,
 	player_ships.stealth,
 	player_ships.bomber, "interceptor", "stealth", "bomber"] setget set_ship_order,get_ship_order
 
@@ -79,6 +82,16 @@ func get_ship_order() -> Array:
 func get_ship_stats() -> Dictionary:
 	return ships_stats
 
+func get_stats_by_name(ship_name: String) -> Dictionary:
+	var ss := {}
+	if "Interceptor" in ship_name:
+		ss = ships_stats.interceptor
+	elif "Bomber" in ship_name:
+		ss = ships_stats.bomber
+	elif "Stealth" in ship_name:
+		ss = ships_stats.stealth
+	return ss
+
 func get_stats_costs() -> Dictionary:
 	return stats_cost
 
@@ -100,9 +113,13 @@ func get_level_to_load() -> String:
 func get_scrap() -> int:
 	return scrap
 
+func get_points() -> int:
+	return points
 
 #### Metodos
 func _ready() -> void:
+	original_drone_cooldwon = drone_cooldown
+	original_ultimate_cooldown = ultimate_cooldown
 	level_timer = Timer.new()
 	level_timer.wait_time = 1.0
 	level_timer.one_shot = false
@@ -148,6 +165,8 @@ func _process_time() -> void:
 	emit_signal("send_update_gui_drone_and_ultimate", 1)
 
 func reset_level_time() -> void:
+	drone_cooldown = original_drone_cooldwon
+	ultimate_cooldown = original_ultimate_cooldown
 	level_time.minu = 0
 	level_time.sec = 0
 
@@ -158,8 +177,11 @@ func reset_player_data() -> void:
 	level_time.sec = 0
 	start_time = 0.0
 	current_time = 0.0
-	for ship in ships_stats.keys():
-		ship.dmg_level = 0
-		ship.interceptor.rate_level = 0
+	ships_stats.interceptor.dmg_level = 0
+	ships_stats.interceptor.rate_level = 0
+	ships_stats.bomber.dmg_level = 0
+	ships_stats.bomber.rate_level = 0
+	ships_stats.stealth.dmg_level = 0
+	ships_stats.stealth.rate_level = 0
 
 

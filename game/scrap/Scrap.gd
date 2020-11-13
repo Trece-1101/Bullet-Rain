@@ -25,7 +25,8 @@ func _on_body_entered(body: Node) -> void:
 	$PlayerDetector.set_deferred("disabled", true)
 	GlobalData.add_scrap(reward)
 	$AnimationPlayer.stop()
-	_consume_animation(body)
+	if not body == null:
+		_consume_animation(body)
 
 func _consume_animation(body: Node) -> void:
 	$Tween.interpolate_property(

@@ -26,7 +26,7 @@ func _ready() -> void:
 	var rand := int(rand_range(0, 2))
 	if rand >= 1:
 		amplitude *= -1
-	$Sprite.modulate = bomb_color
+	set_color($Sprite, 1.4, 0.8, 2.0)
 	bullet_container = get_tree().get_nodes_in_group("bullets_container")[0]
 
 func _process(delta: float) -> void:
@@ -41,6 +41,10 @@ func _process(delta: float) -> void:
 func destroy() -> void:
 	$AnimationPlayer.play("destroy")
 
+func set_color(node: Node2D, red: float, green: float, blue: float) -> void:
+	node.modulate.r = red
+	node.modulate.g = green
+	node.modulate.b = blue
 
 func explote() -> void:
 	for _i in range(24):

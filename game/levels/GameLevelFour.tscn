@@ -8,7 +8,5 @@ send_waves = true
 time_to_spawn_player = 3.0
 level_name = "4"
 music = "level_four"
-player_dmg_level = 3
-player_rate_level = 3
 
 [node name="WavesLevelFour" parent="." index="5" instance=ExtResource( 2 )]

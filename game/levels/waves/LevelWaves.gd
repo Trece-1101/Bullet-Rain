@@ -25,7 +25,8 @@ var send_waves := true
 
 #### Metodos
 func _ready() -> void:
-	if start_from_wave > 0:
+	#TODO: agregar and OS.is_debug_build()
+	if start_from_wave > 0 and OS.is_debug_build():
 		current_wave = start_from_wave
 	add_to_group("waves_level")
 	yield(owner, "ready")
@@ -34,7 +35,7 @@ func start_waves() -> void:
 	if send_waves:
 		total_waves = get_child_count()
 		#TODO: Quitar esto
-		if true and OS.is_debug_build():
+		if false and OS.is_debug_build():
 			var total_enemies := 0
 			var total_total_enemies := {}
 			for wave in get_children():

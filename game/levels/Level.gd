@@ -21,8 +21,8 @@ export var next_level := "res://game/levels/GameLevelOne.tscn"
 export(String, "dummy", "level_one", "level_two", "level_three", "level_four") var music = "dummy"
 
 #TODO: quitar esto
-export var player_dmg_level := 0
-export var player_rate_level := 0
+#export var player_dmg_level := 0
+#export var player_rate_level := 0
 #
 
 #### Variables Onready
@@ -108,9 +108,9 @@ func create_player() -> void:
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
 	#TODO: SACAR ESTO
-	if false and OS.is_debug_build():
-		new_player.set_damage_level(player_dmg_level)
-		new_player.set_rate_level(player_rate_level)
+#	if false and OS.is_debug_build():
+#		new_player.set_damage_level(player_dmg_level)
+#		new_player.set_rate_level(player_rate_level)
 	#
 	add_child(new_player)
 	emit_signal("get_new_player")
@@ -157,4 +157,4 @@ func get_player() -> Player:
 func _next_level() -> void:
 	yield(get_tree().create_timer(4.0),"timeout")
 	GlobalData.set_level_to_load(next_level)
-	get_tree().change_scene("res://game/ui/menus/ShipOrderSelection.tscn")
+	get_tree().change_scene("res://game/ui/menus/Hangar.tscn")

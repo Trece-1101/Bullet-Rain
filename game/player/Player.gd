@@ -135,6 +135,9 @@ func _ready() -> void:
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
 	speed_shooting = speed * speed_multiplier
+	var stats:Dictionary = GlobalData.get_stats_by_name(self.name)
+	damage_level = stats.dmg_level
+	rate_level = stats.rate_level
 	set_ship_atributes()
 
 func _physics_process(_delta: float) -> void:
