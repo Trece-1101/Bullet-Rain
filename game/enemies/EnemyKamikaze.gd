@@ -16,15 +16,13 @@ onready var player_destroyer := $PlayerDestroyer/CollisionShape2D
 
 #### Metodos
 func _process(_delta: float) -> void:
-	if not player == null and is_alive:
+	if player != null and is_alive:
 		check_aim_to_player()
-
 
 func check_end_of_path() -> void:
 	if follow.unit_offset >= self.end_of_path and not is_at_end:
 		is_at_end = true
 		$TimerStopper.start()
-
 
 
 func check_aim_to_player() -> void:
@@ -76,8 +74,12 @@ func _on_PlayerDestroyer_body_entered(body: Node) -> void:
 
 func die() -> void:
 	.die()
+	set_process(false)
 	$Tween.stop_all()
 
+func wait(time_to_wait: float) -> void:
+	player = null
+	make_the_despelote()
 
 func _on_TimerDestroyer_timeout() -> void:
 	player_destroyer.set_deferred("disabled", true)

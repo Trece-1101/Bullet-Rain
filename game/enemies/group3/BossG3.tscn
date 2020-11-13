@@ -50,7 +50,6 @@ script = ExtResource( 6 )
 hitpoints = 3800.0
 speed = 50.0
 is_boss = true
-bullet_speed = 400.0
 start_position = Vector2( 960, 140 )
 indestructible_bullets = [ NodePath("ShootPositions1/One"), NodePath("ShootPositions1/ShootPosition") ]
 life_thresholds = {

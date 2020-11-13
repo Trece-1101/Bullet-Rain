@@ -19,6 +19,8 @@ __meta__ = {
 
 [node name="PauseSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = 15.0
+bus = "UI"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -99,7 +101,6 @@ margin_top = 322.0
 margin_right = 460.0
 margin_bottom = 422.0
 text = "Menu Principal     "
-go_to_scene = "res://game/ui/menus/Menu.tscn"
 
 [node name="Button3" parent="Control/TextureRect/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 432.0

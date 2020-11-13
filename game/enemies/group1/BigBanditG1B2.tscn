@@ -35,6 +35,7 @@ color_ramp = SubResource( 3 )
 
 [node name="BigBanditG1B2" instance=ExtResource( 3 )]
 hitpoints = 42.0
+scrap_chance = 0.15
 bullet_speed = 280
 shooting_rate = 1.2
 

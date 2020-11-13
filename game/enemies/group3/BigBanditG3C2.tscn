@@ -35,6 +35,7 @@ color_ramp = SubResource( 3 )
 
 [node name="BigBanditG3C2" instance=ExtResource( 1 )]
 hitpoints = 95.0
+scrap_chance = 0.15
 shooting_rate = 1.2
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition5") ]
 

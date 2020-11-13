@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/sounds/sfx/player/shoot/08shoot.wav" type="AudioStream" id=1]
 [ext_resource path="res://game/player/Player.gd" type="Script" id=2]
@@ -417,6 +417,9 @@ scale = 1.5
 scale_curve = SubResource( 11 )
 color_ramp = SubResource( 9 )
 
+[sub_resource type="CircleShape2D" id=13]
+radius = 0.01
+
 [node name="Player" type="KinematicBody2D"]
 z_index = 50
 z_as_relative = false
@@ -528,8 +531,12 @@ script = ExtResource( 13 )
 
 [node name="Shield" parent="." instance=ExtResource( 15 )]
 
+[node name="BulletSponge" parent="Shield" index="0"]
+shape = SubResource( 13 )
+
 [node name="PlayerShield" parent="Shield" index="2"]
-frame = 12
+frame = 15
+playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -563,12 +570,12 @@ bus = "Player"
 
 [node name="UltDroneActivated" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 16 )
-volume_db = -28.0
+volume_db = -15.0
 bus = "Player"
 
 [node name="UltDroneDisabled" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -22.0
+volume_db = -15.0
 bus = "Player"
 [connection signal="timeout" from="GunTimer" to="." method="_on_GunTimer_timeout"]
 [connection signal="timeout" from="DroneGunTimer" to="." method="_on_DroneGunTimer_timeout"]

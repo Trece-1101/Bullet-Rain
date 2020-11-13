@@ -31,7 +31,7 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="MedBanditG1B" instance=ExtResource( 2 )]
+[node name="MedBanditG1B2" instance=ExtResource( 2 )]
 hitpoints = 38.0
 bullet_speed = 260
 shooting_rate = 1.5

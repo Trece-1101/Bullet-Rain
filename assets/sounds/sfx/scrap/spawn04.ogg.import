@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spawn04.ogg-b4593af2533af089da5341005c95e310.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/sfx/scrap/spawn04.ogg"
+dest_files=[ "res://.import/spawn04.ogg-b4593af2533af089da5341005c95e310.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

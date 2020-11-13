@@ -159,6 +159,7 @@ script = ExtResource( 4 )
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -10.0
 bus = "Enemy"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -172,6 +173,7 @@ one_shot = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -15.0
 bus = "Enemy"
 
 [node name="BombPosition" type="Position2D" parent="."]

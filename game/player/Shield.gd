@@ -13,7 +13,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	collider.shape.radius += grow_rate * delta
+	if collider.shape.radius < 400.0:
+		collider.shape.radius += grow_rate * delta
 
 
 func restart_size() -> void:

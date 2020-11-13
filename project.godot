@@ -54,10 +54,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyBase.gd"
 }, {
+"base": "Area2D",
+"class": "EnemyBeamer",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyBeamer.gd"
+}, {
 "base": "EnemyBase",
 "class": "EnemyBoss",
 "language": "GDScript",
 "path": "res://game/enemies/EnemyBoss.gd"
+}, {
+"base": "EnemyBase",
+"class": "EnemyBossBT",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyBossBT.gd"
+}, {
+"base": "EnemyBase",
+"class": "EnemyFloaker",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyFloaker.gd"
 }, {
 "base": "EnemyBandit",
 "class": "EnemyFree",
@@ -104,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/enemies/EnemyRotator.gd"
 }, {
+"base": "Area2D",
+"class": "EnemyShield",
+"language": "GDScript",
+"path": "res://game/enemies/EnemyShield.gd"
+}, {
 "base": "EnemyPather",
 "class": "EnemyShooter",
 "language": "GDScript",
@@ -118,6 +138,11 @@ _global_script_classes=[ {
 "class": "GUI",
 "language": "GDScript",
 "path": "res://game/hud/GUI.gd"
+}, {
+"base": "RayCast2D",
+"class": "LaserBeam",
+"language": "GDScript",
+"path": "res://game/bullets/LaserBeam.gd"
 }, {
 "base": "Node",
 "class": "Level",
@@ -204,6 +229,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/player/Player.gd"
 }, {
+"base": "Area2D",
+"class": "Scrap",
+"language": "GDScript",
+"path": "res://game/scrap/Scrap.gd"
+}, {
 "base": "Position2D",
 "class": "ShootPosition",
 "language": "GDScript",
@@ -244,7 +274,10 @@ _global_script_class_icons={
 "Drone": "",
 "EnemyBandit": "",
 "EnemyBase": "",
+"EnemyBeamer": "",
 "EnemyBoss": "",
+"EnemyBossBT": "",
+"EnemyFloaker": "",
 "EnemyFree": "",
 "EnemyFreeMover": "",
 "EnemyFreeTeleporter": "",
@@ -254,9 +287,11 @@ _global_script_class_icons={
 "EnemyPath": "res://assets/enemies/extras/path_img.png",
 "EnemyPather": "",
 "EnemyRotator": "",
+"EnemyShield": "",
 "EnemyShooter": "",
 "EnemyWave": "res://assets/enemies/extras/sea_waves_2.png",
 "GUI": "",
+"LaserBeam": "",
 "Level": "res://assets/backgrounds/level_2.png",
 "LevelWaves": "res://assets/enemies/extras/sea-waves.png",
 "MainButton": "",
@@ -274,6 +309,7 @@ _global_script_class_icons={
 "PathOutIn": "",
 "PathOutOut": "",
 "Player": "res://assets/player/extras/player_editor_icon.png",
+"Scrap": "",
 "ShootPosition": "",
 "Trail2D": "",
 "Ultimate": "",
@@ -292,6 +328,7 @@ config/icon="res://assets/player/extras/shoot.png"
 
 GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
 GlobalData="*res://game/autoloads/GlobalData.gd"
+BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
 
 [debug]
 
@@ -302,11 +339,17 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
+window/size/resizable=false
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "btree" )
 
 [input]
 
@@ -390,7 +433,8 @@ ui_ultimate={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="enemy_bullet"
+2d_physics/layer_6="enemy_floaker"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://assets/enviroments/2d_environment.tres"

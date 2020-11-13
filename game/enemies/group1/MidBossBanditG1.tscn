@@ -40,6 +40,7 @@ color_ramp = SubResource( 4 )
 [node name="MidBossBanditG1" instance=ExtResource( 1 )]
 hitpoints = 1200.0
 is_boss = true
+scrap_chance = 0.0
 bullet_speed = 260
 shooting_rate = 1.6
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition"), NodePath("ShootPositions/ShootPosition2") ]

@@ -466,7 +466,7 @@ margin_top = 1042.51
 margin_right = 1915.74
 margin_bottom = 1070.51
 theme = SubResource( 7 )
-text = "Version: 0.2.0"
+text = "Version: 0.4.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -490,3 +490,4 @@ autoplay = "init"
 anims/init = SubResource( 9 )
 anims/playMenu = SubResource( 10 )
 [connection signal="animation_finished" from="Video" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="AnimationMenu" to="." method="_on_AnimationMenu_animation_finished"]

@@ -37,7 +37,7 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 6 )
 color_ramp = SubResource( 4 )
 
-[node name="MedBanditG1C" instance=ExtResource( 2 )]
+[node name="MedBanditG1C2" instance=ExtResource( 2 )]
 bullet_speed = 350
 shooting_rate = 1.5
 indestructible_bullets = [ NodePath("ShootPositions/ShootPosition") ]

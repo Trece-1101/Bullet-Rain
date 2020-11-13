@@ -35,10 +35,12 @@ color_ramp = SubResource( 3 )
 [node name="SmallBanditG1B" instance=ExtResource( 1 )]
 position = Vector2( 0, 9.51365 )
 hitpoints = 12.0
+scrap_chance = 0.0
 bullet_speed = 380
 shooting_rate = 2.2
 
 [node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 0, -5.35143 )
 texture = ExtResource( 2 )
 

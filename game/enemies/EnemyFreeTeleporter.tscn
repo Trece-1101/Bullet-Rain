@@ -1,16 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/enemies/EnemyFree.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/animations/teleport.tres" type="Animation" id=2]
-[ext_resource path="res://assets/enemies/free/telepor_ring_1.png" type="Texture" id=3]
 [ext_resource path="res://game/enemies/EnemyFreeTeleporter.gd" type="Script" id=4]
+[ext_resource path="res://game/enemies/EnemyWarp.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.995516 )
 colors = PoolColorArray( 1, 1, 1, 0.705882, 0, 0, 0, 0.188235 )
 
 [sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 5 )
+gradient = SubResource( 1 )
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0, 0, 0 ]
@@ -18,7 +18,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.836319, 0, 0, Vector2( 1, 0 ), -1.09339, 0.0,
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=5]
 resource_local_to_scene = true
 flag_disable_z = true
 direction = Vector3( 0, 100, 0 )
@@ -30,93 +30,19 @@ orbit_velocity_random = 0.0
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
-[sub_resource type="Animation" id=6]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteTeleportRing:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteTeleportRing:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.25 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 0.6
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteTeleportRing:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 0.25 ), Vector2( 0.799893, 0.199973 ), Vector2( 1, 0.25 ), Vector2( 1e-05, 1e-05 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteTeleportRing:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SpriteTeleportRing:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 0.784584, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [node name="EnemyFreeTeleporter" instance=ExtResource( 1 )]
 collision_mask = 8
 script = ExtResource( 4 )
-cuadrant = 0
+
+[node name="Sprite" parent="." index="0"]
+modulate = Color( 1, 1, 1, 1 )
 
 [node name="Motor" parent="." index="11"]
-process_material = SubResource( 8 )
+process_material = SubResource( 5 )
 
-[node name="SpriteTeleportRing" type="Sprite" parent="." index="13"]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -0.308899, -7.58 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 3 )
+[node name="TeleportRing" parent="." index="13" instance=ExtResource( 5 )]
 
-[node name="AnimationTeleport" type="AnimationPlayer" parent="." index="14"]
-anims/init = SubResource( 6 )
-anims/spawn_ring = SubResource( 7 )
-
-[node name="AnimationTeletrasportation" type="AnimationPlayer" parent="." index="15"]
+[node name="AnimationTeletrasportation" type="AnimationPlayer" parent="." index="14"]
 anims/teleport = ExtResource( 2 )
 
 [editable path="ExplosionFire2"]

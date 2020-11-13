@@ -13,7 +13,6 @@ export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false
 export var is_stopper := false
 export(int, FLAGS, "LU", "LD", "RU", "RD") var cuadrant := 0
-#export var make_invisible := false setget set_make_invisible
 export var debug := false
 
 
@@ -113,7 +112,7 @@ func create_enemy(rand_enemy: int) -> void:
 	enemy_container_node.add_child(my_enemy)
 	enemies_spawned += 1
 	check_enemy_status()
-	if debug:
+	if debug and OS.is_debug_build():
 		print("spawneando desde {path} - enemies_spawned {es} - enemy_number {en}".format({"path": self.name, "es": enemies_spawned, "en": enemy_number}))
 
 func check_enemy_status() -> void:

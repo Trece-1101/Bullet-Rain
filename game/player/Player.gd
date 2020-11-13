@@ -49,7 +49,7 @@ var bullet_speed_using := 0
 var bullet_damage_using := 0.0 setget ,get_bullet_damage_using
 var movement_bonus := 0.0
 var damage_penalty := 0.85
-var rate_damage_factor := 0.08
+var rate_damage_factor := 0.09
 var bullet_damage := 0.0
 var shooting_rate := 0.0
 var drone := preload("res://game/player/Drone.tscn")
@@ -57,6 +57,7 @@ var has_drones := false
 var allow_drones := false setget set_allow_drones
 var drone_can_shoot := false
 var can_ultimatear := false  setget set_can_ultimatear
+var is_alive := true setget ,get_is_alive
 
 
 #### Variables Onready
@@ -128,13 +129,20 @@ func set_allow_drones(value: bool) -> void:
 func set_can_ultimatear(value: bool) -> void:
 	can_ultimatear = value
 
+func get_is_alive() -> bool:
+	return is_alive
+
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
+	is_alive = true
 	global_position = Vector2(960.0, 920.0)
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
 	speed_shooting = speed * speed_multiplier
+	var stats:Dictionary = GlobalData.get_stats_by_name(self.name)
+	damage_level = stats.dmg_level
+	rate_level = stats.rate_level
 	set_ship_atributes()
 
 func _physics_process(_delta: float) -> void:
@@ -193,6 +201,9 @@ func get_direction() -> Vector2:
 	if not state in [States.SHOOTING, States.DEAD, States.RESPAWNING]:
 # warning-ignore:standalone_ternary
 		change_state(States.MOVING) if direction.length() > 0 else change_state(States.IDLE)
+	
+	if not is_alive:
+		direction = Vector2.ZERO
 	
 	return direction
 
@@ -310,13 +321,15 @@ func die() -> void:
 		bypass_god_mode()
 
 func bypass_god_mode() -> void:
+	$Shield.queue_free()
 	GlobalData.substract_hitpoints(0)
+	is_alive = false
 	change_state(States.DEAD)
-	emit_signal("destroy")
 	animation_play.stop()
 	animation_play.clear_queue()
 	explosion.play("explosion")
 	animation_play.play("destroy")
+	emit_signal("destroy")
 
 func disabled_collider() -> void:
 	change_state(States.DEAD)

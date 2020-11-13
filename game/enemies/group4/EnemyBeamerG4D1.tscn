@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/bullets/LaserBeam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/enemies/EnemyBeamer.tscn" type="PackedScene" id=3]
+
+[node name="EnemyBeamerG4B1" instance=ExtResource( 3 )]
+time_to_live = 10.0
+speed = Vector2( 60, 0 )
+rotation_speed = 0.0
+start_position = Vector2( 640, 150 )
+
+[node name="LaserBeam2D" parent="Lasers" index="0"]
+cast_time = 3.0
+cool_down = 2.5
+
+[node name="LaserBeam2D2" parent="Lasers" index="1" instance=ExtResource( 2 )]
+cast_time = 3.0
+cool_down = 2.5
+vector_cast = "Right"

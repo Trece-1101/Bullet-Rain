@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://game/levels/Level.gd" type="Script" id=1]
 [ext_resource path="res://game/debug/DebugPanels.tscn" type="PackedScene" id=2]
@@ -12,7 +12,9 @@
 [ext_resource path="res://game/ui/overlays/Pause.tscn" type="PackedScene" id=10]
 [ext_resource path="res://game/levels/BulletsContainer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/backgrounds/extras/planets.png" type="Texture" id=12]
+[ext_resource path="res://game/levels/border/FloakerDestroyer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/backgrounds/extras/asteroids.png" type="Texture" id=14]
+[ext_resource path="res://assets/enviroments/2d_environment.tres" type="Environment" id=15]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -164,6 +166,8 @@ __meta__ = {
 debug_panel = ExtResource( 2 )
 send_waves = false
 time_to_start_waves = 4.0
+level_name = "Base"
+music = "level_one"
 
 [node name="Overlays" type="CanvasLayer" parent="."]
 layer = 4
@@ -172,6 +176,7 @@ layer = 4
 layer = 2
 
 [node name="DecorRight" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 material = SubResource( 1 )
 position = Vector2( 1670, -100 )
 amount = 3
@@ -182,6 +187,7 @@ process_material = SubResource( 2 )
 texture = ExtResource( 14 )
 
 [node name="StarRight" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 position = Vector2( 1670, -100 )
 amount = 75
 lifetime = 2.0
@@ -190,6 +196,7 @@ visibility_rect = Rect2( -250, -100, 500, 200 )
 process_material = SubResource( 3 )
 
 [node name="DecorLeft" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 material = SubResource( 4 )
 position = Vector2( 250, -100 )
 amount = 3
@@ -200,6 +207,7 @@ process_material = SubResource( 5 )
 texture = ExtResource( 14 )
 
 [node name="StarLeft" type="Particles2D" parent="HUD"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
 position = Vector2( 250, -100 )
 z_index = 29
 z_as_relative = false
@@ -236,7 +244,7 @@ centered = false
 layer = -3
 
 [node name="StarCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-self_modulate = Color( 1, 1, 1, 0.588235 )
+self_modulate = Color( 1, 1, 1, 0.313726 )
 position = Vector2( 960, -100 )
 amount = 150
 lifetime = 2.0
@@ -245,6 +253,7 @@ visibility_rect = Rect2( -460, -100, 920, 200 )
 process_material = SubResource( 7 )
 
 [node name="PlanetsCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
 material = SubResource( 8 )
 position = Vector2( 960, -100 )
 amount = 2
@@ -254,7 +263,7 @@ process_material = SubResource( 9 )
 texture = ExtResource( 12 )
 
 [node name="DecorCenter" type="Particles2D" parent="BackGrounds/StarCenterLayer"]
-modulate = Color( 1, 1, 1, 0.588235 )
+self_modulate = Color( 1, 1, 1, 0.470588 )
 material = SubResource( 10 )
 position = Vector2( 960, -100 )
 lifetime = 6.5
@@ -284,4 +293,11 @@ right_border = 1420.0
 
 [node name="BulletDestroyer" parent="BordersContainer" instance=ExtResource( 5 )]
 
+[node name="FloakerDestroyer" parent="BordersContainer" instance=ExtResource( 13 )]
+
+[node name="FlockerContainer" type="Node2D" parent="."]
+
 [node name="BulletsContainer" parent="." instance=ExtResource( 11 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 15 )

@@ -46,22 +46,25 @@ func create(
 func _ready() -> void:
 	match type:
 		-1:
-			bullet_sprite.modulate = bullet_color_alt
+			set_color(bullet_sprite, 1.6, 1.5, 0.2)
 			$BulletDestroyParticles.modulate = bullet_color_alt
 		1:
-			bullet_sprite.modulate = bullet_color_one
+			set_color(bullet_sprite, 1.8, 0.2, 0.1)
 			$BulletDestroyParticles.modulate = bullet_color_one
 		0:
-			bullet_sprite.modulate = bullet_color_indestructible
+			set_color(bullet_sprite, 1.2, 0.7, 2.0)
 			$BulletDestroyParticles.modulate = bullet_color_indestructible
 		_:
 			print("ERROR")
 
+func set_color(node: Node2D, red: float, green: float, blue: float) -> void:
+	node.modulate.r = red
+	node.modulate.g = green
+	node.modulate.b = blue
 
 func _process(delta: float) -> void:
 	position += velocity * delta
 	if creater is EnemyBase:
-		#TODO: verificar que delta / 4 quede igual que delta * 0.25
 		bullet_sprite.rotation += 2 * PI * delta * 0.25
 
 
