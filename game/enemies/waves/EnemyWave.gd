@@ -18,7 +18,8 @@ func get_send() -> bool:
 
 #### Metodos
 func create_paths() -> void:
-	print(name)
+	if OS.is_debug_build():
+		print(name)
 	if beamer.size() > 0:
 		for beam in beamer:
 			var new_beamer:EnemyBeamer = beam.instance()

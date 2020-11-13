@@ -144,6 +144,7 @@ __meta__ = {
 visible = false
 enemies = [ ExtResource( 30 ) ]
 speed = 160.0
+are_aimers = true
 
 [node name="Pattern4" parent="Wave1" instance=ExtResource( 9 )]
 visible = false

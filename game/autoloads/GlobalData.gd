@@ -9,8 +9,8 @@ signal send_update_gui_drone_and_ultimate(a_second)
 
 
 #### Variables
-var points := 49628 setget ,get_points
-var scrap := 7000 setget ,get_scrap
+var points := 0 setget ,get_points
+var scrap := 0 setget ,get_scrap
 
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
@@ -22,8 +22,7 @@ var level_timer: Timer
 var start_time := 0.0
 var current_time := 0.0
 
-#TODO: devolver a One
-var level_to_load := "res://game/levels/GameLevelFour.tscn" setget set_level_to_load
+var level_to_load := "res://game/levels/GameLevelOne.tscn" setget set_level_to_load
 
 var player_ships := {
 	"interceptor": preload("res://game/player/PlayerInterceptor.tscn"),
@@ -32,9 +31,9 @@ var player_ships := {
 	}
 
 var ships_stats := {
-	"interceptor": {"dmg_level": 3, "rate_level": 2},
-	"bomber": {"dmg_level": 2, "rate_level": 0},
-	"stealth": {"dmg_level": 2, "rate_level": 2}
+	"interceptor": {"dmg_level": 0, "rate_level": 0},
+	"bomber": {"dmg_level": 0, "rate_level": 0},
+	"stealth": {"dmg_level": 0, "rate_level": 0}
 	} setget ,get_ship_stats
 
 var stats_cost := {

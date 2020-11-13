@@ -112,7 +112,7 @@ func create_enemy(rand_enemy: int) -> void:
 	enemy_container_node.add_child(my_enemy)
 	enemies_spawned += 1
 	check_enemy_status()
-	if debug:
+	if debug and OS.is_debug_build():
 		print("spawneando desde {path} - enemies_spawned {es} - enemy_number {en}".format({"path": self.name, "es": enemies_spawned, "en": enemy_number}))
 
 func check_enemy_status() -> void:

@@ -1,13 +1,11 @@
 class_name UltimateBomber
 extends Ultimate
 
+#### Variables Export
 var missile := load("res://game/bullets/Missile.tscn")
 var missile_damage := 5.0
 var gun_timer: Timer
 var bullet_container: Node
-
-
-var total_damage := 0.0
 
 
 func _ready() -> void:
@@ -25,26 +23,25 @@ func _ready() -> void:
 
 
 func use_ultimate() -> void:
-	ult_timer.start()
-	gun_timer.start()
+	if get_parent() != null and get_parent().get_is_alive():
+		ult_timer.start()
+		gun_timer.start()
 
 
 func shoot_missile() -> void:
-	get_node("UltSFX").play()
-	for pos in parent.get_node("MissilesPositions").get_children():
-		var new_missile = missile.instance()
-		new_missile.create(
-			parent,
-			pos.global_position,
-			-1000.0,
-			0.0,
-			0,
-			missile_damage
-		)
-		bullet_container.add_child(new_missile)
-		#TODO: quitar esto
-		total_damage += missile_damage
+	if parent != null and parent.get_is_alive():
+		get_node("UltSFX").play()
+		for pos in parent.get_node("MissilesPositions").get_children():
+			var new_missile = missile.instance()
+			new_missile.create(
+				parent,
+				pos.global_position,
+				-1000.0,
+				0.0,
+				0,
+				missile_damage
+			)
+			bullet_container.add_child(new_missile)
 
 func end_ultimate() -> void:
 	gun_timer.stop()
-	print(total_damage)

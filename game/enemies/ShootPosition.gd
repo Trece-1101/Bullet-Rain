@@ -62,7 +62,7 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 		)
 		bullet_container.add_child(new_bullet)
 	
-	if debug:
+	if debug and OS.is_debug_build():
 		print(
 			"Creador: {c} - Vel: {s} - Daño: {d}".format({
 				"c": owner, "s": speed, "d": damage

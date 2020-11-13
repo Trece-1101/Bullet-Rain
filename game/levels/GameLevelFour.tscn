@@ -1,12 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/levels/waves/WavesLevelFour.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/backgrounds/yellow/yellow_center.png" type="Texture" id=5]
+[ext_resource path="res://assets/backgrounds/yellow/yellow_laterals.png" type="Texture" id=6]
 
 [node name="GameLevelFour" instance=ExtResource( 1 )]
+scroll_speed = 250.0
 send_waves = true
 time_to_spawn_player = 3.0
 level_name = "4"
 music = "level_four"
+
+[node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
+texture = ExtResource( 5 )
+
+[node name="BgLats" parent="BackGrounds/ParallaxBorder/ParallaxLayer" index="0"]
+texture = ExtResource( 6 )
 
 [node name="WavesLevelFour" parent="." index="5" instance=ExtResource( 2 )]

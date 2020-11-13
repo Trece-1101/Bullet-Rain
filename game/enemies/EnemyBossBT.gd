@@ -182,7 +182,6 @@ func _on_MovementTween_tween_all_completed() -> void:
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func spawn_minions(critic: bool, type: int) -> void:
-#	print("es critico: {c} y del tipo {t}".format({"c": critic, "t": type}))
 	pass
 
 # warning-ignore:unused_argument

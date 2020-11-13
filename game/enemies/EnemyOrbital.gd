@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		angle += speed * delta
 
 func die() -> void:
+	$DamageCollider.set_deferred("disabled", true)
 	if leader != null:
 		leader.remove_orbital(self)
 	animation_player.play("destroy")

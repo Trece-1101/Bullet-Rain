@@ -298,6 +298,7 @@ tracks/22/keys = {
 }
 
 [node name="Scrap" type="Area2D"]
+modulate = Color( 1, 1, 1, 0.392157 )
 collision_layer = 0
 script = ExtResource( 12 )
 
@@ -305,51 +306,61 @@ script = ExtResource( 12 )
 shape = SubResource( 1 )
 
 [node name="Part01" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -5.9144, 2.9461 )
 rotation = 1.20329
 texture = ExtResource( 7 )
 
 [node name="Part02" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -8.14415, -3.90037 )
 rotation = 1.26992
 texture = ExtResource( 2 )
 
 [node name="Part03" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -5.037, -1.78755 )
 rotation = -2.27683
 texture = ExtResource( 6 )
 
 [node name="Part04" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 15.2058, 3.53115 )
 rotation = -1.32136
 texture = ExtResource( 4 )
 
 [node name="Part05" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -7.54616, -16.3474 )
 rotation = 0.576775
 texture = ExtResource( 1 )
 
 [node name="Part06" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 4.54739, -16.5503 )
 rotation = -0.679354
 texture = ExtResource( 6 )
 
 [node name="Part07" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 6.05798, -4.60565 )
 rotation = 2.52602
 texture = ExtResource( 5 )
 
 [node name="Part08" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 9.57902, -4.83503 )
 rotation = -0.791104
 texture = ExtResource( 1 )
 
 [node name="Part09" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( 9.169, -7.87961 )
 rotation = 0.466525
 texture = ExtResource( 8 )
 
 [node name="Part10" type="Sprite" parent="."]
+modulate = Color( 2, 2, 2, 1 )
 position = Vector2( -1.77605, -1.24624 )
 rotation = -0.288253
 texture = ExtResource( 2 )

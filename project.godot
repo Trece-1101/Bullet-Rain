@@ -321,7 +321,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Bullet Rain"
-run/main_scene="res://game/levels/GameLevelFour.tscn"
+run/main_scene="res://game/ui/menus/Presentation.tscn"
 config/icon="res://assets/player/extras/shoot.png"
 
 [autoload]
@@ -339,6 +339,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
+window/size/resizable=false
 window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
@@ -433,11 +434,6 @@ ui_ultimate={
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="enemy_bullet"
 2d_physics/layer_6="enemy_floaker"
-
-[network]
-
-limits/websocket_server/max_in_buffer_kb=4096
-limits/websocket_server/max_out_buffer_kb=4096
 
 [rendering]
 

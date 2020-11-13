@@ -533,11 +533,9 @@ script = ExtResource( 13 )
 
 [node name="BulletSponge" parent="Shield" index="0"]
 shape = SubResource( 13 )
-disabled = false
 
 [node name="PlayerShield" parent="Shield" index="2"]
-visible = true
-frame = 17
+frame = 15
 playing = true
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
