@@ -466,7 +466,7 @@ margin_top = 1042.51
 margin_right = 1915.74
 margin_bottom = 1070.51
 theme = SubResource( 7 )
-text = "Version: 0.2.0"
+text = "Version: 0.4.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
