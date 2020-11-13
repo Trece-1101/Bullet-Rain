@@ -339,6 +339,7 @@ gdscript/warnings/return_value_discarded=false
 
 window/size/width=1920
 window/size/height=1080
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false
@@ -432,6 +433,11 @@ ui_ultimate={
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="enemy_bullet"
 2d_physics/layer_6="enemy_floaker"
+
+[network]
+
+limits/websocket_server/max_in_buffer_kb=4096
+limits/websocket_server/max_out_buffer_kb=4096
 
 [rendering]
 

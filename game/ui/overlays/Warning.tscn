@@ -231,7 +231,7 @@ margin_right = 316.0
 margin_bottom = 50.5
 theme = ExtResource( 3 )
 text = "Warning
-Jefe final en camino"
+Jefe  en camino"
 align = 1
 max_lines_visible = 2
 __meta__ = {
