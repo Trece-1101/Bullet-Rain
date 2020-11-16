@@ -18,7 +18,16 @@ export var time_to_start_waves := 3.0
 export var time_to_spawn_player := 2.5
 export var level_name := "NombreNivel"
 export var next_level := "res://game/levels/GameLevelOne.tscn"
-export(String, "dummy", "level_one", "level_two", "level_three", "level_four") var music = "dummy"
+export(
+	String,
+	"dummy",
+	"level_one",
+	"level_two",
+	"level_three",
+	"level_four",
+	"level_five",
+	"level_six",
+	"level_seven") var music = "dummy"
 
 
 #### Variables Onready

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/levels/GameLevelBase.tscn" type="PackedScene" id=1]
+
+[node name="GameLevelFive" instance=ExtResource( 1 )]
+time_to_spawn_player = 3.0
+level_name = "5"
+music = "level_five"

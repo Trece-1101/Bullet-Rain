@@ -17,14 +17,17 @@ onready var musics := {
 	"level_two_boss": $LevelTwoBoss,
 	"level_three_boss": $LevelThreeBoss,
 	"level_four": $LevelFour,
-	"level_four_boss": $LevelFourBoss
+	"level_four_boss": $LevelFourBoss,
+	"level_five": $LevelFive,
+	"level_five_boos": $LevelFiveBoss
 }
 
 onready var transitions := {
 	"level_one_to_boss": [$LevelOne, $LevelOneBoss],
 	"level_two_to_boss": [$LevelTwo, $LevelTwoBoss],
 	"level_three_to_boss": [$LevelThree, $LevelThreeBoss],
-	"level_four_to_boss": [$LevelFour, $LevelFourBoss]} setget ,get_transitions
+	"level_four_to_boss": [$LevelFour, $LevelFourBoss],
+	"level_five_to_boss": [$LevelFive, $LevelFiveBoss]} setget ,get_transitions
 
 onready var tween_fade_in := $TweenFadeIn
 onready var tween_fade_out := $TweenFadeOut
