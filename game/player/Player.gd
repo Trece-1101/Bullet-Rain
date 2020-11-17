@@ -135,14 +135,8 @@ func get_is_alive() -> bool:
 #### Metodos
 func _ready() -> void:
 	add_to_group("player")
-	is_alive = true
-	global_position = Vector2(960.0, 920.0)
 	change_state(States.IDLE)
 	sprite.material.set_shader_param("outline_color", color_trail)
-	speed_shooting = speed * speed_multiplier
-	var stats:Dictionary = GlobalData.get_stats_by_name(self.name)
-	damage_level = stats.dmg_level
-	rate_level = stats.rate_level
 	set_ship_atributes()
 
 func _physics_process(_delta: float) -> void:
@@ -209,15 +203,24 @@ func get_direction() -> Vector2:
 
 
 func set_ship_atributes() -> void:
+	# Vida y posicion
+	is_alive = true
+	global_position = Vector2(960.0, 920.0)
+	# Stats
+	var stats:Dictionary = GlobalData.get_stats_by_name(self.name)
+	damage_level = stats.dmg_level
+	rate_level = stats.rate_level
+	# Disparo
 	shooting_rate = attribute_calculator("shooting_rate")
 	bullet_damage = attribute_calculator("bullet_damage")
-	gun_timer.wait_time = shooting_rate
-	$DroneGunTimer.wait_time = shooting_rate
+	speed_shooting = speed * speed_multiplier
 	speed_using = speed
 	bullet_damage_using = bullet_damage
 	bullet_speed_using = bullet_speed
+	gun_timer.wait_time = shooting_rate
+	$DroneGunTimer.wait_time = shooting_rate
+	# Setear ultimate
 	var new_ultimate: Ultimate
-	
 	match self.name:
 		"PlayerInterceptor":
 			new_ultimate = UltimateInterceptor.new()
@@ -227,7 +230,7 @@ func set_ship_atributes() -> void:
 			new_ultimate = UltimateStealth.new()
 		_:
 			print("ERROR")
-	
+
 	new_ultimate.name = "Ultimate"
 	add_child(new_ultimate)
 
@@ -322,6 +325,7 @@ func die() -> void:
 
 func bypass_god_mode() -> void:
 	$Shield.queue_free()
+	stop_drone_shooting()
 	GlobalData.substract_hitpoints(0)
 	is_alive = false
 	change_state(States.DEAD)

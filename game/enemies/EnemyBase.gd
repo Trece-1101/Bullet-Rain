@@ -75,11 +75,12 @@ func _process(_delta: float) -> void:
 	pass
 
 func get_top_level() -> Node:
-	var parent := get_parent()
-	while not "GameLevel" in parent.name:
-		parent = parent.get_parent()
-	
+	var parent:Node = get_tree().get_nodes_in_group("game_level")[0]
 	return parent
+#	var parent := get_parent()
+#	while not "GameLevel" in parent.name:
+#		parent = parent.get_parent()
+	
 
 func player_respawn() -> void:
 	allow_shoot = true

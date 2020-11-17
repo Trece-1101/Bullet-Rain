@@ -54,7 +54,7 @@ func set_ship_order(value: Array) -> void:
 #### Metodos
 func _ready() -> void:
 	GlobalData.reset_level_time()
-	add_to_group("level")
+	add_to_group("game_level")
 	set_ship_order(GlobalData.get_ship_order().slice(0, 2)) 
 	gui.set_usable_ship_order(GlobalData.get_ship_order().slice(3, 5))
 	gui.set_level_name(level_name)
@@ -75,10 +75,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and OS.is_debug_build():
 		get_tree().quit()
 
-
 func _process(delta: float):
 	parallax_bg.scroll_offset += Vector2.DOWN * scroll_speed * delta
 	parallax_border.scroll_offset += Vector2.DOWN * scroll_speed * delta
+
 
 func create_player_timer() -> void:
 	player_timer = Timer.new()
@@ -98,7 +98,6 @@ func player_destroyed() -> void:
 		overlay_layer.add_child(new_game_over)
 	else:
 		player_timer.start()
-
 
 func _on_player_timer_timeout() -> void:
 	create_player()

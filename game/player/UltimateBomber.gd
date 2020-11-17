@@ -9,7 +9,7 @@ var bullet_container: Node
 
 
 func _ready() -> void:
-	._ready()
+#	._ready()
 	gun_timer = Timer.new()
 	gun_timer.wait_time = 0.20
 	gun_timer.one_shot = false

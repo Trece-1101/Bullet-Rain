@@ -16,7 +16,6 @@ func _ready() -> void:
 	ult_timer.connect("timeout", self, "end_ultimate")
 	add_child(ult_timer)
 
-
 func create_sfx(stream_path: String, volume: float) -> void:
 	shoot_sfx = AudioStreamPlayer.new()
 	var stream := stream_path

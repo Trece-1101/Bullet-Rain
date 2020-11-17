@@ -2,7 +2,7 @@ class_name UltimateInterceptor
 extends Ultimate
 
 func _ready() -> void:
-	._ready()
+#	._ready()
 	animation = load("res://game/player/AnimBlank.tscn")
 	create_sfx(
 		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
