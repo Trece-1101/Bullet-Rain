@@ -1,12 +1,12 @@
 class_name UltimateInterceptor
 extends Ultimate
 
-func _ready() -> void:
+#func _ready() -> void:
 #	._ready()
-	animation = load("res://game/player/AnimBlank.tscn")
-	create_sfx(
-		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
-		0.0)
+#	animation = load("res://game/player/AnimBlank.tscn")
+#	create_sfx(
+#		"res://assets/sounds/sfx/player/shoot/09shoot.wav",
+#		0.0)
 
 func use_ultimate() -> void:
 	var new_anim:AnimBlank = animation.instance()

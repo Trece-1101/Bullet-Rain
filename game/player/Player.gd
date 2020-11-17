@@ -58,6 +58,11 @@ var allow_drones := false setget set_allow_drones
 var drone_can_shoot := false
 var can_ultimatear := false  setget set_can_ultimatear
 var is_alive := true setget ,get_is_alive
+var ultimates := [
+	preload("res://game/player/UltimateInterceptor.tscn"),
+	preload("res://game/player/UltimateBomber.tscn"),
+	preload("res://game/player/UltimateStealth.tscn")
+]
 
 
 #### Variables Onready
@@ -223,11 +228,14 @@ func set_ship_atributes() -> void:
 	var new_ultimate: Ultimate
 	match self.name:
 		"PlayerInterceptor":
-			new_ultimate = UltimateInterceptor.new()
+#			new_ultimate = UltimateInterceptor.new()
+			new_ultimate = ultimates[0].instance()
 		"PlayerBomber":
-			new_ultimate = UltimateBomber.new()
+			new_ultimate = ultimates[1].instance()
+#			new_ultimate = UltimateBomber.new()
 		"PlayerStealth":
-			new_ultimate = UltimateStealth.new()
+			new_ultimate = ultimates[2].instance()
+#			new_ultimate = UltimateStealth.new()
 		_:
 			print("ERROR")
 
