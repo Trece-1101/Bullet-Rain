@@ -77,7 +77,7 @@ func die() -> void:
 	set_process(false)
 	$Tween.stop_all()
 
-func wait(time_to_wait: float) -> void:
+func wait(_time_to_wait: float) -> void:
 	player = null
 	make_the_despelote()
 
