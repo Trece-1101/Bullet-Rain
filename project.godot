@@ -335,6 +335,7 @@ config/icon="res://assets/player/extras/shoot.png"
 GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
 GlobalData="*res://game/autoloads/GlobalData.gd"
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+GameSaver="*res://game/autoloads/GameSaver.gd"
 
 [debug]
 

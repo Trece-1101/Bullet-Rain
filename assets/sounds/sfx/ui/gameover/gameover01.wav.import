@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/gameover01.wav-9ff1bd66086e5c43644043101f6718f7.sample"
+path="res://.import/gameover01.wav-86a8a27dbcbfc7e9bc6e769fd1f33001.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sfx/UI/gameover/gameover01.wav"
-dest_files=[ "res://.import/gameover01.wav-9ff1bd66086e5c43644043101f6718f7.sample" ]
+source_file="res://assets/sounds/sfx/ui/gameover/gameover01.wav"
+dest_files=[ "res://.import/gameover01.wav-86a8a27dbcbfc7e9bc6e769fd1f33001.sample" ]
 
 [params]
 
