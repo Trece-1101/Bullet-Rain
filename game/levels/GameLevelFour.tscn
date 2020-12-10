@@ -10,6 +10,7 @@ scroll_speed = 250.0
 send_waves = true
 time_to_spawn_player = 3.0
 level_name = "4"
+next_level = "res://game/levels/GameLevelFour.tscn"
 music = "level_four"
 
 [node name="BgCenter" parent="BackGrounds/ParallaxBackground/ParallaxLayer" index="0"]
