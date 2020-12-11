@@ -2,6 +2,9 @@ extends Control
 
 #### Variables export
 export var default_texture: Texture
+export var interceptor_texture: Texture
+export var bomber_texture: Texture
+export var stealth_texture: Texture
 
 #### Variables
 var ship_selected_imgages := []
@@ -32,7 +35,13 @@ func connect_buttons(order_container: VBoxContainer) -> void:
 
 func _on_icon_pressed(this_button: TextureButton, this_order_container: VBoxContainer, this_icon_container: VBoxContainer) -> void:
 	var ship_selected := this_order_container.get_node("ImgContainer").get_node("ShipSelected")
-	ship_selected.texture = this_button.texture_normal
+	match this_button.name:
+		"StealthIcon":
+			ship_selected.texture = stealth_texture
+		"BomberIcon":
+			ship_selected.texture = bomber_texture
+		"InterceptorIcon":
+			ship_selected.texture = interceptor_texture
 	selected_ships.append(this_button.name)
 	ships_order.append(this_order_container.name)
 	manage_buttons(this_button, this_icon_container)
