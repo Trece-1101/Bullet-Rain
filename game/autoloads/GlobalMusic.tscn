@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/autoloads/GlobalMusic.gd" type="Script" id=1]
 [ext_resource path="res://assets/sounds/music/levelmusic/bossmusic01.ogg" type="AudioStream" id=2]
-[ext_resource path="res://assets/sounds/music/levelmusic/mainmusic01.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/music/levelmusic/mainmusic01fix.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/music/mainmenu/mainmenumusic.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/sounds/music/levelmusic/bossmusic05.ogg" type="AudioStream" id=5]
 [ext_resource path="res://assets/sounds/music/levelmusic/mainmusic02.ogg" type="AudioStream" id=6]
@@ -45,7 +45,7 @@ bus = "Music"
 
 [node name="LevelTwo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = 12.0
+volume_db = -8.0
 bus = "Music"
 
 [node name="LevelThree" type="AudioStreamPlayer" parent="."]
@@ -53,6 +53,11 @@ stream = ExtResource( 10 )
 bus = "Music"
 
 [node name="LevelFour" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 4.0
+bus = "Music"
+
+[node name="LevelFive" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = 4.0
 bus = "Music"
@@ -73,6 +78,11 @@ volume_db = -10.0
 bus = "Music"
 
 [node name="LevelFourBoss" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 5.0
+bus = "Music"
+
+[node name="LevelFiveBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = 5.0
 bus = "Music"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/player/Ultimate.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sounds/sfx/player/ultimates/stealth/ultimatestealth4sec.wav" type="AudioStream" id=2]
+[ext_resource path="res://game/player/UltimateStealth.gd" type="Script" id=3]
+[ext_resource path="res://game/player/AnimInvulnerable.tscn" type="PackedScene" id=4]
+
+[node name="UltimateStealth" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+animation = ExtResource( 4 )
+
+[node name="UltSFX" parent="." index="1"]
+stream = ExtResource( 2 )
+volume_db = -10.0

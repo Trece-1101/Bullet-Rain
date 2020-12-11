@@ -79,12 +79,12 @@ func spawn_enemy() -> void:
 
 
 func create_random_enemy() -> void:
-	var rand_enemy := 0
-	if enemies.size() > 1:
-		randomize()
-		rand_enemy = int(rand_range(0, enemies.size()))
+	create_enemy(0)
+#	var rand_enemy := 0
+#	if enemies.size() > 1:
+#		randomize()
+#		rand_enemy = int(rand_range(0, enemies.size()))
 	
-	create_enemy(rand_enemy)
 
 func create_enemy(rand_enemy: int) -> void:
 	var my_enemy: EnemyPather = enemies[rand_enemy].instance()
