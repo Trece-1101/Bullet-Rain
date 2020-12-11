@@ -59,7 +59,8 @@ func get_is_boss() -> bool:
 func _ready() -> void:
 	reward_points = hitpoints * 1.5
 	scrap_reward = hitpoints * 0.5
-	set_explosion_vars()
+	explosion_limits = sprite.texture.get_size() * 0.4
+#	set_explosion_vars()
 	get_top_level().connect("get_new_player", self, "player_respawn")
 	get_top_level().connect("wait_new_player", self, "wait")
 
@@ -68,18 +69,19 @@ func wait(time_to_wait: float) -> void:
 	pass
 
 func set_explosion_vars() -> void:
-	explosion_limits = sprite.texture.get_size() * 0.4
+#	explosion_limits = sprite.texture.get_size() * 0.4
 	get_random_explosion_sfx()
 
 func _process(_delta: float) -> void:
 	pass
 
 func get_top_level() -> Node:
-	var parent := get_parent()
-	while not "GameLevel" in parent.name:
-		parent = parent.get_parent()
-	
+	var parent:Node = get_tree().get_nodes_in_group("game_level")[0]
 	return parent
+#	var parent := get_parent()
+#	while not "GameLevel" in parent.name:
+#		parent = parent.get_parent()
+	
 
 func player_respawn() -> void:
 	allow_shoot = true

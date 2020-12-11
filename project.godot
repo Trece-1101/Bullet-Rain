@@ -229,6 +229,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://game/player/Player.gd"
 }, {
+"base": "Resource",
+"class": "SaveGameData",
+"language": "GDScript",
+"path": "res://game/autoloads/SaveGameData.gd"
+}, {
 "base": "Area2D",
 "class": "Scrap",
 "language": "GDScript",
@@ -309,6 +314,7 @@ _global_script_class_icons={
 "PathOutIn": "",
 "PathOutOut": "",
 "Player": "res://assets/player/extras/player_editor_icon.png",
+"SaveGameData": "",
 "Scrap": "",
 "ShootPosition": "",
 "Trail2D": "",
@@ -329,6 +335,7 @@ config/icon="res://assets/player/extras/shoot.png"
 GlobalMusic="*res://game/autoloads/GlobalMusic.tscn"
 GlobalData="*res://game/autoloads/GlobalData.gd"
 BTDebugServer="*res://addons/btree/script/bt_debug_server.gd"
+GameSaver="*res://game/autoloads/GameSaver.gd"
 
 [debug]
 
@@ -340,7 +347,6 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
-window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/vsync/use_vsync=false

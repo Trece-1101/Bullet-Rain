@@ -9,8 +9,10 @@ signal send_update_gui_drone_and_ultimate(a_second)
 
 
 #### Variables
-var points := 0 setget ,get_points
-var scrap := 0 setget ,get_scrap
+var current_slot := "slot_1" setget set_current_slot, get_current_slot
+
+var points := 0 setget set_points ,get_points
+var scrap := 0 setget set_scrap ,get_scrap
 
 var ultimate_cooldown := 180 setget ,get_ultimate_cooldown
 var drone_cooldown := 120 setget ,get_drone_cooldown
@@ -34,7 +36,7 @@ var ships_stats := {
 	"interceptor": {"dmg_level": 0, "rate_level": 0},
 	"bomber": {"dmg_level": 0, "rate_level": 0},
 	"stealth": {"dmg_level": 0, "rate_level": 0}
-	} setget ,get_ship_stats
+	} setget set_ship_stats, get_ship_stats
 
 var stats_cost := {
 	"dmg": {
@@ -59,7 +61,7 @@ var stats_cost := {
 onready var ship_order := [
 	player_ships.interceptor,
 	player_ships.stealth,
-	player_ships.bomber, "interceptor", "stealth", "bomber"] setget set_ship_order,get_ship_order
+	player_ships.bomber, "interceptor", "stealth", "bomber"] setget set_ship_order, get_ship_order
 
 
 #### Setter y Getters
@@ -77,6 +79,9 @@ func set_ship_order(values: Array) -> void:
 
 func get_ship_order() -> Array:
 	return ship_order
+
+func set_ship_stats(value: Dictionary) -> void:
+	ships_stats = value
 
 func get_ship_stats() -> Dictionary:
 	return ships_stats
@@ -109,11 +114,23 @@ func set_level_to_load(value: String) -> void:
 func get_level_to_load() -> String:
 	return level_to_load
 
+func set_scrap(value: int) -> void:
+	scrap = value
+
 func get_scrap() -> int:
 	return scrap
 
+func set_points(value: int) -> void:
+	points = value
+
 func get_points() -> int:
 	return points
+
+func set_current_slot(value: String) -> void:
+	current_slot = value
+
+func get_current_slot() -> String:
+	return current_slot
 
 #### Metodos
 func _ready() -> void:
