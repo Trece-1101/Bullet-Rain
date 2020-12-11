@@ -5,7 +5,7 @@ extends Control
 export var level_one := "res://game/levels/GameLevelOne.tscn"
 
 #### Variables Onready
-onready var video := $Video
+onready var video := $VideoPlayer
 onready var animenu := $AnimationMenu
 
 
@@ -16,10 +16,8 @@ func _ready() -> void:
 	GlobalData.set_level_to_load(level_one)
 	GlobalData.reset_player_data()
 
-
-func _on_AnimatedSprite_animation_finished():
+func _on_VideoPlayer_finished():
 	animenu.play("playMenu")
-
 
 func _on_AnimationMenu_animation_finished(anim_name: String) -> void:
 	if anim_name == "playMenu":
