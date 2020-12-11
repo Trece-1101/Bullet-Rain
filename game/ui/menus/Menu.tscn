@@ -1,171 +1,46 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/themes/test_button_hover_theme.tres" type="StyleBox" id=1]
 [ext_resource path="res://game/ui/buttons/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/backgrounds/screen_shading.png" type="Texture" id=3]
-[ext_resource path="res://assets/ui/menu/video/0049.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/themes/test_button_normal_theme.tres" type="StyleBox" id=5]
 [ext_resource path="res://assets/fonts/ethnocentric rg.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/ui/menu/video/menu_video.ogv" type="VideoStream" id=7]
 [ext_resource path="res://game/ui/menus/Menu.gd" type="Script" id=8]
 [ext_resource path="res://assets/ui/menu/menu_lateral.png" type="Texture" id=9]
-[ext_resource path="res://assets/ui/menu/video/0050.jpg" type="Texture" id=10]
-[ext_resource path="res://assets/ui/menu/video/0051.jpg" type="Texture" id=11]
-[ext_resource path="res://assets/ui/menu/video/0055.jpg" type="Texture" id=12]
-[ext_resource path="res://assets/ui/menu/video/0056.jpg" type="Texture" id=13]
-[ext_resource path="res://assets/ui/menu/video/0046.jpg" type="Texture" id=14]
-[ext_resource path="res://assets/ui/menu/video/0047.jpg" type="Texture" id=15]
-[ext_resource path="res://assets/ui/menu/video/0048.jpg" type="Texture" id=16]
-[ext_resource path="res://assets/ui/menu/video/0057.jpg" type="Texture" id=17]
-[ext_resource path="res://assets/ui/menu/video/0052.jpg" type="Texture" id=18]
-[ext_resource path="res://assets/ui/menu/video/0053.jpg" type="Texture" id=19]
-[ext_resource path="res://assets/ui/menu/video/0054.jpg" type="Texture" id=20]
-[ext_resource path="res://assets/ui/menu/video/0006.jpg" type="Texture" id=21]
-[ext_resource path="res://assets/ui/menu/video/0003.jpg" type="Texture" id=22]
-[ext_resource path="res://assets/ui/menu/video/0004.jpg" type="Texture" id=23]
-[ext_resource path="res://assets/ui/menu/video/0005.jpg" type="Texture" id=24]
-[ext_resource path="res://assets/ui/menu/video/0007.jpg" type="Texture" id=25]
-[ext_resource path="res://assets/ui/menu/video/0001.jpg" type="Texture" id=26]
-[ext_resource path="res://assets/ui/menu/video/0002.jpg" type="Texture" id=27]
-[ext_resource path="res://assets/ui/menu/video/0013.jpg" type="Texture" id=28]
-[ext_resource path="res://assets/ui/menu/video/0011.jpg" type="Texture" id=29]
-[ext_resource path="res://assets/ui/menu/video/0008.jpg" type="Texture" id=30]
-[ext_resource path="res://assets/ui/menu/video/0009.jpg" type="Texture" id=31]
-[ext_resource path="res://assets/ui/menu/video/0010.jpg" type="Texture" id=32]
-[ext_resource path="res://assets/ui/menu/video/0012.jpg" type="Texture" id=33]
-[ext_resource path="res://assets/ui/menu/video/0023.jpg" type="Texture" id=34]
-[ext_resource path="res://assets/ui/menu/video/0014.jpg" type="Texture" id=35]
-[ext_resource path="res://assets/ui/menu/video/0026.jpg" type="Texture" id=36]
-[ext_resource path="res://assets/ui/menu/video/0016.jpg" type="Texture" id=37]
-[ext_resource path="res://assets/ui/menu/video/0033.jpg" type="Texture" id=38]
-[ext_resource path="res://assets/ui/menu/video/0036.jpg" type="Texture" id=39]
-[ext_resource path="res://assets/ui/menu/video/0037.jpg" type="Texture" id=40]
-[ext_resource path="res://assets/ui/menu/video/0039.jpg" type="Texture" id=41]
-[ext_resource path="res://assets/ui/menu/video/0032.jpg" type="Texture" id=42]
-[ext_resource path="res://assets/ui/menu/video/0024.jpg" type="Texture" id=43]
-[ext_resource path="res://assets/ui/menu/video/0018.jpg" type="Texture" id=44]
-[ext_resource path="res://assets/ui/menu/video/0019.jpg" type="Texture" id=45]
-[ext_resource path="res://assets/ui/menu/video/0021.jpg" type="Texture" id=46]
-[ext_resource path="res://assets/ui/menu/video/0022.jpg" type="Texture" id=47]
-[ext_resource path="res://assets/ui/menu/video/0025.jpg" type="Texture" id=48]
-[ext_resource path="res://assets/ui/menu/video/0028.jpg" type="Texture" id=49]
-[ext_resource path="res://assets/ui/menu/video/0015.jpg" type="Texture" id=50]
-[ext_resource path="res://assets/ui/menu/video/0030.jpg" type="Texture" id=51]
-[ext_resource path="res://assets/ui/menu/video/0020.jpg" type="Texture" id=52]
-[ext_resource path="res://assets/ui/menu/video/0029.jpg" type="Texture" id=53]
-[ext_resource path="res://assets/ui/menu/video/0031.jpg" type="Texture" id=54]
-[ext_resource path="res://assets/ui/menu/video/0035.jpg" type="Texture" id=55]
-[ext_resource path="res://assets/ui/menu/video/0034.jpg" type="Texture" id=56]
-[ext_resource path="res://assets/ui/menu/video/0038.jpg" type="Texture" id=57]
-[ext_resource path="res://assets/ui/menu/video/0027.jpg" type="Texture" id=58]
-[ext_resource path="res://assets/ui/menu/video/0017.jpg" type="Texture" id=59]
-[ext_resource path="res://assets/ui/menu/video/0042.jpg" type="Texture" id=60]
-[ext_resource path="res://assets/ui/menu/video/0044.jpg" type="Texture" id=61]
-[ext_resource path="res://assets/ui/menu/video/0045.jpg" type="Texture" id=62]
-[ext_resource path="res://assets/ui/menu/video/0041.jpg" type="Texture" id=63]
-[ext_resource path="res://assets/ui/menu/video/0043.jpg" type="Texture" id=64]
-[ext_resource path="res://assets/ui/menu/video/0040.jpg" type="Texture" id=65]
-[ext_resource path="res://assets/ui/menu/video/0078.jpg" type="Texture" id=66]
-[ext_resource path="res://assets/ui/menu/video/0069.jpg" type="Texture" id=67]
-[ext_resource path="res://assets/ui/menu/video/0077.jpg" type="Texture" id=68]
-[ext_resource path="res://assets/ui/menu/video/0084.jpg" type="Texture" id=69]
-[ext_resource path="res://assets/ui/menu/video/0102.jpg" type="Texture" id=70]
-[ext_resource path="res://assets/ui/menu/video/0113.jpg" type="Texture" id=71]
-[ext_resource path="res://assets/ui/menu/video/0115.jpg" type="Texture" id=72]
-[ext_resource path="res://assets/ui/menu/video/0117.jpg" type="Texture" id=73]
-[ext_resource path="res://assets/ui/menu/video/0101.jpg" type="Texture" id=74]
-[ext_resource path="res://assets/ui/menu/video/0088.jpg" type="Texture" id=75]
-[ext_resource path="res://assets/ui/menu/video/0098.jpg" type="Texture" id=76]
-[ext_resource path="res://assets/ui/menu/video/0087.jpg" type="Texture" id=77]
-[ext_resource path="res://assets/ui/menu/video/0067.jpg" type="Texture" id=78]
-[ext_resource path="res://assets/ui/menu/video/0072.jpg" type="Texture" id=79]
-[ext_resource path="res://assets/ui/menu/video/0082.jpg" type="Texture" id=80]
-[ext_resource path="res://assets/ui/menu/video/0116.jpg" type="Texture" id=81]
-[ext_resource path="res://assets/ui/menu/video/0099.jpg" type="Texture" id=82]
-[ext_resource path="res://assets/ui/menu/video/0071.jpg" type="Texture" id=83]
-[ext_resource path="res://assets/ui/menu/video/0105.jpg" type="Texture" id=84]
-[ext_resource path="res://assets/ui/menu/video/0085.jpg" type="Texture" id=85]
-[ext_resource path="res://assets/ui/menu/video/0106.jpg" type="Texture" id=86]
-[ext_resource path="res://assets/ui/menu/video/0092.jpg" type="Texture" id=87]
-[ext_resource path="res://assets/ui/menu/video/0093.jpg" type="Texture" id=88]
-[ext_resource path="res://assets/ui/menu/video/0081.jpg" type="Texture" id=89]
-[ext_resource path="res://assets/ui/menu/video/0111.jpg" type="Texture" id=90]
-[ext_resource path="res://assets/ui/menu/video/0076.jpg" type="Texture" id=91]
-[ext_resource path="res://assets/ui/menu/video/0097.jpg" type="Texture" id=92]
-[ext_resource path="res://assets/ui/menu/video/0100.jpg" type="Texture" id=93]
-[ext_resource path="res://assets/ui/menu/video/0096.jpg" type="Texture" id=94]
-[ext_resource path="res://assets/ui/menu/video/0073.jpg" type="Texture" id=95]
-[ext_resource path="res://assets/ui/menu/video/0109.jpg" type="Texture" id=96]
-[ext_resource path="res://assets/ui/menu/video/0114.jpg" type="Texture" id=97]
-[ext_resource path="res://assets/ui/menu/video/0107.jpg" type="Texture" id=98]
-[ext_resource path="res://assets/ui/menu/video/0080.jpg" type="Texture" id=99]
-[ext_resource path="res://assets/ui/menu/video/0090.jpg" type="Texture" id=100]
-[ext_resource path="res://assets/ui/menu/video/0083.jpg" type="Texture" id=101]
-[ext_resource path="res://assets/ui/menu/video/0074.jpg" type="Texture" id=102]
-[ext_resource path="res://assets/ui/menu/video/0089.jpg" type="Texture" id=103]
-[ext_resource path="res://assets/ui/menu/video/0086.jpg" type="Texture" id=104]
-[ext_resource path="res://assets/ui/menu/video/0104.jpg" type="Texture" id=105]
-[ext_resource path="res://assets/ui/menu/video/0066.jpg" type="Texture" id=106]
-[ext_resource path="res://assets/ui/menu/video/0070.jpg" type="Texture" id=107]
-[ext_resource path="res://assets/ui/menu/video/0068.jpg" type="Texture" id=108]
-[ext_resource path="res://assets/ui/menu/video/0075.jpg" type="Texture" id=109]
-[ext_resource path="res://assets/ui/menu/video/0079.jpg" type="Texture" id=110]
-[ext_resource path="res://assets/ui/menu/video/0108.jpg" type="Texture" id=111]
-[ext_resource path="res://assets/ui/menu/video/0110.jpg" type="Texture" id=112]
-[ext_resource path="res://assets/ui/menu/video/0112.jpg" type="Texture" id=113]
-[ext_resource path="res://assets/ui/menu/video/0095.jpg" type="Texture" id=114]
-[ext_resource path="res://assets/ui/menu/video/0118.jpg" type="Texture" id=115]
-[ext_resource path="res://assets/ui/menu/video/0091.jpg" type="Texture" id=116]
-[ext_resource path="res://assets/ui/menu/video/0094.jpg" type="Texture" id=117]
-[ext_resource path="res://assets/ui/menu/video/0103.jpg" type="Texture" id=118]
 [ext_resource path="res://assets/ui/menu/video/0119.jpg" type="Texture" id=119]
-[ext_resource path="res://assets/ui/menu/video/0060.jpg" type="Texture" id=120]
-[ext_resource path="res://assets/ui/menu/video/0061.jpg" type="Texture" id=121]
-[ext_resource path="res://assets/ui/menu/video/0063.jpg" type="Texture" id=122]
-[ext_resource path="res://assets/ui/menu/video/0058.jpg" type="Texture" id=123]
-[ext_resource path="res://assets/ui/menu/video/0062.jpg" type="Texture" id=124]
-[ext_resource path="res://assets/ui/menu/video/0064.jpg" type="Texture" id=125]
-[ext_resource path="res://assets/ui/menu/video/0065.jpg" type="Texture" id=126]
-[ext_resource path="res://assets/ui/menu/video/0059.jpg" type="Texture" id=127]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 33 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 50 ), ExtResource( 37 ), ExtResource( 59 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 52 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 34 ), ExtResource( 43 ), ExtResource( 48 ), ExtResource( 36 ), ExtResource( 58 ), ExtResource( 49 ), ExtResource( 53 ), ExtResource( 51 ), ExtResource( 54 ), ExtResource( 42 ), ExtResource( 38 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 65 ), ExtResource( 63 ), ExtResource( 60 ), ExtResource( 64 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 123 ), ExtResource( 127 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 124 ), ExtResource( 122 ), ExtResource( 125 ), ExtResource( 126 ), ExtResource( 106 ), ExtResource( 78 ), ExtResource( 108 ), ExtResource( 67 ), ExtResource( 107 ), ExtResource( 83 ), ExtResource( 79 ), ExtResource( 95 ), ExtResource( 102 ), ExtResource( 109 ), ExtResource( 91 ), ExtResource( 68 ), ExtResource( 66 ), ExtResource( 110 ), ExtResource( 99 ), ExtResource( 89 ), ExtResource( 80 ), ExtResource( 101 ), ExtResource( 69 ), ExtResource( 85 ), ExtResource( 104 ), ExtResource( 77 ), ExtResource( 75 ), ExtResource( 103 ), ExtResource( 100 ), ExtResource( 116 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 117 ), ExtResource( 114 ), ExtResource( 94 ), ExtResource( 92 ), ExtResource( 76 ), ExtResource( 82 ), ExtResource( 93 ), ExtResource( 74 ), ExtResource( 70 ), ExtResource( 118 ), ExtResource( 105 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 98 ), ExtResource( 111 ), ExtResource( 96 ), ExtResource( 112 ), ExtResource( 90 ), ExtResource( 113 ), ExtResource( 71 ), ExtResource( 97 ), ExtResource( 72 ), ExtResource( 81 ), ExtResource( 73 ), ExtResource( 115 ), ExtResource( 119 ) ],
-"loop": false,
-"name": "default",
-"speed": 60.0
-} ]
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFontData" id=3]
+[sub_resource type="DynamicFontData" id=2]
 font_path = "res://assets/fonts/ethnocentric rg.ttf"
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 use_filter = true
-font_data = SubResource( 3 )
+font_data = SubResource( 2 )
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/fonts/ethnocentric rg.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 110
 outline_size = 4
 outline_color = Color( 0.131149, 0.716458, 0.746094, 1 )
 use_filter = true
 extra_spacing_char = 3
-font_data = SubResource( 5 )
+font_data = SubResource( 4 )
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 6 )
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 2 )
+Button/fonts/font = SubResource( 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = ExtResource( 1 )
@@ -178,17 +53,17 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = SubResource( 4 )
+Label/fonts/font = SubResource( 3 )
 Label/styles/normal = null
 
-[sub_resource type="Theme" id=8]
-default_font = SubResource( 6 )
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 5 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
 Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = SubResource( 2 )
+Button/fonts/font = SubResource( 1 )
 Button/styles/disabled = null
 Button/styles/focus = null
 Button/styles/hover = ExtResource( 1 )
@@ -204,7 +79,7 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "init"
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureShading:visible")
@@ -278,20 +153,8 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ) ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Video:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "playMenu"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:visible")
@@ -376,9 +239,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Video" type="AnimatedSprite" parent="."]
-position = Vector2( 960, 540 )
-frames = SubResource( 1 )
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -445,6 +312,7 @@ go_to_scene = "res://game/ui/menus/OptionsMenu.tscn"
 [node name="BtnLeaderboard" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 312.0
 margin_bottom = 412.0
+disabled = true
 text = "Leaderboard  "
 
 [node name="BtnCredits" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
@@ -465,7 +333,7 @@ margin_left = 1705.74
 margin_top = 1042.51
 margin_right = 1915.74
 margin_bottom = 1070.51
-theme = SubResource( 7 )
+theme = SubResource( 6 )
 text = "Version: 0.4.0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -478,7 +346,7 @@ margin_left = 113.0
 margin_top = 82.4801
 margin_right = 1197.0
 margin_bottom = 216.48
-theme = SubResource( 8 )
+theme = SubResource( 7 )
 custom_colors/font_outline_modulate = Color( 0.231373, 0.913725, 1, 1 )
 text = "Bullet Rain"
 __meta__ = {
@@ -487,7 +355,7 @@ __meta__ = {
 
 [node name="AnimationMenu" type="AnimationPlayer" parent="."]
 autoplay = "init"
-anims/init = SubResource( 9 )
-anims/playMenu = SubResource( 10 )
-[connection signal="animation_finished" from="Video" to="." method="_on_AnimatedSprite_animation_finished"]
+anims/init = SubResource( 8 )
+anims/playMenu = SubResource( 9 )
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
 [connection signal="animation_finished" from="AnimationMenu" to="." method="_on_AnimationMenu_animation_finished"]
