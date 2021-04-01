@@ -13,5 +13,5 @@ Bullet Rain es un bullet hell 2D de scroll vertical que nos pone en la piel de N
 ***
 ### ***Imagenes***
 ***
-### ***Gameplay***
+### ***Preview***
 [![Gameplay BulletRain](https://img.youtube.com/vi//0.jpg)]()
