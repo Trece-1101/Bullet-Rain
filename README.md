@@ -17,3 +17,15 @@ Bullet Rain es un bullet hell 2D de scroll vertical que nos pone en la piel de N
 [![Gameplay BulletRain](https://img.youtube.com/vi/rQX_XEziqoI/0.jpg)](https://www.youtube.com/watch?v=rQX_XEziqoI)
 ***
 ### ***Imagenes***
+
+<img src="https://user-images.githubusercontent.com/22348284/113460932-cc108180-93f0-11eb-90c2-245e5e6357ef.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113460936-ce72db80-93f0-11eb-9c43-49b6cc85ebef.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113460970-eb0f1380-93f0-11eb-9119-d6ddc90ea9e1.gif width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113460972-ed716d80-93f0-11eb-9836-44e600ebd325.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113460976-f06c5e00-93f0-11eb-9da6-7c4fbc444b95.gif" width=50% height=50%/>
+
+<img src="https://user-images.githubusercontent.com/22348284/113460980-f2ceb800-93f0-11eb-88be-12e372d1167b.gif" width=50% height=50%/>
