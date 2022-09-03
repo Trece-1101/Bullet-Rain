@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/select02.wav-2f16e212fa791f5adde455c953e2e763.sample"
+path="res://.import/select02.wav-0d36297f4a82fac249889a1ccfb3791f.sample"
 
 [deps]
 
-source_file="res://assets/sounds/sfx/UI/select02.wav"
-dest_files=[ "res://.import/select02.wav-2f16e212fa791f5adde455c953e2e763.sample" ]
+source_file="res://assets/sounds/sfx/ui/select02.wav"
+dest_files=[ "res://.import/select02.wav-0d36297f4a82fac249889a1ccfb3791f.sample" ]
 
 [params]
 
@@ -17,5 +17,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

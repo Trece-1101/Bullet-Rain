@@ -11,5 +11,5 @@ dest_files=[ "res://.import/spawn04.ogg-b4593af2533af089da5341005c95e310.oggstr"
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
