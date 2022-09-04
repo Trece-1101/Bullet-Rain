@@ -30,8 +30,8 @@ func send_common_enemies() -> void:
 		new_enemy.is_aimer = false
 		new_enemy.test_shoot = true
 		new_enemy.scrap_chance = 0.0
-		new_enemy.global_position.y = 180.0
-		new_enemy.global_position.x = 760.0 + offset
+		new_enemy.position.y = 180.0
+		new_enemy.position.x = 760.0 + offset
 		add_child(new_enemy)
 		offset += 200.0
 
@@ -44,8 +44,8 @@ func _on_send_i_bullers() -> void:
 		new_enemy.is_aimer = false
 		new_enemy.test_shoot = true
 		new_enemy.scrap_chance = 0.0
-		new_enemy.global_position.y = 180.0
-		new_enemy.global_position.x = 760.0 + offset
+		new_enemy.position.y = 180.0
+		new_enemy.position.x = 760.0 + offset
 		add_child(new_enemy)
 		offset += 400.0
 
@@ -58,16 +58,16 @@ func _on_send_aimers_enemies() -> void:
 		new_enemy.is_aimer = true
 		new_enemy.test_shoot = true
 		new_enemy.scrap_chance = 0.0
-		new_enemy.global_position.y = 180.0
-		new_enemy.global_position.x = 760.0 + offset
+		new_enemy.position.y = 180.0
+		new_enemy.position.x = 760.0 + offset
 		add_child(new_enemy)
 		offset += 400.0
 
 func _on_send_rotator_enemy() -> void:
 	var new_enemy:EnemyRotator = rotator.instance()
 	new_enemy.scrap_chance = 0.0
-	new_enemy.global_position.y = 180.0
-	new_enemy.global_position.x = 960.0
+	new_enemy.position.y = 180.0
+	new_enemy.position.x = 960.0
 	new_enemy.can_shoot = true
 	new_enemy.test_shoot = true
 	add_child(new_enemy)
@@ -77,10 +77,9 @@ func send_scrapper() -> void:
 	var new_enemy:EnemyBandit = scrapper.instance()
 	new_enemy.is_aimer = false
 	new_enemy.scrap_chance = 100.0
-	new_enemy.global_position.y = 180.0
-	new_enemy.global_position.x = 960.0
+	new_enemy.position.y = 180.0
+	new_enemy.position.x = 960.0
 	add_child(new_enemy)
-
 
 
 func choose_random_dummy(array_size: int) -> int:

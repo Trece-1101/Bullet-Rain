@@ -24,6 +24,12 @@ is_tutorial = true
 
 [node name="CanvasTutorial" parent="." index="7" instance=ExtResource( 2 )]
 
+[node name="ColorRect" parent="CanvasTutorial" index="0"]
+margin_left = 8.0
+margin_top = -503.609
+margin_right = 493.0
+margin_bottom = 486.391
+
 [node name="EnemiesTutorialContainer" type="Node" parent="." index="8"]
 script = ExtResource( 3 )
 dummies = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ) ]
@@ -31,3 +37,5 @@ i_bullers = [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 9 ) ]
 aimers = [ ExtResource( 14 ), ExtResource( 4 ), ExtResource( 13 ), ExtResource( 5 ) ]
 scrapper = ExtResource( 11 )
 rotator = ExtResource( 12 )
+
+[editable path="CanvasTutorial"]
