@@ -81,7 +81,7 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = null
+Label/fonts/font = SubResource( 6 )
 Label/styles/normal = null
 
 [node name="OptionsMenu" type="Control"]
@@ -142,7 +142,7 @@ margin_left = -288.0
 margin_top = -277.0
 margin_right = 362.0
 margin_bottom = -208.0
-text = "Opciones"
+text = "Options"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -175,13 +175,13 @@ __meta__ = {
 [node name="Resolution" type="Label" parent="Control/VBoxContainer"]
 margin_right = 500.0
 margin_bottom = 69.0
-text = "Resolucion"
+text = "Resolution"
 
 [node name="FullScreen" type="CheckBox" parent="Control/VBoxContainer"]
 margin_top = 99.0
 margin_right = 500.0
 margin_bottom = 131.0
-text = "Pantalla completa"
+text = "Full screen"
 flat = true
 align = 1
 
@@ -203,7 +203,7 @@ text = "General"
 margin_top = 294.0
 margin_right = 500.0
 margin_bottom = 363.0
-text = "Musica"
+text = "Music"
 
 [node name="SoundVolume" type="Label" parent="Control/VBoxContainer"]
 margin_top = 393.0
@@ -225,7 +225,8 @@ margin_top = 292.858
 margin_right = 187.989
 margin_bottom = 392.858
 rect_scale = Vector2( 1.2, 1.2 )
-text = "Menu Principal  "
+text = "Main Menu"
+align = 1
 
 [node name="OptionButton" type="OptionButton" parent="Control"]
 margin_left = 94.0
@@ -360,6 +361,7 @@ __meta__ = {
 [node name="SFXTest" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 bus = "SFX"
+
 [connection signal="toggled" from="Control/VBoxContainer/FullScreen" to="." method="_on_FullScreen_toggled"]
 [connection signal="item_selected" from="Control/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="Control/PlusGeneral" to="." method="_on_PlusGeneral_pressed"]

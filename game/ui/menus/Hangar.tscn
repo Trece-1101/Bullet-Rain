@@ -65,7 +65,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 5 )
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 959.331 ]
 }
 interceptor_texture = ExtResource( 8 )
@@ -198,8 +197,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="ScrapContainer"]
 margin_right = 328.0
 margin_bottom = 141.0
-text = "Chatarra
-Total"
+text = "Total
+Scrap"
 align = 1
 
 [node name="ScrapTotal" type="Label" parent="ScrapContainer"]
@@ -231,12 +230,9 @@ margin_top = 178.081
 margin_right = 479.811
 margin_bottom = 251.081
 rect_scale = Vector2( 3, 3 )
-text = "Daño"
+text = "Damage"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="DmgBuy" type="Button" parent="DamageBorder"]
 unique_name_in_owner = true
@@ -245,7 +241,7 @@ margin_top = 593.965
 margin_right = 501.872
 margin_bottom = 625.965
 rect_scale = Vector2( 3, 3 )
-text = "Comprar"
+text = "Buy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -273,12 +269,12 @@ __meta__ = {
 }
 
 [node name="RateLabel" type="Label" parent="CadenceBorder"]
-margin_left = 198.709
+margin_left = 71.3184
 margin_top = 196.153
-margin_right = 485.709
+margin_right = 430.318
 margin_bottom = 265.153
 rect_scale = Vector2( 3, 3 )
-text = "Cadencia"
+text = "Shoot rate"
 align = 1
 valign = 1
 __meta__ = {
@@ -306,7 +302,7 @@ margin_top = 591.979
 margin_right = 539.692
 margin_bottom = 623.979
 rect_scale = Vector2( 3, 3 )
-text = "Comprar"
+text = "Buy"
 
 [node name="CostLabel" type="Label" parent="."]
 margin_left = 815.049
@@ -314,12 +310,9 @@ margin_top = 380.008
 margin_right = 1102.05
 margin_bottom = 449.008
 custom_fonts/font = SubResource( 3 )
-text = "Costo
-Chatarra"
+text = "Scrap
+Needed"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="OnBuyMsg" type="Label" parent="."]
 margin_left = 801.842
@@ -327,7 +320,8 @@ margin_top = 490.141
 margin_right = 1116.84
 margin_bottom = 583.141
 custom_fonts/font = SubResource( 3 )
-text = "No tiene suficiente Chatarra"
+text = "Not enough
+scrap!!!!"
 align = 1
 autowrap = true
 __meta__ = {
@@ -343,7 +337,7 @@ margin_left = 718.064
 margin_top = 926.535
 margin_right = 1118.06
 margin_bottom = 1026.53
-text = "Continuar      "
+text = "Continue      "
 go_to_scene = "res://game/ui/menus/ShipOrderSelection.tscn"
 
 [connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]

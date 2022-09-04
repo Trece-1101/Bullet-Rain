@@ -116,11 +116,8 @@ custom_styles/focus = SubResource( 3 )
 custom_styles/disabled = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 disabled = true
-text = "Continuar  "
+text = "Continue  "
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Reset" type="Button" parent="."]
 margin_left = 782.123
@@ -132,11 +129,8 @@ custom_styles/pressed = SubResource( 7 )
 custom_styles/focus = SubResource( 8 )
 custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
-text = "Reiniciar   "
+text = "Reset   "
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BorderOrder1" type="TextureRect" parent="."]
 margin_left = 295.817
@@ -162,7 +156,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="OrderOneContainer"]
 margin_right = 268.0
 margin_bottom = 49.0
-text = "Orden 1"
+text = "First"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -244,7 +238,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="OrderTwoContainer"]
 margin_right = 268.0
 margin_bottom = 49.0
-text = "Orden 2"
+text = "Second"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -326,7 +320,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="OrderThreeContainer"]
 margin_right = 268.0
 margin_bottom = 49.0
-text = "Orden 3"
+text = "Third"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

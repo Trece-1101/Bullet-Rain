@@ -173,7 +173,7 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = SubResource( 1 )
-text = "Nivel"
+text = "Level"
 align = 2
 
 [node name="NumLevelLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/LevelContainer"]
@@ -236,7 +236,7 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Puntos"
+text = "Points"
 align = 1
 
 [node name="NumPointsLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/PointsContainer"]
@@ -267,7 +267,7 @@ margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Chatarra  "
+text = "Scrap"
 align = 1
 
 [node name="NumScrapLabel" type="Label" parent="LeftMenu/MarginLeftContainer/InformationSection/ScrapContainer"]
@@ -402,7 +402,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Dron"
+text = "Drone"
 
 [node name="DroneProgress" parent="RightMenu/MarginRightContainer/InformationSection/DroneContainer" instance=ExtResource( 4 )]
 margin_bottom = 62.0
@@ -430,7 +430,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Nivel daño "
+text = "Damage level"
 
 [node name="TextureRect" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/DmgContainer"]
 margin_top = 32.0
@@ -460,7 +460,7 @@ margin_right = 430.0
 margin_bottom = 28.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Nivel cadencia"
+text = "Shoot Rate level"
 
 [node name="TextureRect" type="TextureRect" parent="RightMenu/MarginRightContainer/InformationSection/RateContainer"]
 margin_top = 32.0
