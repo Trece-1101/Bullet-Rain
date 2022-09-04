@@ -291,37 +291,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BtnNewGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+[node name="BtnTutorial" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+text = "Tutorial     "
+go_to_scene = "res://game/ui/menus/ShipOrderSelectionTutorial.tscn"
+
+[node name="BtnNewGame2" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 104.0
+margin_bottom = 204.0
 go_to_scene = "res://game/ui/menus/ShipOrderSelection.tscn"
 
 [node name="BtnLoadGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 104.0
-margin_bottom = 204.0
+margin_top = 208.0
+margin_bottom = 308.0
 disabled = true
 text = "Load Game     "
 go_to_scene = "res://game/levels/GameLevelTwo.tscn"
 
 [node name="BtnOptions" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 208.0
-margin_bottom = 308.0
+margin_top = 312.0
+margin_bottom = 412.0
 text = "Options        "
 go_to_scene = "res://game/ui/menus/OptionsMenu.tscn"
 
 [node name="BtnLeaderboard" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 312.0
-margin_bottom = 412.0
+margin_top = 416.0
+margin_bottom = 516.0
 disabled = true
 text = "Leaderboard  "
 
 [node name="BtnCredits" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 416.0
-margin_bottom = 516.0
+margin_top = 520.0
+margin_bottom = 620.0
 text = "Credits         "
 go_to_scene = "res://game/ui/menus/Credits.tscn"
 
 [node name="BtnExitGame" parent="Control/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 520.0
-margin_bottom = 620.0
+margin_top = 624.0
+margin_bottom = 724.0
 text = "Exit Game      "
 is_quitter = true
 

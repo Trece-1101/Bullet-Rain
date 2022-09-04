@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/ui/menus/ShipOrderSelection.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Cooper Black Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/bullets/enemy_bullet.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="ShipOrderSelectionTutorial" instance=ExtResource( 1 )]
+is_tutorial = true
+
+[node name="EnemyBullet" type="Sprite" parent="." index="0"]
+position = Vector2( 569.945, 450.585 )
+scale = Vector2( 2.7818, 2.7818 )
+texture = ExtResource( 3 )
+
+[node name="EnemyBullet2" type="Sprite" parent="." index="1"]
+position = Vector2( 1061.72, 521.857 )
+scale = Vector2( 2.7818, 2.7818 )
+texture = ExtResource( 3 )
+
+[node name="EnemyBullet3" type="Sprite" parent="." index="2"]
+position = Vector2( 1540.13, 587.783 )
+scale = Vector2( 2.7818, 2.7818 )
+texture = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="." index="14"]
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+margin_left = 587.721
+margin_top = 429.616
+margin_right = -1110.88
+margin_bottom = 453.816
+custom_fonts/font = SubResource( 2 )
+text = "Pick an img"
+autowrap = true
+
+[node name="Label3" type="Label" parent="." index="15"]
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+margin_left = 1080.05
+margin_top = 497.4
+margin_right = -618.547
+margin_bottom = 521.6
+custom_fonts/font = SubResource( 2 )
+text = "Pick an img"
+autowrap = true
+
+[node name="Label4" type="Label" parent="." index="16"]
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+margin_left = 1567.63
+margin_top = 568.753
+margin_right = -130.972
+margin_bottom = 592.953
+custom_fonts/font = SubResource( 2 )
+text = "Pick an img"
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="." index="17"]
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+margin_left = -0.199999
+margin_top = 8.97968
+margin_right = 0.199951
+margin_bottom = 309.18
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="ColorRect" index="0"]
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.01
+custom_fonts/font = SubResource( 1 )
+text = "You can select the order of use of your 3 ships. When your first ship is destroyed then you respawn with the second one. After losing all 3 you restart the level.
+Blue Ship (Stealth): Great Speed + Good damage but low fire rate.  His ultimate power is invulnerability, can destroy  all bullets and enemies on impact. Except bosses.
+Yellow Ship (Interceptor): Good Speed + Great fire rate but low damage. His ultimate power destroy all bullets from enemies on screen.
+Red Ship (Bomber) : Good damage + Good fire rate but los speed His ultimate power is a missile storm which destroy any enemy bullet and make a lot of damage."
+autowrap = true

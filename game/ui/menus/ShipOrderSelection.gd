@@ -5,6 +5,7 @@ export var default_texture: Texture
 export var interceptor_texture: Texture
 export var bomber_texture: Texture
 export var stealth_texture: Texture
+export var is_tutorial := false
 
 #### Variables
 var ship_selected_imgages := []
@@ -83,5 +84,8 @@ func order_ships() -> Array:
 
 
 func _on_Continue_pressed() -> void:
-	GlobalData.set_ship_order(order_ships())
-	get_tree().change_scene(GlobalData.get_level_to_load())
+	if is_tutorial:
+		get_tree().change_scene("res://game/levels/LevelTutorial.tscn")
+	else:
+		GlobalData.set_ship_order(order_ships())
+		get_tree().change_scene(GlobalData.get_level_to_load())
