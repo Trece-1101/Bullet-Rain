@@ -39,7 +39,7 @@ func get_bullet() -> PackedScene:
 #### Metodos
 func _ready() -> void:
 	add_to_group("enemy_shooter")
-	if test_shoot and OS.is_debug_build():
+	if test_shoot:
 		can_shoot = true
 		inside_play_screen = true
 	
