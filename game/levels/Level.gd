@@ -9,6 +9,7 @@ signal wait_new_player(time)
 const overlay_game_over := preload("res://game/ui/overlays/GameOver.tscn")
 
 #### Variables Export
+export var is_tutorial := false
 export var debuggeable := false
 export var debug_panel: PackedScene
 export var scroll_speed := 200.0
@@ -48,6 +49,7 @@ var player_can_ultimatear := false
 var player_can_dronear := false
 var flockers := []
 
+
 func set_ship_order(value: Array) -> void:
 	ship_order = value
 
@@ -68,8 +70,11 @@ func _ready() -> void:
 	GlobalMusic.play_music(music)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	create_timer()
-	if debuggeable and OS.is_debug_build():
+	if debuggeable and OS.is_debug_build() and OS.has_feature("debug"):
 		hud_layer.add_child(debug_panel.instance())
+	
+	if is_tutorial:
+		pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and OS.is_debug_build():

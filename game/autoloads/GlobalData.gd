@@ -144,6 +144,7 @@ func _ready() -> void:
 	level_timer.autostart = false
 	level_timer.name = "LevelTimer"
 	level_timer.connect("timeout", self,  "_process_time")
+	Events.connect("fuelled_drone_bar", self, "fulled_ultimate_and_drone_bar")
 	add_child(level_timer)
 	level_timer.start()
 
@@ -181,6 +182,9 @@ func _process_time() -> void:
 	
 	emit_signal("send_update_gui_time", level_time.minu, level_time.sec)
 	emit_signal("send_update_gui_drone_and_ultimate", 1)
+
+func fulled_ultimate_and_drone_bar() -> void:
+	emit_signal("send_update_gui_drone_and_ultimate", 200)
 
 func reset_level_time() -> void:
 	drone_cooldown = original_drone_cooldwon

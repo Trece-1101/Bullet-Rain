@@ -84,8 +84,8 @@ func order_ships() -> Array:
 
 
 func _on_Continue_pressed() -> void:
+	GlobalData.set_ship_order(order_ships())
 	if is_tutorial:
 		get_tree().change_scene("res://game/levels/LevelTutorial.tscn")
 	else:
-		GlobalData.set_ship_order(order_ships())
 		get_tree().change_scene(GlobalData.get_level_to_load())
