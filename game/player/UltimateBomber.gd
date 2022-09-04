@@ -35,7 +35,6 @@ func shoot_missile() -> void:
 		for pos in parent.get_node("MissilesPositions").get_children():
 			var new_missile = missile.instance()
 			new_missile.create(
-				parent,
 				pos.global_position,
 				-1000.0,
 				0.0,

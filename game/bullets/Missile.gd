@@ -12,3 +12,6 @@ func _on_area_entered(area: Area2D) -> void:
 		destroy()
 	else:
 		destroy()
+
+func _process(delta: float) -> void:
+	position += velocity * delta

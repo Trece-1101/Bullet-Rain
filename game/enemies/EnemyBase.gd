@@ -61,6 +61,7 @@ func _ready() -> void:
 	scrap_reward = hitpoints * 0.5
 	explosion_limits = sprite.texture.get_size() * 0.4
 #	set_explosion_vars()
+	Events.connect("player_destroyed", self, "_on_player_destroyed")
 	get_top_level().connect("get_new_player", self, "player_respawn")
 	get_top_level().connect("wait_new_player", self, "wait")
 
@@ -81,7 +82,10 @@ func get_top_level() -> Node:
 #	var parent := get_parent()
 #	while not "GameLevel" in parent.name:
 #		parent = parent.get_parent()
-	
+
+func _on_player_destroyed() -> void:
+	player = null
+	GlobalData.global_player_alive = false
 
 func player_respawn() -> void:
 	allow_shoot = true

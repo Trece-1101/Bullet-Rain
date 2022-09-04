@@ -72,7 +72,6 @@ theme = ExtResource( 3 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 541.619 ],
-"_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 961.29, 478.632, 1441.38 ]
 }
 default_texture = ExtResource( 13 )
@@ -81,6 +80,7 @@ bomber_texture = ExtResource( 18 )
 stealth_texture = ExtResource( 16 )
 
 [node name="Fondo" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 10 )
@@ -383,5 +383,6 @@ texture_disabled = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]

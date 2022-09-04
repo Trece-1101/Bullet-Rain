@@ -50,7 +50,6 @@ func explote() -> void:
 	for _i in range(24):
 		var new_bullet := bullet.instance()
 		new_bullet.create(
-			self,
 			global_position,
 			300.0,
 			0,

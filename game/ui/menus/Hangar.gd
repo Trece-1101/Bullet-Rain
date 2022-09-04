@@ -17,11 +17,11 @@ onready var ship_sprite := $BorderContainer/MarginContainer/ShipSprite
 onready var scrap_total_label := $ScrapContainer/ScrapTotal
 onready var buy_msg := $OnBuyMsg
 onready var cost_label := $CostLabel
-onready var dmg_texture := $DmgLevel
-onready var rate_texture := $RateLevel
+onready var dmg_texture := $"%DmgLevel"
+onready var rate_texture := $"%RateLevel"
 onready var on_buy_timer := $OnBuyTimer
-onready var dmg_buy_button := $DmgBuy
-onready var rate_buy_button := $RateBuy
+onready var dmg_buy_button := $"%DmgBuy"
+onready var rate_buy_button := $"%RateBuy"
 onready var prev_ship := $Prev
 onready var next_ship := $Next
 

@@ -112,6 +112,7 @@ func create_player() -> void:
 	gui.change_usable_ship(new_player.name)
 	gui.change_hitpoints(new_player.get_hitpoints())
 	add_child(new_player)
+	GlobalData.global_player_alive = true
 	emit_signal("get_new_player")
 
 func create_timer() -> void:

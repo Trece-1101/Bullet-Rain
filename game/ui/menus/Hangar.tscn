@@ -73,6 +73,7 @@ bomber_texture = ExtResource( 9 )
 stealth_texture = ExtResource( 6 )
 
 [node name="Fondo" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
@@ -238,6 +239,7 @@ __meta__ = {
 }
 
 [node name="DmgBuy" type="Button" parent="DamageBorder"]
+unique_name_in_owner = true
 margin_left = 306.872
 margin_top = 593.965
 margin_right = 501.872
@@ -249,6 +251,7 @@ __meta__ = {
 }
 
 [node name="DmgLevel" type="TextureRect" parent="DamageBorder"]
+unique_name_in_owner = true
 margin_left = 232.992
 margin_top = 377.809
 margin_right = 480.992
@@ -257,9 +260,6 @@ rect_scale = Vector2( 3, 3 )
 size_flags_horizontal = 3
 texture = SubResource( 1 )
 stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CadenceBorder" type="TextureRect" parent="."]
 margin_left = 1220.0
@@ -286,6 +286,7 @@ __meta__ = {
 }
 
 [node name="RateLevel" type="TextureRect" parent="CadenceBorder"]
+unique_name_in_owner = true
 margin_left = 257.031
 margin_top = 383.875
 margin_right = 504.029
@@ -299,6 +300,7 @@ __meta__ = {
 }
 
 [node name="RateBuy" type="Button" parent="CadenceBorder"]
+unique_name_in_owner = true
 margin_left = 344.692
 margin_top = 591.979
 margin_right = 539.692
@@ -343,6 +345,7 @@ margin_right = 1118.06
 margin_bottom = 1026.53
 text = "Continuar      "
 go_to_scene = "res://game/ui/menus/ShipOrderSelection.tscn"
+
 [connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
 [connection signal="mouse_entered" from="DamageBorder/DmgBuy" to="." method="_on_DmgBuy_mouse_entered"]

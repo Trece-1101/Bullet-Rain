@@ -7,7 +7,7 @@ signal full_path_dead
 #### Variables Export
 export(Array, PackedScene) var enemies := []
 export(int, 1, 20) var enemy_number := 1
-export(float, 50, 1000) var speed := 200
+export(float, 50, 1000) var speed := 200.0
 export var allow_enemy_shoot := true
 export(float, 0.2, 10.0) var spawn_enemy_rate := 1.0
 export var are_aimers := false

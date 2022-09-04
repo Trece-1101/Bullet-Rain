@@ -52,7 +52,6 @@ func shoot_bullet(speed: float, dir: float, type: int, damage: float, angle_corr
 	for i in range(bullet_quantity):
 		var new_bullet:Bullet = bullet.instance()
 		new_bullet.create(
-			parent,
 			global_position,
 			speed,
 			dir,

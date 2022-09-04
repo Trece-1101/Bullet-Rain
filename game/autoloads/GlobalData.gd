@@ -24,6 +24,8 @@ var level_timer: Timer
 var start_time := 0.0
 var current_time := 0.0
 
+var global_player_alive := true
+
 var level_to_load := "res://game/levels/GameLevelOne.tscn" setget set_level_to_load
 
 var player_ships := {

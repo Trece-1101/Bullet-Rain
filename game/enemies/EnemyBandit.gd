@@ -44,12 +44,13 @@ func _process(_delta: float):
 		check_aim_to_player()
 
 func check_aim_to_player() -> void:
-	var dir = player.global_position - global_position
-	var rot = dir.angle()
-	var rot_look = rot - 1.57
-	var my_rotation = rad2deg(rot_look) + aim_error
-	bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
-	rotation_degrees = my_rotation
+	if GlobalData.global_player_alive:
+		var dir = player.global_position - global_position
+		var rot = dir.angle()
+		var rot_look = rot - 1.57
+		var my_rotation = rad2deg(rot_look) + aim_error
+		bullet_rot_correction = rad2deg(rot) - 90.0 + aim_error
+		rotation_degrees = my_rotation
 
 func check_aim_to_center() -> float:
 	var dir = Vector2(960.0, 920.0) - global_position
@@ -85,6 +86,8 @@ func remove_orbital(orbital: EnemyOrbital) -> void:
 
 func die() -> void:
 	.die()
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	if orbitals.size() > 0:
 		yield(get_tree().create_timer(0.6), "timeout")
 		for orbital in orbitals:

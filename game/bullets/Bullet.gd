@@ -10,7 +10,6 @@ export(Color, RGBA) var bullet_color_indestructible := Color.purple
 var velocity := Vector2.ZERO
 var type := 1 setget ,get_type
 var damage: float setget ,get_damage
-var creater: Object
 
 #### Variables onready
 onready var bullet_sprite := $Sprite
@@ -25,7 +24,6 @@ func get_type() -> int:
 
 #### Metodos
 func create(
-		bullet_creater: Object,
 		bullet_pos: Vector2,
 		bullet_speed: float,
 		bullet_dir: float,
@@ -33,9 +31,8 @@ func create(
 		bullet_damage := 1.0,
 		bullet_angle := 0.0
 	) -> void:
-	creater = bullet_creater
-	if creater is EnemyBase or creater is EnemyPart:
-		add_to_group("bullet_enemy")
+#	if creater is EnemyBase or creater is EnemyPart:
+#		add_to_group("bullet_enemy")
 	position = bullet_pos
 	rotation = bullet_dir
 	velocity = Vector2(0.0, bullet_speed).rotated(deg2rad(bullet_angle))
@@ -62,10 +59,10 @@ func set_color(node: Node2D, red: float, green: float, blue: float) -> void:
 	node.modulate.g = green
 	node.modulate.b = blue
 
-func _process(delta: float) -> void:
-	position += velocity * delta
-	if creater is EnemyBase:
-		bullet_sprite.rotation += 2 * PI * delta * 0.25
+#func _process(delta: float) -> void:
+#	position += velocity * delta
+#	if creater is EnemyBase:
+#		bullet_sprite.rotation += 2 * PI * delta * 0.25
 
 
 func _on_body_entered(body: Node) -> void:

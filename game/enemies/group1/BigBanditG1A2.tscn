@@ -39,9 +39,14 @@ color_ramp = SubResource( 4 )
 
 [node name="BigBanditG1A2" instance=ExtResource( 3 )]
 hitpoints = 40.0
+is_aimer = false
 scrap_chance = 0.15
 bullet_speed = 280
 shooting_rate = 1.8
+test_shoot = false
+indestructible_bullets = [  ]
+has_orbitals = false
+orbital_enemy = null
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -73,3 +78,4 @@ emitting = false
 process_material = SubResource( 7 )
 
 [editable path="ExplosionFire2"]
+[editable path="ExplosionFire2/FireTrails"]

@@ -332,6 +332,7 @@ func die() -> void:
 		bypass_god_mode()
 
 func bypass_god_mode() -> void:
+	Events.emit_signal("player_destroyed")
 	$Shield.queue_free()
 	stop_drone_shooting()
 	GlobalData.substract_hitpoints(0)
