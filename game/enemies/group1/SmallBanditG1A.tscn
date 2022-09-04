@@ -34,9 +34,14 @@ color_ramp = SubResource( 3 )
 
 [node name="SmallBanditG1A" instance=ExtResource( 1 )]
 hitpoints = 10.0
+is_aimer = false
 scrap_chance = 0.0
 bullet_speed = 360
 shooting_rate = 2.2
+test_shoot = false
+indestructible_bullets = [  ]
+has_orbitals = false
+orbital_enemy = null
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 2 )
@@ -52,3 +57,4 @@ position = Vector2( 3.83848e-12, -41.8818 )
 process_material = SubResource( 6 )
 
 [editable path="ExplosionFire2"]
+[editable path="ExplosionFire2/FireTrails"]

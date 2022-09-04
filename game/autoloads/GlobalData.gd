@@ -184,7 +184,7 @@ func _process_time() -> void:
 	emit_signal("send_update_gui_drone_and_ultimate", 1)
 
 func fulled_ultimate_and_drone_bar() -> void:
-	emit_signal("send_update_gui_drone_and_ultimate", 200)
+	emit_signal("send_update_gui_drone_and_ultimate", 300)
 
 func reset_level_time() -> void:
 	drone_cooldown = original_drone_cooldwon
